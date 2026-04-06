@@ -123,8 +123,14 @@
         let currentIndex = 0;
         let correctCount = 0;
         const results = [];
+        let startTime = null;  // 记录开始时间
 
         function renderQuestion() {
+            // 第一题时记录开始时间
+            if (currentIndex === 0 && !startTime) {
+                startTime = new Date().toISOString();
+            }
+            
             const q = questions[currentIndex];
             const area = document.getElementById('questionArea');
             
@@ -225,12 +231,22 @@
         }
 
         function showResult() {
+            const endTime = new Date().toISOString();  // 记录结束时间
+            
             document.getElementById('questionArea').classList.add('hidden');
             document.getElementById('result').classList.add('show');
             document.getElementById('finalScore').textContent = correctCount;
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
-            const resultData = { round: 14, total: questions.length, correct: correctCount, results };
+            // 结果码包含开始时间和结束时间
+            const resultData = { 
+                round: 14, 
+                total: questions.length, 
+                correct: correctCount, 
+                results,
+                startTime,
+                endTime
+            };
             const resultCode = 'ENGRESULT:' + btoa(JSON.stringify(resultData));
             document.getElementById('resultCode').textContent = resultCode;
         }
