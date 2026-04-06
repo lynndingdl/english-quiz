@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第23轮</title>
+    <title>英语单词复习 - 第24轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第23轮</h1>
+        <h1>🦐 英语单词复习 - 第24轮</h1>
         <p class="subtitle">选择题（4选1）| 全部错题 | 原句出题</p>
 
         <div class="progress-info">
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
 
         <div class="result" id="result">
-            <h2>🎉 第23轮复习完成！</h2>
+            <h2>🎉 第24轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,49 +78,49 @@
 
     <script>
         const wordBank = {
-            "obscure": "模糊的，不为人知的",
+            "shorthand": "简写，速记",
+            "recruit": "调动，招募，利用",
+            "portals": "门户，平台，入口",
+            "bypasses": "绕过，避开",
+            "underlying": "潜在的，根本的",
+            "numerosity": "数量效应，数值感知",
+            "credential": "资格，证书",
+            "debilitating": "使人虚弱的，令人衰弱的",
+            "boost": "提升，增强，促进",
             "accuracy": "准确性，精确度",
-            "compassionate": "富有同情心的，人道的",
-            "prescribed": "开（药），处方的",
-            "upstream": "上游的，从源头",
-            "accountability": "问责制，责任",
-            "finalize": "最终确定",
-            "flagrant": "公然的，明目张胆的",
-            "grappling": "努力解决，搏斗",
-            "pervasive": "普遍的，无处不在的",
-            "rebellious": "叛逆的，反抗的",
-            "upfront": "预先的，事先的",
-            "impairment": "损伤，障碍",
-            "technophobic": "技术恐惧的",
-            "adherent": "遵从的，坚持的",
-            "cardiovascular": "心血管的",
-            "meteoric": "迅速的，流星般的",
-            "fringe": "边缘的，非主流的",
-            "ubiquitous": "无处不在的，普遍存在的",
-            "opaque": "晦涩难懂的，不透明的"
+            "literacy": "读写能力，素养",
+            "navigate": "导航，应对",
+            "nuanced": "细致入微的，微妙的",
+            "prioritized": "优先考虑的",
+            "curriculum": "课程",
+            "dearth": "缺乏，短缺",
+            "deliberate": "故意的，深思熟虑的",
+            "immortals": "不朽者（电竞战队名）",
+            "leveraging": "利用，借助",
+            "suboptimal": "次优的，不理想的"
         };
 
         const questions = [
-            { word: "obscure", meaning: "模糊的，不为人知的", sentence: "Originating from a somewhat ______ rap song in late 2024.", answer: "obscure", options: ["obscure", "pervasive", "fringe", "meteoric"], translation: "源于2024年底一首相对不为人知的说唱歌曲。" },
-            { word: "accuracy", meaning: "准确性，精确度", sentence: "Getting players to reconceptualize stress as being beneficial improved shooting ______, attentional control, and cognitive effort during high-pressure performance.", answer: "accuracy", options: ["accuracy", "accountability", "pervasive", "upstream"], translation: "让选手重新认识压力的益处，提高了高压表现下的投篮准确性、注意力控制和认知努力。" },
-            { word: "compassionate", meaning: "富有同情心的，人道的", sentence: "ERP is probably the most ______ thing you can do for someone who suffers from OCD.", answer: "compassionate", options: ["compassionate", "rebellious", "technophobic", "adherent"], translation: "暴露反应预防（ERP）可能是你能为强迫症患者做的最人道的事情。" },
-            { word: "prescribed", meaning: "开（药），处方的", sentence: "They are typically ______ in higher doses than used to treat depression.", answer: "prescribed", options: ["prescribed", "finalize", "cardiovascular", "ubiquitous"], translation: "它们通常以比治疗抑郁症更高的剂量开处方。" },
-            { word: "upstream", meaning: "上游的，从源头", sentence: "This metacognitive approach focuses ______ on how obsessions form.", answer: "upstream", options: ["upstream", "flagrant", "opaque", "impairment"], translation: "这种元认知方法从源头关注强迫观念是如何形成的。" },
-            { word: "accountability", meaning: "问责制，责任", sentence: "Teams were also encouraged to develop their own norms around culture, ______, and conflict management, fostering self-sufficiency and leadership skills.", answer: "accountability", options: ["accountability", "accuracy", "grappling", "meteoric"], translation: "团队还被鼓励制定自己的文化、问责制和冲突管理规范，培养自给自足和领导技能。" },
-            { word: "finalize", meaning: "最终确定", sentence: "In November 2025, Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to ______ nine pillars of mental health support.", answer: "finalize", options: ["finalize", "upfront", "compassionate", "pervasive"], translation: "2025年11月，Poulus和同事召集游戏发行商、锦标赛组织者、国际奥委会代表和心理健康专家，最终确定了心理健康支持的九大支柱。" },
-            { word: "flagrant", meaning: "公然的，明目张胆的", sentence: "This would be akin to a player committing a ______ foul in basketball or rushing the mound in baseball.", answer: "flagrant", options: ["flagrant", "obscure", "adherent", "fringe"], translation: "这类似于篮球运动员犯下公然犯规或棒球运动员冲向投手丘。" },
-            { word: "grappling", meaning: "努力解决，搏斗", sentence: "Research shows that elite esports players often experience poor mental health outcomes while ______ with the pressures of competition.", answer: "grappling", options: ["grappling", "upstream", "technophobic", "ubiquitous"], translation: "研究表明，精英电竞选手在应对比赛压力时经常出现不良心理健康结果。" },
-            { word: "pervasive", meaning: "普遍的，无处不在的", sentence: "The phrase has become so ______ that some schools have even banned its use.", answer: "pervasive", options: ["pervasive", "prescribed", "cardiovascular", "impairment"], translation: "这个短语已经如此普遍，以至于一些学校甚至禁止使用它。" },
-            { word: "rebellious", meaning: "叛逆的，反抗的", sentence: "For young people, the appeal lies in its irreverent or ______ qualities while also remaining opaque to adults.", answer: "rebellious", options: ["rebellious", "finalize", "accuracy", "accountability"], translation: "对年轻人来说，吸引力在于它的不敬或叛逆品质，同时对成年人来说仍然难以理解。" },
-            { word: "upfront", meaning: "预先的，事先的", sentence: "For older workers to overcome barriers to learning, they often need to know ______ how training will benefit them.", answer: "upfront", options: ["upfront", "compassionate", "meteoric", "flagrant"], translation: "为了让年长工人克服学习障碍，他们通常需要预先知道培训将如何使他们受益。" },
-            { word: "impairment", meaning: "损伤，障碍", sentence: "Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive ______.", answer: "impairment", options: ["impairment", "opaque", "grappling", "ubiquitous"], translation: "证据还表明，即使在开始经历记忆、注意力、执行功能和其他与轻度认知障碍相关领域的衰退后，人们仍然能够掌握新技能。" },
-            { word: "technophobic", meaning: "技术恐惧的", sentence: "We found that the participants were not ______.", answer: "technophobic", options: ["technophobic", "pervasive", "adherent", "fringe"], translation: "我们发现参与者并不恐惧技术。" },
-            { word: "adherent", meaning: "遵从的，坚持的", sentence: "They were very ______, and there was a low dropout rate.", answer: "adherent", options: ["adherent", "upstream", "prescribed", "obscure"], translation: "他们非常遵从，退出率很低。" },
-            { word: "cardiovascular", meaning: "心血管的", sentence: "In Finland, researchers led a 2-year intervention for people at higher risk of dementia. Participants were educated and supported in areas of diet, physical activity, cognitive training, social activity, and monitoring of ______ risk factors.", answer: "cardiovascular", options: ["cardiovascular", "accuracy", "rebellious", "finalize"], translation: "在芬兰，研究人员为痴呆症高风险人群进行了为期2年的干预。参与者在饮食、身体活动、认知训练、社交活动和心血管风险因素监测方面得到了教育和支持。" },
-            { word: "meteoric", meaning: "迅速的，流星般的", sentence: "Its ______ rise demonstrates the internet's power to propel fringe terms into the mainstream at warp speed.", answer: "meteoric", options: ["meteoric", "upfront", "impairment", "grappling"], translation: "它的迅速崛起展示了互联网以超光速将边缘词汇推向主流的力量。" },
-            { word: "fringe", meaning: "边缘的，非主流的", sentence: "Its meteoric rise demonstrates the internet's power to propel ______ terms into the mainstream at warp speed.", answer: "fringe", options: ["fringe", "technophobic", "compassionate", "pervasive"], translation: "它的迅速崛起展示了互联网以超光速将边缘词汇推向主流的力量。" },
-            { word: "ubiquitous", meaning: "无处不在的，普遍存在的", sentence: "Describing it as meaningless, ______, and nonsensical while acknowledging its usefulness to young users.", answer: "ubiquitous", options: ["ubiquitous", "flagrant", "accountability", "adherent"], translation: "将其描述为毫无意义、无处不在和荒谬可笑，同时承认它对年轻用户的实用性。" },
-            { word: "opaque", meaning: "晦涩难懂的，不透明的", sentence: "For young people, the appeal lies in its irreverent or rebellious qualities while also remaining ______ to adults.", answer: "opaque", options: ["opaque", "finalize", "prescribed", "cardiovascular"], translation: "对年轻人来说，吸引力在于它的不敬或叛逆品质，同时对成年人来说仍然晦涩难懂。" }
+            { word: "shorthand", meaning: "简写，速记", sentence: "That verbal ______ persists in modern professional settings as jargon.", answer: "shorthand", options: ["shorthand", "curriculum", "dearth", "literacy"], translation: "这种口头简写在现代职业环境中作为行话持续存在。" },
+            { word: "recruit", meaning: "调动，招募，利用", sentence: "We can ______ cognitive mechanisms to focus on remembering what is important and interesting.", answer: "recruit", options: ["recruit", "bypasses", "underlying", "numerosity"], translation: "我们可以调动认知机制来专注于记住重要和有趣的事情。" },
+            { word: "portals", meaning: "门户，平台，入口", sentence: "Some of these older partners are struggling not only to learn how to support a family member with a neurocognitive disorder, but also to navigate health care ______, telehealth visits, transportation, and other details for the loved one.", answer: "portals", options: ["portals", "credential", "debilitating", "boost"], translation: "这些年长的伴侣不仅在学习如何支持患有神经认知障碍的家庭成员，还要努力应对医疗保健门户、远程医疗访问、交通以及其他细节。" },
+            { word: "bypasses", meaning: "绕过，避开", sentence: "Buy now, pay later financing ______ a number of cognitive and physical barriers to impulse buying, heightening the risk of financial and psychological stress for many people.", answer: "bypasses", options: ["bypasses", "accuracy", "prioritized", "dearth"], translation: "先买后付融资绕过了许多冲动购物的认知和物理障碍，增加了许多人面临财务和心理压力的风险。" },
+            { word: "underlying", meaning: "潜在的，根本的", sentence: "Behavioral scientists and applied practitioners can help by continuing to research the real-world impacts of the cognitive mechanisms ______ these behaviors.", answer: "underlying", options: ["underlying", "leveraging", "nuanced", "deliberate"], translation: "行为科学家和应用从业者可以通过继续研究这些行为背后的认知机制的现实世界影响来提供帮助。" },
+            { word: "numerosity", meaning: "数量效应，数值感知", sentence: "Presenting an installment amount rather than the full price lowers a consumer's perception of the cost. This is due to the ______ effect.", answer: "numerosity", options: ["numerosity", "shorthand", "immortals", "curriculum"], translation: "呈现分期付款金额而不是全价会降低消费者对成本的感知。这是由于数量效应。" },
+            { word: "credential", meaning: "资格，证书", sentence: "The Certified Mental Performance Consultant (CMPC) ______ has emerged as a pathway into the field for master's-level clinicians.", answer: "credential", options: ["credential", "navigate", "boost", "underlying"], translation: "认证心理表现咨询师（CMPC）资格已成为硕士学位临床医生进入该领域的途径。" },
+            { word: "debilitating", meaning: "使人虚弱的，令人衰弱的", sentence: "It is a distressing and often ______ disorder.", answer: "debilitating", options: ["debilitating", "recruit", "portals", "bypasses"], translation: "这是一种令人痛苦且常常使人衰弱的疾病。" },
+            { word: "boost", meaning: "提升，增强，促进", sentence: "Psychology researchers are developing cognitive interventions to help adults ______ their brain health rather than being affected by harmful stereotypes about aging.", answer: "boost", options: ["boost", "accuracy", "literacy", "prioritized"], translation: "心理学研究人员正在开发认知干预措施，帮助成年人提升大脑健康，而不是受到关于衰老的有害刻板印象的影响。" },
+            { word: "accuracy", meaning: "准确性，精确度", sentence: "Getting players to reconceptualize stress as being beneficial improved shooting ______, attentional control, and cognitive effort during high-pressure performance.", answer: "accuracy", options: ["accuracy", "debilitating", "credential", "shorthand"], translation: "让选手重新认识压力的益处，提高了高压表现下的投篮准确性、注意力控制和认知努力。" },
+            { word: "literacy", meaning: "读写能力，素养", sentence: "Professionals within esports psychology perform roles that combine high-performance coaching, clinical or counseling skills, and deep game ______.", answer: "literacy", options: ["literacy", "numerosity", "boost", "underlying"], translation: "电竞心理学专业人士的角色结合了高性能教练、临床或咨询技能以及深厚的游戏素养。" },
+            { word: "navigate", meaning: "导航，应对", sentence: "While elite players within formal organizational structures often have access to professional psychological services, non-elite players must rely on inconsistent online resources or ______ support systems on their own.", answer: "navigate", options: ["navigate", "recruit", "portals", "bypasses"], translation: "虽然正式组织结构中的精英选手通常可以获得专业心理服务，但非精英选手必须依赖不一致的在线资源或独自应对支持系统。" },
+            { word: "nuanced", meaning: "细致入微的，微妙的", sentence: "However, a more ______ approach is necessary when esports competitors often require those hours to train and remain competitive.", answer: "nuanced", options: ["nuanced", "accuracy", "literacy", "prioritized"], translation: "然而，当电竞选手通常需要这些时间来训练并保持竞争力时，需要更细致入微的方法。" },
+            { word: "prioritized", meaning: "优先考虑的", sentence: "Gardner and his team ______ exercise, sleep routines, and intrinsic motivation, helping the Immortals players build healthier daily structures.", answer: "prioritized", options: ["prioritized", "debilitating", "credential", "shorthand"], translation: "Gardner和他的团队优先考虑运动、睡眠规律和内在动机，帮助Immortals选手建立更健康的日常结构。" },
+            { word: "curriculum", meaning: "课程", sentence: "Garden State Esports developed the Esports Personal and Performance Improvement ______ (EPPIC).", answer: "curriculum", options: ["curriculum", "numerosity", "boost", "underlying"], translation: "Garden State Esports开发了电竞个人和表现提升课程（EPPIC）。" },
+            { word: "dearth", meaning: "缺乏，短缺", sentence: "There is a ______ of appropriate evidence-based practices and ethical and professional standards.", answer: "dearth", options: ["dearth", "recruit", "portals", "bypasses"], translation: "缺乏适当的循证实践以及道德和专业标准。" },
+            { word: "deliberate", meaning: "故意的，深思熟虑的", sentence: "A study with Counter-Strike: Global Offensive and League of Legends players found that ______ practice did not meaningfully predict long-term rank.", answer: "deliberate", options: ["deliberate", "accuracy", "literacy", "prioritized"], translation: "一项针对反恐精英：全球攻势和英雄联盟玩家的研究发现，刻意练习并不能显著预测长期排名。" },
+            { word: "immortals", meaning: "不朽者（电竞战队名）", sentence: "In 2018, he built what he describes as the first player development department in North American professional esports for the ______ organization.", answer: "immortals", options: ["immortals", "debilitating", "credential", "shorthand"], translation: "2018年，他为Immortals组织建立了他描述的北美职业电竞中的第一个选手发展部门。" },
+            { word: "leveraging", meaning: "利用，借助", sentence: "The rise of livestreaming platforms like Twitch, Discord, and YouTube—and the charismatic personalities of some of the athletes ______ these platforms—has fueled this growth.", answer: "leveraging", options: ["leveraging", "numerosity", "boost", "underlying"], translation: "Twitch、Discord和YouTube等直播平台的兴起，以及一些运动员利用这些平台的魅力个性，推动了这一增长。" },
+            { word: "suboptimal", meaning: "次优的，不理想的", sentence: "Researchers are also examining tilt—strong negative emotions that lead to ______ decisions during games.", answer: "suboptimal", options: ["suboptimal", "nuanced", "curriculum", "portals"], translation: "研究人员还在研究心态失衡——强烈的负面情绪导致游戏中做出次优决策。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
 
             const resultData = {
-                round: 23,
+                round: 24,
                 total: questions.length,
                 correct: correctCount,
                 results,
