@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第15轮</title>
+    <title>英语单词复习 - 第16轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,8 +55,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第15轮</h1>
-        <p class="subtitle">选择题（4选1）| 错题优先</p>
+        <h1>🦐 英语单词复习 - 第16轮</h1>
+        <p class="subtitle">选择题（4选1）| 错题攻坚</p>
         
         <div class="progress-info">
             <span>进度: <span id="currentNum">1</span> / 20</span>
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第15轮复习完成！</h2>
+            <h2>🎉 第16轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,49 +78,49 @@
 
     <script>
         const wordBank = {
-            "suboptimal": "次优的，不理想的",
-            "toughness": "坚韧，强硬",
-            "underway": "进行中的",
-            "unsupervised": "无人监管的",
+            "finalize": "最终确定",
+            "flagrant": "公然的，明目张胆的",
+            "grappling": "努力解决，搏斗",
+            "neutralize": "中和，抵消",
+            "perpetuate": "使持续，使永久化",
+            "debilitating": "使人虚弱的，令人衰弱的",
+            "contamination concerns": "对污染的担忧，洁癖",
+            "ego-syntonic thoughts": "自我和谐的想法",
+            "contamination": "污染，污染恐惧",
+            "scrupulosity": "道德完美主义，宗教性强迫",
+            "hyperactivity": "多动症，过度活跃",
+            "incentives tied": "挂钩的奖励，激励绑定",
+            "accommodation": "顺应，配合",
+            "compassionate": "富有同情心的，人道的",
+            "prescribed": "开（药），处方的",
+            "upstream": "上游的，从源头",
+            "accountability": "问责制，责任",
             "obscure": "模糊的，不为人知的",
-            "momentum": "势头，动力",
-            "cropped up": "突然出现，冒出来",
             "pervasive": "普遍的，无处不在的",
-            "meteoric": "迅速的，流星般的",
-            "fringe": "边缘的，非主流的",
-            "warp": "极快的速度",
-            "ubiquitous": "无处不在的，普遍存在的",
-            "nonsensical": "荒谬的，无意义的",
-            "rebellious": "叛逆的，反抗的",
-            "opaque": "晦涩难懂的，不透明的",
-            "formation": "形成，构成",
-            "affiliation": "归属，从属关系",
-            "itinerants": "流动人员，流浪者",
-            "shorthand": "简写，速记",
-            "jargon": "行话，术语"
+            "rebellious": "叛逆的，反抗的"
         };
 
         const questions = [
-            { word: "suboptimal", meaning: "次优的，不理想的", sentence: "Researchers are examining tilt—strong negative emotions that lead to ______ decisions during games.", answer: "suboptimal", options: ["suboptimal", "meteoric", "fringe", "warp"], translation: "研究人员正在研究情绪失控——强烈的负面情绪导致游戏中的次优决策。" },
-            { word: "toughness", meaning: "坚韧，强硬", sentence: "Traditional sport psychology measures, like mental ______, do not significantly predict competitive achievement in esports.", answer: "toughness", options: ["toughness", "momentum", "affiliation", "formation"], translation: "传统的运动心理学指标，如心理坚韧，并不能显著预测电竞的竞技成就。" },
-            { word: "underway", meaning: "进行中的", sentence: "A major effort is ______ to develop international mental health guidelines tailored to esports.", answer: "underway", options: ["underway", "underway", "unsupervised", "ubiquitous"], translation: "一项重大努力正在进行中，旨在制定针对电竞的国际心理健康指南。" },
-            { word: "unsupervised", meaning: "无人监管的", sentence: "At the same time, if left ______, it can burn you and your house down.", answer: "unsupervised", options: ["unsupervised", "obscure", "pervasive", "nonsensical"], translation: "同时，如果无人监管，它可能会烧毁你和你的房子。" },
-            { word: "obscure", meaning: "模糊的，不为人知的", sentence: "Originating from a somewhat ______ rap song in late 2024.", answer: "obscure", options: ["obscure", "pervasive", "ubiquitous", "rebellious"], translation: "起源于2024年底一首颇为冷门的说唱歌曲。" },
-            { word: "momentum", meaning: "势头，动力", sentence: "It quickly gained ______ on TikTok and other social media platforms.", answer: "momentum", options: ["momentum", "formation", "affiliation", "shorthand"], translation: "它很快在TikTok和其他社交媒体平台上获得了关注。" },
-            { word: "cropped up", meaning: "突然出现，冒出来", sentence: "Evolving into a chant shouted in response whenever the numbers 6 or 7 ______ in casual conversation.", answer: "cropped up", options: ["cropped up", "momentum", "shorthand", "jargon"], translation: "演变成一种口号，每当数字6或7在日常对话中出现时就喊出来。" },
-            { word: "pervasive", meaning: "普遍的，无处不在的", sentence: "The phrase has become so ______ that some schools have even banned its use.", answer: "pervasive", options: ["pervasive", "obscure", "fringe", "opaque"], translation: "这个短语已经如此普遍，以至于一些学校甚至禁止使用它。" },
-            { word: "meteoric", meaning: "迅速的，流星般的", sentence: "Its ______ rise demonstrates the internet's power to propel fringe terms into the mainstream.", answer: "meteoric", options: ["meteoric", "unsupervised", "cropped up", "itinerants"], translation: "它的迅速崛起展示了互联网将边缘术语推入主流的力量。" },
-            { word: "fringe", meaning: "边缘的，非主流的", sentence: "Its meteoric rise demonstrates the internet's power to propel ______ terms into the mainstream.", answer: "fringe", options: ["fringe", "pervasive", "ubiquitous", "nonsensical"], translation: "它的迅速崛起展示了互联网将边缘术语推入主流的力量。" },
-            { word: "warp", meaning: "极快的速度", sentence: "Its meteoric rise demonstrates the internet's power to propel fringe terms into the mainstream at ______ speed.", answer: "warp", options: ["warp", "momentum", "formation", "shorthand"], translation: "它的迅速崛起展示了互联网以极快的速度将边缘术语推入主流的力量。" },
-            { word: "ubiquitous", meaning: "无处不在的，普遍存在的", sentence: "Describing it as meaningless, ______, and nonsensical while acknowledging its usefulness to young users.", answer: "ubiquitous", options: ["ubiquitous", "obscure", "opaque", "fringe"], translation: "将其描述为无意义、无处不在和荒谬的，同时承认其对年轻用户的有用性。" },
-            { word: "nonsensical", meaning: "荒谬的，无意义的", sentence: "Describing it as meaningless, ubiquitous, and ______ while acknowledging its usefulness to young users.", answer: "nonsensical", options: ["nonsensical", "rebellious", "meteoric", "warp"], translation: "将其描述为无意义、无处不在和荒谬的，同时承认其对年轻用户的有用性。" },
-            { word: "rebellious", meaning: "叛逆的，反抗的", sentence: "For young people, the appeal lies in its irreverent or ______ qualities while also remaining opaque to adults.", answer: "rebellious", options: ["rebellious", "ubiquitous", "pervasive", "fringe"], translation: "对于年轻人来说，吸引力在于其不敬或叛逆的品质，同时对成年人来说仍然晦涩难懂。" },
-            { word: "opaque", meaning: "晦涩难懂的，不透明的", sentence: "For young people, the appeal lies in its irreverent or rebellious qualities while also remaining ______ to adults.", answer: "opaque", options: ["opaque", "obscure", "nonsensical", "cropped up"], translation: "对于年轻人来说，吸引力在于其不敬或叛逆的品质，同时对成年人来说仍然晦涩难懂。" },
-            { word: "formation", meaning: "形成，构成", sentence: "It functions as a dynamic social code that can offer insight into the complexity of identity ______ and belonging.", answer: "formation", options: ["formation", "momentum", "warp", "shorthand"], translation: "它作为一个动态的社会代码，可以洞察身份形成和归属感的复杂性。" },
-            { word: "affiliation", meaning: "归属，从属关系", sentence: "It serves as lexical metadata that enables listeners to determine the speaker's ______.", answer: "affiliation", options: ["affiliation", "formation", "itinerants", "jargon"], translation: "它作为词汇元数据，使听众能够确定说话者的归属。" },
-            { word: "itinerants", meaning: "流动人员，流浪者", sentence: "The word slang originated in the 18th century as speech associated with an underclass of thieves, beggars, and the ______ connected with them.", answer: "itinerants", options: ["itinerants", "affiliation", "formation", "shorthand"], translation: "俚语一词起源于18世纪，作为与下层阶级的小偷、乞丐和与他们有关的流动人员相关的语言。" },
-            { word: "shorthand", meaning: "简写，速记", sentence: "That verbal ______ persists in modern professional settings as jargon.", answer: "shorthand", options: ["shorthand", "jargon", "itinerants", "warp"], translation: "这种语言速记在现代专业环境中作为行话持续存在。" },
-            { word: "jargon", meaning: "行话，术语", sentence: "That verbal shorthand persists in modern professional settings as ______.", answer: "jargon", options: ["jargon", "shorthand", "itinerants", "formation"], translation: "这种语言速记在现代专业环境中作为行话持续存在。" }
+            { word: "neutralize", meaning: "中和，抵消", sentence: "Helps patients learn to coexist with intrusive thoughts without trying to ______, avoid, or control them.", answer: "neutralize", options: ["neutralize", "perpetuate", "prescribed", "upstream"], translation: "帮助患者学会与侵入性思维共存，而不试图中和、回避或控制它们。" },
+            { word: "perpetuate", meaning: "使持续，使永久化", sentence: "Sometimes getting treatments that ______ the condition.", answer: "perpetuate", options: ["perpetuate", "neutralize", "finalize", "grappling"], translation: "有时接受的治疗反而使病情持续。" },
+            { word: "debilitating", meaning: "使人虚弱的，令人衰弱的", sentence: "It is a distressing and often ______ disorder.", answer: "debilitating", options: ["debilitating", "compassionate", "rebellious", "flagrant"], translation: "这是一种令人痛苦且常常使人衰弱的疾病。" },
+            { word: "contamination concerns", meaning: "对污染的担忧，洁癖", sentence: "From ______ and repeated checking to intrusive moral, sexual, or relationship-related concerns.", answer: "contamination concerns", options: ["contamination concerns", "scrupulosity", "hyperactivity", "accommodation"], translation: "从污染担忧和反复检查到侵入性的道德、性或关系相关的担忧。" },
+            { word: "ego-syntonic thoughts", meaning: "自我和谐的想法", sentence: "As opposed to ______ or urges, which feel acceptable or desirable.", answer: "ego-syntonic thoughts", options: ["ego-syntonic thoughts", "contamination", "incentives tied", "accountability"], translation: "与自我和谐的想法或冲动相对，后者感觉可接受或令人向往。" },
+            { word: "contamination", meaning: "污染，污染恐惧", sentence: "______ (where a fear of germs or toxins leads to excessive cleaning).", answer: "contamination", options: ["contamination", "scrupulosity", "hyperactivity", "upstream"], translation: "污染恐惧（对细菌或毒素的恐惧导致过度清洁）。" },
+            { word: "scrupulosity", meaning: "道德完美主义，宗教性强迫", sentence: "______ (excessive concerns about blasphemy or religious wrongdoing).", answer: "scrupulosity", options: ["scrupulosity", "contamination", "debilitating", "prescribed"], translation: "宗教性强迫（对亵渎或宗教不当行为的过度担忧）。" },
+            { word: "hyperactivity", meaning: "多动症，过度活跃", sentence: "In children, OCD can be mistaken for attention-deficit/______.", answer: "hyperactivity", options: ["hyperactivity", "accommodation", "compassionate", "pervasive"], translation: "在儿童中，强迫症可能被误诊为注意力缺陷/多动症。" },
+            { word: "incentives tied", meaning: "挂钩的奖励，激励绑定", sentence: "Such as ______ to completing exposures.", answer: "incentives tied", options: ["incentives tied", "accountability", "upstream", "finalize"], translation: "例如与完成暴露任务挂钩的奖励。" },
+            { word: "accommodation", meaning: "顺应，配合", sentence: "Providers also work closely with parents to reduce ______.", answer: "accommodation", options: ["accommodation", "scrupulosity", "hyperactivity", "grappling"], translation: "治疗师还与家长密切合作以减少顺应行为。" },
+            { word: "compassionate", meaning: "富有同情心的，人道的", sentence: "ERP is probably the most ______ thing you can do for someone who suffers from OCD.", answer: "compassionate", options: ["compassionate", "debilitating", "rebellious", "flagrant"], translation: "暴露反应预防疗法可能是你能为强迫症患者做的最富有同情心的事。" },
+            { word: "prescribed", meaning: "开（药），处方的", sentence: "They are typically ______ in higher doses than used to treat depression.", answer: "prescribed", options: ["prescribed", "neutralize", "perpetuate", "finalize"], translation: "它们通常以比治疗抑郁症更高的剂量开处方。" },
+            { word: "upstream", meaning: "上游的，从源头", sentence: "This metacognitive approach focuses ______ on how obsessions form.", answer: "upstream", options: ["upstream", "downstream", "accountability", "incentives tied"], translation: "这种元认知方法从源头上关注强迫思维是如何形成的。" },
+            { word: "accountability", meaning: "问责制，责任", sentence: "Teams were also encouraged to develop their own norms around culture, ______, and conflict management.", answer: "accountability", options: ["accountability", "scrupulosity", "contamination", "hyperactivity"], translation: "团队还被鼓励围绕文化、问责制和冲突管理制定自己的规范。" },
+            { word: "finalize", meaning: "最终确定", sentence: "In November 2025, Poulus and colleagues convened game publishers to ______ nine pillars of mental health support.", answer: "finalize", options: ["finalize", "neutralize", "perpetuate", "upstream"], translation: "2025年11月，Poulus和同事召集游戏发行商最终确定了心理健康支持的九大支柱。" },
+            { word: "flagrant", meaning: "公然的，明目张胆的", sentence: "This would be akin to a player committing a ______ foul in basketball.", answer: "flagrant", options: ["flagrant", "debilitating", "compassionate", "obscure"], translation: "这就像篮球运动员犯下公然犯规一样。" },
+            { word: "grappling", meaning: "努力解决，搏斗", sentence: "Research shows that elite esports players often experience poor mental health while ______ with pressure.", answer: "grappling", options: ["grappling", "prescribed", "accommodation", "finalize"], translation: "研究表明，精英电竞选手在应对压力时经常出现心理健康问题。" },
+            { word: "obscure", meaning: "模糊的，不为人知的", sentence: "Originating from a somewhat ______ rap song in late 2024.", answer: "obscure", options: ["obscure", "pervasive", "rebellious", "flagrant"], translation: "起源于2024年底一首颇为冷门的说唱歌曲。" },
+            { word: "pervasive", meaning: "普遍的，无处不在的", sentence: "The phrase has become so ______ that some schools have even banned its use.", answer: "pervasive", options: ["pervasive", "obscure", "debilitating", "upstream"], translation: "这个短语已经如此普遍，以至于一些学校甚至禁止使用它。" },
+            { word: "rebellious", meaning: "叛逆的，反抗的", sentence: "For young people, the appeal lies in its irreverent or ______ qualities.", answer: "rebellious", options: ["rebellious", "compassionate", "prescribed", "accountability"], translation: "对于年轻人来说，吸引力在于其不敬或叛逆的品质。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 15, 
+                round: 16, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
