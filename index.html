@@ -56,7 +56,7 @@
 <body>
     <div class="container">
         <h1>🦐 英语单词复习 - 第25轮</h1>
-        <p class="subtitle">选择题（4选1）| 全部错题 | 无重复</p>
+        <p class="subtitle">选择题（4选1）| 全部错题 | 按到期时间+错题次数排序</p>
 
         <div class="progress-info">
             <span>进度: <span id="currentNum">1</span> / 20</span>
@@ -95,9 +95,9 @@
             "finalize": "最终确定",
             "flagrant": "公然的，明目张胆的",
             "grappling": "努力解决，搏斗",
-            "pervasive": "普遍的，无处不在的",
-            "meteoric": "迅速的，流星般的",
-            "fringe": "边缘的，非主流的"
+            "toughness": "坚韧，强硬",
+            "underway": "进行中的",
+            "unsupervised": "无人监管的"
         };
 
         const questions = [
@@ -108,19 +108,19 @@
             { word: "ego-syntonic thoughts", meaning: "自我和谐的想法", sentence: "As opposed to ______ or urges, which feel acceptable or desirable.", answer: "ego-syntonic thoughts", options: ["ego-syntonic thoughts", "contamination concerns", "incentives tied", "scrupulosity"], translation: "与自我和谐的想法或冲动相反，后者感觉是可接受或可取的。" },
             { word: "contamination", meaning: "污染，污染恐惧", sentence: "______ (where a fear of germs or toxins leads to excessive cleaning).", answer: "contamination", options: ["contamination", "accommodation", "compassionate", "upstream"], translation: "污染恐惧（对细菌或毒素的恐惧导致过度清洁）。" },
             { word: "scrupulosity", meaning: "道德完美主义，宗教性强迫", sentence: "______ (excessive concerns about blasphemy or religious wrongdoing).", answer: "scrupulosity", options: ["scrupulosity", "hyperactivity", "accountability", "finalize"], translation: "道德完美主义（对亵渎或宗教不当行为的过度担忧）。" },
-            { word: "hyperactivity", meaning: "多动症，过度活跃", sentence: "In children, OCD can be mistaken for attention-deficit/______.", answer: "hyperactivity", options: ["hyperactivity", "flagrant", "grappling", "pervasive"], translation: "在儿童中，OCD可能被误诊为注意力缺陷/多动症。" },
+            { word: "hyperactivity", meaning: "多动症，过度活跃", sentence: "In children, OCD can be mistaken for attention-deficit/______.", answer: "hyperactivity", options: ["hyperactivity", "flagrant", "grappling", "toughness"], translation: "在儿童中，OCD可能被误诊为注意力缺陷/多动症。" },
             { word: "incentives tied", meaning: "挂钩的奖励，激励绑定", sentence: "Such as ______ to completing exposures.", answer: "incentives tied", options: ["incentives tied", "accommodation", "compassionate", "prescribed"], translation: "例如与完成暴露疗法挂钩的奖励。" },
             { word: "accommodation", meaning: "顺应，配合", sentence: "Providers also work closely with parents to reduce ______.", answer: "accommodation", options: ["accommodation", "upstream", "accountability", "finalize"], translation: "提供者还与父母密切合作，减少顺应行为。" },
-            { word: "compassionate", meaning: "富有同情心的，人道的", sentence: "ERP is probably the most ______ thing you can do for someone who suffers from OCD.", answer: "compassionate", options: ["compassionate", "flagrant", "grappling", "pervasive"], translation: "ERP（暴露反应预防疗法）可能是你能为OCD患者做的最富有同情心的事情。" },
-            { word: "prescribed", meaning: "开（药），处方的", sentence: "They are typically ______ in higher doses than used to treat depression.", answer: "prescribed", options: ["prescribed", "meteoric", "fringe", "opaque"], translation: "它们的处方剂量通常高于治疗抑郁症的剂量。" },
+            { word: "compassionate", meaning: "富有同情心的，人道的", sentence: "ERP is probably the most ______ thing you can do for someone who suffers from OCD.", answer: "compassionate", options: ["compassionate", "flagrant", "grappling", "toughness"], translation: "ERP（暴露反应预防疗法）可能是你能为OCD患者做的最富有同情心的事情。" },
+            { word: "prescribed", meaning: "开（药），处方的", sentence: "They are typically ______ in higher doses than used to treat depression.", answer: "prescribed", options: ["prescribed", "underway", "unsupervised", "obscure"], translation: "它们的处方剂量通常高于治疗抑郁症的剂量。" },
             { word: "upstream", meaning: "上游的，从源头", sentence: "This metacognitive approach focuses ______ on how obsessions form.", answer: "upstream", options: ["upstream", "downstream", "sideways", "backward"], translation: "这种元认知方法从源头上关注强迫观念是如何形成的。" },
             { word: "accountability", meaning: "问责制，责任", sentence: "Teams were also encouraged to develop their own norms around culture, ______, and conflict management, fostering self-sufficiency and leadership skills.", answer: "accountability", options: ["accountability", "finalize", "flagrant", "grappling"], translation: "团队还被鼓励围绕文化、问责制和冲突管理制定自己的规范，培养自给自足和领导技能。" },
-            { word: "finalize", meaning: "最终确定", sentence: "In November 2025, Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to ______ nine pillars of mental health support.", answer: "finalize", options: ["finalize", "pervasive", "meteoric", "fringe"], translation: "2025年11月，Poulus和同事召集游戏发行商、锦标赛组织者、国际奥委会代表和心理健康专家，最终确定了心理健康支持的九大支柱。" },
-            { word: "flagrant", meaning: "公然的，明目张胆的", sentence: "This would be akin to a player committing a ______ foul in basketball or rushing the mound in baseball.", answer: "flagrant", options: ["flagrant", "grappling", "opaque", "obscure"], translation: "这就像篮球运动员公然犯规或棒球运动员冲向投手丘一样。" },
-            { word: "grappling", meaning: "努力解决，搏斗", sentence: "Research shows that elite esports players often experience poor mental health outcomes.", answer: "grappling", options: ["grappling", "pervasive", "meteoric", "fringe"], translation: "研究表明精英电竞选手经常面临心理健康问题。" },
-            { word: "pervasive", meaning: "普遍的，无处不在的", sentence: "The phrase has become so ______ that some schools have even banned its use.", answer: "pervasive", options: ["pervasive", "meteoric", "fringe", "opaque"], translation: "这个短语已经如此普遍，以至于一些学校甚至禁止使用它。" },
-            { word: "meteoric", meaning: "迅速的，流星般的", sentence: "Its ______ rise demonstrates the internet's power to propel fringe terms into the mainstream at warp speed.", answer: "meteoric", options: ["meteoric", "fringe", "opaque", "obscure"], translation: "它的迅速崛起展示了互联网将边缘术语以极快速度推向主流的力量。" },
-            { word: "fringe", meaning: "边缘的，非主流的", sentence: "Its meteoric rise demonstrates the internet's power to propel ______ terms into the mainstream at warp speed.", answer: "fringe", options: ["fringe", "opaque", "obscure", "pervasive"], translation: "它的迅速崛起展示了互联网将边缘术语以极快速度推向主流的力量。" }
+            { word: "finalize", meaning: "最终确定", sentence: "In November 2025, Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to ______ nine pillars of mental health support.", answer: "finalize", options: ["finalize", "toughness", "underway", "unsupervised"], translation: "2025年11月，Poulus和同事召集游戏发行商、锦标赛组织者、国际奥委会代表和心理健康专家，最终确定了心理健康支持的九大支柱。" },
+            { word: "flagrant", meaning: "公然的，明目张胆的", sentence: "This would be akin to a player committing a ______ foul in basketball or rushing the mound in baseball.", answer: "flagrant", options: ["flagrant", "grappling", "obscure", "neutralize"], translation: "这就像篮球运动员公然犯规或棒球运动员冲向投手丘一样。" },
+            { word: "grappling", meaning: "努力解决，搏斗", sentence: "Research shows that elite esports players often experience poor mental health outcomes.", answer: "grappling", options: ["grappling", "toughness", "underway", "unsupervised"], translation: "研究表明精英电竞选手经常面临心理健康问题。" },
+            { word: "toughness", meaning: "坚韧，强硬", sentence: "They found that traditional sport psychology measures, like mental ______ and resilience, do not significantly predict competitive achievement in esports.", answer: "toughness", options: ["toughness", "underway", "unsupervised", "obscure"], translation: "他们发现传统运动心理学测量，如心理坚韧和韧性，并不能显著预测电竞中的竞技成就。" },
+            { word: "underway", meaning: "进行中的", sentence: "A major effort is ______ to develop international mental health guidelines tailored to esports.", answer: "underway", options: ["underway", "unsupervised", "obscure", "neutralize"], translation: "正在进行一项重大努力，制定针对电竞的国际心理健康指南。" },
+            { word: "unsupervised", meaning: "无人监管的", sentence: "At the same time, if left ______, it can burn you and your house down.", answer: "unsupervised", options: ["unsupervised", "obscure", "neutralize", "perpetuate"], translation: "同时，如果无人监管，它可能会烧毁你和你的房子。" }
         ];
 
         let currentIndex = 0;
