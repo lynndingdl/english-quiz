@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第16轮</title>
+    <title>英语单词复习 - 第17轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,8 +55,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第16轮</h1>
-        <p class="subtitle">选择题（4选1）| 错题攻坚</p>
+        <h1>🦐 英语单词复习 - 第17轮</h1>
+        <p class="subtitle">选择题（4选1）| 错题 + 新词</p>
         
         <div class="progress-info">
             <span>进度: <span id="currentNum">1</span> / 20</span>
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第16轮复习完成！</h2>
+            <h2>🎉 第17轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,49 +78,49 @@
 
     <script>
         const wordBank = {
-            "finalize": "最终确定",
-            "flagrant": "公然的，明目张胆的",
-            "grappling": "努力解决，搏斗",
-            "neutralize": "中和，抵消",
-            "perpetuate": "使持续，使永久化",
-            "debilitating": "使人虚弱的，令人衰弱的",
-            "contamination concerns": "对污染的担忧，洁癖",
-            "ego-syntonic thoughts": "自我和谐的想法",
-            "contamination": "污染，污染恐惧",
-            "scrupulosity": "道德完美主义，宗教性强迫",
-            "hyperactivity": "多动症，过度活跃",
-            "incentives tied": "挂钩的奖励，激励绑定",
-            "accommodation": "顺应，配合",
-            "compassionate": "富有同情心的，人道的",
-            "prescribed": "开（药），处方的",
-            "upstream": "上游的，从源头",
-            "accountability": "问责制，责任",
             "obscure": "模糊的，不为人知的",
-            "pervasive": "普遍的，无处不在的",
-            "rebellious": "叛逆的，反抗的"
+            "immortals": "不朽者（电竞战队名）",
+            "leveraging": "利用，借助",
+            "accuracy": "准确性，精确度",
+            "credential": "资格，证书",
+            "curriculum": "课程",
+            "dearth": "缺乏，短缺",
+            "deliberate": "故意的，深思熟虑的",
+            "momentum": "势头，动力",
+            "cropped up": "突然出现，冒出来",
+            "meteoric": "迅速的，流星般的",
+            "fringe": "边缘的，非主流的",
+            "warp": "极快的速度",
+            "ubiquitous": "无处不在的，普遍存在的",
+            "nonsensical": "荒谬的，无意义的",
+            "opaque": "晦涩难懂的，不透明的",
+            "formation": "形成，构成",
+            "affiliation": "归属，从属关系",
+            "itinerants": "流动人员，流浪者",
+            "shorthand": "简写，速记"
         };
 
         const questions = [
-            { word: "neutralize", meaning: "中和，抵消", sentence: "Helps patients learn to coexist with intrusive thoughts without trying to ______, avoid, or control them.", answer: "neutralize", options: ["neutralize", "perpetuate", "prescribed", "upstream"], translation: "帮助患者学会与侵入性思维共存，而不试图中和、回避或控制它们。" },
-            { word: "perpetuate", meaning: "使持续，使永久化", sentence: "Sometimes getting treatments that ______ the condition.", answer: "perpetuate", options: ["perpetuate", "neutralize", "finalize", "grappling"], translation: "有时接受的治疗反而使病情持续。" },
-            { word: "debilitating", meaning: "使人虚弱的，令人衰弱的", sentence: "It is a distressing and often ______ disorder.", answer: "debilitating", options: ["debilitating", "compassionate", "rebellious", "flagrant"], translation: "这是一种令人痛苦且常常使人衰弱的疾病。" },
-            { word: "contamination concerns", meaning: "对污染的担忧，洁癖", sentence: "From ______ and repeated checking to intrusive moral, sexual, or relationship-related concerns.", answer: "contamination concerns", options: ["contamination concerns", "scrupulosity", "hyperactivity", "accommodation"], translation: "从污染担忧和反复检查到侵入性的道德、性或关系相关的担忧。" },
-            { word: "ego-syntonic thoughts", meaning: "自我和谐的想法", sentence: "As opposed to ______ or urges, which feel acceptable or desirable.", answer: "ego-syntonic thoughts", options: ["ego-syntonic thoughts", "contamination", "incentives tied", "accountability"], translation: "与自我和谐的想法或冲动相对，后者感觉可接受或令人向往。" },
-            { word: "contamination", meaning: "污染，污染恐惧", sentence: "______ (where a fear of germs or toxins leads to excessive cleaning).", answer: "contamination", options: ["contamination", "scrupulosity", "hyperactivity", "upstream"], translation: "污染恐惧（对细菌或毒素的恐惧导致过度清洁）。" },
-            { word: "scrupulosity", meaning: "道德完美主义，宗教性强迫", sentence: "______ (excessive concerns about blasphemy or religious wrongdoing).", answer: "scrupulosity", options: ["scrupulosity", "contamination", "debilitating", "prescribed"], translation: "宗教性强迫（对亵渎或宗教不当行为的过度担忧）。" },
-            { word: "hyperactivity", meaning: "多动症，过度活跃", sentence: "In children, OCD can be mistaken for attention-deficit/______.", answer: "hyperactivity", options: ["hyperactivity", "accommodation", "compassionate", "pervasive"], translation: "在儿童中，强迫症可能被误诊为注意力缺陷/多动症。" },
-            { word: "incentives tied", meaning: "挂钩的奖励，激励绑定", sentence: "Such as ______ to completing exposures.", answer: "incentives tied", options: ["incentives tied", "accountability", "upstream", "finalize"], translation: "例如与完成暴露任务挂钩的奖励。" },
-            { word: "accommodation", meaning: "顺应，配合", sentence: "Providers also work closely with parents to reduce ______.", answer: "accommodation", options: ["accommodation", "scrupulosity", "hyperactivity", "grappling"], translation: "治疗师还与家长密切合作以减少顺应行为。" },
-            { word: "compassionate", meaning: "富有同情心的，人道的", sentence: "ERP is probably the most ______ thing you can do for someone who suffers from OCD.", answer: "compassionate", options: ["compassionate", "debilitating", "rebellious", "flagrant"], translation: "暴露反应预防疗法可能是你能为强迫症患者做的最富有同情心的事。" },
-            { word: "prescribed", meaning: "开（药），处方的", sentence: "They are typically ______ in higher doses than used to treat depression.", answer: "prescribed", options: ["prescribed", "neutralize", "perpetuate", "finalize"], translation: "它们通常以比治疗抑郁症更高的剂量开处方。" },
-            { word: "upstream", meaning: "上游的，从源头", sentence: "This metacognitive approach focuses ______ on how obsessions form.", answer: "upstream", options: ["upstream", "downstream", "accountability", "incentives tied"], translation: "这种元认知方法从源头上关注强迫思维是如何形成的。" },
-            { word: "accountability", meaning: "问责制，责任", sentence: "Teams were also encouraged to develop their own norms around culture, ______, and conflict management.", answer: "accountability", options: ["accountability", "scrupulosity", "contamination", "hyperactivity"], translation: "团队还被鼓励围绕文化、问责制和冲突管理制定自己的规范。" },
-            { word: "finalize", meaning: "最终确定", sentence: "In November 2025, Poulus and colleagues convened game publishers to ______ nine pillars of mental health support.", answer: "finalize", options: ["finalize", "neutralize", "perpetuate", "upstream"], translation: "2025年11月，Poulus和同事召集游戏发行商最终确定了心理健康支持的九大支柱。" },
-            { word: "flagrant", meaning: "公然的，明目张胆的", sentence: "This would be akin to a player committing a ______ foul in basketball.", answer: "flagrant", options: ["flagrant", "debilitating", "compassionate", "obscure"], translation: "这就像篮球运动员犯下公然犯规一样。" },
-            { word: "grappling", meaning: "努力解决，搏斗", sentence: "Research shows that elite esports players often experience poor mental health while ______ with pressure.", answer: "grappling", options: ["grappling", "prescribed", "accommodation", "finalize"], translation: "研究表明，精英电竞选手在应对压力时经常出现心理健康问题。" },
-            { word: "obscure", meaning: "模糊的，不为人知的", sentence: "Originating from a somewhat ______ rap song in late 2024.", answer: "obscure", options: ["obscure", "pervasive", "rebellious", "flagrant"], translation: "起源于2024年底一首颇为冷门的说唱歌曲。" },
-            { word: "pervasive", meaning: "普遍的，无处不在的", sentence: "The phrase has become so ______ that some schools have even banned its use.", answer: "pervasive", options: ["pervasive", "obscure", "debilitating", "upstream"], translation: "这个短语已经如此普遍，以至于一些学校甚至禁止使用它。" },
-            { word: "rebellious", meaning: "叛逆的，反抗的", sentence: "For young people, the appeal lies in its irreverent or ______ qualities.", answer: "rebellious", options: ["rebellious", "compassionate", "prescribed", "accountability"], translation: "对于年轻人来说，吸引力在于其不敬或叛逆的品质。" }
+            { word: "obscure", meaning: "模糊的，不为人知的", sentence: "Originating from a somewhat ______ rap song in late 2024.", answer: "obscure", options: ["obscure", "pervasive", "ubiquitous", "meteoric"], translation: "起源于2024年底一首颇为冷门的说唱歌曲。" },
+            { word: "immortals", meaning: "不朽者（电竞战队名）", sentence: "The ______ is an esports team.", answer: "immortals", options: ["immortals", "momentum", "fringe", "warp"], translation: "不朽者是一支电竞战队。" },
+            { word: "leveraging", meaning: "利用，借助", sentence: "By ______ technology, the company improved efficiency.", answer: "leveraging", options: ["leveraging", "cropped up", "formation", "shorthand"], translation: "通过利用技术，公司提高了效率。" },
+            { word: "accuracy", meaning: "准确性，精确度", sentence: "The ______ of the test results is crucial.", answer: "accuracy", options: ["accuracy", "credential", "curriculum", "dearth"], translation: "测试结果的准确性至关重要。" },
+            { word: "credential", meaning: "资格，证书", sentence: "She has the right ______ for the job.", answer: "credential", options: ["credential", "curriculum", "dearth", "deliberate"], translation: "她拥有这份工作所需的资格。" },
+            { word: "curriculum", meaning: "课程", sentence: "The school updated its ______ for the new semester.", answer: "curriculum", options: ["curriculum", "credential", "dearth", "momentum"], translation: "学校为新学期更新了课程。" },
+            { word: "dearth", meaning: "缺乏，短缺", sentence: "There is a ______ of skilled workers in the industry.", answer: "dearth", options: ["dearth", "deliberate", "momentum", "cropped up"], translation: "这个行业缺乏熟练工人。" },
+            { word: "deliberate", meaning: "故意的，深思熟虑的", sentence: "He made a ______ decision to quit his job.", answer: "deliberate", options: ["deliberate", "meteoric", "fringe", "warp"], translation: "他经过深思熟虑后决定辞职。" },
+            { word: "momentum", meaning: "势头，动力", sentence: "The project gained ______ after the initial success.", answer: "momentum", options: ["momentum", "formation", "affiliation", "shorthand"], translation: "初步成功后，项目获得了动力。" },
+            { word: "cropped up", meaning: "突然出现，冒出来", sentence: "Unexpected problems have ______ during the project.", answer: "cropped up", options: ["cropped up", "formation", "itinerants", "shorthand"], translation: "项目期间突然出现了一些意想不到的问题。" },
+            { word: "meteoric", meaning: "迅速的，流星般的", sentence: "Her ______ rise to fame surprised everyone.", answer: "meteoric", options: ["meteoric", "ubiquitous", "nonsensical", "opaque"], translation: "她迅速成名令所有人惊讶。" },
+            { word: "fringe", meaning: "边缘的，非主流的", sentence: "The theory was once considered ______ science.", answer: "fringe", options: ["fringe", "formation", "affiliation", "itinerants"], translation: "这个理论曾经被认为是边缘科学。" },
+            { word: "warp", meaning: "极快的速度", sentence: "At ______ speed, the idea spread across the internet.", answer: "warp", options: ["warp", "momentum", "shorthand", "cropped up"], translation: "这个想法以极快的速度在互联网上传播。" },
+            { word: "ubiquitous", meaning: "无处不在的，普遍存在的", sentence: "Smartphones have become ______ in modern life.", answer: "ubiquitous", options: ["ubiquitous", "obscure", "fringe", "meteoric"], translation: "智能手机在现代生活中已无处不在。" },
+            { word: "nonsensical", meaning: "荒谬的，无意义的", sentence: "The explanation was completely ______.", answer: "nonsensical", options: ["nonsensical", "deliberate", "formation", "affiliation"], translation: "这个解释完全荒谬。" },
+            { word: "opaque", meaning: "晦涩难懂的，不透明的", sentence: "The instructions were ______ and confusing.", answer: "opaque", options: ["opaque", "obscure", "meteoric", "fringe"], translation: "说明书晦涩难懂，令人困惑。" },
+            { word: "formation", meaning: "形成，构成", sentence: "The ______ of new habits takes time.", answer: "formation", options: ["formation", "momentum", "warp", "shorthand"], translation: "新习惯的形成需要时间。" },
+            { word: "affiliation", meaning: "归属，从属关系", sentence: "She disclosed her political ______ during the debate.", answer: "affiliation", options: ["affiliation", "formation", "itinerants", "cropped up"], translation: "她在辩论中公开了自己的政治归属。" },
+            { word: "itinerants", meaning: "流动人员，流浪者", sentence: "The city has many ______ who travel from place to place.", answer: "itinerants", options: ["itinerants", "formation", "shorthand", "warp"], translation: "这个城市有许多流动人员，他们四处漂泊。" },
+            { word: "shorthand", meaning: "简写，速记", sentence: "She took notes in ______ during the lecture.", answer: "shorthand", options: ["shorthand", "momentum", "formation", "affiliation"], translation: "她在讲座时用速记做笔记。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 16, 
+                round: 17, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
