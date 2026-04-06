@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第21轮</title>
+    <title>英语单词复习 - 第22轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,20 +55,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第21轮</h1>
-        <p class="subtitle">选择题（4选1）| 错题优先 + 新词 | 原句出题</p>
+        <h1>🦐 英语单词复习 - 第22轮</h1>
+        <p class="subtitle">选择题（4选1）| 全部错题 | 原句出题</p>
         
         <div class="progress-info">
-            <span>进度: <span id="currentNum">1</span> / 15</span>
+            <span>进度: <span id="currentNum">1</span> / 20</span>
             <span>正确: <span id="correctCount">0</span></span>
         </div>
-        <div class="progress"><div class="progress-bar" id="progressBar" style="width: 6.67%"></div></div>
+        <div class="progress"><div class="progress-bar" id="progressBar" style="width: 5%"></div></div>
         
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第21轮复习完成！</h2>
-            <div class="result-score"><span id="finalScore">0</span> / 15</div>
+            <h2>🎉 第22轮复习完成！</h2>
+            <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
             <div class="result-code" id="resultCode"></div>
@@ -78,39 +78,49 @@
 
     <script>
         const wordBank = {
-            "boost": "提升，增强，促进",
-            "hyperpersonalized": "超个性化的，高度定制化的",
-            "installment": "分期付款",
-            "barrage of temptation": "连珠炮般的诱惑",
-            "gadgets": "电子设备，小器具",
-            "schemes": "计划，方案，机制",
-            "stack up": "堆积，累积",
-            "unsecured debt": "无担保债务，信用债务",
-            "collateral": "抵押品，担保物",
-            "exacerbate": "加剧，使恶化",
-            "strain": "压力，紧张，困境",
-            "shedding light on": "阐明，揭示",
-            "tempting": "诱人的，有吸引力的",
-            "numerosity": "数量效应，数值感知",
-            "internalizing": "内化"
+            "credential": "资格，证书",
+            "curriculum": "课程",
+            "dearth": "缺乏，短缺",
+            "deliberate": "故意的，深思熟虑的",
+            "immortals": "不朽者（电竞战队名）",
+            "leveraging": "利用，借助",
+            "suboptimal": "次优的，不理想的",
+            "toughness": "坚韧，强硬",
+            "underway": "进行中的",
+            "unsupervised": "无人监管的",
+            "neutralize": "中和，抵消",
+            "perpetuate": "使持续，使永久化",
+            "debilitating": "使人虚弱的，令人衰弱的",
+            "contamination concerns": "对污染的担忧，洁癖",
+            "ego-syntonic thoughts": "自我和谐的想法",
+            "contamination": "污染，污染恐惧",
+            "scrupulosity": "道德完美主义，宗教性强迫",
+            "hyperactivity": "多动症，过度活跃",
+            "incentives tied": "挂钩的奖励，激励绑定",
+            "accommodation": "顺应，配合"
         };
 
         const questions = [
-            { word: "boost", meaning: "提升，增强，促进", sentence: "Psychology researchers are developing cognitive interventions to help adults ______ their brain health rather than being affected by harmful stereotypes about aging.", answer: "boost", options: ["boost", "exacerbate", "strain", "collateral"], translation: "心理学研究人员正在开发认知干预措施，帮助成年人提升大脑健康，而不是受到关于衰老的有害刻板印象的影响。" },
-            { word: "hyperpersonalized", meaning: "超个性化的，高度定制化的", sentence: "Yet this objective can retreat to the background as consumers struggle with the high cost of living combined with a steady stream of ______ online ads.", answer: "hyperpersonalized", options: ["hyperpersonalized", "tempting", "numerosity", "internalizing"], translation: "然而，随着消费者努力应对高昂的生活成本和源源不断的超个性化在线广告，这一目标可能会退居次要地位。" },
-            { word: "installment", meaning: "分期付款", sentence: "A prime example is buy now, pay later (BNPL) services, where a single click or tap lets shoppers purchase items by splitting up the payments into smaller, interest-free ______.", answer: "installment", options: ["installment", "schemes", "gadgets", "strain"], translation: "一个典型的例子是先买后付（BNPL）服务，只需单击或点击，购物者就可以通过将付款分成更小的无息分期付款来购买商品。" },
-            { word: "barrage of temptation", meaning: "连珠炮般的诱惑", sentence: "Since AI models are better and better at predicting the products we want, targeted ads can create a constant ______.", answer: "barrage of temptation", options: ["barrage of temptation", "stack up", "unsecured debt", "shedding light on"], translation: "由于AI模型越来越擅长预测我们想要的产品，定向广告可以创造连珠炮般的诱惑。" },
-            { word: "gadgets", meaning: "电子设备，小器具", sentence: "Clothing and fashion was the top category for this type of financing, followed by electronics and ______ and furniture and home decor.", answer: "gadgets", options: ["gadgets", "schemes", "strain", "numerosity"], translation: "服装和时尚是这类融资的首选类别，其次是电子产品和小器具以及家具和家居装饰。" },
-            { word: "schemes", meaning: "计划，方案，机制", sentence: "Unlike credit cards, BNPL ______ do not require an official approval process.", answer: "schemes", options: ["schemes", "gadgets", "strain", "internalizing"], translation: "与信用卡不同，BNPL机制不需要官方审批流程。" },
-            { word: "stack up", meaning: "堆积，累积", sentence: "While these loans can help with short-term budgeting for individuals who can make the payments on time, they can increase stress when users ______ multiple BNPL loans simultaneously and start missing payments.", answer: "stack up", options: ["stack up", "shedding light on", "barrage of temptation", "unsecured debt"], translation: "虽然这些贷款可以帮助能够按时付款的个人进行短期预算，但当用户同时累积多笔BNPL贷款并开始错过付款时，它们会增加压力。" },
-            { word: "unsecured debt", meaning: "无担保债务，信用债务", sentence: "Researchers recently found that people with certain mental health conditions were more likely to use BNPL products, and ______—debt that is not backed by collateral—is correlated with worse mental health.", answer: "unsecured debt", options: ["unsecured debt", "barrage of temptation", "stack up", "shedding light on"], translation: "研究人员最近发现，患有某些心理健康状况的人更有可能使用BNPL产品，而无担保债务——没有抵押品支持的债务——与更差的心理健康相关。" },
-            { word: "collateral", meaning: "抵押品，担保物", sentence: "Unsecured debt—debt that is not backed by ______—is correlated with worse mental health.", answer: "collateral", options: ["collateral", "exacerbate", "strain", "tempting"], translation: "无担保债务——没有抵押品支持的债务——与更差的心理健康相关。" },
-            { word: "exacerbate", meaning: "加剧，使恶化", sentence: "Researchers are studying the psychological mechanisms that shape financial decision-making in the ecommerce environment and how to help people resist spending that may ______ financial stress.", answer: "exacerbate", options: ["exacerbate", "boost", "strain", "tempting"], translation: "研究人员正在研究塑造电子商务环境中财务决策的心理机制，以及如何帮助人们抵制可能加剧财务压力的消费。" },
-            { word: "strain", meaning: "压力，紧张，困境", sentence: "When people are under economic ______, one of the challenges they face is that they have less room for error in financial decisions.", answer: "strain", options: ["strain", "boost", "collateral", "numerosity"], translation: "当人们处于经济困境时，他们面临的挑战之一是在财务决策中犯错的空间更小。" },
-            { word: "shedding light on", meaning: "阐明，揭示", sentence: "After realizing how much they actually owed, 1 in 4 Americans say they've regretted using BNPL, and a new study is ______ why these plans are so tempting.", answer: "shedding light on", options: ["shedding light on", "stack up", "unsecured debt", "barrage of temptation"], translation: "在意识到他们实际欠了多少钱后，四分之一的美国人表示他们后悔使用BNPL，一项新研究正在揭示为什么这些计划如此诱人。" },
-            { word: "tempting", meaning: "诱人的，有吸引力的", sentence: "A new study is shedding light on why these plans are so ______.", answer: "tempting", options: ["tempting", "numerosity", "internalizing", "hyperpersonalized"], translation: "一项新研究正在揭示为什么这些计划如此诱人。" },
-            { word: "numerosity", meaning: "数量效应，数值感知", sentence: "Presenting an installment amount rather than the full price lowers a consumer's perception of the cost. This is due to the ______ effect.", answer: "numerosity", options: ["numerosity", "internalizing", "tempting", "hyperpersonalized"], translation: "呈现分期付款金额而不是全价会降低消费者对成本的感知。这是由于数量效应。" },
-            { word: "internalizing", meaning: "内化", sentence: "With these installment plans, people may not be fully ______ the cost of a purchase when deciding whether to buy or how much to spend.", answer: "internalizing", options: ["internalizing", "numerosity", "tempting", "hyperpersonalized"], translation: "有了这些分期付款计划，人们在决定是否购买或花多少钱时可能没有完全内化购买的成本。" }
+            { word: "credential", meaning: "资格，证书", sentence: "The Certified Mental Performance Consultant (CMPC) ______ has emerged as a pathway into the field for master's-level clinicians.", answer: "credential", options: ["credential", "curriculum", "dearth", "deliberate"], translation: "认证心理表现咨询师（CMPC）资格已成为硕士学位临床医生进入该领域的途径。" },
+            { word: "curriculum", meaning: "课程", sentence: "Garden State Esports developed the Esports Personal and Performance Improvement ______ (EPPIC).", answer: "curriculum", options: ["curriculum", "credential", "toughness", "underway"], translation: "Garden State Esports开发了电竞个人和表现提升课程（EPPIC）。" },
+            { word: "dearth", meaning: "缺乏，短缺", sentence: "There is a ______ of appropriate evidence-based practices and ethical and professional standards.", answer: "dearth", options: ["dearth", "deliberate", "immortals", "leveraging"], translation: "缺乏适当的循证实践以及道德和专业标准。" },
+            { word: "deliberate", meaning: "故意的，深思熟虑的", sentence: "A study with Counter-Strike: Global Offensive and League of Legends players found that ______ practice did not meaningfully predict long-term rank.", answer: "deliberate", options: ["deliberate", "dearth", "suboptimal", "toughness"], translation: "一项针对反恐精英：全球攻势和英雄联盟玩家的研究发现，刻意练习并不能显著预测长期排名。" },
+            { word: "immortals", meaning: "不朽者（电竞战队名）", sentence: "In 2018, he built what he describes as the first player development department in North American professional esports for the ______ organization.", answer: "immortals", options: ["immortals", "leveraging", "unsupervised", "neutralize"], translation: "2018年，他为Immortals组织建立了他描述的北美职业电竞中的第一个选手发展部门。" },
+            { word: "leveraging", meaning: "利用，借助", sentence: "The rise of livestreaming platforms like Twitch, Discord, and YouTube—and the charismatic personalities of some of the athletes ______ these platforms—has fueled this growth.", answer: "leveraging", options: ["leveraging", "immortals", "perpetuate", "debilitating"], translation: "Twitch、Discord和YouTube等直播平台的兴起，以及一些运动员利用这些平台的魅力个性，推动了这一增长。" },
+            { word: "suboptimal", meaning: "次优的，不理想的", sentence: "Researchers are also examining tilt—strong negative emotions that lead to ______ decisions during games.", answer: "suboptimal", options: ["suboptimal", "toughness", "underway", "unsupervised"], translation: "研究人员还在研究心态失衡——强烈的负面情绪导致游戏中做出次优决策。" },
+            { word: "toughness", meaning: "坚韧，强硬", sentence: "They found that traditional sport psychology measures, like mental ______ and resilience, do not significantly predict competitive achievement in esports.", answer: "toughness", options: ["toughness", "suboptimal", "neutralize", "perpetuate"], translation: "他们发现，传统的运动心理学指标，如心理韧性和复原力，并不能显著预测电竞中的竞技成就。" },
+            { word: "underway", meaning: "进行中的", sentence: "A major effort is ______ to develop international mental health guidelines tailored to esports.", answer: "underway", options: ["underway", "unsupervised", "debilitating", "contamination concerns"], translation: "一项重大努力正在进行中，以制定针对电竞的国际心理健康指南。" },
+            { word: "unsupervised", meaning: "无人监管的", sentence: "At the same time, if left ______, it can burn you and your house down.", answer: "unsupervised", options: ["unsupervised", "underway", "ego-syntonic thoughts", "contamination"], translation: "同时，如果无人监管，它可能会把你和你的房子都烧了。" },
+            { word: "neutralize", meaning: "中和，抵消", sentence: "Helps patients learn to coexist with intrusive thoughts without trying to ______, avoid, or control them.", answer: "neutralize", options: ["neutralize", "perpetuate", "debilitating", "scrupulosity"], translation: "帮助患者学会与侵入性想法共存，而不试图中和、避免或控制它们。" },
+            { word: "perpetuate", meaning: "使持续，使永久化", sentence: "Sometimes getting treatments that ______ the condition.", answer: "perpetuate", options: ["perpetuate", "neutralize", "hyperactivity", "incentives tied"], translation: "有时接受的治疗会使病情持续。" },
+            { word: "debilitating", meaning: "使人虚弱的，令人衰弱的", sentence: "It is a distressing and often ______ disorder.", answer: "debilitating", options: ["debilitating", "contamination concerns", "ego-syntonic thoughts", "contamination"], translation: "这是一种令人痛苦且常常使人衰弱的疾病。" },
+            { word: "contamination concerns", meaning: "对污染的担忧，洁癖", sentence: "From ______ and repeated checking to intrusive moral, sexual, or relationship-related concerns.", answer: "contamination concerns", options: ["contamination concerns", "scrupulosity", "hyperactivity", "incentives tied"], translation: "从对污染的担忧和反复检查到侵入性的道德、性或关系相关的担忧。" },
+            { word: "ego-syntonic thoughts", meaning: "自我和谐的想法", sentence: "As opposed to ______ or urges, which feel acceptable or desirable.", answer: "ego-syntonic thoughts", options: ["ego-syntonic thoughts", "contamination", "scrupulosity", "accommodation"], translation: "与感觉可接受或可取的自我和谐想法或冲动相反。" },
+            { word: "contamination", meaning: "污染，污染恐惧", sentence: "______ (where a fear of germs or toxins leads to excessive cleaning).", answer: "contamination", options: ["contamination", "ego-syntonic thoughts", "hyperactivity", "incentives tied"], translation: "污染恐惧（对细菌或毒素的恐惧导致过度清洁）。" },
+            { word: "scrupulosity", meaning: "道德完美主义，宗教性强迫", sentence: "______ (excessive concerns about blasphemy or religious wrongdoing).", answer: "scrupulosity", options: ["scrupulosity", "contamination", "accommodation", "neutralize"], translation: "宗教性强迫（对亵渎或宗教不当行为的过度担忧）。" },
+            { word: "hyperactivity", meaning: "多动症，过度活跃", sentence: "In children, OCD can be mistaken for attention-deficit/______.", answer: "hyperactivity", options: ["hyperactivity", "scrupulosity", "incentives tied", "accommodation"], translation: "在儿童中，强迫症可能被误诊为注意力缺陷/多动症。" },
+            { word: "incentives tied", meaning: "挂钩的奖励，激励绑定", sentence: "Such as ______ to completing exposures.", answer: "incentives tied", options: ["incentives tied", "hyperactivity", "accommodation", "debilitating"], translation: "例如与完成暴露练习挂钩的奖励。" },
+            { word: "accommodation", meaning: "顺应，配合", sentence: "Providers also work closely with parents to reduce ______.", answer: "accommodation", options: ["accommodation", "incentives tied", "perpetuate", "neutralize"], translation: "提供者还与父母密切合作以减少顺应行为。" }
         ];
 
         let currentIndex = 0;
@@ -231,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 21, 
+                round: 22, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
