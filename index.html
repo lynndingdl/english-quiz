@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第18轮</title>
+    <title>英语单词复习 - 第19轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第18轮</h1>
+        <h1>🦐 英语单词复习 - 第19轮</h1>
         <p class="subtitle">选择题（4选1）| 全部新词 | 原句出题</p>
         
         <div class="progress-info">
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第18轮复习完成！</h2>
+            <h2>🎉 第19轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,49 +78,49 @@
 
     <script>
         const wordBank = {
-            "a linguistic quirk": "语言怪癖，语言特色",
-            "secrecy and informality shapes": "秘密性和非正式性塑造了",
-            "promote in-group solidarity and cohesiveness": "促进群体内部团结和凝聚力",
-            "lexical": "词汇的，词汇层面的",
-            "obsolescence": "废弃，过时，淘汰",
-            "enduring and influential sources": "持久且有影响力的来源",
-            "incorporating colloquialisms": "纳入口语表达，融入俗语",
-            "illustrative users": "示范性使用者，偶尔使用者",
-            "signal authenticity": "传递真实性，表明真实身份",
-            "social inferiority": "社会地位低下，社会劣势",
-            "leveraging neuroplasticity": "利用神经可塑性",
-            "boost": "提升，增强，促进",
-            "implement": "实施，执行，贯彻",
-            "prolong": "延长，延续",
-            "internalized ageism": "内化的年龄歧视",
-            "demographic": "人群，人口群体",
-            "immersed": "沉浸的，全身心投入的",
-            "competent": "有能力的，胜任的",
-            "proficient": "熟练的，精通的",
-            "sudoku": "数独"
+            "anecdotally": "据传闻，根据轶事证据",
+            "stick figure": "火柴人画，简笔画",
+            "Compounding": "加重，使复杂化",
+            "juggle responsibilities": "同时应对多项责任",
+            "upfront": "预先的，事先的",
+            "gig economy": "零工经济，临时工经济",
+            "displaced": "被取代的，被淘汰的",
+            "Tech-savvy": "精通技术的，技术娴熟的",
+            "impairment": "损伤，障碍",
+            "technophobic": "技术恐惧的",
+            "adherent": "遵从的，坚持的",
+            "dementia": "痴呆症",
+            "shedding light": "阐明，揭示",
+            "cardiovascular": "心血管的",
+            "psychomotor": "精神运动的，心理运动的",
+            "facilitated": "促成的，协助的",
+            "executive function": "执行功能",
+            "holistic": "整体的，全面的",
+            "intensive": "强化的，密集的",
+            "Metacognition": "元认知"
         };
 
         const questions = [
-            { word: "a linguistic quirk", meaning: "语言怪癖，语言特色", sentence: "Slang, however, is more than ______ for people of all ages.", answer: "a linguistic quirk", options: ["a linguistic quirk", "lexical", "obsolescence", "demographic"], translation: "然而，俚语对所有年龄段的人来说不仅仅是语言特色。" },
-            { word: "lexical", meaning: "词汇的，词汇层面的", sentence: "It serves as ______ metadata that enables listeners to determine the speaker's affiliations.", answer: "lexical", options: ["lexical", "obsolescence", "demographic", "proficient"], translation: "它作为词汇元数据，使听众能够确定说话者的归属。" },
-            { word: "obsolescence", meaning: "废弃，过时，淘汰", sentence: "Slang terms often cycle rapidly from popularity to ______, rarely staying in use for more than a few years.", answer: "obsolescence", options: ["obsolescence", "boost", "implement", "prolong"], translation: "俚语通常从流行迅速走向淘汰，很少能使用超过几年。" },
-            { word: "enduring and influential sources", meaning: "持久且有影响力的来源", sentence: "African American Vernacular English, in particular, has been one of the most ______ of slang for standard American English.", answer: "enduring and influential sources", options: ["enduring and influential sources", "social inferiority", "lexical", "demographic"], translation: "非裔美国人英语一直是俚语最持久且有影响力的来源之一。" },
-            { word: "signal authenticity", meaning: "传递真实性，表明真实身份", sentence: "Primary users create and use slang in their everyday speech, and illustrative users adopt slang occasionally to ______ to others.", answer: "signal authenticity", options: ["signal authenticity", "boost", "implement", "prolong"], translation: "主要使用者在日常言语中创造和使用俚语，示范性使用者偶尔使用俚语来向他人表明真实身份。" },
-            { word: "social inferiority", meaning: "社会地位低下，社会劣势", sentence: "While slang can signal a desirable image of youthfulness or social currency, it can also carry the risk of stigma, suggesting a lack of professionalism or ______.", answer: "social inferiority", options: ["social inferiority", "lexical", "demographic", "proficient"], translation: "虽然俚语可以传达年轻或社会货币的理想形象，但它也可能带有污名的风险，暗示缺乏专业性或社会地位低下。" },
-            { word: "boost", meaning: "提升，增强，促进", sentence: "Psychology researchers are developing cognitive interventions to help adults ______ their brain health rather than being affected by harmful stereotypes about aging.", answer: "boost", options: ["boost", "implement", "prolong", "demographic"], translation: "心理学研究人员正在开发认知干预措施，帮助成年人提升大脑健康，而不是受到关于衰老的有害刻板印象的影响。" },
-            { word: "implement", meaning: "实施，执行，贯彻", sentence: "Innovative, research-backed interventions that help aging adults ______ new behaviors related to fitness, diet, and learning have been shown to improve and prolong cognitive health.", answer: "implement", options: ["implement", "boost", "prolong", "demographic"], translation: "帮助老年人实施与健身、饮食和学习相关的新行为的创新且基于研究的干预措施已被证明可以改善和延长认知健康。" },
-            { word: "prolong", meaning: "延长，延续", sentence: "Innovative, research-backed interventions that help aging adults implement new behaviors related to fitness, diet, and learning have been shown to improve and ______ cognitive health.", answer: "prolong", options: ["prolong", "boost", "implement", "demographic"], translation: "帮助老年人实施与健身、饮食和学习相关的新行为的创新且基于研究的干预措施已被证明可以改善和延长认知健康。" },
-            { word: "internalized ageism", meaning: "内化的年龄歧视", sentence: "Whereas ______ can lead older adults to believe that they can't learn and must give up things that are important to them, research suggests that positive age beliefs can lead to better health and a longer life.", answer: "internalized ageism", options: ["internalized ageism", "lexical", "demographic", "proficient"], translation: "虽然内化的年龄歧视会导致老年人认为自己无法学习并必须放弃对他们重要的事情，但研究表明积极的年龄信念可以带来更好的健康和更长的寿命。" },
-            { word: "demographic", meaning: "人群，人口群体", sentence: "But researchers hope to see communities increase access to affordable ways for this ______ to learn—both online and in-person.", answer: "demographic", options: ["demographic", "lexical", "proficient", "boost"], translation: "但研究人员希望看到社区增加这一人群学习的机会——无论是在线还是面对面。" },
-            { word: "immersed", meaning: "沉浸的，全身心投入的", sentence: "Her recent findings suggest that older adults ______ in a supportive learning environment can significantly increase their cognitive abilities as well as their confidence in their ability to learn.", answer: "immersed", options: ["immersed", "competent", "proficient", "boost"], translation: "她最近的发现表明，沉浸在支持性学习环境中的老年人可以显著提高他们的认知能力以及学习信心。" },
-            { word: "competent", meaning: "有能力的，胜任的", sentence: "This internalized ageism can lead to beliefs that older adults are less ______, can't learn, and must give up things that are important to them.", answer: "competent", options: ["competent", "proficient", "boost", "demographic"], translation: "这种内化的年龄歧视会导致人们认为老年人能力较差、无法学习，并且必须放弃对他们重要的事情。" },
-            { word: "proficient", meaning: "熟练的，精通的", sentence: "Studies showed that people become ______ at that specific task and other tasks like it, but it does not help much with learning how to navigate an online health platform, because it is too far of a leap.", answer: "proficient", options: ["proficient", "competent", "boost", "demographic"], translation: "研究表明，人们会在特定任务和类似任务上变得熟练，但这对于学习如何使用在线健康平台帮助不大，因为跨度太大了。" },
-            { word: "sudoku", meaning: "数独", sentence: "These findings reminded Wu of people who were very good at playing brain games such as ______ but had trouble managing their online bank accounts.", answer: "sudoku", options: ["sudoku", "demographic", "lexical", "proficient"], translation: "这些发现让Wu想起了那些非常擅长玩数独等大脑游戏但在管理在线银行账户方面有困难的人。" },
-            { word: "incorporating colloquialisms", meaning: "纳入口语表达，融入俗语", sentence: "Contemporary slang also heavily reflects the influences of youth-driven pop culture and digital media while also ______ that originated from LGBTQ+ communities.", answer: "incorporating colloquialisms", options: ["incorporating colloquialisms", "signal authenticity", "social inferiority", "lexical"], translation: "当代俚语也在很大程度上反映了青年驱动的流行文化和数字媒体的影响，同时也融入了源自LGBTQ+群体的口语表达。" },
-            { word: "illustrative users", meaning: "示范性使用者，偶尔使用者", sentence: "Primary users create and use slang in their everyday speech, and ______ adopt slang occasionally to signal authenticity to others.", answer: "illustrative users", options: ["illustrative users", "a linguistic quirk", "lexical", "demographic"], translation: "主要使用者在日常言语中创造和使用俚语，示范性使用者偶尔使用俚语来向他人表明真实身份。" },
-            { word: "leveraging neuroplasticity", meaning: "利用神经可塑性", sentence: "Their findings suggest that ______ at any age can increase confidence, motivation, and the desire to tackle new challenges.", answer: "leveraging neuroplasticity", options: ["leveraging neuroplasticity", "boost", "implement", "prolong"], translation: "他们的研究结果表明，在任何年龄利用神经可塑性都可以增加信心、动力和应对新挑战的愿望。" },
-            { word: "promote in-group solidarity and cohesiveness", meaning: "促进群体内部团结和凝聚力", sentence: "Linguists define slang as informal and nontechnical language that functions as a tool to differentiate social groups and to ______.", answer: "promote in-group solidarity and cohesiveness", options: ["promote in-group solidarity and cohesiveness", "signal authenticity", "social inferiority", "lexical"], translation: "语言学家将俚语定义为一种非正式和非技术性的语言，它作为区分社会群体和促进群体内部团结与凝聚力的工具。" },
-            { word: "secrecy and informality shapes", meaning: "秘密性和非正式性塑造了", sentence: "That early association with ______ modern perceptions of slang as something outside the bounds of formal speech or writing.", answer: "secrecy and informality shapes", options: ["secrecy and informality shapes", "a linguistic quirk", "lexical", "demographic"], translation: "早期与秘密和非正式的联系塑造了现代对俚语的看法，认为它是正式演讲或写作之外的东西。" }
+            { word: "anecdotally", meaning: "据传闻，根据轶事证据", sentence: "After the classes had ended, Wu heard ______ that many participants went on to take online courses, private lessons, or classes through community groups to pursue their interests.", answer: "anecdotally", options: ["anecdotally", "upfront", "holistic", "intensive"], translation: "课程结束后，Wu据传闻听说许多参与者继续参加在线课程、私人课程或社区团体的课程来追求他们的兴趣。" },
+            { word: "stick figure", meaning: "火柴人画，简笔画", sentence: "There were people who had never drawn anything but a ______, and later they were selling their art and getting commissions.", answer: "stick figure", options: ["stick figure", "dementia", "impairment", "adherent"], translation: "有些人以前只画过火柴人画，后来他们开始出售自己的艺术作品并接受委托。" },
+            { word: "Compounding", meaning: "加重，使复杂化", sentence: "______ the challenge is the time pressures faced by many middle-aged and older workers who must also juggle responsibilities related to children, aging parents, or other commitments, meaning less time for learning.", answer: "Compounding", options: ["Compounding", "facilitated", "shedding light", "Metacognition"], translation: "加重这一挑战的是许多中年和老年工人面临的时间压力，他们还必须同时应对与孩子、年迈父母或其他承诺相关的责任，这意味着学习时间更少。" },
+            { word: "juggle responsibilities", meaning: "同时应对多项责任", sentence: "Compounding the challenge is the time pressures faced by many middle-aged and older workers who must also ______ related to children, aging parents, or other commitments, meaning less time for learning.", answer: "juggle responsibilities", options: ["juggle responsibilities", "gig economy", "executive function", "Tech-savvy"], translation: "加重这一挑战的是许多中年和老年工人面临的时间压力，他们还必须同时应对与孩子、年迈父母或其他承诺相关的责任，这意味着学习时间更少。" },
+            { word: "upfront", meaning: "预先的，事先的", sentence: "For older workers to overcome barriers to learning, they often need to know ______ how training will benefit them.", answer: "upfront", options: ["upfront", "anecdotally", "holistic", "intensive"], translation: "老年工人要克服学习障碍，通常需要预先知道培训将如何使他们受益。" },
+            { word: "gig economy", meaning: "零工经济，临时工经济", sentence: "Beier also worries about people who are under or unemployed or contractors in the ______, who may not have access to on-the-job training or practice with current technologies.", answer: "gig economy", options: ["gig economy", "executive function", "juggle responsibilities", "Tech-savvy"], translation: "Beier还担心那些就业不足或失业的人或零工经济中的承包商，他们可能无法获得在职培训或当前技术的实践。" },
+            { word: "displaced", meaning: "被取代的，被淘汰的", sentence: "We need to find better ways for them to learn new things to stay employable, or I worry that they will be ______ because of technology and innovation.", answer: "displaced", options: ["displaced", "facilitated", "adherent", "intensive"], translation: "我们需要找到更好的方法让他们学习新事物以保持就业能力，否则我担心他们会因技术和创新而被取代。" },
+            { word: "Tech-savvy", meaning: "精通技术的，技术娴熟的", sentence: "______ older adults: Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive impairment.", answer: "Tech-savvy", options: ["Tech-savvy", "technophobic", "gig economy", "displaced"], translation: "精通技术的老年人：证据还表明，即使在开始出现与轻度认知障碍相关的记忆、注意力、执行功能和其他领域的下降后，人们也能够掌握新技能。" },
+            { word: "impairment", meaning: "损伤，障碍", sentence: "Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive ______.", answer: "impairment", options: ["impairment", "dementia", "adherent", "stick figure"], translation: "证据还表明，即使在开始出现与轻度认知障碍相关的记忆、注意力、执行功能和其他领域的下降后，人们也能够掌握新技能。" },
+            { word: "technophobic", meaning: "技术恐惧的", sentence: "We found that the participants were not ______.", answer: "technophobic", options: ["technophobic", "Tech-savvy", "displaced", "holistic"], translation: "我们发现参与者并不恐惧技术。" },
+            { word: "adherent", meaning: "遵从的，坚持的", sentence: "They were very ______, and there was a low dropout rate.", answer: "adherent", options: ["adherent", "displaced", "intensive", "upfront"], translation: "他们非常坚持，退出率很低。" },
+            { word: "dementia", meaning: "痴呆症", sentence: "A recent study of more than 13,500 adults age 50 and older revealed that increased isolation was associated with increased risk of mortality, disability, and ______.", answer: "dementia", options: ["dementia", "impairment", "stick figure", "adherent"], translation: "最近一项针对13,500多名50岁及以上成年人的研究显示，隔离增加与死亡率、残疾和痴呆症风险增加相关。" },
+            { word: "shedding light", meaning: "阐明，揭示", sentence: "The latest studies are also ______ on cognitive health's connection to other lifestyle factors beyond social connectedness.", answer: "shedding light", options: ["shedding light", "facilitated", "Compounding", "Metacognition"], translation: "最新的研究也在阐明认知健康与社会联系之外的其他生活方式因素之间的联系。" },
+            { word: "cardiovascular", meaning: "心血管的", sentence: "In Finland, researchers led a 2-year intervention for people at higher risk of dementia. Participants were educated and supported in areas of diet, physical activity, cognitive training, social activity, and monitoring of ______ risk factors.", answer: "cardiovascular", options: ["cardiovascular", "psychomotor", "executive function", "holistic"], translation: "在芬兰，研究人员为痴呆症风险较高的人群进行了为期2年的干预。参与者在饮食、体育活动、认知训练、社交活动和心血管风险因素监测等领域接受教育和支持。" },
+            { word: "psychomotor", meaning: "精神运动的，心理运动的", sentence: "The people in the intervention group experienced significantly greater improvements than the control group in executive function, complex memory tasks, and ______ control.", answer: "psychomotor", options: ["psychomotor", "cardiovascular", "holistic", "intensive"], translation: "干预组的人在执行功能、复杂记忆任务和精神运动控制方面比对照组有显著更大的改善。" },
+            { word: "facilitated", meaning: "促成的，协助的", sentence: "In a similar study in the United States, participants in the structured intervention attended 38 ______ peer team meetings over 2 years with education, goal setting, and accountability.", answer: "facilitated", options: ["facilitated", "shedding light", "Compounding", "Metacognition"], translation: "在美国的一项类似研究中，结构化干预的参与者在2年内参加了38次协助的同龄人团队会议，包括教育、目标设定和问责。" },
+            { word: "executive function", meaning: "执行功能", sentence: "The people in the intervention group experienced significantly greater improvements than the control group in ______, complex memory tasks, and psychomotor control.", answer: "executive function", options: ["executive function", "cardiovascular", "gig economy", "juggle responsibilities"], translation: "干预组的人在执行功能、复杂记忆任务和精神运动控制方面比对照组有显著更大的改善。" },
+            { word: "holistic", meaning: "整体的，全面的", sentence: "While these findings build the case for a ______ approach to brain health, many people do not have access to intensive, in-person support to make lifestyle changes.", answer: "holistic", options: ["holistic", "intensive", "upfront", "anecdotally"], translation: "虽然这些发现为大脑健康的整体方法提供了依据，但许多人无法获得强化、面对面的支持来进行生活方式改变。" },
+            { word: "intensive", meaning: "强化的，密集的", sentence: "While these findings build the case for a holistic approach to brain health, many people do not have access to ______, in-person support to make lifestyle changes.", answer: "intensive", options: ["intensive", "holistic", "upfront", "anecdotally"], translation: "虽然这些发现为大脑健康的整体方法提供了依据，但许多人无法获得强化、面对面的支持来进行生活方式改变。" },
+            { word: "Metacognition", meaning: "元认知", sentence: "______, which is the awareness of our own abilities, improves with age.", answer: "Metacognition", options: ["Metacognition", "shedding light", "facilitated", "Compounding"], translation: "元认知，即对我们自己能力的认知，随着年龄的增长而提高。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 18, 
+                round: 19, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
