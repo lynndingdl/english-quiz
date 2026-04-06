@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第17轮</title>
+    <title>英语单词复习 - 第18轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,8 +55,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第17轮</h1>
-        <p class="subtitle">选择题（4选1）| 错题 + 新词</p>
+        <h1>🦐 英语单词复习 - 第18轮</h1>
+        <p class="subtitle">选择题（4选1）| 全部新词</p>
         
         <div class="progress-info">
             <span>进度: <span id="currentNum">1</span> / 20</span>
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第17轮复习完成！</h2>
+            <h2>🎉 第18轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,49 +78,49 @@
 
     <script>
         const wordBank = {
-            "obscure": "模糊的，不为人知的",
-            "immortals": "不朽者（电竞战队名）",
-            "leveraging": "利用，借助",
-            "accuracy": "准确性，精确度",
-            "credential": "资格，证书",
-            "curriculum": "课程",
-            "dearth": "缺乏，短缺",
-            "deliberate": "故意的，深思熟虑的",
-            "momentum": "势头，动力",
-            "cropped up": "突然出现，冒出来",
-            "meteoric": "迅速的，流星般的",
-            "fringe": "边缘的，非主流的",
-            "warp": "极快的速度",
-            "ubiquitous": "无处不在的，普遍存在的",
-            "nonsensical": "荒谬的，无意义的",
-            "opaque": "晦涩难懂的，不透明的",
-            "formation": "形成，构成",
-            "affiliation": "归属，从属关系",
-            "itinerants": "流动人员，流浪者",
-            "shorthand": "简写，速记"
+            "a linguistic quirk": "语言怪癖，语言特色",
+            "secrecy and informality shapes": "秘密性和非正式性塑造了",
+            "promote in-group solidarity and cohesiveness": "促进群体内部团结和凝聚力",
+            "lexical": "词汇的，词汇层面的",
+            "obsolescence": "废弃，过时，淘汰",
+            "enduring and influential sources": "持久且有影响力的来源",
+            "incorporating colloquialisms": "纳入口语表达，融入俗语",
+            "illustrative users": "示范性使用者，偶尔使用者",
+            "signal authenticity": "传递真实性，表明真实身份",
+            "social inferiority": "社会地位低下，社会劣势",
+            "leveraging neuroplasticity": "利用神经可塑性",
+            "boost": "提升，增强，促进",
+            "implement": "实施，执行，贯彻",
+            "prolong": "延长，延续",
+            "internalized ageism": "内化的年龄歧视",
+            "demographic": "人群，人口群体",
+            "immersed": "沉浸的，全身心投入的",
+            "competent": "有能力的，胜任的",
+            "proficient": "熟练的，精通的",
+            "sudoku": "数独"
         };
 
         const questions = [
-            { word: "obscure", meaning: "模糊的，不为人知的", sentence: "Originating from a somewhat ______ rap song in late 2024.", answer: "obscure", options: ["obscure", "pervasive", "ubiquitous", "meteoric"], translation: "起源于2024年底一首颇为冷门的说唱歌曲。" },
-            { word: "immortals", meaning: "不朽者（电竞战队名）", sentence: "The ______ is an esports team.", answer: "immortals", options: ["immortals", "momentum", "fringe", "warp"], translation: "不朽者是一支电竞战队。" },
-            { word: "leveraging", meaning: "利用，借助", sentence: "By ______ technology, the company improved efficiency.", answer: "leveraging", options: ["leveraging", "cropped up", "formation", "shorthand"], translation: "通过利用技术，公司提高了效率。" },
-            { word: "accuracy", meaning: "准确性，精确度", sentence: "The ______ of the test results is crucial.", answer: "accuracy", options: ["accuracy", "credential", "curriculum", "dearth"], translation: "测试结果的准确性至关重要。" },
-            { word: "credential", meaning: "资格，证书", sentence: "She has the right ______ for the job.", answer: "credential", options: ["credential", "curriculum", "dearth", "deliberate"], translation: "她拥有这份工作所需的资格。" },
-            { word: "curriculum", meaning: "课程", sentence: "The school updated its ______ for the new semester.", answer: "curriculum", options: ["curriculum", "credential", "dearth", "momentum"], translation: "学校为新学期更新了课程。" },
-            { word: "dearth", meaning: "缺乏，短缺", sentence: "There is a ______ of skilled workers in the industry.", answer: "dearth", options: ["dearth", "deliberate", "momentum", "cropped up"], translation: "这个行业缺乏熟练工人。" },
-            { word: "deliberate", meaning: "故意的，深思熟虑的", sentence: "He made a ______ decision to quit his job.", answer: "deliberate", options: ["deliberate", "meteoric", "fringe", "warp"], translation: "他经过深思熟虑后决定辞职。" },
-            { word: "momentum", meaning: "势头，动力", sentence: "The project gained ______ after the initial success.", answer: "momentum", options: ["momentum", "formation", "affiliation", "shorthand"], translation: "初步成功后，项目获得了动力。" },
-            { word: "cropped up", meaning: "突然出现，冒出来", sentence: "Unexpected problems have ______ during the project.", answer: "cropped up", options: ["cropped up", "formation", "itinerants", "shorthand"], translation: "项目期间突然出现了一些意想不到的问题。" },
-            { word: "meteoric", meaning: "迅速的，流星般的", sentence: "Her ______ rise to fame surprised everyone.", answer: "meteoric", options: ["meteoric", "ubiquitous", "nonsensical", "opaque"], translation: "她迅速成名令所有人惊讶。" },
-            { word: "fringe", meaning: "边缘的，非主流的", sentence: "The theory was once considered ______ science.", answer: "fringe", options: ["fringe", "formation", "affiliation", "itinerants"], translation: "这个理论曾经被认为是边缘科学。" },
-            { word: "warp", meaning: "极快的速度", sentence: "At ______ speed, the idea spread across the internet.", answer: "warp", options: ["warp", "momentum", "shorthand", "cropped up"], translation: "这个想法以极快的速度在互联网上传播。" },
-            { word: "ubiquitous", meaning: "无处不在的，普遍存在的", sentence: "Smartphones have become ______ in modern life.", answer: "ubiquitous", options: ["ubiquitous", "obscure", "fringe", "meteoric"], translation: "智能手机在现代生活中已无处不在。" },
-            { word: "nonsensical", meaning: "荒谬的，无意义的", sentence: "The explanation was completely ______.", answer: "nonsensical", options: ["nonsensical", "deliberate", "formation", "affiliation"], translation: "这个解释完全荒谬。" },
-            { word: "opaque", meaning: "晦涩难懂的，不透明的", sentence: "The instructions were ______ and confusing.", answer: "opaque", options: ["opaque", "obscure", "meteoric", "fringe"], translation: "说明书晦涩难懂，令人困惑。" },
-            { word: "formation", meaning: "形成，构成", sentence: "The ______ of new habits takes time.", answer: "formation", options: ["formation", "momentum", "warp", "shorthand"], translation: "新习惯的形成需要时间。" },
-            { word: "affiliation", meaning: "归属，从属关系", sentence: "She disclosed her political ______ during the debate.", answer: "affiliation", options: ["affiliation", "formation", "itinerants", "cropped up"], translation: "她在辩论中公开了自己的政治归属。" },
-            { word: "itinerants", meaning: "流动人员，流浪者", sentence: "The city has many ______ who travel from place to place.", answer: "itinerants", options: ["itinerants", "formation", "shorthand", "warp"], translation: "这个城市有许多流动人员，他们四处漂泊。" },
-            { word: "shorthand", meaning: "简写，速记", sentence: "She took notes in ______ during the lecture.", answer: "shorthand", options: ["shorthand", "momentum", "formation", "affiliation"], translation: "她在讲座时用速记做笔记。" }
+            { word: "a linguistic quirk", meaning: "语言怪癖，语言特色", sentence: "Slang, however, is more than ______ for people of all ages.", answer: "a linguistic quirk", options: ["a linguistic quirk", "lexical", "obsolescence", "demographic"], translation: "然而，俚语对所有年龄段的人来说不仅仅是语言特色。" },
+            { word: "lexical", meaning: "词汇的，词汇层面的", sentence: "It serves as ______ metadata that enables listeners to determine the speaker's affiliations.", answer: "lexical", options: ["lexical", "obsolescence", "demographic", "proficient"], translation: "它作为词汇元数据，使听众能够确定说话者的归属。" },
+            { word: "obsolescence", meaning: "废弃，过时，淘汰", sentence: "Slang terms often cycle rapidly from popularity to ______, rarely staying in use for more than a few years.", answer: "obsolescence", options: ["obsolescence", "boost", "implement", "prolong"], translation: "俚语通常从流行迅速走向淘汰，很少能使用超过几年。" },
+            { word: "enduring and influential sources", meaning: "持久且有影响力的来源", sentence: "African American Vernacular English has been one of the most ______ of slang.", answer: "enduring and influential sources", options: ["enduring and influential sources", "social inferiority", "lexical", "demographic"], translation: "非裔美国人英语一直是俚语最持久且有影响力的来源之一。" },
+            { word: "signal authenticity", meaning: "传递真实性，表明真实身份", sentence: "Illustrative users adopt slang occasionally to ______ to others.", answer: "signal authenticity", options: ["signal authenticity", "boost", "implement", "prolong"], translation: "示范性使用者偶尔使用俚语来向他人表明真实身份。" },
+            { word: "social inferiority", meaning: "社会地位低下，社会劣势", sentence: "Slang can also carry the risk of stigma, suggesting a lack of professionalism or ______.", answer: "social inferiority", options: ["social inferiority", "lexical", "demographic", "proficient"], translation: "俚语也可能带有污名的风险，暗示缺乏专业性或社会地位低下。" },
+            { word: "boost", meaning: "提升，增强，促进", sentence: "Researchers are developing cognitive interventions to help adults ______ their brain health.", answer: "boost", options: ["boost", "implement", "prolong", "demographic"], translation: "研究人员正在开发认知干预措施，帮助成年人提升大脑健康。" },
+            { word: "implement", meaning: "实施，执行，贯彻", sentence: "Interventions that help aging adults ______ new behaviors have been shown to improve cognitive health.", answer: "implement", options: ["implement", "boost", "prolong", "demographic"], translation: "帮助老年人实施新行为的干预措施已被证明可以改善认知健康。" },
+            { word: "prolong", meaning: "延长，延续", sentence: "Interventions have been shown to improve and ______ cognitive health.", answer: "prolong", options: ["prolong", "boost", "implement", "demographic"], translation: "干预措施已被证明可以改善和延长认知健康。" },
+            { word: "internalized ageism", meaning: "内化的年龄歧视", sentence: "Whereas ______ can lead older adults to believe that they can't learn.", answer: "internalized ageism", options: ["internalized ageism", "lexical", "demographic", "proficient"], translation: "内化的年龄歧视会导致老年人认为自己无法学习。" },
+            { word: "demographic", meaning: "人群，人口群体", sentence: "Researchers hope to see communities increase access for this ______ to learn.", answer: "demographic", options: ["demographic", "lexical", "proficient", "boost"], translation: "研究人员希望看到社区增加这一人群学习的机会。" },
+            { word: "immersed", meaning: "沉浸的，全身心投入的", sentence: "Older adults ______ in a supportive learning environment can significantly increase their cognitive abilities.", answer: "immersed", options: ["immersed", "competent", "proficient", "boost"], translation: "沉浸在支持性学习环境中的老年人可以显著提高他们的认知能力。" },
+            { word: "competent", meaning: "有能力的，胜任的", sentence: "This internalized ageism can lead to beliefs that older adults are less ______.", answer: "competent", options: ["competent", "proficient", "boost", "demographic"], translation: "这种内化的年龄歧视会导致人们认为老年人能力较差。" },
+            { word: "proficient", meaning: "熟练的，精通的", sentence: "Studies showed that people become ______ at that specific task but it does not help much with learning other skills.", answer: "proficient", options: ["proficient", "competent", "boost", "demographic"], translation: "研究表明，人们会在特定任务上变得熟练，但这对于学习其他技能帮助不大。" },
+            { word: "sudoku", meaning: "数独", sentence: "These findings reminded Wu of people who were very good at playing brain games such as ______.", answer: "sudoku", options: ["sudoku", "demographic", "lexical", "proficient"], translation: "这些发现让Wu想起了那些非常擅长玩数独等大脑游戏的人。" },
+            { word: "incorporating colloquialisms", meaning: "纳入口语表达，融入俗语", sentence: "Contemporary slang heavily reflects youth-driven pop culture while also ______ that originated from LGBTQ+ communities.", answer: "incorporating colloquialisms", options: ["incorporating colloquialisms", "signal authenticity", "social inferiority", "lexical"], translation: "当代俚语在很大程度上反映了青年流行文化，同时也融入了源自LGBTQ+群体的口语表达。" },
+            { word: "illustrative users", meaning: "示范性使用者，偶尔使用者", sentence: "Primary users create and use slang in everyday speech, and ______ adopt slang occasionally.", answer: "illustrative users", options: ["illustrative users", "a linguistic quirk", "lexical", "demographic"], translation: "主要使用者在日常言语中创造和使用俚语，示范性使用者偶尔使用俚语。" },
+            { word: "leveraging neuroplasticity", meaning: "利用神经可塑性", sentence: "Their findings suggest that ______ at any age can increase confidence and motivation.", answer: "leveraging neuroplasticity", options: ["leveraging neuroplasticity", "boost", "implement", "prolong"], translation: "他们的研究结果表明，在任何年龄利用神经可塑性都可以增加信心和动力。" },
+            { word: "promote in-group solidarity and cohesiveness", meaning: "促进群体内部团结和凝聚力", sentence: "Linguists define slang as a tool to differentiate social groups and to ______.", answer: "promote in-group solidarity and cohesiveness", options: ["promote in-group solidarity and cohesiveness", "signal authenticity", "social inferiority", "lexical"], translation: "语言学家将俚语定义为区分社会群体和促进群体内部团结与凝聚力的工具。" },
+            { word: "secrecy and informality shapes", meaning: "秘密性和非正式性塑造了", sentence: "That early association with ______ modern perceptions of slang.", answer: "secrecy and informality shapes", options: ["secrecy and informality shapes", "a linguistic quirk", "lexical", "demographic"], translation: "早期与秘密和非正式的联系塑造了现代对俚语的看法。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 17, 
+                round: 18, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
