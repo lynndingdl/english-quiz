@@ -14,8 +14,7 @@
         .progress { background: #e0e0e0; border-radius: 8px; height: 8px; margin-bottom: 24px; }
         .progress-bar { background: linear-gradient(90deg, #667eea, #764ba2); height: 100%; border-radius: 8px; transition: width 0.3s; }
         .question { padding: 24px; background: #f8f9fa; border-radius: 12px; margin-bottom: 24px; }
-        .question-num { font-weight: bold; color: #667eea; margin-bottom: 12px; font-size: 14px; }
-        .meaning { color: #666; font-size: 14px; margin-bottom: 12px; }
+        .question-num { font-weight: bold; color: #667eea; margin-bottom: 16px; font-size: 16px; }
         .sentence { font-size: 18px; line-height: 1.8; margin-bottom: 20px; }
         .blank { color: #667eea; font-weight: bold; text-decoration: underline; }
         .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -30,9 +29,21 @@
         .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
         .next-btn { background: #4CAF50; color: white; }
         .next-btn:hover { background: #45a049; }
-        .answer-box { display: none; padding: 20px; background: #e8f5e9; border-radius: 10px; margin-top: 16px; }
+        
+        /* 答案解析区域 */
+        .answer-box { display: none; padding: 24px; background: #f0f7f0; border-radius: 12px; margin-top: 20px; border-left: 4px solid #4CAF50; }
         .answer-box.show { display: block; }
-        .answer-box h3 { color: #4CAF50; margin-bottom: 8px; }
+        .answer-box.wrong-answer { background: #fff5f5; border-left-color: #f44336; }
+        .answer-title { font-size: 18px; font-weight: bold; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .answer-title.correct { color: #4CAF50; }
+        .answer-title.wrong { color: #f44336; }
+        .answer-item { margin-bottom: 12px; line-height: 1.6; }
+        .answer-label { color: #666; font-size: 14px; margin-bottom: 4px; }
+        .answer-value { font-size: 16px; }
+        .word-title { font-size: 20px; font-weight: bold; color: #667eea; }
+        .full-sentence { font-size: 16px; line-height: 1.8; color: #333; background: #e8f5e9; padding: 12px; border-radius: 8px; }
+        .full-sentence .answer-word { color: #4CAF50; font-weight: bold; text-decoration: underline; }
+        
         .result { display: none; text-align: center; padding: 32px; }
         .result.show { display: block; }
         .result h2 { color: #333; margin-bottom: 16px; }
@@ -101,16 +112,29 @@
             
             area.innerHTML = `
                 <div class="question">
-                    <div class="question-num">第 ${currentIndex + 1} 题</div>
-                    <div class="meaning">释义：${q.meaning}</div>
-                    <div class="sentence">${q.sentence.replace('______', '<span class="blank">?</span>')}</div>
+                    <div class="question-num">📖 第 ${currentIndex + 1} / 20 题</div>
+                    <div class="sentence">${q.sentence.replace('______', '<span class="blank">______</span>')}</div>
                     <div class="options" id="options">
                         ${q.options.map((opt, i) => `<div class="option" onclick="selectOption('${opt}')">${String.fromCharCode(65 + i)}. ${opt}</div>`).join('')}
                     </div>
                     <button class="btn submit-btn" id="submitBtn" onclick="submitAnswer()" disabled>提交答案</button>
+                    
                     <div class="answer-box" id="answerBox">
-                        <h3>✅ 正确答案：${q.answer}</h3>
+                        <div class="answer-title" id="answerTitle"></div>
+                        <div class="answer-item">
+                            <div class="answer-label">单词</div>
+                            <div class="answer-value word-title">${q.word}</div>
+                        </div>
+                        <div class="answer-item">
+                            <div class="answer-label">中文释义</div>
+                            <div class="answer-value">${q.meaning}</div>
+                        </div>
+                        <div class="answer-item">
+                            <div class="answer-label">完整句子</div>
+                            <div class="full-sentence">${q.sentence.replace('______', `<span class="answer-word">${q.answer}</span>`)}</div>
+                        </div>
                     </div>
+                    
                     <button class="btn next-btn hidden" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
                 </div>
             `;
@@ -147,8 +171,21 @@
                 opt.onclick = null;
             });
             
+            // 显示答案解析
+            const answerBox = document.getElementById('answerBox');
+            const answerTitle = document.getElementById('answerTitle');
+            
+            if (isCorrect) {
+                answerTitle.innerHTML = '✅ 回答正确！';
+                answerTitle.className = 'answer-title correct';
+            } else {
+                answerTitle.innerHTML = '❌ 回答错误';
+                answerTitle.className = 'answer-title wrong';
+                answerBox.classList.add('wrong-answer');
+            }
+            
+            answerBox.classList.add('show');
             document.getElementById('submitBtn').classList.add('hidden');
-            document.getElementById('answerBox').classList.add('show');
             document.getElementById('nextBtn').classList.remove('hidden');
         }
 
