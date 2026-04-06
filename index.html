@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第20轮</title>
+    <title>英语单词复习 - 第21轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,20 +55,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第20轮</h1>
-        <p class="subtitle">选择题（4选1）| 全部新词 | 原句出题</p>
+        <h1>🦐 英语单词复习 - 第21轮</h1>
+        <p class="subtitle">选择题（4选1）| 错题优先 + 新词 | 原句出题</p>
         
         <div class="progress-info">
-            <span>进度: <span id="currentNum">1</span> / 20</span>
+            <span>进度: <span id="currentNum">1</span> / 15</span>
             <span>正确: <span id="correctCount">0</span></span>
         </div>
-        <div class="progress"><div class="progress-bar" id="progressBar" style="width: 5%"></div></div>
+        <div class="progress"><div class="progress-bar" id="progressBar" style="width: 6.67%"></div></div>
         
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第20轮复习完成！</h2>
-            <div class="result-score"><span id="finalScore">0</span> / 20</div>
+            <h2>🎉 第21轮复习完成！</h2>
+            <div class="result-score"><span id="finalScore">0</span> / 15</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
             <div class="result-code" id="resultCode"></div>
@@ -78,49 +78,39 @@
 
     <script>
         const wordBank = {
-            "recruit": "调动，招募，利用",
-            "are poised to": "准备好，即将",
-            "portals": "门户，平台，入口",
-            "bypasses": "绕过，避开",
-            "practitioners": "从业者，实践者",
-            "underlying": "潜在的，根本的",
-            "deferred": "延期的，递延的",
-            "frictionless": "无摩擦的，顺畅的",
-            "dismantle": "拆除，瓦解，消除",
-            "converging technologies": "融合技术，汇聚的技术",
-            "rewiring": "重塑，重新连接",
-            "exacerbating": "加剧，恶化",
-            "precarious": "不稳定的，岌岌可危的",
-            "Wearied by years of inflation": "因多年的通货膨胀而疲惫不堪",
-            "stagnant": "停滞的，不景气的",
-            "pessimism": "悲观情绪，悲观主义",
-            "blame": "归咎于，责怪",
-            "inflation": "通货膨胀",
-            "stopgap": "权宜之计，临时措施",
-            "most commonly cited goal": "最常被提及的目标"
+            "boost": "提升，增强，促进",
+            "hyperpersonalized": "超个性化的，高度定制化的",
+            "installment": "分期付款",
+            "barrage of temptation": "连珠炮般的诱惑",
+            "gadgets": "电子设备，小器具",
+            "schemes": "计划，方案，机制",
+            "stack up": "堆积，累积",
+            "unsecured debt": "无担保债务，信用债务",
+            "collateral": "抵押品，担保物",
+            "exacerbate": "加剧，使恶化",
+            "strain": "压力，紧张，困境",
+            "shedding light on": "阐明，揭示",
+            "tempting": "诱人的，有吸引力的",
+            "numerosity": "数量效应，数值感知",
+            "internalizing": "内化"
         };
 
         const questions = [
-            { word: "recruit", meaning: "调动，招募，利用", sentence: "We can ______ cognitive mechanisms to focus on remembering what is important and interesting.", answer: "recruit", options: ["recruit", "bypasses", "dismantle", "blame"], translation: "我们可以调动认知机制来专注于记住重要和有趣的事情。" },
-            { word: "are poised to", meaning: "准备好，即将", sentence: "Clinical psychologists ______ help older adults identify their curiosities and what matters most to them and then take steps to acquire new skills in these areas.", answer: "are poised to", options: ["are poised to", "underlying", "deferred", "stagnant"], translation: "临床心理学家准备好帮助老年人识别他们的好奇心和最重要的事情，然后采取步骤在这些领域获得新技能。" },
-            { word: "portals", meaning: "门户，平台，入口", sentence: "Some of these older partners are struggling not only to learn how to support a family member with a neurocognitive disorder, but also to navigate health care ______, telehealth visits, transportation, and other details for the loved one.", answer: "portals", options: ["portals", "practitioners", "stopgap", "inflation"], translation: "这些老年伴侣中的一些人不仅在努力学习如何支持患有神经认知障碍的家庭成员，还要为亲人应对医疗保健门户、远程医疗访问、交通和其他细节。" },
-            { word: "bypasses", meaning: "绕过，避开", sentence: "Buy now, pay later financing ______ a number of cognitive and physical barriers to impulse buying, heightening the risk of financial and psychological stress for many people.", answer: "bypasses", options: ["bypasses", "recruit", "dismantle", "blame"], translation: "先买后付融资绕过了许多冲动购物的认知和物理障碍，增加了许多人面临财务和心理压力的风险。" },
-            { word: "practitioners", meaning: "从业者，实践者", sentence: "Behavioral scientists and applied ______ can help by continuing to research the real-world impacts of the cognitive mechanisms underlying these behaviors.", answer: "practitioners", options: ["practitioners", "portals", "stopgap", "inflation"], translation: "行为科学家和应用实践者可以通过继续研究这些行为背后的认知机制的现实世界影响来提供帮助。" },
-            { word: "underlying", meaning: "潜在的，根本的", sentence: "Behavioral scientists and applied practitioners can help by continuing to research the real-world impacts of the cognitive mechanisms ______ these behaviors.", answer: "underlying", options: ["underlying", "deferred", "stagnant", "frictionless"], translation: "行为科学家和应用实践者可以通过继续研究这些行为背后的认知机制的现实世界影响来提供帮助。" },
-            { word: "deferred", meaning: "延期的，递延的", sentence: "A single tap, a purchase made, a payment ______.", answer: "deferred", options: ["deferred", "underlying", "stagnant", "frictionless"], translation: "一次点击，一次购买，一次延期付款。" },
-            { word: "frictionless", meaning: "无摩擦的，顺畅的", sentence: "As AI algorithms predict consumers' desires and new ______ payment methods dismantle the traditional pain of paying.", answer: "frictionless", options: ["frictionless", "precarious", "rewiring", "pessimism"], translation: "随着AI算法预测消费者的欲望，新的无摩擦支付方式消除了传统的支付痛苦。" },
-            { word: "dismantle", meaning: "拆除，瓦解，消除", sentence: "New frictionless payment methods ______ the traditional pain of paying.", answer: "dismantle", options: ["dismantle", "bypasses", "recruit", "blame"], translation: "新的无摩擦支付方式消除了传统的支付痛苦。" },
-            { word: "converging technologies", meaning: "融合技术，汇聚的技术", sentence: "Cognitive psychologists are stepping in to reveal how these ______ are rewiring financial decision-making.", answer: "converging technologies", options: ["converging technologies", "portals", "stopgap", "inflation"], translation: "认知心理学家正在介入，揭示这些融合技术如何重塑财务决策。" },
-            { word: "rewiring", meaning: "重塑，重新连接", sentence: "Cognitive psychologists are stepping in to reveal how these converging technologies are ______ financial decision-making.", answer: "rewiring", options: ["rewiring", "exacerbating", "stagnant", "pessimism"], translation: "认知心理学家正在介入，揭示这些融合技术如何重塑财务决策。" },
-            { word: "exacerbating", meaning: "加剧，恶化", sentence: "Cognitive psychologists are stepping in to reveal how these converging technologies are rewiring financial decision-making and ______ debt-related mental health concerns.", answer: "exacerbating", options: ["exacerbating", "rewiring", "precarious", "deferred"], translation: "认知心理学家正在介入，揭示这些融合技术如何重塑财务决策并加剧与债务相关的心理健康问题。" },
-            { word: "precarious", meaning: "不稳定的，岌岌可危的", sentence: "This work comes at a ______ time.", answer: "precarious", options: ["precarious", "stagnant", "frictionless", "pessimism"], translation: "这项工作正处于一个岌岌可危的时期。" },
-            { word: "Wearied by years of inflation", meaning: "因多年的通货膨胀而疲惫不堪", sentence: "______, stagnant income, and elevated personal debt, many Americans believe their finances will worsen in 2026.", answer: "Wearied by years of inflation", options: ["Wearied by years of inflation", "exacerbating", "rewiring", "deferred"], translation: "因多年的通货膨胀、停滞的收入和高企的个人债务而疲惫不堪，许多美国人认为他们的财务状况将在2026年恶化。" },
-            { word: "stagnant", meaning: "停滞的，不景气的", sentence: "Wearied by years of inflation, ______ income, and elevated personal debt, many Americans believe their finances will worsen in 2026.", answer: "stagnant", options: ["stagnant", "precarious", "frictionless", "pessimism"], translation: "因多年的通货膨胀、停滞的收入和高企的个人债务而疲惫不堪，许多美国人认为他们的财务状况将在2026年恶化。" },
-            { word: "pessimism", meaning: "悲观情绪，悲观主义", sentence: "A 2025 Bankrate survey found that ______ about personal finances is at the highest level since 2018.", answer: "pessimism", options: ["pessimism", "stagnant", "precarious", "frictionless"], translation: "2025年Bankrate调查发现，对个人财务的悲观情绪处于2018年以来的最高水平。" },
-            { word: "blame", meaning: "归咎于，责怪", sentence: "A 2025 Bankrate survey found that pessimism about personal finances is at the highest level since 2018, with price increases primarily to ______.", answer: "blame", options: ["blame", "recruit", "bypasses", "dismantle"], translation: "2025年Bankrate调查发现，对个人财务的悲观情绪处于2018年以来的最高水平，价格上升是主要原因。" },
-            { word: "inflation", meaning: "通货膨胀", sentence: "A Gallup survey published in April 2025 found similar attitudes, with nearly 30% of Americans reporting that ______ is the most important financial problem facing their family today.", answer: "inflation", options: ["inflation", "portals", "practitioners", "stopgap"], translation: "2025年4月发布的盖洛普调查发现类似的态度，近30%的美国人报告通货膨胀是他们的家庭今天面临的最重要财务问题。" },
-            { word: "stopgap", meaning: "权宜之计，临时措施", sentence: "As a result, debt has shifted from a ______ to a way of life for many people.", answer: "stopgap", options: ["stopgap", "inflation", "portals", "practitioners"], translation: "结果，债务已从权宜之计转变为许多人的生活方式。" },
-            { word: "most commonly cited goal", meaning: "最常被提及的目标", sentence: "As a result, debt has shifted from a stopgap to a way of life for many people, with paying down debt the ______ in the Bankrate survey.", answer: "most commonly cited goal", options: ["most commonly cited goal", "stopgap", "inflation", "portals"], translation: "结果，债务已从权宜之计转变为许多人的生活方式，偿还债务成为Bankrate调查中最常被提及的目标。" }
+            { word: "boost", meaning: "提升，增强，促进", sentence: "Psychology researchers are developing cognitive interventions to help adults ______ their brain health rather than being affected by harmful stereotypes about aging.", answer: "boost", options: ["boost", "exacerbate", "strain", "collateral"], translation: "心理学研究人员正在开发认知干预措施，帮助成年人提升大脑健康，而不是受到关于衰老的有害刻板印象的影响。" },
+            { word: "hyperpersonalized", meaning: "超个性化的，高度定制化的", sentence: "Yet this objective can retreat to the background as consumers struggle with the high cost of living combined with a steady stream of ______ online ads.", answer: "hyperpersonalized", options: ["hyperpersonalized", "tempting", "numerosity", "internalizing"], translation: "然而，随着消费者努力应对高昂的生活成本和源源不断的超个性化在线广告，这一目标可能会退居次要地位。" },
+            { word: "installment", meaning: "分期付款", sentence: "A prime example is buy now, pay later (BNPL) services, where a single click or tap lets shoppers purchase items by splitting up the payments into smaller, interest-free ______.", answer: "installment", options: ["installment", "schemes", "gadgets", "strain"], translation: "一个典型的例子是先买后付（BNPL）服务，只需单击或点击，购物者就可以通过将付款分成更小的无息分期付款来购买商品。" },
+            { word: "barrage of temptation", meaning: "连珠炮般的诱惑", sentence: "Since AI models are better and better at predicting the products we want, targeted ads can create a constant ______.", answer: "barrage of temptation", options: ["barrage of temptation", "stack up", "unsecured debt", "shedding light on"], translation: "由于AI模型越来越擅长预测我们想要的产品，定向广告可以创造连珠炮般的诱惑。" },
+            { word: "gadgets", meaning: "电子设备，小器具", sentence: "Clothing and fashion was the top category for this type of financing, followed by electronics and ______ and furniture and home decor.", answer: "gadgets", options: ["gadgets", "schemes", "strain", "numerosity"], translation: "服装和时尚是这类融资的首选类别，其次是电子产品和小器具以及家具和家居装饰。" },
+            { word: "schemes", meaning: "计划，方案，机制", sentence: "Unlike credit cards, BNPL ______ do not require an official approval process.", answer: "schemes", options: ["schemes", "gadgets", "strain", "internalizing"], translation: "与信用卡不同，BNPL机制不需要官方审批流程。" },
+            { word: "stack up", meaning: "堆积，累积", sentence: "While these loans can help with short-term budgeting for individuals who can make the payments on time, they can increase stress when users ______ multiple BNPL loans simultaneously and start missing payments.", answer: "stack up", options: ["stack up", "shedding light on", "barrage of temptation", "unsecured debt"], translation: "虽然这些贷款可以帮助能够按时付款的个人进行短期预算，但当用户同时累积多笔BNPL贷款并开始错过付款时，它们会增加压力。" },
+            { word: "unsecured debt", meaning: "无担保债务，信用债务", sentence: "Researchers recently found that people with certain mental health conditions were more likely to use BNPL products, and ______—debt that is not backed by collateral—is correlated with worse mental health.", answer: "unsecured debt", options: ["unsecured debt", "barrage of temptation", "stack up", "shedding light on"], translation: "研究人员最近发现，患有某些心理健康状况的人更有可能使用BNPL产品，而无担保债务——没有抵押品支持的债务——与更差的心理健康相关。" },
+            { word: "collateral", meaning: "抵押品，担保物", sentence: "Unsecured debt—debt that is not backed by ______—is correlated with worse mental health.", answer: "collateral", options: ["collateral", "exacerbate", "strain", "tempting"], translation: "无担保债务——没有抵押品支持的债务——与更差的心理健康相关。" },
+            { word: "exacerbate", meaning: "加剧，使恶化", sentence: "Researchers are studying the psychological mechanisms that shape financial decision-making in the ecommerce environment and how to help people resist spending that may ______ financial stress.", answer: "exacerbate", options: ["exacerbate", "boost", "strain", "tempting"], translation: "研究人员正在研究塑造电子商务环境中财务决策的心理机制，以及如何帮助人们抵制可能加剧财务压力的消费。" },
+            { word: "strain", meaning: "压力，紧张，困境", sentence: "When people are under economic ______, one of the challenges they face is that they have less room for error in financial decisions.", answer: "strain", options: ["strain", "boost", "collateral", "numerosity"], translation: "当人们处于经济困境时，他们面临的挑战之一是在财务决策中犯错的空间更小。" },
+            { word: "shedding light on", meaning: "阐明，揭示", sentence: "After realizing how much they actually owed, 1 in 4 Americans say they've regretted using BNPL, and a new study is ______ why these plans are so tempting.", answer: "shedding light on", options: ["shedding light on", "stack up", "unsecured debt", "barrage of temptation"], translation: "在意识到他们实际欠了多少钱后，四分之一的美国人表示他们后悔使用BNPL，一项新研究正在揭示为什么这些计划如此诱人。" },
+            { word: "tempting", meaning: "诱人的，有吸引力的", sentence: "A new study is shedding light on why these plans are so ______.", answer: "tempting", options: ["tempting", "numerosity", "internalizing", "hyperpersonalized"], translation: "一项新研究正在揭示为什么这些计划如此诱人。" },
+            { word: "numerosity", meaning: "数量效应，数值感知", sentence: "Presenting an installment amount rather than the full price lowers a consumer's perception of the cost. This is due to the ______ effect.", answer: "numerosity", options: ["numerosity", "internalizing", "tempting", "hyperpersonalized"], translation: "呈现分期付款金额而不是全价会降低消费者对成本的感知。这是由于数量效应。" },
+            { word: "internalizing", meaning: "内化", sentence: "With these installment plans, people may not be fully ______ the cost of a purchase when deciding whether to buy or how much to spend.", answer: "internalizing", options: ["internalizing", "numerosity", "tempting", "hyperpersonalized"], translation: "有了这些分期付款计划，人们在决定是否购买或花多少钱时可能没有完全内化购买的成本。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +231,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 20, 
+                round: 21, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
