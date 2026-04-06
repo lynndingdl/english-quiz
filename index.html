@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第12轮</title>
+    <title>英语单词复习 - 第13轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -25,8 +25,6 @@
         .btn { display: block; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; margin-top: 16px; transition: all 0.2s; }
         .next-btn { background: #4CAF50; color: white; }
         .next-btn:hover { background: #45a049; }
-        
-        /* 答案解析区域 */
         .answer-box { display: none; padding: 24px; background: #f0f7f0; border-radius: 12px; margin-top: 20px; border-left: 4px solid #4CAF50; }
         .answer-box.show { display: block; }
         .answer-box.wrong-answer { background: #fff5f5; border-left-color: #f44336; }
@@ -39,15 +37,12 @@
         .word-title { font-size: 20px; font-weight: bold; color: #667eea; }
         .full-sentence { font-size: 16px; line-height: 1.8; color: #333; background: #e8f5e9; padding: 12px; border-radius: 8px; }
         .full-sentence .answer-word { color: #4CAF50; font-weight: bold; text-decoration: underline; }
-        
-        /* 选项释义列表 */
         .options-meaning { margin-top: 12px; }
         .option-meaning-item { padding: 8px 12px; margin: 6px 0; background: #fff; border-radius: 6px; font-size: 15px; }
         .option-meaning-item.correct-opt { background: #c8e6c9; border-left: 3px solid #4CAF50; }
         .option-label { font-weight: bold; color: #666; margin-right: 8px; }
         .option-word { font-weight: bold; color: #333; }
         .option-meaning { color: #666; margin-left: 8px; }
-        
         .result { display: none; text-align: center; padding: 32px; }
         .result.show { display: block; }
         .result h2 { color: #333; margin-bottom: 16px; }
@@ -60,8 +55,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第12轮</h1>
-        <p class="subtitle">选择题（4选1）</p>
+        <h1>🦐 英语单词复习 - 第13轮</h1>
+        <p class="subtitle">选择题（4选1）| 错题优先</p>
         
         <div class="progress-info">
             <span>进度: <span id="currentNum">1</span> / 20</span>
@@ -72,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第12轮复习完成！</h2>
+            <h2>🎉 第13轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -82,57 +77,62 @@
     </div>
 
     <script>
-        // 单词库（包含所有选项的中文释义）
         const wordBank = {
-            "likened": "比作，比拟",
-            "prioritized": "优先考虑的",
-            "mitigated": "减轻的，缓解的",
-            "merged": "合并的，融合的",
             "literacy": "读写能力，素养",
             "norms": "规范，准则",
             "pipeline": "管道，人才输送渠道",
             "pillars": "支柱，核心原则",
-            "marginalized": "边缘化的",
-            "normalized": "正常化的",
-            "navigated": "导航的，应对的",
-            "merge": "合并，融合",
-            "mitigate": "减轻，缓解",
             "navigate": "导航，应对",
+            "mitigate": "减轻，缓解",
+            "merge": "合并，融合",
             "prioritize": "优先考虑",
-            "mound": "投手丘（棒球）",
-            "pillar": "支柱，柱子",
-            "off-ramp": "退出通道，出路",
-            "Movember": "Movember（男性健康慈善机构）",
-            "multibillion-dollar": "数十亿美元的",
             "nuanced": "细致入微的，微妙的",
-            "normalizing": "正常化",
             "neurodivergent": "神经多样性者",
-            "postgame": "赛后的",
-            "mindset-reappraisal": "心态重新评估",
-            "navigating": "应对，穿越"
+            "normalizing": "正常化",
+            "multibillion-dollar": "数十亿美元的",
+            "prioritized": "优先考虑的",
+            "marginalized": "边缘化的",
+            "navigated": "导航的，应对的",
+            "normalized": "正常化的",
+            "proceedings": "会议论文集",
+            "reckless": "鲁莽的，轻率的",
+            "reconceptualize": "重新概念化",
+            "recruited": "招募的",
+            "relegated": "被降级",
+            "resembled": "类似于",
+            "rigor": "严谨性",
+            "sanctioned": "认可的，批准的",
+            "scrutiny": "审查，审视",
+            "self-efficacy": "自我效能感",
+            "self-sufficiency": "自给自足",
+            "semiprofessional": "半职业的",
+            "sharpen": "加强，提高",
+            "shooting": "射击",
+            "shortfall": "不足，缺口",
+            "stretches": "一段时间，延伸"
         };
 
         const questions = [
-            { word: "likened", meaning: "比作，比拟", sentence: "Ryan Terao, PsyD, an esports and licensed clinical psychologist, ______ the power of esports and gaming to fire.", answer: "likened", options: ["likened", "prioritized", "mitigated", "merged"], translation: "Ryan Terao，一位电竞和临床心理学家，将电竞和游戏的力量比作火。" },
             { word: "literacy", meaning: "读写能力，素养", sentence: "Professionals within esports psychology perform roles that combine high-performance coaching, clinical or counseling skills, and deep game ______.", answer: "literacy", options: ["literacy", "norms", "pipeline", "pillars"], translation: "电竞心理学专业人士的角色结合了高性能教练、临床或咨询技能，以及深厚的游戏素养。" },
-            { word: "marginalized", meaning: "边缘化的", sentence: "Strobel views esports as widening accessibility for students who may be ______ in traditional sports, including neurodivergent youth.", answer: "marginalized", options: ["marginalized", "prioritized", "normalized", "navigated"], translation: "Strobel认为电竞扩大了那些在传统体育中可能被边缘化的学生（包括神经多样性青年）的参与机会。" },
-            { word: "merge", meaning: "合并，融合", sentence: "I've been spending outside the game to learn all these skills and ______ them with my passion for the game.", answer: "merge", options: ["merge", "mitigate", "navigate", "prioritize"], translation: "我在游戏之外花费时间学习所有这些技能，并将它们与我对此游戏的热情融合在一起。" },
-            { word: "mitigate", meaning: "减轻，缓解", sentence: "What we really need to do is track young people over their development to understand when gaming is good and when it is bad, and then how to ______ the bad and maximize the good.", answer: "mitigate", options: ["mitigate", "merge", "navigate", "prioritize"], translation: "我们真正需要做的是追踪年轻人的发展过程，了解游戏何时有益何时有害，然后如何减轻负面影响并最大化正面影响。" },
-            { word: "mound", meaning: "投手丘（棒球）", sentence: "This would be akin to a player committing a flagrant foul in basketball or rushing the ______ in baseball.", answer: "mound", options: ["mound", "pillar", "pipeline", "off-ramp"], translation: "这就像篮球运动员公然犯规，或棒球运动员冲向投手丘一样。" },
-            { word: "Movember", meaning: "Movember（男性健康慈善机构）", sentence: "In 2024, the global men's health charity ______ recruited esports psychology researcher Dylan Poulus, PhD.", answer: "Movember", options: ["Movember", "multibillion-dollar", "nuanced", "normalizing"], translation: "2024年，全球男性健康慈善机构Movember招募了电竞心理学研究员Dylan Poulus博士。" },
-            { word: "multibillion-dollar", meaning: "数十亿美元的", sentence: "Esports are a fast-evolving ______ industry that draws hundreds of millions of competitive video game players worldwide.", answer: "multibillion-dollar", options: ["multibillion-dollar", "nuanced", "marginalized", "neurodivergent"], translation: "电竞是一个快速发展的数十亿美元产业，吸引了全球数亿竞技视频游戏玩家。" },
             { word: "navigate", meaning: "导航，应对", sentence: "While elite players within formal organizational structures often have access to professional psychological services, non-elite players must rely on inconsistent online resources or ______ support systems on their own.", answer: "navigate", options: ["navigate", "mitigate", "merge", "prioritize"], translation: "虽然正式组织结构中的精英选手通常可以获得专业的心理服务，但非精英选手必须依靠不一致的在线资源或独自应对支持系统。" },
-            { word: "neurodivergent", meaning: "神经多样性者", sentence: "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including ______ youth.", answer: "neurodivergent", options: ["neurodivergent", "nuanced", "normalizing", "multibillion-dollar"], translation: "Strobel认为电竞扩大了那些在传统体育中可能被边缘化的学生（包括神经多样性青年）的参与机会。" },
-            { word: "normalizing", meaning: "正常化", sentence: "Students gained access to an athletics-based sport psychologist, nutrition programming, and twice-weekly morning workouts aimed at ______ physical conditioning.", answer: "normalizing", options: ["normalizing", "neurodivergent", "nuanced", "marginalized"], translation: "学生可以获得田径运动心理学家、营养计划，以及每周两次的晨练，旨在使体育锻炼正常化。" },
-            { word: "norms", meaning: "规范，准则", sentence: "Teams were also encouraged to develop their own ______ around culture, accountability, and conflict management.", answer: "norms", options: ["norms", "literacy", "pillars", "pipeline"], translation: "团队还被鼓励围绕文化、问责制和冲突管理制定自己的规范。" },
             { word: "nuanced", meaning: "细致入微的，微妙的", sentence: "However, a more ______ approach is necessary when esports competitors often require those hours to train and remain competitive.", answer: "nuanced", options: ["nuanced", "neurodivergent", "normalizing", "multibillion-dollar"], translation: "然而，当电竞选手通常需要那些时间来训练并保持竞争力时，需要一种更细致入微的方法。" },
-            { word: "off-ramp", meaning: "退出通道，出路", sentence: "Many pros go straight from an anonymous position on a ladder to a contract, with no Little League, no college team, and no ______ when it ends.", answer: "off-ramp", options: ["off-ramp", "mound", "pipeline", "pillar"], translation: "许多职业选手直接从天梯上的匿名位置签下合同，没有少年联赛，没有大学队伍，结束时也没有退出通道。" },
-            { word: "pillars", meaning: "支柱，核心原则", sentence: "Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to finalize nine ______ of mental health support.", answer: "pillars", options: ["pillars", "norms", "literacy", "pipeline"], translation: "Poulus和同事召集了游戏发行商、锦标赛组织者、国际奥委会代表和心理健康专家，最终确定了心理健康支持的九大支柱。" },
-            { word: "pipeline", meaning: "管道，人才输送渠道", sentence: "Esports is a sport without a childhood ______.", answer: "pipeline", options: ["pipeline", "pillars", "literacy", "norms"], translation: "电竞是一项没有童年人才输送渠道的运动。" },
-            { word: "postgame", meaning: "赛后的", sentence: "He often prepares clients to expect a temporary dip in performance as they reconstruct habits around sleep, practice structure, and ______ review.", answer: "postgame", options: ["postgame", "pillars", "pipeline", "off-ramp"], translation: "他经常让客户做好准备，预期在重建睡眠、练习结构和赛后复盘习惯时，表现会出现暂时性下降。" },
             { word: "prioritized", meaning: "优先考虑的", sentence: "Gardner and his team ______ exercise, sleep routines, and intrinsic motivation, helping the Immortals players build healthier daily structures.", answer: "prioritized", options: ["prioritized", "marginalized", "normalized", "navigated"], translation: "Gardner和他的团队优先考虑运动、睡眠习惯和内在动机，帮助Immortals战队选手建立更健康的日常结构。" },
-            { word: "mindset-reappraisal", meaning: "心态重新评估", sentence: "A ______ intervention that encouraged players to view stress as beneficial lowered players' anxiety.", answer: "mindset-reappraisal", options: ["mindset-reappraisal", "multibillion-dollar", "postgame", "off-ramp"], translation: "一种鼓励选手将压力视为有益的心态重新评估干预措施降低了选手的焦虑。" },
-            { word: "navigating", meaning: "应对，穿越", sentence: "EPPIC addresses communication, teamwork, leadership, health and wellness, and ______ online toxicity and hate speech.", answer: "navigating", options: ["navigating", "normalizing", "neurodivergent", "nuanced"], translation: "EPPIC涉及沟通、团队合作、领导力、健康和保健，以及应对网络毒性和仇恨言论。" }
+            { word: "proceedings", meaning: "会议论文集", sentence: "The findings were published in the ______ of a major conference.", answer: "proceedings", options: ["proceedings", "shortfall", "stretches", "rigor"], translation: "研究结果发表在一个重要会议的论文集中。" },
+            { word: "reckless", meaning: "鲁莽的，轻率的", sentence: "Tilt can lead players to perform ______ and self-destructive actions.", answer: "reckless", options: ["reckless", "sharpen", "sanctioned", "scrutiny"], translation: "情绪失控会导致玩家做出鲁莽和自我毁灭的行为。" },
+            { word: "reconceptualize", meaning: "重新概念化", sentence: "Getting players to ______ stress as being beneficial improved their performance.", answer: "reconceptualize", options: ["reconceptualize", "resembled", "recruited", "relegated"], translation: "让选手重新概念化压力为有益的，改善了他们的表现。" },
+            { word: "recruited", meaning: "招募的", sentence: "In 2024, the global men's health charity Movember ______ esports psychology researcher Dylan Poulus, PhD.", answer: "recruited", options: ["recruited", "relegated", "resembled", "reconceptualize"], translation: "2024年，全球男性健康慈善机构Movember招募了电竞心理学研究员Dylan Poulus博士。" },
+            { word: "relegated", meaning: "被降级", sentence: "Neurodivergent youth in esports get to be the captain versus the helper role they are often ______ to in traditional sports.", answer: "relegated", options: ["relegated", "recruited", "resembled", "reconceptualize"], translation: "电竞中的神经多样性青年可以成为队长，而不是他们在传统体育中经常被降级到的辅助角色。" },
+            { word: "resembled", meaning: "类似于", sentence: "Researchers found 51 stressors that ______ those affecting professional athletes in traditional sports.", answer: "resembled", options: ["resembled", "recruited", "relegated", "reconceptualize"], translation: "研究人员发现了51种压力源，类似于影响传统体育职业运动员的那些。" },
+            { word: "rigor", meaning: "严谨性", sentence: "The evidence base lacks the ______ necessary for evidence-based practice.", answer: "rigor", options: ["rigor", "scrutiny", "shortfall", "stretches"], translation: "证据基础缺乏循证实践所需的严谨性。" },
+            { word: "sanctioned", meaning: "认可的，批准的", sentence: "The program adopted the NCAA's 20-hour rule for ______ activities.", answer: "sanctioned", options: ["sanctioned", "scrutiny", "shortfall", "stretches"], translation: "该项目采用了NCAA认可的活动的20小时规则。" },
+            { word: "scrutiny", meaning: "审查，审视", sentence: "Many esports players begin competing professionally in adolescence, facing intense pressure and public ______.", answer: "scrutiny", options: ["scrutiny", "rigor", "shortfall", "stretches"], translation: "许多电竞选手在青春期就开始职业比赛，面临巨大的压力和公众审视。" },
+            { word: "self-efficacy", meaning: "自我效能感", sentence: "Mindset and ______ are key factors in esports performance.", answer: "self-efficacy", options: ["self-efficacy", "self-sufficiency", "semiprofessional", "sharpen"], translation: "心态和自我效能感是电竞表现的关键因素。" },
+            { word: "self-sufficiency", meaning: "自给自足", sentence: "Teams were encouraged to develop their own norms, fostering ______ and leadership skills.", answer: "self-sufficiency", options: ["self-sufficiency", "self-efficacy", "semiprofessional", "sharpen"], translation: "团队被鼓励制定自己的规范，培养自给自足和领导技能。" },
+            { word: "semiprofessional", meaning: "半职业的", sentence: "Players often compete through systems run by amateur, ______, or professional leagues.", answer: "semiprofessional", options: ["semiprofessional", "self-sufficiency", "self-efficacy", "sharpen"], translation: "选手通常通过业余、半职业或职业联赛运营的系统进行比赛。" },
+            { word: "sharpen", meaning: "加强，提高", sentence: "New studies will ______ understanding of what drives performance in esports.", answer: "sharpen", options: ["sharpen", "shooting", "shortfall", "stretches"], translation: "新研究将加强对电竞表现驱动因素的理解。" },
+            { word: "shooting", meaning: "射击", sentence: "Popular genres of esports include ______ games like Counter-Strike.", answer: "shooting", options: ["shooting", "sharpen", "shortfall", "stretches"], translation: "电竞的热门类型包括像《反恐精英》这样的射击游戏。" },
+            { word: "shortfall", meaning: "不足，缺口", sentence: "There is still a significant ______ of qualified professionals in esports psychology.", answer: "shortfall", options: ["shortfall", "stretches", "shooting", "sharpen"], translation: "电竞心理学合格专业人员仍存在显著缺口。" },
+            { word: "stretches", meaning: "一段时间，延伸", sentence: "Players often practice for long ______ with minimal physical movement.", answer: "stretches", options: ["stretches", "shortfall", "shooting", "sharpen"], translation: "选手经常长时间练习，身体活动极少。" }
         ];
 
         let currentIndex = 0;
@@ -214,7 +214,6 @@
                 opt.style.cursor = 'default';
             });
             
-            // 显示答案解析
             const answerBox = document.getElementById('answerBox');
             const answerTitle = document.getElementById('answerTitle');
             
@@ -246,7 +245,7 @@
             document.getElementById('finalScore').textContent = correctCount;
             document.getElementById('accuracy').textContent = Math.round(correctCount / 20 * 100);
             
-            const resultData = { round: 12, total: 20, correct: correctCount, results };
+            const resultData = { round: 13, total: 20, correct: correctCount, results };
             const resultCode = 'ENGRESULT:' + btoa(JSON.stringify(resultData));
             document.getElementById('resultCode').textContent = resultCode;
         }
