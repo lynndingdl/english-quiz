@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第19轮</title>
+    <title>英语单词复习 - 第20轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第19轮</h1>
+        <h1>🦐 英语单词复习 - 第20轮</h1>
         <p class="subtitle">选择题（4选1）| 全部新词 | 原句出题</p>
         
         <div class="progress-info">
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第19轮复习完成！</h2>
+            <h2>🎉 第20轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,49 +78,49 @@
 
     <script>
         const wordBank = {
-            "anecdotally": "据传闻，根据轶事证据",
-            "stick figure": "火柴人画，简笔画",
-            "Compounding": "加重，使复杂化",
-            "juggle responsibilities": "同时应对多项责任",
-            "upfront": "预先的，事先的",
-            "gig economy": "零工经济，临时工经济",
-            "displaced": "被取代的，被淘汰的",
-            "Tech-savvy": "精通技术的，技术娴熟的",
-            "impairment": "损伤，障碍",
-            "technophobic": "技术恐惧的",
-            "adherent": "遵从的，坚持的",
-            "dementia": "痴呆症",
-            "shedding light": "阐明，揭示",
-            "cardiovascular": "心血管的",
-            "psychomotor": "精神运动的，心理运动的",
-            "facilitated": "促成的，协助的",
-            "executive function": "执行功能",
-            "holistic": "整体的，全面的",
-            "intensive": "强化的，密集的",
-            "Metacognition": "元认知"
+            "recruit": "调动，招募，利用",
+            "are poised to": "准备好，即将",
+            "portals": "门户，平台，入口",
+            "bypasses": "绕过，避开",
+            "practitioners": "从业者，实践者",
+            "underlying": "潜在的，根本的",
+            "deferred": "延期的，递延的",
+            "frictionless": "无摩擦的，顺畅的",
+            "dismantle": "拆除，瓦解，消除",
+            "converging technologies": "融合技术，汇聚的技术",
+            "rewiring": "重塑，重新连接",
+            "exacerbating": "加剧，恶化",
+            "precarious": "不稳定的，岌岌可危的",
+            "Wearied by years of inflation": "因多年的通货膨胀而疲惫不堪",
+            "stagnant": "停滞的，不景气的",
+            "pessimism": "悲观情绪，悲观主义",
+            "blame": "归咎于，责怪",
+            "inflation": "通货膨胀",
+            "stopgap": "权宜之计，临时措施",
+            "most commonly cited goal": "最常被提及的目标"
         };
 
         const questions = [
-            { word: "anecdotally", meaning: "据传闻，根据轶事证据", sentence: "After the classes had ended, Wu heard ______ that many participants went on to take online courses, private lessons, or classes through community groups to pursue their interests.", answer: "anecdotally", options: ["anecdotally", "upfront", "holistic", "intensive"], translation: "课程结束后，Wu据传闻听说许多参与者继续参加在线课程、私人课程或社区团体的课程来追求他们的兴趣。" },
-            { word: "stick figure", meaning: "火柴人画，简笔画", sentence: "There were people who had never drawn anything but a ______, and later they were selling their art and getting commissions.", answer: "stick figure", options: ["stick figure", "dementia", "impairment", "adherent"], translation: "有些人以前只画过火柴人画，后来他们开始出售自己的艺术作品并接受委托。" },
-            { word: "Compounding", meaning: "加重，使复杂化", sentence: "______ the challenge is the time pressures faced by many middle-aged and older workers who must also juggle responsibilities related to children, aging parents, or other commitments, meaning less time for learning.", answer: "Compounding", options: ["Compounding", "facilitated", "shedding light", "Metacognition"], translation: "加重这一挑战的是许多中年和老年工人面临的时间压力，他们还必须同时应对与孩子、年迈父母或其他承诺相关的责任，这意味着学习时间更少。" },
-            { word: "juggle responsibilities", meaning: "同时应对多项责任", sentence: "Compounding the challenge is the time pressures faced by many middle-aged and older workers who must also ______ related to children, aging parents, or other commitments, meaning less time for learning.", answer: "juggle responsibilities", options: ["juggle responsibilities", "gig economy", "executive function", "Tech-savvy"], translation: "加重这一挑战的是许多中年和老年工人面临的时间压力，他们还必须同时应对与孩子、年迈父母或其他承诺相关的责任，这意味着学习时间更少。" },
-            { word: "upfront", meaning: "预先的，事先的", sentence: "For older workers to overcome barriers to learning, they often need to know ______ how training will benefit them.", answer: "upfront", options: ["upfront", "anecdotally", "holistic", "intensive"], translation: "老年工人要克服学习障碍，通常需要预先知道培训将如何使他们受益。" },
-            { word: "gig economy", meaning: "零工经济，临时工经济", sentence: "Beier also worries about people who are under or unemployed or contractors in the ______, who may not have access to on-the-job training or practice with current technologies.", answer: "gig economy", options: ["gig economy", "executive function", "juggle responsibilities", "Tech-savvy"], translation: "Beier还担心那些就业不足或失业的人或零工经济中的承包商，他们可能无法获得在职培训或当前技术的实践。" },
-            { word: "displaced", meaning: "被取代的，被淘汰的", sentence: "We need to find better ways for them to learn new things to stay employable, or I worry that they will be ______ because of technology and innovation.", answer: "displaced", options: ["displaced", "facilitated", "adherent", "intensive"], translation: "我们需要找到更好的方法让他们学习新事物以保持就业能力，否则我担心他们会因技术和创新而被取代。" },
-            { word: "Tech-savvy", meaning: "精通技术的，技术娴熟的", sentence: "______ older adults: Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive impairment.", answer: "Tech-savvy", options: ["Tech-savvy", "technophobic", "gig economy", "displaced"], translation: "精通技术的老年人：证据还表明，即使在开始出现与轻度认知障碍相关的记忆、注意力、执行功能和其他领域的下降后，人们也能够掌握新技能。" },
-            { word: "impairment", meaning: "损伤，障碍", sentence: "Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive ______.", answer: "impairment", options: ["impairment", "dementia", "adherent", "stick figure"], translation: "证据还表明，即使在开始出现与轻度认知障碍相关的记忆、注意力、执行功能和其他领域的下降后，人们也能够掌握新技能。" },
-            { word: "technophobic", meaning: "技术恐惧的", sentence: "We found that the participants were not ______.", answer: "technophobic", options: ["technophobic", "Tech-savvy", "displaced", "holistic"], translation: "我们发现参与者并不恐惧技术。" },
-            { word: "adherent", meaning: "遵从的，坚持的", sentence: "They were very ______, and there was a low dropout rate.", answer: "adherent", options: ["adherent", "displaced", "intensive", "upfront"], translation: "他们非常坚持，退出率很低。" },
-            { word: "dementia", meaning: "痴呆症", sentence: "A recent study of more than 13,500 adults age 50 and older revealed that increased isolation was associated with increased risk of mortality, disability, and ______.", answer: "dementia", options: ["dementia", "impairment", "stick figure", "adherent"], translation: "最近一项针对13,500多名50岁及以上成年人的研究显示，隔离增加与死亡率、残疾和痴呆症风险增加相关。" },
-            { word: "shedding light", meaning: "阐明，揭示", sentence: "The latest studies are also ______ on cognitive health's connection to other lifestyle factors beyond social connectedness.", answer: "shedding light", options: ["shedding light", "facilitated", "Compounding", "Metacognition"], translation: "最新的研究也在阐明认知健康与社会联系之外的其他生活方式因素之间的联系。" },
-            { word: "cardiovascular", meaning: "心血管的", sentence: "In Finland, researchers led a 2-year intervention for people at higher risk of dementia. Participants were educated and supported in areas of diet, physical activity, cognitive training, social activity, and monitoring of ______ risk factors.", answer: "cardiovascular", options: ["cardiovascular", "psychomotor", "executive function", "holistic"], translation: "在芬兰，研究人员为痴呆症风险较高的人群进行了为期2年的干预。参与者在饮食、体育活动、认知训练、社交活动和心血管风险因素监测等领域接受教育和支持。" },
-            { word: "psychomotor", meaning: "精神运动的，心理运动的", sentence: "The people in the intervention group experienced significantly greater improvements than the control group in executive function, complex memory tasks, and ______ control.", answer: "psychomotor", options: ["psychomotor", "cardiovascular", "holistic", "intensive"], translation: "干预组的人在执行功能、复杂记忆任务和精神运动控制方面比对照组有显著更大的改善。" },
-            { word: "facilitated", meaning: "促成的，协助的", sentence: "In a similar study in the United States, participants in the structured intervention attended 38 ______ peer team meetings over 2 years with education, goal setting, and accountability.", answer: "facilitated", options: ["facilitated", "shedding light", "Compounding", "Metacognition"], translation: "在美国的一项类似研究中，结构化干预的参与者在2年内参加了38次协助的同龄人团队会议，包括教育、目标设定和问责。" },
-            { word: "executive function", meaning: "执行功能", sentence: "The people in the intervention group experienced significantly greater improvements than the control group in ______, complex memory tasks, and psychomotor control.", answer: "executive function", options: ["executive function", "cardiovascular", "gig economy", "juggle responsibilities"], translation: "干预组的人在执行功能、复杂记忆任务和精神运动控制方面比对照组有显著更大的改善。" },
-            { word: "holistic", meaning: "整体的，全面的", sentence: "While these findings build the case for a ______ approach to brain health, many people do not have access to intensive, in-person support to make lifestyle changes.", answer: "holistic", options: ["holistic", "intensive", "upfront", "anecdotally"], translation: "虽然这些发现为大脑健康的整体方法提供了依据，但许多人无法获得强化、面对面的支持来进行生活方式改变。" },
-            { word: "intensive", meaning: "强化的，密集的", sentence: "While these findings build the case for a holistic approach to brain health, many people do not have access to ______, in-person support to make lifestyle changes.", answer: "intensive", options: ["intensive", "holistic", "upfront", "anecdotally"], translation: "虽然这些发现为大脑健康的整体方法提供了依据，但许多人无法获得强化、面对面的支持来进行生活方式改变。" },
-            { word: "Metacognition", meaning: "元认知", sentence: "______, which is the awareness of our own abilities, improves with age.", answer: "Metacognition", options: ["Metacognition", "shedding light", "facilitated", "Compounding"], translation: "元认知，即对我们自己能力的认知，随着年龄的增长而提高。" }
+            { word: "recruit", meaning: "调动，招募，利用", sentence: "We can ______ cognitive mechanisms to focus on remembering what is important and interesting.", answer: "recruit", options: ["recruit", "bypasses", "dismantle", "blame"], translation: "我们可以调动认知机制来专注于记住重要和有趣的事情。" },
+            { word: "are poised to", meaning: "准备好，即将", sentence: "Clinical psychologists ______ help older adults identify their curiosities and what matters most to them and then take steps to acquire new skills in these areas.", answer: "are poised to", options: ["are poised to", "underlying", "deferred", "stagnant"], translation: "临床心理学家准备好帮助老年人识别他们的好奇心和最重要的事情，然后采取步骤在这些领域获得新技能。" },
+            { word: "portals", meaning: "门户，平台，入口", sentence: "Some of these older partners are struggling not only to learn how to support a family member with a neurocognitive disorder, but also to navigate health care ______, telehealth visits, transportation, and other details for the loved one.", answer: "portals", options: ["portals", "practitioners", "stopgap", "inflation"], translation: "这些老年伴侣中的一些人不仅在努力学习如何支持患有神经认知障碍的家庭成员，还要为亲人应对医疗保健门户、远程医疗访问、交通和其他细节。" },
+            { word: "bypasses", meaning: "绕过，避开", sentence: "Buy now, pay later financing ______ a number of cognitive and physical barriers to impulse buying, heightening the risk of financial and psychological stress for many people.", answer: "bypasses", options: ["bypasses", "recruit", "dismantle", "blame"], translation: "先买后付融资绕过了许多冲动购物的认知和物理障碍，增加了许多人面临财务和心理压力的风险。" },
+            { word: "practitioners", meaning: "从业者，实践者", sentence: "Behavioral scientists and applied ______ can help by continuing to research the real-world impacts of the cognitive mechanisms underlying these behaviors.", answer: "practitioners", options: ["practitioners", "portals", "stopgap", "inflation"], translation: "行为科学家和应用实践者可以通过继续研究这些行为背后的认知机制的现实世界影响来提供帮助。" },
+            { word: "underlying", meaning: "潜在的，根本的", sentence: "Behavioral scientists and applied practitioners can help by continuing to research the real-world impacts of the cognitive mechanisms ______ these behaviors.", answer: "underlying", options: ["underlying", "deferred", "stagnant", "frictionless"], translation: "行为科学家和应用实践者可以通过继续研究这些行为背后的认知机制的现实世界影响来提供帮助。" },
+            { word: "deferred", meaning: "延期的，递延的", sentence: "A single tap, a purchase made, a payment ______.", answer: "deferred", options: ["deferred", "underlying", "stagnant", "frictionless"], translation: "一次点击，一次购买，一次延期付款。" },
+            { word: "frictionless", meaning: "无摩擦的，顺畅的", sentence: "As AI algorithms predict consumers' desires and new ______ payment methods dismantle the traditional pain of paying.", answer: "frictionless", options: ["frictionless", "precarious", "rewiring", "pessimism"], translation: "随着AI算法预测消费者的欲望，新的无摩擦支付方式消除了传统的支付痛苦。" },
+            { word: "dismantle", meaning: "拆除，瓦解，消除", sentence: "New frictionless payment methods ______ the traditional pain of paying.", answer: "dismantle", options: ["dismantle", "bypasses", "recruit", "blame"], translation: "新的无摩擦支付方式消除了传统的支付痛苦。" },
+            { word: "converging technologies", meaning: "融合技术，汇聚的技术", sentence: "Cognitive psychologists are stepping in to reveal how these ______ are rewiring financial decision-making.", answer: "converging technologies", options: ["converging technologies", "portals", "stopgap", "inflation"], translation: "认知心理学家正在介入，揭示这些融合技术如何重塑财务决策。" },
+            { word: "rewiring", meaning: "重塑，重新连接", sentence: "Cognitive psychologists are stepping in to reveal how these converging technologies are ______ financial decision-making.", answer: "rewiring", options: ["rewiring", "exacerbating", "stagnant", "pessimism"], translation: "认知心理学家正在介入，揭示这些融合技术如何重塑财务决策。" },
+            { word: "exacerbating", meaning: "加剧，恶化", sentence: "Cognitive psychologists are stepping in to reveal how these converging technologies are rewiring financial decision-making and ______ debt-related mental health concerns.", answer: "exacerbating", options: ["exacerbating", "rewiring", "precarious", "deferred"], translation: "认知心理学家正在介入，揭示这些融合技术如何重塑财务决策并加剧与债务相关的心理健康问题。" },
+            { word: "precarious", meaning: "不稳定的，岌岌可危的", sentence: "This work comes at a ______ time.", answer: "precarious", options: ["precarious", "stagnant", "frictionless", "pessimism"], translation: "这项工作正处于一个岌岌可危的时期。" },
+            { word: "Wearied by years of inflation", meaning: "因多年的通货膨胀而疲惫不堪", sentence: "______, stagnant income, and elevated personal debt, many Americans believe their finances will worsen in 2026.", answer: "Wearied by years of inflation", options: ["Wearied by years of inflation", "exacerbating", "rewiring", "deferred"], translation: "因多年的通货膨胀、停滞的收入和高企的个人债务而疲惫不堪，许多美国人认为他们的财务状况将在2026年恶化。" },
+            { word: "stagnant", meaning: "停滞的，不景气的", sentence: "Wearied by years of inflation, ______ income, and elevated personal debt, many Americans believe their finances will worsen in 2026.", answer: "stagnant", options: ["stagnant", "precarious", "frictionless", "pessimism"], translation: "因多年的通货膨胀、停滞的收入和高企的个人债务而疲惫不堪，许多美国人认为他们的财务状况将在2026年恶化。" },
+            { word: "pessimism", meaning: "悲观情绪，悲观主义", sentence: "A 2025 Bankrate survey found that ______ about personal finances is at the highest level since 2018.", answer: "pessimism", options: ["pessimism", "stagnant", "precarious", "frictionless"], translation: "2025年Bankrate调查发现，对个人财务的悲观情绪处于2018年以来的最高水平。" },
+            { word: "blame", meaning: "归咎于，责怪", sentence: "A 2025 Bankrate survey found that pessimism about personal finances is at the highest level since 2018, with price increases primarily to ______.", answer: "blame", options: ["blame", "recruit", "bypasses", "dismantle"], translation: "2025年Bankrate调查发现，对个人财务的悲观情绪处于2018年以来的最高水平，价格上升是主要原因。" },
+            { word: "inflation", meaning: "通货膨胀", sentence: "A Gallup survey published in April 2025 found similar attitudes, with nearly 30% of Americans reporting that ______ is the most important financial problem facing their family today.", answer: "inflation", options: ["inflation", "portals", "practitioners", "stopgap"], translation: "2025年4月发布的盖洛普调查发现类似的态度，近30%的美国人报告通货膨胀是他们的家庭今天面临的最重要财务问题。" },
+            { word: "stopgap", meaning: "权宜之计，临时措施", sentence: "As a result, debt has shifted from a ______ to a way of life for many people.", answer: "stopgap", options: ["stopgap", "inflation", "portals", "practitioners"], translation: "结果，债务已从权宜之计转变为许多人的生活方式。" },
+            { word: "most commonly cited goal", meaning: "最常被提及的目标", sentence: "As a result, debt has shifted from a stopgap to a way of life for many people, with paying down debt the ______ in the Bankrate survey.", answer: "most commonly cited goal", options: ["most commonly cited goal", "stopgap", "inflation", "portals"], translation: "结果，债务已从权宜之计转变为许多人的生活方式，偿还债务成为Bankrate调查中最常被提及的目标。" }
         ];
 
         let currentIndex = 0;
@@ -241,7 +241,7 @@
             document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
             const resultData = { 
-                round: 19, 
+                round: 20, 
                 total: questions.length, 
                 correct: correctCount, 
                 results,
