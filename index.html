@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第13轮</title>
+    <title>英语单词复习 - 第14轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
@@ -55,7 +55,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第13轮</h1>
+        <h1>🦐 英语单词复习 - 第14轮</h1>
         <p class="subtitle">选择题（4选1）| 错题优先</p>
         
         <div class="progress-info">
@@ -67,7 +67,7 @@
         <div id="questionArea"></div>
         
         <div class="result" id="result">
-            <h2>🎉 第13轮复习完成！</h2>
+            <h2>🎉 第14轮复习完成！</h2>
             <div class="result-score"><span id="finalScore">0</span> / 20</div>
             <p>正确率: <span id="accuracy">0</span>%</p>
             <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
@@ -78,61 +78,46 @@
 
     <script>
         const wordBank = {
-            "literacy": "读写能力，素养",
-            "norms": "规范，准则",
-            "pipeline": "管道，人才输送渠道",
-            "pillars": "支柱，核心原则",
             "navigate": "导航，应对",
             "mitigate": "减轻，缓解",
             "merge": "合并，融合",
             "prioritize": "优先考虑",
-            "nuanced": "细致入微的，微妙的",
-            "neurodivergent": "神经多样性者",
-            "normalizing": "正常化",
-            "multibillion-dollar": "数十亿美元的",
-            "prioritized": "优先考虑的",
-            "marginalized": "边缘化的",
-            "navigated": "导航的，应对的",
-            "normalized": "正常化的",
-            "proceedings": "会议论文集",
+            "subdisciplines": "分支学科",
+            "suboptimal": "次优的，不理想的",
+            "tilt": "情绪失控（游戏术语）",
+            "toughness": "坚韧，强硬",
+            "toxicity": "毒性，有害性",
+            "transition": "过渡，转变",
+            "ultracompetitive": "竞争极其激烈的",
+            "underway": "进行中的",
+            "unsupervised": "无人监管的",
+            "video-on-demand": "视频点播",
+            "workouts": "锻炼，训练",
+            "slang": "俚语，行话",
+            "sheds": "散发，流露",
+            "Originating": "起源于，源自",
             "reckless": "鲁莽的，轻率的",
-            "reconceptualize": "重新概念化",
-            "recruited": "招募的",
-            "relegated": "被降级",
-            "resembled": "类似于",
-            "rigor": "严谨性",
-            "sanctioned": "认可的，批准的",
-            "scrutiny": "审查，审视",
-            "self-efficacy": "自我效能感",
-            "self-sufficiency": "自给自足",
-            "semiprofessional": "半职业的",
-            "sharpen": "加强，提高",
-            "shooting": "射击",
-            "shortfall": "不足，缺口",
-            "stretches": "一段时间，延伸"
+            "rigor": "严谨性"
         };
 
         const questions = [
-            { word: "literacy", meaning: "读写能力，素养", sentence: "Professionals within esports psychology perform roles that combine high-performance coaching, clinical or counseling skills, and deep game ______.", answer: "literacy", options: ["literacy", "norms", "pipeline", "pillars"], translation: "电竞心理学专业人士的角色结合了高性能教练、临床或咨询技能，以及深厚的游戏素养。" },
             { word: "navigate", meaning: "导航，应对", sentence: "While elite players within formal organizational structures often have access to professional psychological services, non-elite players must rely on inconsistent online resources or ______ support systems on their own.", answer: "navigate", options: ["navigate", "mitigate", "merge", "prioritize"], translation: "虽然正式组织结构中的精英选手通常可以获得专业的心理服务，但非精英选手必须依靠不一致的在线资源或独自应对支持系统。" },
-            { word: "nuanced", meaning: "细致入微的，微妙的", sentence: "However, a more ______ approach is necessary when esports competitors often require those hours to train and remain competitive.", answer: "nuanced", options: ["nuanced", "neurodivergent", "normalizing", "multibillion-dollar"], translation: "然而，当电竞选手通常需要那些时间来训练并保持竞争力时，需要一种更细致入微的方法。" },
-            { word: "prioritized", meaning: "优先考虑的", sentence: "Gardner and his team ______ exercise, sleep routines, and intrinsic motivation, helping the Immortals players build healthier daily structures.", answer: "prioritized", options: ["prioritized", "marginalized", "normalized", "navigated"], translation: "Gardner和他的团队优先考虑运动、睡眠习惯和内在动机，帮助Immortals战队选手建立更健康的日常结构。" },
-            { word: "proceedings", meaning: "会议论文集", sentence: "The findings were published in the ______ of a major conference.", answer: "proceedings", options: ["proceedings", "shortfall", "stretches", "rigor"], translation: "研究结果发表在一个重要会议的论文集中。" },
-            { word: "reckless", meaning: "鲁莽的，轻率的", sentence: "Tilt can lead players to perform ______ and self-destructive actions.", answer: "reckless", options: ["reckless", "sharpen", "sanctioned", "scrutiny"], translation: "情绪失控会导致玩家做出鲁莽和自我毁灭的行为。" },
-            { word: "reconceptualize", meaning: "重新概念化", sentence: "Getting players to ______ stress as being beneficial improved their performance.", answer: "reconceptualize", options: ["reconceptualize", "resembled", "recruited", "relegated"], translation: "让选手重新概念化压力为有益的，改善了他们的表现。" },
-            { word: "recruited", meaning: "招募的", sentence: "In 2024, the global men's health charity Movember ______ esports psychology researcher Dylan Poulus, PhD.", answer: "recruited", options: ["recruited", "relegated", "resembled", "reconceptualize"], translation: "2024年，全球男性健康慈善机构Movember招募了电竞心理学研究员Dylan Poulus博士。" },
-            { word: "relegated", meaning: "被降级", sentence: "Neurodivergent youth in esports get to be the captain versus the helper role they are often ______ to in traditional sports.", answer: "relegated", options: ["relegated", "recruited", "resembled", "reconceptualize"], translation: "电竞中的神经多样性青年可以成为队长，而不是他们在传统体育中经常被降级到的辅助角色。" },
-            { word: "resembled", meaning: "类似于", sentence: "Researchers found 51 stressors that ______ those affecting professional athletes in traditional sports.", answer: "resembled", options: ["resembled", "recruited", "relegated", "reconceptualize"], translation: "研究人员发现了51种压力源，类似于影响传统体育职业运动员的那些。" },
-            { word: "rigor", meaning: "严谨性", sentence: "The evidence base lacks the ______ necessary for evidence-based practice.", answer: "rigor", options: ["rigor", "scrutiny", "shortfall", "stretches"], translation: "证据基础缺乏循证实践所需的严谨性。" },
-            { word: "sanctioned", meaning: "认可的，批准的", sentence: "The program adopted the NCAA's 20-hour rule for ______ activities.", answer: "sanctioned", options: ["sanctioned", "scrutiny", "shortfall", "stretches"], translation: "该项目采用了NCAA认可的活动的20小时规则。" },
-            { word: "scrutiny", meaning: "审查，审视", sentence: "Many esports players begin competing professionally in adolescence, facing intense pressure and public ______.", answer: "scrutiny", options: ["scrutiny", "rigor", "shortfall", "stretches"], translation: "许多电竞选手在青春期就开始职业比赛，面临巨大的压力和公众审视。" },
-            { word: "self-efficacy", meaning: "自我效能感", sentence: "Mindset and ______ are key factors in esports performance.", answer: "self-efficacy", options: ["self-efficacy", "self-sufficiency", "semiprofessional", "sharpen"], translation: "心态和自我效能感是电竞表现的关键因素。" },
-            { word: "self-sufficiency", meaning: "自给自足", sentence: "Teams were encouraged to develop their own norms, fostering ______ and leadership skills.", answer: "self-sufficiency", options: ["self-sufficiency", "self-efficacy", "semiprofessional", "sharpen"], translation: "团队被鼓励制定自己的规范，培养自给自足和领导技能。" },
-            { word: "semiprofessional", meaning: "半职业的", sentence: "Players often compete through systems run by amateur, ______, or professional leagues.", answer: "semiprofessional", options: ["semiprofessional", "self-sufficiency", "self-efficacy", "sharpen"], translation: "选手通常通过业余、半职业或职业联赛运营的系统进行比赛。" },
-            { word: "sharpen", meaning: "加强，提高", sentence: "New studies will ______ understanding of what drives performance in esports.", answer: "sharpen", options: ["sharpen", "shooting", "shortfall", "stretches"], translation: "新研究将加强对电竞表现驱动因素的理解。" },
-            { word: "shooting", meaning: "射击", sentence: "Popular genres of esports include ______ games like Counter-Strike.", answer: "shooting", options: ["shooting", "sharpen", "shortfall", "stretches"], translation: "电竞的热门类型包括像《反恐精英》这样的射击游戏。" },
-            { word: "shortfall", meaning: "不足，缺口", sentence: "There is still a significant ______ of qualified professionals in esports psychology.", answer: "shortfall", options: ["shortfall", "stretches", "shooting", "sharpen"], translation: "电竞心理学合格专业人员仍存在显著缺口。" },
-            { word: "stretches", meaning: "一段时间，延伸", sentence: "Players often practice for long ______ with minimal physical movement.", answer: "stretches", options: ["stretches", "shortfall", "shooting", "sharpen"], translation: "选手经常长时间练习，身体活动极少。" }
+            { word: "subdisciplines", meaning: "分支学科", sentence: "Esports psychologists come from many different ______ and are working to bring evidence-based approaches.", answer: "subdisciplines", options: ["subdisciplines", "toughness", "toxicity", "transition"], translation: "电竞心理学家来自许多不同的分支学科，正在努力将循证方法引入该领域。" },
+            { word: "suboptimal", meaning: "次优的，不理想的", sentence: "Researchers are examining tilt—strong negative emotions that lead to ______ decisions during games.", answer: "suboptimal", options: ["suboptimal", "ultracompetitive", "underway", "unsupervised"], translation: "研究人员正在研究情绪失控——强烈的负面情绪导致游戏中的次优决策。" },
+            { word: "tilt", meaning: "情绪失控（游戏术语）", sentence: "______ can lead players to perform reckless and self-destructive actions.", answer: "tilt", options: ["tilt", "toughness", "toxicity", "transition"], translation: "情绪失控会导致玩家做出鲁莽和自我毁灭的行为。" },
+            { word: "toughness", meaning: "坚韧，强硬", sentence: "Traditional sport psychology measures, like mental ______, do not significantly predict competitive achievement in esports.", answer: "toughness", options: ["toughness", "tilt", "toxicity", "transition"], translation: "传统的运动心理学指标，如心理坚韧，并不能显著预测电竞的竞技成就。" },
+            { word: "toxicity", meaning: "毒性，有害性", sentence: "EPPIC addresses communication, teamwork, and navigating online ______ and hate speech.", answer: "toxicity", options: ["toxicity", "toughness", "tilt", "transition"], translation: "EPPIC涉及沟通、团队合作，以及应对网络毒性和仇恨言论。" },
+            { word: "transition", meaning: "过渡，转变", sentence: "They also incorporated ______ planning, encouraging players to apply to college or complete a GED.", answer: "transition", options: ["transition", "toxicity", "toughness", "tilt"], translation: "他们还纳入了过渡规划，鼓励选手申请大学或完成GED。" },
+            { word: "ultracompetitive", meaning: "竞争极其激烈的", sentence: "The ______ grind culture of esports may contribute to burnout.", answer: "ultracompetitive", options: ["ultracompetitive", "suboptimal", "underway", "unsupervised"], translation: "电竞中竞争极其激烈的苦练文化可能导致倦怠。" },
+            { word: "underway", meaning: "进行中的", sentence: "A major effort is ______ to develop international mental health guidelines tailored to esports.", answer: "underway", options: ["underway", "ultracompetitive", "suboptimal", "unsupervised"], translation: "一项重大努力正在进行中，旨在制定针对电竞的国际心理健康指南。" },
+            { word: "unsupervised", meaning: "无人监管的", sentence: "At the same time, if left ______, it can burn you and your house down.", answer: "unsupervised", options: ["unsupervised", "underway", "ultracompetitive", "suboptimal"], translation: "同时，如果无人监管，它可能会烧毁你和你的房子。" },
+            { word: "video-on-demand", meaning: "视频点播", sentence: "During ______ (VOD) sessions where players watch recordings of their games, he helps players analyze their communication patterns.", answer: "video-on-demand", options: ["video-on-demand", "workouts", "slang", "sheds"], translation: "在视频点播（VOD）会议中，玩家观看比赛录像，他帮助玩家分析沟通模式。" },
+            { word: "workouts", meaning: "锻炼，训练", sentence: "Students gained access to an athletics-based sport psychologist and twice-weekly morning ______.", answer: "workouts", options: ["workouts", "video-on-demand", "slang", "sheds"], translation: "学生可以获得田径运动心理学家和每周两次的晨练。" },
+            { word: "slang", meaning: "俚语，行话", sentence: "______ is one of these really classic indicators of identity.", answer: "slang", options: ["slang", "workouts", "video-on-demand", "sheds"], translation: "俚语是身份认同的真正经典指标之一。" },
+            { word: "sheds", meaning: "散发，流露", sentence: "Slang ______ light on the complexity of identity formation and belonging in a fast-paced digital world.", answer: "sheds", options: ["sheds", "slang", "workouts", "video-on-demand"], translation: "俚语揭示了快节奏数字世界中身份形成和归属感的复杂性。" },
+            { word: "Originating", meaning: "起源于，源自", sentence: "______ from a somewhat obscure rap song in late 2024, it quickly gained momentum on TikTok.", answer: "Originating", options: ["Originating", "sheds", "slang", "workouts"], translation: "起源于2024年底一首颇为冷门的说唱歌曲，它很快在TikTok上获得了关注。" },
+            { word: "reckless", meaning: "鲁莽的，轻率的", sentence: "Tilt can lead players to perform ______ and self-destructive actions.", answer: "reckless", options: ["reckless", "rigor", "sheds", "Originating"], translation: "情绪失控会导致玩家做出鲁莽和自我毁灭的行为。" },
+            { word: "rigor", meaning: "严谨性", sentence: "The evidence base lacks the ______ necessary for evidence-based practice.", answer: "rigor", options: ["rigor", "reckless", "sheds", "Originating"], translation: "证据基础缺乏循证实践所需的严谨性。" }
         ];
 
         let currentIndex = 0;
@@ -145,7 +130,7 @@
             
             area.innerHTML = `
                 <div class="question">
-                    <div class="question-num">📖 第 ${currentIndex + 1} / 20 题</div>
+                    <div class="question-num">📖 第 ${currentIndex + 1} / ${questions.length} 题</div>
                     <div class="sentence">${q.sentence.replace('______', '<span class="blank">______</span>')}</div>
                     <div class="options" id="options">
                         ${q.options.map((opt, i) => `<div class="option" onclick="selectAndSubmit('${opt}')">${String.fromCharCode(65 + i)}. ${opt}</div>`).join('')}
@@ -190,7 +175,7 @@
             `;
             
             document.getElementById('currentNum').textContent = currentIndex + 1;
-            document.getElementById('progressBar').style.width = `${(currentIndex + 1) / 20 * 100}%`;
+            document.getElementById('progressBar').style.width = `${(currentIndex + 1) / questions.length * 100}%`;
         }
 
         function selectAndSubmit(option) {
@@ -243,9 +228,9 @@
             document.getElementById('questionArea').classList.add('hidden');
             document.getElementById('result').classList.add('show');
             document.getElementById('finalScore').textContent = correctCount;
-            document.getElementById('accuracy').textContent = Math.round(correctCount / 20 * 100);
+            document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
             
-            const resultData = { round: 13, total: 20, correct: correctCount, results };
+            const resultData = { round: 14, total: questions.length, correct: correctCount, results };
             const resultCode = 'ENGRESULT:' + btoa(JSON.stringify(resultData));
             document.getElementById('resultCode').textContent = resultCode;
         }
