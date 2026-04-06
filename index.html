@@ -20,13 +20,9 @@
         .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 16px; }
         .option:hover { border-color: #667eea; background: #f0f4ff; }
-        .option.selected { border-color: #667eea; background: #e8edff; }
         .option.correct { border-color: #4CAF50; background: #c8e6c9; }
         .option.wrong { border-color: #f44336; background: #ffcdd2; }
         .btn { display: block; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; margin-top: 16px; transition: all 0.2s; }
-        .submit-btn { background: linear-gradient(90deg, #667eea, #764ba2); color: white; }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); }
-        .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
         .next-btn { background: #4CAF50; color: white; }
         .next-btn:hover { background: #45a049; }
         
@@ -37,12 +33,20 @@
         .answer-title { font-size: 18px; font-weight: bold; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
         .answer-title.correct { color: #4CAF50; }
         .answer-title.wrong { color: #f44336; }
-        .answer-item { margin-bottom: 12px; line-height: 1.6; }
+        .answer-item { margin-bottom: 16px; line-height: 1.6; }
         .answer-label { color: #666; font-size: 14px; margin-bottom: 4px; }
         .answer-value { font-size: 16px; }
         .word-title { font-size: 20px; font-weight: bold; color: #667eea; }
         .full-sentence { font-size: 16px; line-height: 1.8; color: #333; background: #e8f5e9; padding: 12px; border-radius: 8px; }
         .full-sentence .answer-word { color: #4CAF50; font-weight: bold; text-decoration: underline; }
+        
+        /* 选项释义列表 */
+        .options-meaning { margin-top: 12px; }
+        .option-meaning-item { padding: 8px 12px; margin: 6px 0; background: #fff; border-radius: 6px; font-size: 15px; }
+        .option-meaning-item.correct-opt { background: #c8e6c9; border-left: 3px solid #4CAF50; }
+        .option-label { font-weight: bold; color: #666; margin-right: 8px; }
+        .option-word { font-weight: bold; color: #333; }
+        .option-meaning { color: #666; margin-left: 8px; }
         
         .result { display: none; text-align: center; padding: 32px; }
         .result.show { display: block; }
@@ -78,32 +82,61 @@
     </div>
 
     <script>
+        // 单词库（包含所有选项的中文释义）
+        const wordBank = {
+            "likened": "比作，比拟",
+            "prioritized": "优先考虑的",
+            "mitigated": "减轻的，缓解的",
+            "merged": "合并的，融合的",
+            "literacy": "读写能力，素养",
+            "norms": "规范，准则",
+            "pipeline": "管道，人才输送渠道",
+            "pillars": "支柱，核心原则",
+            "marginalized": "边缘化的",
+            "normalized": "正常化的",
+            "navigated": "导航的，应对的",
+            "merge": "合并，融合",
+            "mitigate": "减轻，缓解",
+            "navigate": "导航，应对",
+            "prioritize": "优先考虑",
+            "mound": "投手丘（棒球）",
+            "pillar": "支柱，柱子",
+            "off-ramp": "退出通道，出路",
+            "Movember": "Movember（男性健康慈善机构）",
+            "multibillion-dollar": "数十亿美元的",
+            "nuanced": "细致入微的，微妙的",
+            "normalizing": "正常化",
+            "neurodivergent": "神经多样性者",
+            "postgame": "赛后的",
+            "mindset-reappraisal": "心态重新评估",
+            "navigating": "应对，穿越"
+        };
+
         const questions = [
-            { word: "likened", meaning: "比作，比拟", sentence: "Ryan Terao, PsyD, an esports and licensed clinical psychologist, ______ the power of esports and gaming to fire.", answer: "likened", options: ["likened", "prioritized", "mitigated", "merged"] },
-            { word: "literacy", meaning: "读写能力，素养", sentence: "Professionals within esports psychology perform roles that combine high-performance coaching, clinical or counseling skills, and deep game ______.", answer: "literacy", options: ["literacy", "norms", "pipeline", "pillars"] },
-            { word: "marginalized", meaning: "边缘化的", sentence: "Strobel views esports as widening accessibility for students who may be ______ in traditional sports, including neurodivergent youth.", answer: "marginalized", options: ["marginalized", "prioritized", "normalized", "navigated"] },
-            { word: "merge", meaning: "合并，融合", sentence: "I've been spending outside the game to learn all these skills and ______ them with my passion for the game.", answer: "merge", options: ["merge", "mitigate", "navigate", "prioritize"] },
-            { word: "mitigate", meaning: "减轻，缓解", sentence: "What we really need to do is track young people over their development to understand when gaming is good and when it is bad, and then how to ______ the bad and maximize the good.", answer: "mitigate", options: ["mitigate", "merge", "navigate", "prioritize"] },
-            { word: "mound", meaning: "投手丘（棒球）", sentence: "This would be akin to a player committing a flagrant foul in basketball or rushing the ______ in baseball.", answer: "mound", options: ["mound", "pillar", "pipeline", "off-ramp"] },
-            { word: "movember", meaning: "Movember（男性健康慈善机构）", sentence: "In 2024, the global men's health charity ______ recruited esports psychology researcher Dylan Poulus, PhD.", answer: "Movember", options: ["Movember", "multibillion-dollar", "nuanced", "normalizing"] },
-            { word: "multibillion-dollar", meaning: "数十亿美元的", sentence: "Esports are a fast-evolving ______ industry that draws hundreds of millions of competitive video game players worldwide.", answer: "multibillion-dollar", options: ["multibillion-dollar", "nuanced", "marginalized", "neurodivergent"] },
-            { word: "navigate", meaning: "导航，应对", sentence: "While elite players within formal organizational structures often have access to professional psychological services, non-elite players must rely on inconsistent online resources or ______ support systems on their own.", answer: "navigate", options: ["navigate", "mitigate", "merge", "prioritize"] },
-            { word: "neurodivergent", meaning: "神经多样性者", sentence: "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including ______ youth.", answer: "neurodivergent", options: ["neurodivergent", "nuanced", "normalizing", "multibillion-dollar"] },
-            { word: "normalizing", meaning: "正常化", sentence: "Students gained access to an athletics-based sport psychologist, nutrition programming, and twice-weekly morning workouts aimed at ______ physical conditioning.", answer: "normalizing", options: ["normalizing", "neurodivergent", "nuanced", "marginalized"] },
-            { word: "norms", meaning: "规范，准则", sentence: "Teams were also encouraged to develop their own ______ around culture, accountability, and conflict management.", answer: "norms", options: ["norms", "literacy", "pillars", "pipeline"] },
-            { word: "nuanced", meaning: "细致入微的，微妙的", sentence: "However, a more ______ approach is necessary when esports competitors often require those hours to train and remain competitive.", answer: "nuanced", options: ["nuanced", "neurodivergent", "normalizing", "multibillion-dollar"] },
-            { word: "off-ramp", meaning: "退出通道，出路", sentence: "Many pros go straight from an anonymous position on a ladder to a contract, with no Little League, no college team, and no ______ when it ends.", answer: "off-ramp", options: ["off-ramp", "mound", "pipeline", "pillar"] },
-            { word: "pillars", meaning: "支柱，核心原则", sentence: "Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to finalize nine ______ of mental health support.", answer: "pillars", options: ["pillars", "norms", "literacy", "pipeline"] },
-            { word: "pipeline", meaning: "管道，人才输送渠道", sentence: "Esports is a sport without a childhood ______.", answer: "pipeline", options: ["pipeline", "pillars", "literacy", "norms"] },
-            { word: "postgame", meaning: "赛后的", sentence: "He often prepares clients to expect a temporary dip in performance as they reconstruct habits around sleep, practice structure, and ______ review.", answer: "postgame", options: ["postgame", "pillars", "pipeline", "off-ramp"] },
-            { word: "prioritized", meaning: "优先考虑的", sentence: "Gardner and his team ______ exercise, sleep routines, and intrinsic motivation, helping the Immortals players build healthier daily structures.", answer: "prioritized", options: ["prioritized", "marginalized", "normalized", "navigated"] },
-            { word: "mindset-reappraisal", meaning: "心态重新评估", sentence: "A ______ intervention that encouraged players to view stress as beneficial lowered players' anxiety.", answer: "mindset-reappraisal", options: ["mindset-reappraisal", "multibillion-dollar", "postgame", "off-ramp"] },
-            { word: "navigating", meaning: "应对，穿越", sentence: "EPPIC addresses communication, teamwork, leadership, health and wellness, and ______ online toxicity and hate speech.", answer: "navigating", options: ["navigating", "normalizing", "neurodivergent", "nuanced"] }
+            { word: "likened", meaning: "比作，比拟", sentence: "Ryan Terao, PsyD, an esports and licensed clinical psychologist, ______ the power of esports and gaming to fire.", answer: "likened", options: ["likened", "prioritized", "mitigated", "merged"], translation: "Ryan Terao，一位电竞和临床心理学家，将电竞和游戏的力量比作火。" },
+            { word: "literacy", meaning: "读写能力，素养", sentence: "Professionals within esports psychology perform roles that combine high-performance coaching, clinical or counseling skills, and deep game ______.", answer: "literacy", options: ["literacy", "norms", "pipeline", "pillars"], translation: "电竞心理学专业人士的角色结合了高性能教练、临床或咨询技能，以及深厚的游戏素养。" },
+            { word: "marginalized", meaning: "边缘化的", sentence: "Strobel views esports as widening accessibility for students who may be ______ in traditional sports, including neurodivergent youth.", answer: "marginalized", options: ["marginalized", "prioritized", "normalized", "navigated"], translation: "Strobel认为电竞扩大了那些在传统体育中可能被边缘化的学生（包括神经多样性青年）的参与机会。" },
+            { word: "merge", meaning: "合并，融合", sentence: "I've been spending outside the game to learn all these skills and ______ them with my passion for the game.", answer: "merge", options: ["merge", "mitigate", "navigate", "prioritize"], translation: "我在游戏之外花费时间学习所有这些技能，并将它们与我对此游戏的热情融合在一起。" },
+            { word: "mitigate", meaning: "减轻，缓解", sentence: "What we really need to do is track young people over their development to understand when gaming is good and when it is bad, and then how to ______ the bad and maximize the good.", answer: "mitigate", options: ["mitigate", "merge", "navigate", "prioritize"], translation: "我们真正需要做的是追踪年轻人的发展过程，了解游戏何时有益何时有害，然后如何减轻负面影响并最大化正面影响。" },
+            { word: "mound", meaning: "投手丘（棒球）", sentence: "This would be akin to a player committing a flagrant foul in basketball or rushing the ______ in baseball.", answer: "mound", options: ["mound", "pillar", "pipeline", "off-ramp"], translation: "这就像篮球运动员公然犯规，或棒球运动员冲向投手丘一样。" },
+            { word: "Movember", meaning: "Movember（男性健康慈善机构）", sentence: "In 2024, the global men's health charity ______ recruited esports psychology researcher Dylan Poulus, PhD.", answer: "Movember", options: ["Movember", "multibillion-dollar", "nuanced", "normalizing"], translation: "2024年，全球男性健康慈善机构Movember招募了电竞心理学研究员Dylan Poulus博士。" },
+            { word: "multibillion-dollar", meaning: "数十亿美元的", sentence: "Esports are a fast-evolving ______ industry that draws hundreds of millions of competitive video game players worldwide.", answer: "multibillion-dollar", options: ["multibillion-dollar", "nuanced", "marginalized", "neurodivergent"], translation: "电竞是一个快速发展的数十亿美元产业，吸引了全球数亿竞技视频游戏玩家。" },
+            { word: "navigate", meaning: "导航，应对", sentence: "While elite players within formal organizational structures often have access to professional psychological services, non-elite players must rely on inconsistent online resources or ______ support systems on their own.", answer: "navigate", options: ["navigate", "mitigate", "merge", "prioritize"], translation: "虽然正式组织结构中的精英选手通常可以获得专业的心理服务，但非精英选手必须依靠不一致的在线资源或独自应对支持系统。" },
+            { word: "neurodivergent", meaning: "神经多样性者", sentence: "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including ______ youth.", answer: "neurodivergent", options: ["neurodivergent", "nuanced", "normalizing", "multibillion-dollar"], translation: "Strobel认为电竞扩大了那些在传统体育中可能被边缘化的学生（包括神经多样性青年）的参与机会。" },
+            { word: "normalizing", meaning: "正常化", sentence: "Students gained access to an athletics-based sport psychologist, nutrition programming, and twice-weekly morning workouts aimed at ______ physical conditioning.", answer: "normalizing", options: ["normalizing", "neurodivergent", "nuanced", "marginalized"], translation: "学生可以获得田径运动心理学家、营养计划，以及每周两次的晨练，旨在使体育锻炼正常化。" },
+            { word: "norms", meaning: "规范，准则", sentence: "Teams were also encouraged to develop their own ______ around culture, accountability, and conflict management.", answer: "norms", options: ["norms", "literacy", "pillars", "pipeline"], translation: "团队还被鼓励围绕文化、问责制和冲突管理制定自己的规范。" },
+            { word: "nuanced", meaning: "细致入微的，微妙的", sentence: "However, a more ______ approach is necessary when esports competitors often require those hours to train and remain competitive.", answer: "nuanced", options: ["nuanced", "neurodivergent", "normalizing", "multibillion-dollar"], translation: "然而，当电竞选手通常需要那些时间来训练并保持竞争力时，需要一种更细致入微的方法。" },
+            { word: "off-ramp", meaning: "退出通道，出路", sentence: "Many pros go straight from an anonymous position on a ladder to a contract, with no Little League, no college team, and no ______ when it ends.", answer: "off-ramp", options: ["off-ramp", "mound", "pipeline", "pillar"], translation: "许多职业选手直接从天梯上的匿名位置签下合同，没有少年联赛，没有大学队伍，结束时也没有退出通道。" },
+            { word: "pillars", meaning: "支柱，核心原则", sentence: "Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to finalize nine ______ of mental health support.", answer: "pillars", options: ["pillars", "norms", "literacy", "pipeline"], translation: "Poulus和同事召集了游戏发行商、锦标赛组织者、国际奥委会代表和心理健康专家，最终确定了心理健康支持的九大支柱。" },
+            { word: "pipeline", meaning: "管道，人才输送渠道", sentence: "Esports is a sport without a childhood ______.", answer: "pipeline", options: ["pipeline", "pillars", "literacy", "norms"], translation: "电竞是一项没有童年人才输送渠道的运动。" },
+            { word: "postgame", meaning: "赛后的", sentence: "He often prepares clients to expect a temporary dip in performance as they reconstruct habits around sleep, practice structure, and ______ review.", answer: "postgame", options: ["postgame", "pillars", "pipeline", "off-ramp"], translation: "他经常让客户做好准备，预期在重建睡眠、练习结构和赛后复盘习惯时，表现会出现暂时性下降。" },
+            { word: "prioritized", meaning: "优先考虑的", sentence: "Gardner and his team ______ exercise, sleep routines, and intrinsic motivation, helping the Immortals players build healthier daily structures.", answer: "prioritized", options: ["prioritized", "marginalized", "normalized", "navigated"], translation: "Gardner和他的团队优先考虑运动、睡眠习惯和内在动机，帮助Immortals战队选手建立更健康的日常结构。" },
+            { word: "mindset-reappraisal", meaning: "心态重新评估", sentence: "A ______ intervention that encouraged players to view stress as beneficial lowered players' anxiety.", answer: "mindset-reappraisal", options: ["mindset-reappraisal", "multibillion-dollar", "postgame", "off-ramp"], translation: "一种鼓励选手将压力视为有益的心态重新评估干预措施降低了选手的焦虑。" },
+            { word: "navigating", meaning: "应对，穿越", sentence: "EPPIC addresses communication, teamwork, leadership, health and wellness, and ______ online toxicity and hate speech.", answer: "navigating", options: ["navigating", "normalizing", "neurodivergent", "nuanced"], translation: "EPPIC涉及沟通、团队合作、领导力、健康和保健，以及应对网络毒性和仇恨言论。" }
         ];
 
         let currentIndex = 0;
         let correctCount = 0;
-        let selectedAnswer = null;
         const results = [];
 
         function renderQuestion() {
@@ -115,9 +148,8 @@
                     <div class="question-num">📖 第 ${currentIndex + 1} / 20 题</div>
                     <div class="sentence">${q.sentence.replace('______', '<span class="blank">______</span>')}</div>
                     <div class="options" id="options">
-                        ${q.options.map((opt, i) => `<div class="option" onclick="selectOption('${opt}')">${String.fromCharCode(65 + i)}. ${opt}</div>`).join('')}
+                        ${q.options.map((opt, i) => `<div class="option" onclick="selectAndSubmit('${opt}')">${String.fromCharCode(65 + i)}. ${opt}</div>`).join('')}
                     </div>
-                    <button class="btn submit-btn" id="submitBtn" onclick="submitAnswer()" disabled>提交答案</button>
                     
                     <div class="answer-box" id="answerBox">
                         <div class="answer-title" id="answerTitle"></div>
@@ -133,6 +165,24 @@
                             <div class="answer-label">完整句子</div>
                             <div class="full-sentence">${q.sentence.replace('______', `<span class="answer-word">${q.answer}</span>`)}</div>
                         </div>
+                        <div class="answer-item">
+                            <div class="answer-label">句子翻译</div>
+                            <div class="answer-value">${q.translation}</div>
+                        </div>
+                        <div class="answer-item">
+                            <div class="answer-label">所有选项释义</div>
+                            <div class="options-meaning">
+                                ${q.options.map((opt, i) => {
+                                    const isCorrect = opt === q.answer;
+                                    return `<div class="option-meaning-item ${isCorrect ? 'correct-opt' : ''}">
+                                        <span class="option-label">${String.fromCharCode(65 + i)}.</span>
+                                        <span class="option-word">${opt}</span>
+                                        <span class="option-meaning">- ${wordBank[opt] || '（释义缺失）'}</span>
+                                        ${isCorrect ? '<span style="color: #4CAF50; margin-left: 8px;">✓ 正确答案</span>' : ''}
+                                    </div>`;
+                                }).join('')}
+                            </div>
+                        </div>
                     </div>
                     
                     <button class="btn next-btn hidden" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
@@ -141,20 +191,11 @@
             
             document.getElementById('currentNum').textContent = currentIndex + 1;
             document.getElementById('progressBar').style.width = `${(currentIndex + 1) / 20 * 100}%`;
-            selectedAnswer = null;
         }
 
-        function selectOption(option) {
-            selectedAnswer = option;
-            const options = document.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-            event.target.classList.add('selected');
-            document.getElementById('submitBtn').disabled = false;
-        }
-
-        function submitAnswer() {
+        function selectAndSubmit(option) {
             const q = questions[currentIndex];
-            const isCorrect = selectedAnswer === q.answer;
+            const isCorrect = option === q.answer;
             if (isCorrect) correctCount++;
             
             results.push({ word: q.word, correct: isCorrect });
@@ -163,12 +204,14 @@
             
             const options = document.querySelectorAll('.option');
             options.forEach(opt => {
-                if (opt.textContent.includes(q.answer)) {
+                const optText = opt.textContent.split('. ')[1];
+                if (optText === q.answer) {
                     opt.classList.add('correct');
-                } else if (opt.classList.contains('selected')) {
+                } else if (optText === option && !isCorrect) {
                     opt.classList.add('wrong');
                 }
                 opt.onclick = null;
+                opt.style.cursor = 'default';
             });
             
             // 显示答案解析
@@ -185,7 +228,6 @@
             }
             
             answerBox.classList.add('show');
-            document.getElementById('submitBtn').classList.add('hidden');
             document.getElementById('nextBtn').classList.remove('hidden');
         }
 
