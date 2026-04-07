@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第29轮</title>
+    <title>英语单词复习 - 第30轮</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
@@ -37,8 +37,8 @@
 <body>
     <div class="container">
         <div class="progress">
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 3.33%"></div></div>
-            <div class="progress-text" id="progressText">第 1 题 / 共 30 题</div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+            <div class="progress-text" id="progressText">准备开始...</div>
         </div>
         
         <div id="questionArea"></div>
@@ -48,115 +48,113 @@
         
         <div id="resultCodeArea" style="display:none">
             <h3>✅ 复习完成！</h3>
-            <p>请复制以下结果码发送给我：</p>
-            <div id="resultCode" class="result-code"></div>
+            <div id="statsArea"></div>
+            <p style="color:#666;margin:15px 0 10px">请复制以下结果码发送给助手：</p>
+            <div class="result-code" id="resultCode"></div>
         </div>
     </div>
-    
+
     <script>
-    const words = [
-{word:"chartered",meaning:"特许的，注册的",sentence:"Callum Abbott, a ______ sport and exercise psychologist based in Suffolk, England, describes the esports landscape as almost kind of the Wild West.",translation:"一位位于英国萨福克的注册运动和运动心理学家描述电竞领域几乎是蛮荒之地。",correct:"chartered",options:[{en:"chartered",cn:"特许的"},{en:"collaborators",cn:"合作者"},{en:"component",cn:"组成部分"},{en:"consistent",cn:"一致的"}],record_id:"recvfYt6hk38QS"},
-{word:"collaborators",meaning:"合作者",sentence:"Last year, Poulus, Sharpe, and ______ conducted a scoping review of 89 studies, convened expert workshops, and held focus groups with players as young as 16.",translation:"去年，Poulus、Sharpe和合作者对89项研究进行了范围审查，召集了专家研讨会，并举行了焦点小组。",correct:"collaborators",options:[{en:"collaborators",cn:"合作者"},{en:"convened",cn:"召集"},{en:"converge",cn:"汇聚"},{en:"counter-strike",cn:"反恐精英"}],record_id:"recvfYt6hkGti6"},
-{word:"component",meaning:"组成部分",sentence:"Encourage players to create a safer relationship with a core ______ of their lives, rather than pull away from it totally.",translation:"鼓励选手与他们生活核心组成部分建立更安全的关系，而不是完全脱离它。",correct:"component",options:[{en:"component",cn:"组成部分"},{en:"consistent",cn:"一致的"},{en:"contract",cn:"合同"},{en:"convened",cn:"召集"}],record_id:"recvfYt6hk2usz"},
-{word:"consistent",meaning:"一致的，持续的",sentence:"We try to create processes and systems for our clients to get ______ results.",translation:"我们试图为客户创建流程和系统，以获得一致的结果。",correct:"consistent",options:[{en:"consistent",cn:"一致的"},{en:"contract",cn:"合同"},{en:"convened",cn:"召集"},{en:"converge",cn:"汇聚"}],record_id:"recvfYt6hkCFfS"},
-{word:"contract",meaning:"合同，合约",sentence:"Many pros go straight from an anonymous position on a ladder to a ______, with no Little League, no college team, and no off-ramp when it ends.",translation:"许多职业选手直接从梯子上的匿名位置进入合同，没有少年棒球联赛，没有大学队，退役后也没有退路。",correct:"contract",options:[{en:"contract",cn:"合同"},{en:"convened",cn:"召集"},{en:"converge",cn:"汇聚"},{en:"counter-strike",cn:"反恐精英"}],record_id:"recvfYt6hksfqg"},
-{word:"convened",meaning:"召集，召开",sentence:"Last year, Poulus, Sharpe, and collaborators conducted a scoping review of 89 studies, ______ expert workshops, and held focus groups with players as young as 16.",translation:"去年，Poulus、Sharpe和合作者进行了范围审查，召集了专家研讨会，并举行了焦点小组。",correct:"convened",options:[{en:"convened",cn:"召集"},{en:"converge",cn:"汇聚"},{en:"counter-strike",cn:"反恐精英"},{en:"cross-sectional",cn:"横断面的"}],record_id:"recvfYt6hk1T2Y"},
-{word:"converge",meaning:"汇聚，聚集",sentence:"Esports is one of the few performance environments where multiple psychological subdisciplines naturally ______.",translation:"电竞是少数几个不同心理学分支自然汇聚的表现环境之一。",correct:"converge",options:[{en:"converge",cn:"汇聚"},{en:"counter-strike",cn:"反恐精英"},{en:"cross-sectional",cn:"横断面的"},{en:"cyclical",cn:"周期性的"}],record_id:"recvfYt6hkMOGf"},
-{word:"counter-strike",meaning:"反恐精英（游戏名）",sentence:"Popular genres of esports include shooting games (______).",translation:"电竞热门类型包括射击游戏（反恐精英）。",correct:"counter-strike",options:[{en:"counter-strike",cn:"反恐精英"},{en:"cross-sectional",cn:"横断面的"},{en:"cyclical",cn:"周期性的"},{en:"direct",cn:"直接的"}],record_id:"recvfYt6hktZbW"},
-{word:"cross-sectional",meaning:"横断面的（研究设计）",sentence:"In one ______ study, researchers looked at 480 high-level players across seven popular games.",translation:"在一项横断面研究中，研究人员调查了480名高水平选手，跨越七款热门游戏。",correct:"cross-sectional",options:[{en:"cross-sectional",cn:"横断面的"},{en:"cyclical",cn:"周期性的"},{en:"direct",cn:"直接的"},{en:"disengagement",cn:"脱离"}],record_id:"recvfYt6hkdqkS"},
-{word:"cyclical",meaning:"周期性的，循环的",sentence:"Players describe how mental health difficulties degrade their strategic thinking and reduce motivation, creating a ______ pattern where performance decline further exacerbates stress and emotional distress.",translation:"选手描述心理健康困难如何降低战略思维和动力，形成一个循环模式，性能下降进一步加剧压力和情绪困扰。",correct:"cyclical",options:[{en:"cyclical",cn:"周期性的"},{en:"direct",cn:"直接的"},{en:"disengagement",cn:"脱离"},{en:"exacerbates",cn:"加剧"}],record_id:"recvfYt6hk7JJP"},
-{word:"direct",meaning:"直接的，指导",sentence:"Players experiencing tilt also tended to ______ the harshest reactions toward themselves.",translation:"经历tilt的选手也倾向于将最严厉的反应直接指向自己。",correct:"direct",options:[{en:"direct",cn:"直接的"},{en:"disengagement",cn:"脱离"},{en:"exacerbates",cn:"加剧"},{en:"neutralize",cn:"中和"}],record_id:"recvfYt6hkGlyc"},
-{word:"disengagement",meaning:"脱离，不参与",sentence:"He helps players and teams analyze their communication patterns, identify how conflicts emerge, and spot the emotional cues that may signal tilt or ______.",translation:"他帮助选手和团队分析沟通模式，识别冲突如何产生，并发现可能表示tilt或脱离的情绪线索。",correct:"disengagement",options:[{en:"disengagement",cn:"脱离"},{en:"exacerbates",cn:"加剧"},{en:"neutralize",cn:"中和"},{en:"perpetuate",cn:"使持续"}],record_id:"recvfYt6hk0reX"},
-{word:"exacerbates",meaning:"加剧，恶化",sentence:"Creating a cyclical pattern where performance decline further ______ stress and emotional distress.",translation:"形成一个循环模式，性能下降进一步加剧压力和情绪困扰。",correct:"exacerbates",options:[{en:"exacerbates",cn:"加剧"},{en:"neutralize",cn:"中和"},{en:"perpetuate",cn:"使持续"},{en:"debilitating",cn:"使人虚弱的"}],record_id:"recvfYt6hkT12X"},
-{word:"neutralize",meaning:"中和，抵消",sentence:"Helps patients learn to coexist with intrusive thoughts without trying to ______, avoid, or control them.",translation:"帮助患者学会与侵入性思维共存，而不试图中和、回避或控制它们。",correct:"neutralize",options:[{en:"neutralize",cn:"中和"},{en:"perpetuate",cn:"使持续"},{en:"debilitating",cn:"使人虚弱的"},{en:"contamination concerns",cn:"污染担忧"}],record_id:"recvfYsBuHtAzP"},
-{word:"perpetuate",meaning:"使持续，使永久化",sentence:"Sometimes getting treatments that ______ the condition.",translation:"有时得到的治疗反而使病情持续。",correct:"perpetuate",options:[{en:"perpetuate",cn:"使持续"},{en:"debilitating",cn:"使人虚弱的"},{en:"contamination concerns",cn:"污染担忧"},{en:"ego-syntonic thoughts",cn:"自我和谐想法"}],record_id:"recvfYsBuH6IN5"},
-{word:"debilitating",meaning:"使人虚弱的，令人衰弱的",sentence:"It is a distressing and often ______ disorder.",translation:"这是一种痛苦的且常常令人衰弱的障碍。",correct:"debilitating",options:[{en:"debilitating",cn:"使人虚弱的"},{en:"contamination concerns",cn:"污染担忧"},{en:"ego-syntonic thoughts",cn:"自我和谐想法"},{en:"contamination",cn:"污染"}],record_id:"recvfYsBuHRWsq"},
-{word:"contamination concerns",meaning:"对污染的担忧，洁癖",sentence:"From ______ and repeated checking to intrusive moral, sexual, or relationship-related concerns.",translation:"从污染担忧和重复检查，到侵入性的道德、性或关系相关担忧。",correct:"contamination concerns",options:[{en:"contamination concerns",cn:"污染担忧"},{en:"ego-syntonic thoughts",cn:"自我和谐想法"},{en:"contamination",cn:"污染"},{en:"scrupulosity",cn:"道德完美主义"}],record_id:"recvfYsBuHpr3i"},
-{word:"ego-syntonic thoughts",meaning:"自我和谐的想法",sentence:"As opposed to ______, which feel acceptable or desirable.",translation:"与自我和谐的想法相反，后者感觉是可以接受的或理想的。",correct:"ego-syntonic thoughts",options:[{en:"ego-syntonic thoughts",cn:"自我和谐想法"},{en:"contamination",cn:"污染"},{en:"scrupulosity",cn:"道德完美主义"},{en:"hyperactivity",cn:"多动症"}],record_id:"recvfYsBuHxr62"},
-{word:"contamination",meaning:"污染，污染恐惧",sentence:"______ (where a fear of germs or toxins leads to excessive cleaning).",translation:"污染（对细菌或毒素的恐惧导致过度清洁）。",correct:"contamination",options:[{en:"contamination",cn:"污染"},{en:"scrupulosity",cn:"道德完美主义"},{en:"hyperactivity",cn:"多动症"},{en:"underlying",cn:"基础的"}],record_id:"recvfYsBuHRQUA"},
-{word:"scrupulosity",meaning:"道德完美主义，宗教性强迫",sentence:"______ (excessive concerns about blasphemy or religious wrongdoing).",translation:"道德完美主义（对亵渎或宗教不当行为的过度担忧）。",correct:"scrupulosity",options:[{en:"scrupulosity",cn:"道德完美主义"},{en:"hyperactivity",cn:"多动症"},{en:"underlying",cn:"基础的"},{en:"incentives tied",cn:"激励绑定"}],record_id:"recvfYsBuHhlyu"},
-{word:"hyperactivity",meaning:"多动症，过度活跃",sentence:"In children, OCD can be mistaken for attention-deficit/______ disorder.",translation:"在儿童中，强迫症可能被误诊为多动症。",correct:"hyperactivity",options:[{en:"hyperactivity",cn:"多动症"},{en:"underlying",cn:"基础的"},{en:"incentives tied",cn:"激励绑定"},{en:"accommodation",cn:"顺应"}],record_id:"recvfYsBuH9Xb8"},
-{word:"underlying",meaning:"基础的，根本的，潜在的",sentence:"While the ______ principles do not change, treatment with ERP can take on many forms.",translation:"虽然潜在原则不变，但ERP治疗可以采取多种形式。",correct:"underlying",options:[{en:"underlying",cn:"基础的"},{en:"incentives tied",cn:"激励绑定"},{en:"accommodation",cn:"顺应"},{en:"compassionate",cn:"富有同情心的"}],record_id:"recvfYsBuHztk7"},
-{word:"incentives tied",meaning:"挂钩的奖励，激励绑定",sentence:"Such as ______ to completing exposures.",translation:"如完成暴露练习的激励绑定。",correct:"incentives tied",options:[{en:"incentives tied",cn:"激励绑定"},{en:"accommodation",cn:"顺应"},{en:"compassionate",cn:"富有同情心的"},{en:"prescribed",cn:"处方的"}],record_id:"recvfYsBuHFJRU"},
-{word:"accommodation",meaning:"顺应，配合",sentence:"Providers also work closely with parents to reduce ______.",translation:"提供者还与家长密切合作以减少顺应。",correct:"accommodation",options:[{en:"accommodation",cn:"顺应"},{en:"compassionate",cn:"富有同情心的"},{en:"prescribed",cn:"处方的"},{en:"upstream",cn:"上游的"}],record_id:"recvfYsBuHQuMm"},
-{word:"compassionate",meaning:"富有同情心的，人道的",sentence:"ERP is probably the most ______ thing you can do for someone who suffers from OCD.",translation:"ERP可能是你对强迫症患者能做的最有同情心的事情。",correct:"compassionate",options:[{en:"compassionate",cn:"富有同情心的"},{en:"prescribed",cn:"处方的"},{en:"upstream",cn:"上游的"},{en:"accountability",cn:"问责制"}],record_id:"recvfYsBuHolxq"},
-{word:"prescribed",meaning:"开（药），处方的",sentence:"They are typically ______ in higher doses than used to treat depression.",translation:"它们通常以比治疗抑郁症更高的剂量开处方。",correct:"prescribed",options:[{en:"prescribed",cn:"处方的"},{en:"upstream",cn:"上游的"},{en:"accountability",cn:"问责制"},{en:"accuracy",cn:"准确性"}],record_id:"recvfYsBuHMcBU"},
-{word:"upstream",meaning:"上游的，从源头",sentence:"This metacognitive approach focuses ______ on how obsessions form.",translation:"这种元认知方法专注于从源头研究强迫观念如何形成。",correct:"upstream",options:[{en:"upstream",cn:"上游的"},{en:"accountability",cn:"问责制"},{en:"accuracy",cn:"准确性"},{en:"credential",cn:"资格"}],record_id:"recvfYsBuHJVgq"},
-{word:"accountability",meaning:"问责制，责任",sentence:"Teams were also encouraged to develop their own norms around culture, ______, and conflict management, fostering self-sufficiency and leadership skills.",translation:"团队还被鼓励围绕文化、问责制和冲突管理制定自己的规范，培养自主性和领导技能。",correct:"accountability",options:[{en:"accountability",cn:"问责制"},{en:"accuracy",cn:"准确性"},{en:"credential",cn:"资格"},{en:"curriculum",cn:"课程"}],record_id:"recvfYt6hkHZOT"},
-{word:"accuracy",meaning:"准确性，精确度",sentence:"Getting players to reconceptualize stress as being beneficial improved shooting ______, attentional control, and cognitive effort during high-pressure performance.",translation:"让选手将压力重新概念化为有益的，提高了高压表现时的射击准确性、注意力控制和认知努力。",correct:"accuracy",options:[{en:"accuracy",cn:"准确性"},{en:"credential",cn:"资格"},{en:"curriculum",cn:"课程"},{en:"dearth",cn:"缺乏"}],record_id:"recvfYt6hkbdZR"},
-{word:"credential",meaning:"资格，证书",sentence:"The Certified Mental Performance Consultant (CMPC) ______ has emerged as a pathway into the field for master's-level clinicians.",translation:"认证心理健康表现顾问证书已成为硕士级临床医生进入该领域的途径。",correct:"credential",options:[{en:"credential",cn:"资格"},{en:"curriculum",cn:"课程"},{en:"dearth",cn:"缺乏"},{en:"deliberate",cn:"故意的"}],record_id:"recvfYt6hkKjG2"}
+    const questions = [
+  {"word": "likened", "meaning": "比作，比拟", "sentence": "Ryan Terao, PsyD, an esports and licensed clinical psychologist, likened the power of esports and gaming to fire.", "record_id": "recvfYt6hkPe82"},
+  {"word": "marginalized", "meaning": "边缘化的", "sentence": "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including neurodivergent youth.", "record_id": "recvfYt6hkaYo6"},
+  {"word": "merge", "meaning": "合并，融合", "sentence": "I've been spending outside the game to learn all these skills and merge them with my passion for the game.", "record_id": "recvfYt6hk51Oy"},
+  {"word": "mindset-reappraisal", "meaning": "心态重新评估", "sentence": "A mindset-reappraisal intervention that encouraged players to view stress as beneficial lowered players' anxiety.", "record_id": "recvfYt6hkVVXN"},
+  {"word": "mitigate", "meaning": "减轻，缓解", "sentence": "What we really need to do is track young people over their development to understand when gaming is good and when it is bad, and then how to mitigate the bad and maximize the good.", "record_id": "recvfYt6hkfv04"},
+  {"word": "mound", "meaning": "投手丘（棒球）", "sentence": "This would be akin to a player committing a flagrant foul in basketball or rushing the mound in baseball.", "record_id": "recvfYt6hksyjq"},
+  {"word": "movember", "meaning": "Movember（男性健康慈善机构）", "sentence": "In 2024, the global men's health charity Movember recruited esports psychology researcher Dylan Poulus, PhD.", "record_id": "recvfYt6hkQ4Fh"},
+  {"word": "multibillion-dollar", "meaning": "数十亿美元的", "sentence": "Esports are a fast-evolving multibillion-dollar industry that draws hundreds of millions of competitive video game players worldwide.", "record_id": "recvfYt6hkwYbY"},
+  {"word": "navigating", "meaning": "应对，穿越", "sentence": "EPPIC addresses communication, teamwork, leadership, health and wellness, and navigating online toxicity and hate speech.", "record_id": "recvfYt6hkw8Hu"},
+  {"word": "neurodivergent", "meaning": "神经多样性者", "sentence": "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including neurodivergent youth.", "record_id": "recvfYt6hkPzaT"},
+  {"word": "normalizing", "meaning": "正常化", "sentence": "Students gained access to an athletics-based sport psychologist, nutrition programming, and twice-weekly morning workouts aimed at normalizing physical conditioning.", "record_id": "recvfYt6hkYXjv"},
+  {"word": "norms", "meaning": "规范，准则", "sentence": "Teams were also encouraged to develop their own norms around culture, accountability, and conflict management.", "record_id": "recvfYt6hkLTUl"},
+  {"word": "off-ramp", "meaning": "退出通道，出路", "sentence": "Many pros go straight from an anonymous position on a ladder to a contract, with no Little League, no college team, and no off-ramp when it ends.", "record_id": "recvfYt6hklbd1"},
+  {"word": "pillars", "meaning": "支柱，核心原则", "sentence": "Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to finalize nine pillars of mental health support.", "record_id": "recvfYt6hksxyk"},
+  {"word": "pipeline", "meaning": "管道，人才输送渠道", "sentence": "Esports is a sport without a childhood pipeline.", "record_id": "recvfYt6hkqQZI"},
+  {"word": "postgame", "meaning": "赛后的", "sentence": "He often prepares clients to expect a temporary dip in performance as they reconstruct habits around sleep, practice structure, and postgame review.", "record_id": "recvfYt6hkfyGP"},
+  {"word": "reckless", "meaning": "鲁莽的，轻率的", "sentence": "Tilt can lead players to perform reckless and self-destructive actions, such as hurtling their character, unprotected, at an enemy.", "record_id": "recvfYt6hkA0XV"},
+  {"word": "reconceptualize", "meaning": "重新概念化", "sentence": "Getting players to reconceptualize stress as being beneficial and a challenge to overcome rather than a debilitating threat improved shooting accuracy.", "record_id": "recvfYt6hk4SMp"},
+  {"word": "recruited", "meaning": "招募的", "sentence": "In 2024, the global men's health charity Movember recruited esports psychology researcher Dylan Poulus, PhD.", "record_id": "recvfYt6hkJVqA"},
+  {"word": "relegated", "meaning": "被降级", "sentence": "As a result, neurodivergent youth in esports get to be the captain of the team versus the helper role they are often relegated to in traditional sports.", "record_id": "recvfYt6hkW6sM"},
+  {"word": "resembled", "meaning": "类似于", "sentence": "Researchers found 51 stressors, such as communication problems and pressures of competing before live audiences, resembled those affecting professional athletes in traditional sports.", "record_id": "recvfYt6hk55cm"},
+  {"word": "rigor", "meaning": "严谨性", "sentence": "The evidence base is expanding rapidly, but it lacks the rigor necessary for evidence-based practice.", "record_id": "recvfYt6hkIQ7o"},
+  {"word": "sanctioned", "meaning": "认可的，批准的", "sentence": "Roose intentionally housed the program within the athletics department and adopted the NCAA's 20-hour rule for sanctioned activities.", "record_id": "recvfYt6hkfaBl"},
+  {"word": "scrutiny", "meaning": "审查，审视", "sentence": "Many esports players begin competing professionally in adolescence, facing intense pressure, unstable schedules, and public scrutiny while still developing emotionally and socially.", "record_id": "recvfYt6hkbJN8"},
+  {"word": "self-efficacy", "meaning": "自我效能感", "sentence": "However, mindset and self-efficacy are key.", "record_id": "recvfYt6hkE68U"},
+  {"word": "self-sufficiency", "meaning": "自给自足", "sentence": "Teams were also encouraged to develop their own norms around culture, accountability, and conflict management, fostering self-sufficiency and leadership skills.", "record_id": "recvfYt6hk23oh"},
+  {"word": "semiprofessional", "meaning": "半职业的", "sentence": "Players often compete as teams on digital platforms through systems run by amateur, semiprofessional, or professional leagues.", "record_id": "recvfYt6hkttW0"},
+  {"word": "sharpen", "meaning": "加强，提高", "sentence": "New studies on stress, tilt, practice demands, and attention will sharpen understanding of what drives performance in the digital game environment.", "record_id": "recvfYt6hkE3yF"},
+  {"word": "shooting", "meaning": "射击", "sentence": "Popular genres of esports include shooting games (Counter-Strike).", "record_id": "recvfYt6hkyiFd"},
+  {"word": "shortfall", "meaning": "不足，缺口", "sentence": "While there are more sports psychologists and certified performance coaches entering the esports space, there is still a significant shortfall of qualified professionals.", "record_id": "recvfYt6hkrarx"},
+  {"word": "stretches", "meaning": "一段时间，延伸", "sentence": "Players often practice for long stretches with minimal physical movement and irregular sleep schedules.", "record_id": "recvfYt6hk7iLc"},
+  {"word": "subdisciplines", "meaning": "分支学科", "sentence": "Esports psychologists come from many different subdisciplines and are working to bring evidence-based approaches to performance, mental health, and player development.", "record_id": "recvfYt6hkdJId"},
+  {"word": "toxicity", "meaning": "毒性，有害性", "sentence": "EPPIC addresses communication, teamwork, leadership, health and wellness, and navigating online toxicity and hate speech.", "record_id": "recvfYt6hknDXU"},
+  {"word": "transition", "meaning": "过渡，转变", "sentence": "They also incorporated transition planning, encouraging players to apply to college or complete a GED.", "record_id": "recvfYt6hkgkVJ"},
+  {"word": "slang", "meaning": "俚语，行话", "sentence": "Slang is one of these really classic indicators of identity.", "record_id": "recvfYttSbBtAI"},
+  {"word": "sheds", "meaning": "散发，流露", "sentence": "Slang sheds light on the complexity of identity formation and belonging in a fast-paced digital world.", "record_id": "recvfYttSboDtk"},
+  {"word": "Originating", "meaning": "起源于，源自", "sentence": "Originating from a somewhat obscure rap song in late 2024, it quickly gained momentum on TikTok and other social media platforms.", "record_id": "recvfYttSbT3r8"},
+  {"word": "a linguistic quirk", "meaning": "语言怪癖，语言特色", "sentence": "Slang, however, is more than a linguistic quirk for people of all ages.", "record_id": "recvfYttSbCrGr"},
+  {"word": "secrecy and informality shapes", "meaning": "秘密性和非正式性塑造了", "sentence": "That early association with secrecy and informality shapes modern perceptions of slang as something outside the bounds of formal speech or writing.", "record_id": "recvfYttSbqln5"},
+  {"word": "incorporating colloquialisms", "meaning": "纳入口语表达，融入俗语", "sentence": "Contemporary slang also heavily reflects the influences of youth-driven pop culture and digital media while also incorporating colloquialisms that originated from LGBTQ+ communities.", "record_id": "recvfYttSbWw5z"},
+  {"word": "illustrative users", "meaning": "示范性使用者，偶尔使用者", "sentence": "Primary users create and use slang in their everyday speech, and illustrative users adopt slang occasionally to signal authenticity to others.", "record_id": "recvfYttSbLRTr"},
+  {"word": "signal authenticity", "meaning": "传递真实性，表明真实身份", "sentence": "Primary users create and use slang in their everyday speech, and illustrative users adopt slang occasionally to signal authenticity to others.", "record_id": "recvfYttSbTiRR"},
+  {"word": "social inferiority", "meaning": "社会地位低下，社会劣势", "sentence": "While slang can signal a desirable image of youthfulness or social currency, it can also carry the risk of stigma, suggesting a lack of professionalism or social inferiority.", "record_id": "recvfYttSbc4GE"},
+  {"word": "leveraging neuroplasticity", "meaning": "利用神经可塑性", "sentence": "Their findings suggest that leveraging neuroplasticity at any age can increase confidence, motivation, and the desire to tackle new challenges.", "record_id": "recvfYttSbEEHk"},
+  {"word": "implement", "meaning": "实施，执行，贯彻", "sentence": "Innovative, research-backed interventions that help aging adults implement new behaviors related to fitness, diet, and learning have been shown to improve and prolong cognitive health.", "record_id": "recvfYttSbXlpE"},
+  {"word": "prolong", "meaning": "延长，延续", "sentence": "Innovative, research-backed interventions that help aging adults implement new behaviors related to fitness, diet, and learning have been shown to improve and prolong cognitive health.", "record_id": "recvfYttSbMqJv"},
+  {"word": "internalized ageism", "meaning": "内化的年龄歧视", "sentence": "Whereas internalized ageism can lead older adults to believe that they can't learn and must give up things that are important to them, research suggests that positive age beliefs can lead to better health and a longer life.", "record_id": "recvfYttSbgGLB"},
+  {"word": "demographic", "meaning": "人群，人口群体", "sentence": "But researchers hope to see communities increase access to affordable ways for this demographic to learn—both online and in-person.", "record_id": "recvfYttSbhvRy"},
+  {"word": "immersed", "meaning": "沉浸的，全身心投入的", "sentence": "Her recent findings suggest that older adults immersed in a supportive learning environment can significantly increase their cognitive abilities as well as their confidence in their ability to learn.", "record_id": "recvfYttSbBjP0"},
+  {"word": "competent", "meaning": "有能力的，胜任的", "sentence": "This internalized ageism can lead to beliefs that older adults are less competent, can't learn, and must give up things that are important to them.", "record_id": "recvfYttSb3hrH"}
 ];
-        
-        let current = 0;
-        let results = [];
-        let startTime = new Date().toISOString();
-        
-        function renderQuestion() {
-            const w = words[current];
-            const questionHtml = `
-                <div class="sentence">${w.sentence.replace('______', '<span class="blank">______</span>')}</div>
-                <div class="options">
-                    ${w.options.map(o => `<div class="option" onclick="checkAnswer('${o.en}')">${o.en}</div>`).join('')}
-                </div>
-            `;
-            document.getElementById('questionArea').innerHTML = questionHtml;
-            document.getElementById('progressFill').style.width = ((current + 1) / words.length * 100) + '%';
-            document.getElementById('progressText').textContent = `第 ${current + 1} 题 / 共 ${words.length} 题`;
-        }
-        
-        function checkAnswer(answer) {
-            const w = words[current];
-            const isCorrect = answer.toLowerCase() === w.correct.toLowerCase();
-            results.push({w: w.word, r: w.record_id, c: isCorrect ? 1 : 0});
-            
-            const area = document.getElementById('resultArea');
-            area.style.display = 'block';
-            area.className = 'result ' + (isCorrect ? 'correct' : 'wrong');
-            
-            const optionsHtml = w.options.map(o => {
-                const isAnswer = o.en.toLowerCase() === w.correct.toLowerCase();
-                const cls = isAnswer ? 'correct' : (o.en === answer ? 'wrong' : '');
-                const mark = isAnswer ? ' ✓' : '';
-                return `<div class="result-option ${cls}"><span class="en">${o.en}</span><span class="cn">${o.cn}${mark}</span></div>`;
-            }).join('');
-            
-            area.innerHTML = `
-                <div class="result-title">${isCorrect ? '✅ 正确！' : '❌ 错误'}</div>
-                <div class="result-word"><strong>${w.word}</strong> - ${w.meaning}</div>
-                <div class="result-sentence">
-                    <div class="result-english">${w.sentence.replace('______', `<strong>${w.correct}</strong>`)}</div>
-                    <div class="result-chinese">${w.translation}</div>
-                </div>
-                <div class="result-options"><strong>选项解析：</strong>${optionsHtml}</div>
-            `;
-            
-            document.getElementById('nextBtn').style.display = 'block';
-        }
-        
-        function nextQuestion() {
-            current++;
-            if (current >= words.length) {
-                showResult();
-            } else {
-                document.getElementById('resultArea').style.display = 'none';
-                document.getElementById('nextBtn').style.display = 'none';
-                renderQuestion();
-            }
-        }
-        
-        function showResult() {
-            const correct = results.filter(r => r.c === 1).length;
-            const endTime = new Date().toISOString();
-            const code = btoa(JSON.stringify({round: 29, total: words.length, correct, results, startTime, endTime}));
-            
-            document.getElementById('questionArea').innerHTML = '';
+
+    let currentIndex = 0, correctCount = 0, wrongCount = 0, startTime = Date.now();
+    
+    function shuffle(a) { for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
+    function getOptions(correct) { let opts = [correct]; let others = questions.filter(q=>q.word!==correct.word); shuffle(others); others.slice(0,3).forEach(o=>opts.push(o)); return shuffle(opts); }
+    
+    function showQuestion() {
+        const q = questions[currentIndex], opts = getOptions(q);
+        document.getElementById('progressFill').style.width = ((currentIndex+1)/questions.length*100)+'%';
+        document.getElementById('progressText').textContent = `第 ${currentIndex+1} 题 / 共 ${questions.length} 题`;
+        const blankSentence = q.sentence.replace(new RegExp(q.word,'gi'),'<span class="blank">【______】</span>');
+        let html = `<div class="sentence">${blankSentence}</div><div class="options">`;
+        opts.forEach(o=>{html+=`<div class="option" onclick="checkAnswer(this,'${o.word}','${q.word}','${q.meaning}','${q.sentence}',${JSON.stringify(opts).replace(/"/g,'&quot;')})">${o.word}</div>`});
+        html += '</div>';
+        document.getElementById('questionArea').innerHTML = html;
+        document.getElementById('resultArea').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
+    }
+    
+    function checkAnswer(btn, selected, correct, meaning, sentence, optsJson) {
+        document.querySelectorAll('.option').forEach(o=>o.style.pointerEvents='none');
+        const isCorrect = selected === correct;
+        if(isCorrect) { correctCount++; btn.classList.add('correct'); }
+        else { wrongCount++; btn.classList.add('wrong'); document.querySelectorAll('.option').forEach(o=>{if(o.textContent===correct)o.classList.add('correct')}); }
+        const opts = JSON.parse(optsJson.replace(/&quot;/g,'"'));
+        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct}</strong> - ${meaning}</div><div class="result-sentence"><div class="result-english">${sentence.replace(new RegExp(correct,'gi'),'<strong>'+correct+'</strong>')}</div></div><div>`;
+        opts.forEach(o=>{const isC=o.word===correct;resultHtml+=`<div class="result-option ${isC?'correct':''}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`});
+        resultHtml += '</div></div>';
+        document.getElementById('resultArea').innerHTML = resultHtml;
+        document.getElementById('resultArea').style.display = 'block';
+        document.getElementById('nextBtn').style.display = 'inline-block';
+    }
+    
+    function nextQuestion() {
+        currentIndex++;
+        if(currentIndex >= questions.length) {
+            const endTime = Date.now(), acc = Math.round(correctCount/questions.length*100);
+            document.getElementById('questionArea').style.display = 'none';
             document.getElementById('resultArea').style.display = 'none';
             document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('progressFill').style.width = '100%';
+            document.getElementById('statsArea').innerHTML = `<div style="text-align:center;margin:20px 0"><div style="font-size:24px;font-weight:bold">正确: ${correctCount} | 错误: ${wrongCount}</div><div style="font-size:36px;font-weight:bold;color:#4CAF50">${acc}%</div></div>`;
+            document.getElementById('resultCode').textContent = `ENGRESULT:round=30,total=${questions.length},correct=${correctCount},wrong=${wrongCount},accuracy=${acc}%,startTime=${startTime},endTime=${endTime}`;
             document.getElementById('resultCodeArea').style.display = 'block';
-            document.getElementById('resultCode').textContent = 'ENGRESULT:' + code;
-        }
-        
-        renderQuestion();
+        } else { showQuestion(); }
+    }
+    
+    showQuestion();
     </script>
 </body>
 </html>
