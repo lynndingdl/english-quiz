@@ -109,31 +109,62 @@
 ];
 
     let currentIndex = 0, correctCount = 0, wrongCount = 0, startTime = Date.now();
+    let currentQuestion = null, currentOptions = [];
     
     function shuffle(a) { for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
     function getOptions(correct) { let opts = [correct]; let others = questions.filter(q=>q.word!==correct.word); shuffle(others); others.slice(0,3).forEach(o=>opts.push(o)); return shuffle(opts); }
     
     function showQuestion() {
-        const q = questions[currentIndex], opts = getOptions(q);
+        currentQuestion = questions[currentIndex];
+        currentOptions = getOptions(currentQuestion);
+        
         document.getElementById('progressFill').style.width = ((currentIndex+1)/questions.length*100)+'%';
         document.getElementById('progressText').textContent = `第 ${currentIndex+1} 题 / 共 ${questions.length} 题`;
-        const blankSentence = q.sentence.replace(new RegExp(q.word,'gi'),'<span class="blank">【______】</span>');
+        
+        const blankSentence = currentQuestion.sentence.replace(new RegExp(currentQuestion.word,'gi'),'<span class="blank">【______】</span>');
+        
         let html = `<div class="sentence">${blankSentence}</div><div class="options">`;
-        opts.forEach(o=>{html+=`<div class="option" onclick="checkAnswer(this,'${o.word}','${q.word}','${q.meaning}','${q.sentence}',${JSON.stringify(opts).replace(/"/g,'&quot;')})">${o.word}</div>`});
+        currentOptions.forEach((o, idx)=>{
+            html+=`<div class="option" data-index="${idx}">${o.word}</div>`;
+        });
         html += '</div>';
         document.getElementById('questionArea').innerHTML = html;
+        
+        // 绑定点击事件
+        document.querySelectorAll('.option').forEach(btn => {
+            btn.onclick = () => checkAnswer(parseInt(btn.dataset.index));
+        });
+        
         document.getElementById('resultArea').style.display = 'none';
         document.getElementById('nextBtn').style.display = 'none';
     }
     
-    function checkAnswer(btn, selected, correct, meaning, sentence, optsJson) {
+    function checkAnswer(selectedIdx) {
+        const selected = currentOptions[selectedIdx];
+        const correct = currentQuestion;
+        
         document.querySelectorAll('.option').forEach(o=>o.style.pointerEvents='none');
-        const isCorrect = selected === correct;
-        if(isCorrect) { correctCount++; btn.classList.add('correct'); }
-        else { wrongCount++; btn.classList.add('wrong'); document.querySelectorAll('.option').forEach(o=>{if(o.textContent===correct)o.classList.add('correct')}); }
-        const opts = JSON.parse(optsJson.replace(/&quot;/g,'"'));
-        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct}</strong> - ${meaning}</div><div class="result-sentence"><div class="result-english">${sentence.replace(new RegExp(correct,'gi'),'<strong>'+correct+'</strong>')}</div></div><div>`;
-        opts.forEach(o=>{const isC=o.word===correct;resultHtml+=`<div class="result-option ${isC?'correct':''}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`});
+        
+        const isCorrect = selected.word === correct.word;
+        if(isCorrect) { 
+            correctCount++; 
+            document.querySelectorAll('.option')[selectedIdx].classList.add('correct'); 
+        } else { 
+            wrongCount++; 
+            document.querySelectorAll('.option')[selectedIdx].classList.add('wrong'); 
+            // 高亮正确答案
+            currentOptions.forEach((o, idx) => {
+                if(o.word === correct.word) {
+                    document.querySelectorAll('.option')[idx].classList.add('correct');
+                }
+            });
+        }
+        
+        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct.word}</strong> - ${correct.meaning}</div><div class="result-sentence"><div class="result-english">${correct.sentence.replace(new RegExp(correct.word,'gi'),'<strong>'+correct.word+'</strong>')}</div></div><div>`;
+        currentOptions.forEach(o=>{
+            const isC = o.word === correct.word;
+            resultHtml+=`<div class="result-option ${isC?'correct':''}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
+        });
         resultHtml += '</div></div>';
         document.getElementById('resultArea').innerHTML = resultHtml;
         document.getElementById('resultArea').style.display = 'block';
