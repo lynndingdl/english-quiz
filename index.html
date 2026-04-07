@@ -11,15 +11,13 @@
         .progress { margin-bottom: 30px; }
         .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
         .progress-fill { height: 100%; background: #4CAF50; transition: width 0.3s; }
-        .progress-text { margin-top: 10px; color: #666; font-size: 14px; }
-        .question { display: none; }
-        .question.active { display: block; }
+        .progress-text { margin-top: 10px; color: #666; font-size: 14px; text-align: center; }
         .sentence { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #333; }
         .blank { background: #fff3e0; border-bottom: 2px solid #ff9800; min-width: 120px; display: inline-block; text-align: center; font-weight: bold; color: #e65100; }
         .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .option { padding: 15px 20px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; }
+        .option { padding: 15px 20px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; text-align: center; }
         .option:hover { background: #e3f2fd; border-color: #2196F3; }
-        .result { margin-top: 30px; padding: 20px; border-radius: 12px; display: none; }
+        .result { margin-top: 30px; padding: 20px; border-radius: 12px; }
         .result.correct { background: #e8f5e9; border: 2px solid #4CAF50; }
         .result.wrong { background: #ffebee; border: 2px solid #f44336; }
         .result-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; }
@@ -32,21 +30,21 @@
         .result-option.wrong { background: #ffcdd2; }
         .result-option .en { color: #333; }
         .result-option .cn { color: #666; font-size: 14px; margin-left: 10px; }
-        .next-btn { margin-top: 20px; padding: 12px 30px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+        .next-btn { margin-top: 20px; padding: 12px 30px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; display: none; }
         .result-code { margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 12px; word-break: break-all; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="progress">
-            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 3.33%"></div></div>
             <div class="progress-text" id="progressText">第 1 题 / 共 30 题</div>
         </div>
         
-        <div id="questions"></div>
+        <div id="questionArea"></div>
         
-        <div id="resultArea" class="result"></div>
-        <button id="nextBtn" class="next-btn" style="display:none" onclick="nextQuestion()">下一题</button>
+        <div id="resultArea" class="result" style="display:none"></div>
+        <button id="nextBtn" class="next-btn" onclick="nextQuestion()">下一题</button>
         
         <div id="resultCodeArea" style="display:none">
             <h3>✅ 复习完成！</h3>
@@ -56,55 +54,52 @@
     </div>
     
     <script>
-        const words = [
-            {word: "inventory scale", meaning: "评估量表，清单量表", sentence: "A four-item version of the obsessive-compulsive ______.", translation: "强迫症评估量表的四题版本。", correct: "inventory scale", options: [{en:"inventory scale",cn:"评估量表，清单量表"}, {en:"interfere",cn:"干扰，影响"}, {en:"delusions",cn:"妄想，错觉"}, {en:"hoarding disorder",cn:"囤积障碍，收藏癖"}], record_id: "recvfYsBuHbxAR"},
-            {word: "interfere", meaning: "干扰，影响", sentence: "The extent to which they ______ with daily functioning.", translation: "它们干扰日常功能的程度。", correct: "interfere", options: [{en:"interfere",cn:"干扰，影响"}, {en:"delusions",cn:"妄想，错觉"}, {en:"preoccupied",cn:"过度关注，沉迷于"}, {en:"hypochondriasis",cn:"疑病症，健康焦虑症"}], record_id: "recvfYsBuHoGSV"},
-            {word: "delusions", meaning: "妄想，错觉", sentence: "They may also be confused with ______, leading to a misdiagnosis of schizophrenia.", translation: "它们也可能与妄想混淆，导致精神分裂症的误诊。", correct: "delusions", options: [{en:"delusions",cn:"妄想，错觉"}, {en:"Tourette syndrome",cn:"妥瑞氏症，抽动秽语综合征"}, {en:"doorknobs",cn:"门把手"}, {en:"imaginal scripts",cn:"想象脚本，意象练习"}], record_id: "recvfYsBuHO0b8"},
-            {word: "providing reassurance is counterproductive", meaning: "给予安慰适得其反", sentence: "With OCD, however, ______.", translation: "然而，对于强迫症来说，给予安慰适得其反。", correct: "providing reassurance is counterproductive", options: [{en:"providing reassurance is counterproductive",cn:"给予安慰适得其反"}, {en:"hoarding disorder",cn:"囤积障碍，收藏癖"}, {en:"difficulty discarding possessions",cn:"难以丢弃物品"}, {en:"dysmorphic",cn:"躯体变形障碍相关的"}], record_id: "recvfYsBuHJWr5"},
-            {word: "hoarding disorder", meaning: "囤积障碍，收藏癖", sentence: "Including ______ (where people have difficulty discarding possessions).", translation: "包括囤积障碍（人们难以丢弃物品）。", correct: "hoarding disorder", options: [{en:"hoarding disorder",cn:"囤积障碍，收藏癖"}, {en:"difficulty discarding possessions",cn:"难以丢弃物品"}, {en:"preoccupied",cn:"过度关注，沉迷于"}, {en:"illness anxiety disorder",cn:"疾病焦虑症"}], record_id: "recvfYsBuHiAab"},
-            {word: "difficulty discarding possessions", meaning: "难以丢弃物品", sentence: "Where people have ______.", translation: "人们难以丢弃物品。", correct: "difficulty discarding possessions", options: [{en:"difficulty discarding possessions",cn:"难以丢弃物品"}, {en:"dysmorphic",cn:"躯体变形障碍相关的"}, {en:"hypochondriasis",cn:"疑病症，健康焦虑症"}, {en:"Tourette syndrome",cn:"妥瑞氏症，抽动秽语综合征"}], record_id: "recvfYsBuHnPvk"},
-            {word: "dysmorphic", meaning: "躯体变形障碍相关的", sentence: "Body ______ disorder (where people are preoccupied with perceived flaws).", translation: "躯体变形障碍（人们过度关注感知到的缺陷）。", correct: "dysmorphic", options: [{en:"dysmorphic",cn:"躯体变形障碍相关的"}, {en:"preoccupied",cn:"过度关注，沉迷于"}, {en:"assuage contamination fears",cn:"减轻污染恐惧"}, {en:"Selective serotonin reuptake inhibitors",cn:"选择性5-羟色胺再摄取抑制剂"}], record_id: "recvfYsBuHFM4B"},
-            {word: "preoccupied", meaning: "过度关注，沉迷于", sentence: "Where people are ______ with perceived flaws in their physical appearance.", translation: "人们过度关注外表中感知到的缺陷。", correct: "preoccupied", options: [{en:"preoccupied",cn:"过度关注，沉迷于"}, {en:"hypochondriasis",cn:"疑病症，健康焦虑症"}, {en:"Tourette syndrome",cn:"妥瑞氏症，抽动秽语综合征"}, {en:"doorknobs",cn:"门把手"}], record_id: "recvfYsBuHZAdJ"},
-            {word: "hypochondriasis", meaning: "疑病症，健康焦虑症", sentence: "Illness anxiety disorder, formerly called ______, bears key similarities to OCD.", translation: "疾病焦虑症，以前称为疑病症，与强迫症有关键相似之处。", correct: "hypochondriasis", options: [{en:"hypochondriasis",cn:"疑病症，健康焦虑症"}, {en:"Tourette syndrome",cn:"妥瑞氏症，抽动秽语综合征"}, {en:"dysmorphic",cn:"躯体变形障碍相关的"}, {en:"booster sessions",cn:"加强治疗回合，强化疗程"}], record_id: "recvfYsBuHgqrC"},
-            {word: "Tourette syndrome", meaning: "妥瑞氏症，抽动秽语综合征", sentence: "There is also evidence for substantial overlap between OCD and ______.", translation: "也有证据表明强迫症和妥瑞氏症之间有大量重叠。", correct: "Tourette syndrome", options: [{en:"Tourette syndrome",cn:"妥瑞氏症，抽动秽语综合征"}, {en:"doorknobs",cn:"门把手"}, {en:"imaginal scripts",cn:"想象脚本，意象练习"}, {en:"antipsychotics",cn:"抗精神病药物"}], record_id: "recvfYsBuHnr0a"},
-            {word: "doorknobs", meaning: "门把手", sentence: "A clinician might guide someone with contamination-related OCD to touch ______.", translation: "临床医生可能会引导有污染相关强迫症的人触摸门把手。", correct: "doorknobs", options: [{en:"doorknobs",cn:"门把手"}, {en:"imaginal scripts",cn:"想象脚本，意象练习"}, {en:"booster sessions",cn:"加强治疗回合，强化疗程"}, {en:"assuage contamination fears",cn:"减轻污染恐惧"}], record_id: "recvfYsBuHo474"},
-            {word: "imaginal scripts", meaning: "想象脚本，意象练习", sentence: "Treatment may involve ______ that ask the patient to sit with feared scenarios.", translation: "治疗可能涉及让患者处于恐惧场景中的想象脚本。", correct: "imaginal scripts", options: [{en:"imaginal scripts",cn:"想象脚本，意象练习"}, {en:"booster sessions",cn:"加强治疗回合，强化疗程"}, {en:"Selective serotonin reuptake inhibitors",cn:"选择性5-羟色胺再摄取抑制剂"}, {en:"standalone",cn:"独立的，单独的"}], record_id: "recvfYsBuHO6u5"},
-            {word: "booster sessions", meaning: "加强治疗回合，强化疗程", sentence: "With follow-up or ______ recommended to maintain progress over time.", translation: "建议通过随访或加强治疗回合来维持长期进展。", correct: "booster sessions", options: [{en:"booster sessions",cn:"加强治疗回合，强化疗程"}, {en:"assuage contamination fears",cn:"减轻污染恐惧"}, {en:"SSRIs",cn:"选择性5-羟色胺再摄取抑制剂"}, {en:"antipsychotics",cn:"抗精神病药物"}], record_id: "recvfYsBuHal4J"},
-            {word: "assuage contamination fears", meaning: "减轻污染恐惧", sentence: "Such as doing extra laundry to ______.", translation: "例如多做洗衣来减轻污染恐惧。", correct: "assuage contamination fears", options: [{en:"assuage contamination fears",cn:"减轻污染恐惧"}, {en:"Selective serotonin reuptake inhibitors",cn:"选择性5-羟色胺再摄取抑制剂"}, {en:"standalone",cn:"独立的，单独的"}, {en:"antipsychotics",cn:"抗精神病药物"}], record_id: "recvfYsBuHllTq"},
-            {word: "Selective serotonin reuptake inhibitors", meaning: "选择性5-羟色胺再摄取抑制剂", sentence: "______ (SSRIs) are also effective in reducing OCD symptoms.", translation: "选择性5-羟色胺再摄取抑制剂（SSRIs）也能有效减少强迫症症状。", correct: "Selective serotonin reuptake inhibitors", options: [{en:"Selective serotonin reuptake inhibitors",cn:"选择性5-羟色胺再摄取抑制剂"}, {en:"standalone",cn:"独立的，单独的"}, {en:"antipsychotics",cn:"抗精神病药物"}, {en:"over-importance",cn:"过度重视"}], record_id: "recvfYsBuH0nqz"},
-            {word: "standalone", meaning: "独立的，单独的", sentence: "Most psychologists view SSRIs as a way to enhance ERP rather than as a ______ treatment.", translation: "大多数心理学家将SSRIs视为增强ERP的方法，而不是独立治疗。", correct: "standalone", options: [{en:"standalone",cn:"独立的，单独的"}, {en:"antipsychotics",cn:"抗精神病药物"}, {en:"over-importance",cn:"过度重视"}, {en:"grounding exercises",cn:"接地练习，扎根练习"}], record_id: "recvfYsBuH1mMy"},
-            {word: "antipsychotics", meaning: "抗精神病药物", sentence: "In severe or extreme cases of OCD, other medications, such as ______, may also be helpful.", translation: "在强迫症的严重或极端情况下，其他药物，如抗精神病药物，也可能有用。", correct: "antipsychotics", options: [{en:"antipsychotics",cn:"抗精神病药物"}, {en:"over-importance",cn:"过度重视"}, {en:"grounding exercises",cn:"接地练习，扎根练习"}, {en:"bordering on reassurance",cn:"近乎安慰"}], record_id: "recvfYsBuHn70U"},
-            {word: "over-importance", meaning: "过度重视", sentence: "Addressing the ______ of thoughts (placing excessive weight on intrusive or fantastical thoughts).", translation: "解决思维的过度重视问题（对侵入性或幻想性思维给予过多权重）。", correct: "over-importance", options: [{en:"over-importance",cn:"过度重视"}, {en:"grounding exercises",cn:"接地练习，扎根练习"}, {en:"bordering on reassurance",cn:"近乎安慰"}, {en:"inference-based",cn:"基于推理的，推断性的"}], record_id: "recvfYsBuHXmIf"},
-            {word: "grounding exercises", meaning: "接地练习，扎根练习", sentence: "She also teaches coping skills—such as mindfulness and ______.", translation: "她还教授应对技巧——如正念和接地练习。", correct: "grounding exercises", options: [{en:"grounding exercises",cn:"接地练习，扎根练习"}, {en:"bordering on reassurance",cn:"近乎安慰"}, {en:"inference-based",cn:"基于推理的，推断性的"}, {en:"adjunct",cn:"辅助手段，补充疗法"}], record_id: "recvfYsBuHpN4N"},
-            {word: "bordering on reassurance", meaning: "近乎安慰", sentence: "Not all providers use coping skills because some view them as ______.", translation: "并非所有医护人员都使用应对技巧，因为有些认为这些近乎安慰。", correct: "bordering on reassurance", options: [{en:"bordering on reassurance",cn:"近乎安慰"}, {en:"inference-based",cn:"基于推理的，推断性的"}, {en:"adjunct",cn:"辅助手段，补充疗法"}, {en:"across the board",cn:"全面地，整体地"}], record_id: "recvfYsBuHqnDF"},
-            {word: "inference-based", meaning: "基于推理的，推断性的", sentence: "A new treatment approach known as ______ cognitive behavioral therapy (I-CBT).", translation: "一种称为基于推理的认知行为疗法（I-CBT）的新治疗方法。", correct: "inference-based", options: [{en:"inference-based",cn:"基于推理的，推断性的"}, {en:"adjunct",cn:"辅助手段，补充疗法"}, {en:"across the board",cn:"全面地，整体地"}, {en:"complicate or exacerbate",cn:"使复杂化或加剧"}], record_id: "recvfYsBuHx27P"},
-            {word: "adjunct", meaning: "辅助手段，补充疗法", sentence: "May offer a further ______ to ERP or an alternative for patients unwilling to do ERP.", translation: "可以为ERP提供进一步的辅助手段，或为不愿做ERP的患者提供替代方案。", correct: "adjunct", options: [{en:"adjunct",cn:"辅助手段，补充疗法"}, {en:"across the board",cn:"全面地，整体地"}, {en:"complicate or exacerbate",cn:"使复杂化或加剧"}, {en:"abusive",cn:"虐待的，辱骂的"}], record_id: "recvfYsBuHIwRD"},
-            {word: "across the board", meaning: "全面地，整体地", sentence: "Ongoing research aims to make ERP more effective ______.", translation: "正在进行的研究旨在全面提高ERP的有效性。", correct: "across the board", options: [{en:"across the board",cn:"全面地，整体地"}, {en:"complicate or exacerbate",cn:"使复杂化或加剧"}, {en:"abusive",cn:"虐待的，辱骂的"}, {en:"akin",cn:"相似的，类似的"}], record_id: "recvfYsBuHaxvJ"},
-            {word: "complicate or exacerbate", meaning: "使复杂化或加剧", sentence: "A new line of inquiry also seeks to understand how past trauma can ______ OCD.", translation: "新的研究方向也试图了解过去的创伤如何使强迫症复杂化或加剧。", correct: "complicate or exacerbate", options: [{en:"complicate or exacerbate",cn:"使复杂化或加剧"}, {en:"abusive",cn:"虐待的，辱骂的"}, {en:"akin",cn:"相似的，类似的"}, {en:"amateur",cn:"业余的"}], record_id: "recvfYsBuHnuCC"},
-            {word: "abusive", meaning: "虐待的，辱骂的", sentence: "Players who believed they could change how easily they got tilted were more likely to use constructive coping strategies, while those who saw tilt as a fixed trait within themselves were more likely to employ ______ or negative strategies toward others.", translation: "相信自己可以改变容易"倾斜"程度的玩家更有可能使用建设性应对策略，而认为"倾斜"是自己固定特征的人更有可能对他人使用虐待性或负面策略。", correct: "abusive", options: [{en:"abusive",cn:"虐待的，辱骂的"}, {en:"akin",cn:"相似的，类似的"}, {en:"amateur",cn:"业余的"}, {en:"anonymous",cn:"匿名的"}], record_id: "recvfYt6hksZXq"},
-            {word: "akin", meaning: "相似的，类似的", sentence: "This would be ______ to a player committing a flagrant foul in basketball or rushing the mound in baseball.", translation: "这就好比篮球运动员犯下严重犯规或棒球运动员冲上投手丘。", correct: "akin", options: [{en:"akin",cn:"相似的，类似的"}, {en:"amateur",cn:"业余的"}, {en:"anonymous",cn:"匿名的"}, {en:"arena",cn:"竞技场，舞台"}], record_id: "recvfYt6hka7XM"},
-            {word: "amateur", meaning: "业余的", sentence: "Players often compete as teams on digital platforms through systems run by ______, semiprofessional, or professional leagues.", translation: "玩家通常在数字平台上通过业余、半职业或职业联赛的系统进行团队竞赛。", correct: "amateur", options: [{en:"amateur",cn:"业余的"}, {en:"anonymous",cn:"匿名的"}, {en:"arena",cn:"竞技场，舞台"}, {en:"broader",cn:"更广泛的"}], record_id: "recvfYt6hkxFTm"},
-            {word: "anonymous", meaning: "匿名的", sentence: "Many pros go straight from an ______ position on a ladder to a contract, with no Little League, no college team, and no off-ramp when it ends.", translation: "许多职业选手直接从梯子上的匿名位置进入合同，没有少年棒球联赛，没有大学队，结束时也没有退路。", correct: "anonymous", options: [{en:"anonymous",cn:"匿名的"}, {en:"arena",cn:"竞技场，舞台"}, {en:"broader",cn:"更广泛的"}, {en:"abusive",cn:"虐待的，辱骂的"}], record_id: "recvfYt6hk1o1T"},
-            {word: "arena", meaning: "竞技场，舞台", sentence: "Popular genres of esports include fighting games, shooting games, role-playing games, and multiplayer online battle ______ games.", translation: "流行的电子竞技类型包括格斗游戏、射击游戏、角色扮演游戏和多人在线战斗竞技场游戏。", correct: "arena", options: [{en:"arena",cn:"竞技场，舞台"}, {en:"broader",cn:"更广泛的"}, {en:"abusive",cn:"虐待的，辱骂的"}, {en:"akin",cn:"相似的，类似的"}], record_id: "recvfYt6hkpyyN"},
-            {word: "broader", meaning: "更广泛的", sentence: "He works either as a team's main sport psychologist or as part of ______ performance units alongside coaches, analysts, and physical trainers.", translation: "他要么作为团队的主要运动心理学家，要么作为更广泛表现团队的一部分，与教练、分析师和体能教练一起工作。", correct: "broader", options: [{en:"broader",cn:"更广泛的"}, {en:"amateur",cn:"业余的"}, {en:"anonymous",cn:"匿名的"}, {en:"across the board",cn:"全面地，整体地"}], record_id: "recvfYt6hkHjMp"}
-        ];
+    const words = [
+{word:"inventory scale",meaning:"评估量表，清单量表",sentence:"A four-item version of the obsessive-compulsive ______.",translation:"强迫症评估量表的四题版本。",correct:"inventory scale",options:[{en:"inventory scale",cn:"评估量表"},{en:"interfere",cn:"干扰"},{en:"delusions",cn:"妄想"},{en:"hoarding disorder",cn:"囤积症"}],record_id:"recvfYsBuHbxAR"},
+{word:"interfere",meaning:"干扰，影响",sentence:"The extent to which they ______ with daily functioning.",translation:"它们干扰日常功能的程度。",correct:"interfere",options:[{en:"interfere",cn:"干扰"},{en:"delusions",cn:"妄想"},{en:"preoccupied",cn:"沉迷"},{en:"hypochondriasis",cn:"疑病症"}],record_id:"recvfYsBuHoGSV"},
+{word:"delusions",meaning:"妄想，错觉",sentence:"They may also be confused with ______, leading to a misdiagnosis of schizophrenia.",translation:"它们也可能与妄想混淆，导致精神分裂症误诊。",correct:"delusions",options:[{en:"delusions",cn:"妄想"},{en:"Tourette syndrome",cn:"妥瑞氏症"},{en:"doorknobs",cn:"门把手"},{en:"imaginal scripts",cn:"意象练习"}],record_id:"recvfYsBuHO0b8"},
+{word:"providing reassurance is counterproductive",meaning:"给予安慰适得其反",sentence:"With OCD, however, ______.",translation:"然而，对于强迫症来说，给予安慰适得其反。",correct:"providing reassurance is counterproductive",options:[{en:"providing reassurance is counterproductive",cn:"适得其反"},{en:"hoarding disorder",cn:"囤积症"},{en:"difficulty discarding",cn:"难以丢弃"},{en:"dysmorphic",cn:"躯体变形"}],record_id:"recvfYsBuHJWr5"},
+{word:"hoarding disorder",meaning:"囤积障碍",sentence:"Including ______ (where people have difficulty discarding possessions).",translation:"包括囤积障碍。",correct:"hoarding disorder",options:[{en:"hoarding disorder",cn:"囤积症"},{en:"difficulty discarding",cn:"难以丢弃"},{en:"preoccupied",cn:"沉迷"},{en:"illness anxiety",cn:"疾病焦虑"}],record_id:"recvfYsBuHiAab"},
+{word:"difficulty discarding possessions",meaning:"难以丢弃物品",sentence:"Where people have ______.",translation:"人们难以丢弃物品。",correct:"difficulty discarding possessions",options:[{en:"difficulty discarding possessions",cn:"难以丢弃"},{en:"dysmorphic",cn:"躯体变形"},{en:"hypochondriasis",cn:"疑病症"},{en:"Tourette syndrome",cn:"妥瑞氏症"}],record_id:"recvfYsBuHnPvk"},
+{word:"dysmorphic",meaning:"躯体变形障碍",sentence:"Body ______ disorder (where people are preoccupied with perceived flaws).",translation:"躯体变形障碍。",correct:"dysmorphic",options:[{en:"dysmorphic",cn:"躯体变形"},{en:"preoccupied",cn:"沉迷"},{en:"assuage contamination fears",cn:"减轻恐惧"},{en:"SSRIs",cn:"SSRI药物"}],record_id:"recvfYsBuHFM4B"},
+{word:"preoccupied",meaning:"过度关注",sentence:"Where people are ______ with perceived flaws in their physical appearance.",translation:"人们过度关注外表缺陷。",correct:"preoccupied",options:[{en:"preoccupied",cn:"过度关注"},{en:"hypochondriasis",cn:"疑病症"},{en:"Tourette syndrome",cn:"妥瑞氏症"},{en:"doorknobs",cn:"门把手"}],record_id:"recvfYsBuHZAdJ"},
+{word:"hypochondriasis",meaning:"疑病症",sentence:"Illness anxiety disorder, formerly called ______, bears key similarities to OCD.",translation:"以前称为疑病症。",correct:"hypochondriasis",options:[{en:"hypochondriasis",cn:"疑病症"},{en:"Tourette syndrome",cn:"妥瑞氏症"},{en:"dysmorphic",cn:"躯体变形"},{en:"booster sessions",cn:"强化疗程"}],record_id:"recvfYsBuHgqrC"},
+{word:"Tourette syndrome",meaning:"妥瑞氏症",sentence:"There is also evidence for substantial overlap between OCD and ______.",translation:"强迫症和妥瑞氏症有大量重叠。",correct:"Tourette syndrome",options:[{en:"Tourette syndrome",cn:"妥瑞氏症"},{en:"doorknobs",cn:"门把手"},{en:"imaginal scripts",cn:"意象练习"},{en:"antipsychotics",cn:"抗精神病药"}],record_id:"recvfYsBuHnr0a"},
+{word:"doorknobs",meaning:"门把手",sentence:"A clinician might guide someone with contamination-related OCD to touch ______.",translation:"引导患者触摸门把手。",correct:"doorknobs",options:[{en:"doorknobs",cn:"门把手"},{en:"imaginal scripts",cn:"意象练习"},{en:"booster sessions",cn:"强化疗程"},{en:"assuage contamination fears",cn:"减轻恐惧"}],record_id:"recvfYsBuHo474"},
+{word:"imaginal scripts",meaning:"想象脚本",sentence:"Treatment may involve ______ that ask the patient to sit with feared scenarios.",translation:"治疗涉及想象脚本。",correct:"imaginal scripts",options:[{en:"imaginal scripts",cn:"想象脚本"},{en:"booster sessions",cn:"强化疗程"},{en:"SSRIs",cn:"SSRI药物"},{en:"standalone",cn:"独立的"}],record_id:"recvfYsBuHO6u5"},
+{word:"booster sessions",meaning:"强化疗程",sentence:"With follow-up or ______ recommended to maintain progress over time.",translation:"建议随访或强化疗程。",correct:"booster sessions",options:[{en:"booster sessions",cn:"强化疗程"},{en:"assuage contamination fears",cn:"减轻恐惧"},{en:"SSRIs",cn:"SSRI药物"},{en:"antipsychotics",cn:"抗精神病药"}],record_id:"recvfYsBuHal4J"},
+{word:"assuage contamination fears",meaning:"减轻污染恐惧",sentence:"Such as doing extra laundry to ______.",translation:"多做洗衣来减轻污染恐惧。",correct:"assuage contamination fears",options:[{en:"assuage contamination fears",cn:"减轻恐惧"},{en:"SSRIs",cn:"SSRI药物"},{en:"standalone",cn:"独立的"},{en:"antipsychotics",cn:"抗精神病药"}],record_id:"recvfYsBuHllTq"},
+{word:"Selective serotonin reuptake inhibitors",meaning:"SSRI药物",sentence:"______ (SSRIs) are also effective in reducing OCD symptoms.",translation:"SSRI也能有效减少强迫症症状。",correct:"Selective serotonin reuptake inhibitors",options:[{en:"Selective serotonin reuptake inhibitors",cn:"SSRI药物"},{en:"standalone",cn:"独立的"},{en:"antipsychotics",cn:"抗精神病药"},{en:"over-importance",cn:"过度重视"}],record_id:"recvfYsBuH0nqz"},
+{word:"standalone",meaning:"独立的",sentence:"Most psychologists view SSRIs as a way to enhance ERP rather than as a ______ treatment.",translation:"SSRIs是增强ERP的方法，而非独立治疗。",correct:"standalone",options:[{en:"standalone",cn:"独立的"},{en:"antipsychotics",cn:"抗精神病药"},{en:"over-importance",cn:"过度重视"},{en:"grounding exercises",cn:"接地练习"}],record_id:"recvfYsBuH1mMy"},
+{word:"antipsychotics",meaning:"抗精神病药物",sentence:"In severe or extreme cases of OCD, other medications, such as ______, may also be helpful.",translation:"抗精神病药物也可能有用。",correct:"antipsychotics",options:[{en:"antipsychotics",cn:"抗精神病药"},{en:"over-importance",cn:"过度重视"},{en:"grounding exercises",cn:"接地练习"},{en:"bordering on reassurance",cn:"近乎安慰"}],record_id:"recvfYsBuHn70U"},
+{word:"over-importance",meaning:"过度重视",sentence:"Addressing the ______ of thoughts (placing excessive weight on intrusive thoughts).",translation:"解决思维的过度重视问题。",correct:"over-importance",options:[{en:"over-importance",cn:"过度重视"},{en:"grounding exercises",cn:"接地练习"},{en:"bordering on reassurance",cn:"近乎安慰"},{en:"inference-based",cn:"基于推理"}],record_id:"recvfYsBuHXmIf"},
+{word:"grounding exercises",meaning:"接地练习",sentence:"She also teaches coping skills—such as mindfulness and ______.",translation:"她教授正念和接地练习。",correct:"grounding exercises",options:[{en:"grounding exercises",cn:"接地练习"},{en:"bordering on reassurance",cn:"近乎安慰"},{en:"inference-based",cn:"基于推理"},{en:"adjunct",cn:"辅助手段"}],record_id:"recvfYsBuHpN4N"},
+{word:"bordering on reassurance",meaning:"近乎安慰",sentence:"Not all providers use coping skills because some view them as ______.",translation:"有些认为这些近乎安慰。",correct:"bordering on reassurance",options:[{en:"bordering on reassurance",cn:"近乎安慰"},{en:"inference-based",cn:"基于推理"},{en:"adjunct",cn:"辅助手段"},{en:"across the board",cn:"全面地"}],record_id:"recvfYsBuHqnDF"},
+{word:"inference-based",meaning:"基于推理的",sentence:"A new treatment approach known as ______ cognitive behavioral therapy (I-CBT).",translation:"基于推理的认知行为疗法。",correct:"inference-based",options:[{en:"inference-based",cn:"基于推理"},{en:"adjunct",cn:"辅助手段"},{en:"across the board",cn:"全面地"},{en:"complicate or exacerbate",cn:"使复杂化"}],record_id:"recvfYsBuHx27P"},
+{word:"adjunct",meaning:"辅助手段",sentence:"May offer a further ______ to ERP or an alternative for patients unwilling to do ERP.",translation:"为ERP提供辅助手段。",correct:"adjunct",options:[{en:"adjunct",cn:"辅助手段"},{en:"across the board",cn:"全面地"},{en:"complicate or exacerbate",cn:"使复杂化"},{en:"abusive",cn:"虐待的"}],record_id:"recvfYsBuHIwRD"},
+{word:"across the board",meaning:"全面地",sentence:"Ongoing research aims to make ERP more effective ______.",translation:"研究旨在全面提高ERP有效性。",correct:"across the board",options:[{en:"across the board",cn:"全面地"},{en:"complicate or exacerbate",cn:"使复杂化"},{en:"abusive",cn:"虐待的"},{en:"akin",cn:"类似的"}],record_id:"recvfYsBuHaxvJ"},
+{word:"complicate or exacerbate",meaning:"使复杂化或加剧",sentence:"A new line of inquiry also seeks to understand how past trauma can ______ OCD.",translation:"过去创伤如何使强迫症复杂化。",correct:"complicate or exacerbate",options:[{en:"complicate or exacerbate",cn:"使复杂化"},{en:"abusive",cn:"虐待的"},{en:"akin",cn:"类似的"},{en:"amateur",cn:"业余的"}],record_id:"recvfYsBuHnuCC"},
+{word:"abusive",meaning:"虐待的",sentence:"Those who saw tilt as a fixed trait were more likely to employ ______ or negative strategies toward others.",translation:"更容易对他人使用虐待性策略。",correct:"abusive",options:[{en:"abusive",cn:"虐待的"},{en:"akin",cn:"类似的"},{en:"amateur",cn:"业余的"},{en:"anonymous",cn:"匿名的"}],record_id:"recvfYt6hksZXq"},
+{word:"akin",meaning:"相似的",sentence:"This would be ______ to a player committing a flagrant foul in basketball.",translation:"这就好比篮球运动员犯下严重犯规。",correct:"akin",options:[{en:"akin",cn:"相似的"},{en:"amateur",cn:"业余的"},{en:"anonymous",cn:"匿名的"},{en:"arena",cn:"竞技场"}],record_id:"recvfYt6hka7XM"},
+{word:"amateur",meaning:"业余的",sentence:"Players often compete through systems run by ______, semiprofessional, or professional leagues.",translation:"通过业余、半职业或职业联赛系统竞赛。",correct:"amateur",options:[{en:"amateur",cn:"业余的"},{en:"anonymous",cn:"匿名的"},{en:"arena",cn:"竞技场"},{en:"broader",cn:"更广泛的"}],record_id:"recvfYt6hkxFTm"},
+{word:"anonymous",meaning:"匿名的",sentence:"Many pros go straight from an ______ position on a ladder to a contract.",translation:"直接从梯子上的匿名位置进入合同。",correct:"anonymous",options:[{en:"anonymous",cn:"匿名的"},{en:"arena",cn:"竞技场"},{en:"broader",cn:"更广泛的"},{en:"abusive",cn:"虐待的"}],record_id:"recvfYt6hk1o1T"},
+{word:"arena",meaning:"竞技场",sentence:"Popular genres include fighting games, shooting games, role-playing games, and multiplayer online battle ______ games.",translation:"多人在线战斗竞技场游戏。",correct:"arena",options:[{en:"arena",cn:"竞技场"},{en:"broader",cn:"更广泛的"},{en:"abusive",cn:"虐待的"},{en:"akin",cn:"类似的"}],record_id:"recvfYt6hkpyyN"},
+{word:"broader",meaning:"更广泛的",sentence:"He works as part of ______ performance units alongside coaches and analysts.",translation:"作为更广泛表现团队的一部分工作。",correct:"broader",options:[{en:"broader",cn:"更广泛的"},{en:"amateur",cn:"业余的"},{en:"anonymous",cn:"匿名的"},{en:"across the board",cn:"全面地"}],record_id:"recvfYt6hkHjMp"}
+];
         
         let current = 0;
         let results = [];
         let startTime = new Date().toISOString();
         
-        function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
-        
         function renderQuestion() {
             const w = words[current];
-            
-            document.getElementById('questions').innerHTML = `
-                <div class="question active">
-                    <div class="sentence">${w.sentence.replace('______', '<span class="blank">______</span>')}</div>
-                    <div class="options">${w.options.map(o => `<div class="option" onclick="checkAnswer('${o.en}')">${o.en}</div>`).join('')}</div>
+            const questionHtml = `
+                <div class="sentence">${w.sentence.replace('______', '<span class="blank">______</span>')}</div>
+                <div class="options">
+                    ${w.options.map(o => `<div class="option" onclick="checkAnswer('${o.en}')">${o.en}<br><small style="color:#666">${o.cn}</small></div>`).join('')}
                 </div>
             `;
-            
+            document.getElementById('questionArea').innerHTML = questionHtml;
             document.getElementById('progressFill').style.width = ((current + 1) / words.length * 100) + '%';
             document.getElementById('progressText').textContent = `第 ${current + 1} 题 / 共 ${words.length} 题`;
         }
@@ -132,13 +127,9 @@
                     <div class="result-english">${w.sentence.replace('______', `<strong>${w.correct}</strong>`)}</div>
                     <div class="result-chinese">${w.translation}</div>
                 </div>
-                <div class="result-options">
-                    <strong>选项解析：</strong>
-                    ${optionsHtml}
-                </div>
+                <div class="result-options"><strong>选项解析：</strong>${optionsHtml}</div>
             `;
             
-            document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
             document.getElementById('nextBtn').style.display = 'block';
         }
         
@@ -158,13 +149,14 @@
             const endTime = new Date().toISOString();
             const code = btoa(JSON.stringify({round: 28, total: words.length, correct, results, startTime, endTime}));
             
-            document.getElementById('questions').innerHTML = '';
+            document.getElementById('questionArea').innerHTML = '';
             document.getElementById('resultArea').style.display = 'none';
             document.getElementById('nextBtn').style.display = 'none';
             document.getElementById('resultCodeArea').style.display = 'block';
             document.getElementById('resultCode').textContent = 'ENGRESULT:' + code;
         }
         
+        // 立即渲染第一题
         renderQuestion();
     </script>
 </body>
