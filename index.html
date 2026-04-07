@@ -45,7 +45,8 @@
         }
         .option:hover { background: #e3f2fd; border-color: #2196F3; }
         .option .en { font-weight: bold; color: #333; display: block; }
-        .option .cn { font-size: 13px; color: #666; margin-top: 3px; display: block; }
+        .option .cn { font-size: 13px; color: #666; margin-top: 3px; display: none; }
+        .show-translation .option .cn { display: block; }
         
         .result { margin-top: 20px; padding: 16px; border-radius: 10px; }
         .result.correct { background: #e8f5e9; border: 2px solid #4CAF50; }
@@ -244,7 +245,7 @@
         
         const blankSentence = currentQuestion.sentence.replace(new RegExp(currentQuestion.word,'gi'),'<span class="blank">【______】</span>');
         
-        let html = `<div class="sentence">${blankSentence}</div><div class="options">`;
+        let html = `<div class="sentence">${blankSentence}</div><div class="options" id="optionsContainer">`;
         currentOptions.forEach((o, idx)=>{
             html+=`<div class="option" data-index="${idx}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
         });
@@ -268,6 +269,9 @@
         const isCorrect = selected.word === correct.word;
         results.push({word: correct.word, correct: isCorrect});
         
+        // 显示中文翻译
+        document.getElementById('optionsContainer').classList.add('show-translation');
+        
         if(isCorrect) { 
             correctCount++; 
             document.querySelectorAll('.option')[selectedIdx].classList.add('correct'); 
@@ -283,7 +287,8 @@
         
         const translation = translations[correct.word] || '';
         
-        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct.word}</strong> - ${correct.meaning}</div><div class="result-sentence"><div class="result-english">${correct.sentence.replace(new RegExp(correct.word,'gi'),'<strong>'+correct.word+'</strong>')}</div><div class="result-chinese">${translation}</div></div><div>`;
+        // 句子翻译默认隐藏，提交后显示
+        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct.word}</strong></div><div class="result-sentence"><div class="result-english">${correct.sentence.replace(new RegExp(correct.word,'gi'),'<strong>'+correct.word+'</strong>')}</div><div class="result-chinese">${translation}</div></div><div>`;
         currentOptions.forEach(o=>{
             const isC = o.word === correct.word;
             resultHtml+=`<div class="result-option ${isC?'correct':''}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
@@ -291,6 +296,8 @@
         resultHtml += '</div></div>';
         document.getElementById('resultArea').innerHTML = resultHtml;
         document.getElementById('resultArea').style.display = 'block';
+        // 显示句子翻译
+        document.querySelector('.result-chinese').style.display = 'block';
         document.getElementById('nextBtn').style.display = 'inline-block';
     }
     
