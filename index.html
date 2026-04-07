@@ -6,33 +6,100 @@
     <title>英语单词复习 - 第31轮</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .progress { margin-bottom: 30px; }
-        .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: #f5f5f5; 
+            padding: 12px; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            border-radius: 12px; 
+            padding: 16px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        .progress { margin-bottom: 20px; }
+        .progress-bar { height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
         .progress-fill { height: 100%; background: #4CAF50; transition: width 0.3s; }
-        .progress-text { margin-top: 10px; color: #666; font-size: 14px; text-align: center; }
-        .sentence { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #333; }
-        .blank { background: #fff3e0; border-bottom: 2px solid #ff9800; min-width: 120px; display: inline-block; text-align: center; font-weight: bold; color: #e65100; }
-        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .option { padding: 15px 20px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; text-align: center; }
+        .progress-text { margin-top: 8px; color: #666; font-size: 13px; text-align: center; }
+        .sentence { font-size: 16px; line-height: 1.6; margin-bottom: 20px; color: #333; }
+        .blank { background: #fff3e0; border-bottom: 2px solid #ff9800; min-width: 80px; display: inline-block; text-align: center; font-weight: bold; color: #e65100; }
+        
+        /* 移动端选项单列 */
+        .options { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            margin-top: 16px; 
+        }
+        .option { 
+            padding: 14px 16px; 
+            background: #f8f9fa; 
+            border: 2px solid #e0e0e0; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            font-size: 15px; 
+            text-align: left; 
+        }
         .option:hover { background: #e3f2fd; border-color: #2196F3; }
         .option .en { font-weight: bold; color: #333; display: block; }
-        .option .cn { font-size: 13px; color: #666; margin-top: 4px; display: block; }
-        .result { margin-top: 30px; padding: 20px; border-radius: 12px; }
+        .option .cn { font-size: 13px; color: #666; margin-top: 3px; display: block; }
+        
+        .result { margin-top: 20px; padding: 16px; border-radius: 10px; }
         .result.correct { background: #e8f5e9; border: 2px solid #4CAF50; }
         .result.wrong { background: #ffebee; border: 2px solid #f44336; }
-        .result-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; }
-        .result-word { font-size: 18px; margin-bottom: 10px; }
-        .result-sentence { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; }
-        .result-english { color: #333; font-weight: bold; }
-        .result-chinese { color: #666; font-style: italic; margin-top: 5px; font-size: 14px; }
-        .result-option { padding: 10px 15px; margin: 8px 0; background: #f5f5f5; border-radius: 8px; display: flex; justify-content: space-between; }
+        .result-title { font-size: 18px; font-weight: bold; margin-bottom: 12px; }
+        .result-word { font-size: 16px; margin-bottom: 8px; }
+        .result-sentence { background: white; padding: 12px; border-radius: 8px; margin: 8px 0; }
+        .result-english { color: #333; font-weight: bold; font-size: 14px; }
+        .result-chinese { color: #666; font-style: italic; margin-top: 5px; font-size: 13px; }
+        .result-option { padding: 10px 12px; margin: 6px 0; background: #f5f5f5; border-radius: 8px; display: flex; justify-content: space-between; }
         .result-option.correct { background: #c8e6c9; }
-        .result-option .en { color: #333; font-weight: bold; }
-        .result-option .cn { color: #666; }
-        .next-btn { margin-top: 20px; padding: 12px 30px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; display: none; }
-        .result-code { margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 12px; word-break: break-all; font-size: 12px; }
+        .result-option .en { color: #333; font-weight: bold; font-size: 14px; }
+        .result-option .cn { color: #666; font-size: 13px; }
+        
+        .next-btn { 
+            margin-top: 16px; 
+            padding: 14px 24px; 
+            background: #2196F3; 
+            color: white; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            width: 100%;
+            display: none; 
+        }
+        .next-btn:active { background: #1976D2; }
+        
+        .result-code { 
+            margin-top: 20px; 
+            padding: 14px; 
+            background: #f5f5f5; 
+            border-radius: 10px; 
+            word-break: break-all; 
+            font-size: 11px; 
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        h3 { color: #4CAF50; margin-bottom: 12px; font-size: 18px; }
+        
+        /* 平板及以上屏幕恢复双列 */
+        @media (min-width: 600px) {
+            body { padding: 20px; }
+            .container { padding: 24px; border-radius: 16px; }
+            .sentence { font-size: 18px; }
+            .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+            .option { padding: 14px 18px; font-size: 15px; }
+            .result { margin-top: 24px; padding: 18px; }
+            .result-title { font-size: 20px; }
+            .result-word { font-size: 18px; }
+            .result-english { font-size: 15px; }
+            .next-btn { width: auto; padding: 14px 40px; font-size: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -49,7 +116,7 @@
         <div id="resultCodeArea" style="display:none">
             <h3>✅ 复习完成！</h3>
             <div id="statsArea"></div>
-            <p style="color:#666;margin:15px 0 10px">请复制以下结果码发送给助手：</p>
+            <p style="color:#666;margin:12px 0 8px;font-size:13px">请复制以下结果码发送给助手：</p>
             <div class="result-code" id="resultCode"></div>
         </div>
     </div>
@@ -163,7 +230,7 @@
 
     let currentIndex = 0, correctCount = 0, wrongCount = 0, startTime = Date.now();
     let currentQuestion = null, currentOptions = [];
-    let results = []; // 存储每道题的答题结果
+    let results = [];
     
     function shuffle(a) { for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
     function getOptions(correct) { let opts = [correct]; let others = questions.filter(q=>q.word!==correct.word); shuffle(others); others.slice(0,3).forEach(o=>opts.push(o)); return shuffle(opts); }
@@ -199,8 +266,6 @@
         document.querySelectorAll('.option').forEach(o=>o.style.pointerEvents='none');
         
         const isCorrect = selected.word === correct.word;
-        
-        // 记录结果
         results.push({word: correct.word, correct: isCorrect});
         
         if(isCorrect) { 
@@ -245,11 +310,10 @@
         document.getElementById('nextBtn').style.display = 'none';
         document.getElementById('progressFill').style.width = '100%';
         
-        // 生成结果码 - 包含详细答题记录
         let resultsStr = results.map(r => r.word + ':' + (r.correct ? 'T' : 'F')).join(',');
         let resultCode = `ENGRESULT:round=31,total=${questions.length},correct=${correctCount},wrong=${wrongCount},accuracy=${acc}%,startTime=${startTime},endTime=${endTime},results=${resultsStr}`;
         
-        document.getElementById('statsArea').innerHTML = `<div style="text-align:center;margin:20px 0"><div style="font-size:24px;font-weight:bold">正确: ${correctCount} | 错误: ${wrongCount}</div><div style="font-size:36px;font-weight:bold;color:#4CAF50">${acc}%</div></div>`;
+        document.getElementById('statsArea').innerHTML = `<div style="text-align:center;margin:16px 0"><div style="font-size:20px;font-weight:bold">正确: ${correctCount} | 错误: ${wrongCount}</div><div style="font-size:28px;font-weight:bold;color:#4CAF50">${acc}%</div></div>`;
         document.getElementById('resultCode').textContent = resultCode;
         document.getElementById('resultCodeArea').style.display = 'block';
     }
