@@ -17,17 +17,18 @@
         .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         .option { padding: 15px 20px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; text-align: center; }
         .option:hover { background: #e3f2fd; border-color: #2196F3; }
+        .option .en { font-weight: bold; color: #333; }
+        .option .cn { display: block; font-size: 13px; color: #666; margin-top: 4px; }
         .result { margin-top: 30px; padding: 20px; border-radius: 12px; }
         .result.correct { background: #e8f5e9; border: 2px solid #4CAF50; }
         .result.wrong { background: #ffebee; border: 2px solid #f44336; }
         .result-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; }
         .result-word { font-size: 18px; margin-bottom: 10px; }
         .result-sentence { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; }
-        .result-english { color: #333; }
-        .result-chinese { color: #666; font-style: italic; margin-top: 5px; }
+        .result-english { color: #333; font-weight: bold; }
+        .result-chinese { color: #666; font-style: italic; margin-top: 5px; font-size: 14px; }
         .result-option { padding: 10px 15px; margin: 8px 0; background: #f5f5f5; border-radius: 8px; }
         .result-option.correct { background: #c8e6c9; font-weight: bold; }
-        .result-option.wrong { background: #ffcdd2; }
         .result-option .en { color: #333; font-weight: bold; }
         .result-option .cn { color: #666; margin-left: 10px; }
         .next-btn { margin-top: 20px; padding: 12px 30px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; display: none; }
@@ -108,6 +109,60 @@
   {"word": "competent", "meaning": "有能力的，胜任的", "sentence": "This internalized ageism can lead to beliefs that older adults are less competent, can't learn, and must give up things that are important to them.", "record_id": "recvfYttSb3hrH"}
 ];
 
+    // 句子翻译
+    const translations = {
+  "likened": "Ryan Terao 博士是一名电子竞技和持证临床心理学家，他将电子竞技和游戏的力量比作火。",
+  "marginalized": "Strobel 认为电子竞技为可能在传统体育中被边缘化的学生（包括神经多样性青年）拓宽了无障碍通道。",
+  "merge": "我一直在游戏之外学习所有这些技能，并将它们与我对游戏的热情结合起来。",
+  "mindset-reappraisal": "一种心态重新评估干预措施，鼓励玩家将压力视为有益的，降低了玩家的焦虑。",
+  "mitigate": "我们真正需要做的是追踪年轻人在成长过程中何时游戏是好的、何时是坏的，然后如何减轻坏的、最大化好的。",
+  "mound": "这就像篮球运动员犯规或棒球运动员冲上投手丘一样。",
+  "movember": "2024年，全球男性健康慈善机构Movember招募了电子竞技心理学研究员Dylan Poulus博士。",
+  "multibillion-dollar": "电子竞技是一个快速发展的数十亿美元产业，吸引了全球数亿竞技游戏玩家。",
+  "navigating": "EPPIC解决沟通、团队合作、领导力、健康保健以及应对网络毒性和仇恨言论的问题。",
+  "neurodivergent": "Strobel 认为电子竞技为可能在传统体育中被边缘化的学生（包括神经多样性青年）拓宽了无障碍通道。",
+  "normalizing": "学生可以接触到基于运动的心理学家、营养计划，以及每周两次的晨练，旨在将体育锻炼正常化。",
+  "norms": "团队还被鼓励制定自己的文化、问责和冲突管理规范。",
+  "off-ramp": "许多职业选手直接从梯子上的匿名位置签约，没有少年棒球联赛、没有大学队，退役后也没有退路。",
+  "pillars": "Poulus及其同事召集了游戏发行商、赛事组织者、国际奥委会代表和心理健康专家，最终确定了心理健康支持的九大支柱。",
+  "pipeline": "电子竞技是一项没有童年人才输送渠道的体育运动。",
+  "postgame": "他经常为客户做准备，让他们预期在重建睡眠、练习结构和赛后回顾习惯时表现会出现暂时下降。",
+  "reckless": "\"tilt\"会导致玩家做出鲁莽和自我破坏的行为，例如不顾一切地让角色冲向敌人。",
+  "reconceptualize": "让玩家重新定义压力为有益的、是值得克服的挑战而非削弱人的威胁，提高了射击精度。",
+  "recruited": "2024年，全球男性健康慈善机构Movember招募了电子竞技心理学研究员Dylan Poulus博士。",
+  "relegated": "结果是，神经多样性青年在电子竞技中可以成为队长，而不是在传统体育中经常被降级的帮助者角色。",
+  "resembled": "研究人员发现了51个压力源，如沟通问题和现场观众面前比赛的压力，这些与传统体育职业运动员面临的压力相似。",
+  "rigor": "证据库正在快速扩展，但缺乏循证实践所需的严谨性。",
+  "sanctioned": "Roose有意将该项目设在体育部门，并采用了NCAA对认可活动20小时的规定。",
+  "scrutiny": "许多电子竞技选手在青春期开始职业生涯，面临激烈压力、不稳定的日程和公众审视，同时仍在情感和社交方面发展。",
+  "self-efficacy": "然而，心态和自我效能感是关键。",
+  "self-sufficiency": "团队还被鼓励制定自己的文化、问责和冲突管理规范，培养自给自足和领导技能。",
+  "semiprofessional": "玩家经常通过业余、半职业或职业联赛运营的数字平台以团队形式竞技。",
+  "sharpen": "关于压力、tilt、练习需求和注意力的新研究将加深对数字游戏环境中驱动性能的因素的理解。",
+  "shooting": "流行的电子竞技类型包括射击游戏（反恐精英）。",
+  "shortfall": "虽然有更多的运动心理学家和认证绩效教练进入电子竞技领域，但合格的专业人员仍然严重不足。",
+  "stretches": "玩家通常长时间练习，身体活动很少，作息不规律。",
+  "subdisciplines": "电子竞技心理学家来自许多不同的分支学科，并致力于将循证方法带到表现、心理健康和玩家发展方面。",
+  "toxicity": "EPPIC解决沟通、团队合作、领导力、健康保健以及应对网络毒性和仇恨言论的问题。",
+  "transition": "他们还加入了过渡规划，鼓励玩家申请大学或完成GED。",
+  "slang": "俚语是这些非常经典的认同标志之一。",
+  "sheds": "俚语揭示了快节奏数字世界中身份形成和归属感的复杂性。",
+  "Originating": "它起源于2024年底一首相当小众的说唱歌曲，在TikTok和其他社交媒体平台上迅速获得势头。",
+  "a linguistic quirk": "然而，俚语不仅仅是各年龄段人的语言怪癖。",
+  "secrecy and informality shapes": "这种与保密和非正式性的早期关联塑造了现代人对俚语的看法，认为它是正式口语或写作范围之外的东西。",
+  "incorporating colloquialisms": "当代俚语也大量反映青年驱动的流行文化和数字媒体的影响，同时也纳入了起源于LGBTQ+社区的俗语。",
+  "illustrative users": "主要用户在日常讲话中创造和使用俚语，示范性用户偶尔使用俚语来向他人传递真实性。",
+  "signal authenticity": "主要用户在日常讲话中创造和使用俚语，示范性用户偶尔使用俚语来向他人传递真实性。",
+  "social inferiority": "虽然俚语可以传递令人向往的年轻形象或社会资本，但也可能带来污名化的风险，暗示缺乏专业性或社会地位低下。",
+  "leveraging neuroplasticity": "他们的研究结果表明，利用神经可塑性可以增加各年龄段人的信心、动机和迎接新挑战的意愿。",
+  "implement": "创新的、经过研究支持的干预措施帮助老年人实施与健身、饮食和学习相关的新行为，已被证明可以改善和延长认知健康。",
+  "prolong": "创新的、经过研究支持的干预措施帮助老年人实施与健身、饮食和学习相关的新行为，已被证明可以改善和延长认知健康。",
+  "internalized ageism": "虽然内化的年龄歧视可能导致老年人相信自己无法学习，必须放弃对自己重要的事情，但研究表明积极的年龄信念可以带来更好的健康和更长的寿命。",
+  "demographic": "但研究人员希望看到社区增加为这一人群提供负担得起的学习方式——无论是线上还是线下。",
+  "immersed": "她最近的发现表明，沉浸在支持性学习环境中的老年人可以显著提高他们的认知能力以及对自己学习能力的信心。",
+  "competent": "这种内化的年龄歧视会导致人们相信老年人能力较弱、无法学习，必须放弃对自己重要的事情。"
+};
+
     let currentIndex = 0, correctCount = 0, wrongCount = 0, startTime = Date.now();
     let currentQuestion = null, currentOptions = [];
     
@@ -125,12 +180,11 @@
         
         let html = `<div class="sentence">${blankSentence}</div><div class="options">`;
         currentOptions.forEach((o, idx)=>{
-            html+=`<div class="option" data-index="${idx}">${o.word}</div>`;
+            html+=`<div class="option" data-index="${idx}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
         });
         html += '</div>';
         document.getElementById('questionArea').innerHTML = html;
         
-        // 绑定点击事件
         document.querySelectorAll('.option').forEach(btn => {
             btn.onclick = () => checkAnswer(parseInt(btn.dataset.index));
         });
@@ -152,7 +206,6 @@
         } else { 
             wrongCount++; 
             document.querySelectorAll('.option')[selectedIdx].classList.add('wrong'); 
-            // 高亮正确答案
             currentOptions.forEach((o, idx) => {
                 if(o.word === correct.word) {
                     document.querySelectorAll('.option')[idx].classList.add('correct');
@@ -160,7 +213,9 @@
             });
         }
         
-        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct.word}</strong> - ${correct.meaning}</div><div class="result-sentence"><div class="result-english">${correct.sentence.replace(new RegExp(correct.word,'gi'),'<strong>'+correct.word+'</strong>')}</div></div><div>`;
+        const translation = translations[correct.word] || '';
+        
+        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct.word}</strong> - ${correct.meaning}</div><div class="result-sentence"><div class="result-english">${correct.sentence.replace(new RegExp(correct.word,'gi'),'<strong>'+correct.word+'</strong>')}</div><div class="result-chinese">${translation}</div></div><div>`;
         currentOptions.forEach(o=>{
             const isC = o.word === correct.word;
             resultHtml+=`<div class="result-option ${isC?'correct':''}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
