@@ -3,262 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第26轮</title>
+    <title>英语单词复习 - 第27轮</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
-        .container { max-width: 700px; margin: 0 auto; background: white; border-radius: 16px; padding: 32px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
-        h1 { text-align: center; color: #333; margin-bottom: 8px; font-size: 24px; }
-        .subtitle { text-align: center; color: #666; margin-bottom: 24px; }
-        .progress-info { display: flex; justify-content: space-between; margin-bottom: 16px; color: #666; }
-        .progress { background: #e0e0e0; border-radius: 8px; height: 8px; margin-bottom: 24px; }
-        .progress-bar { background: linear-gradient(90deg, #667eea, #764ba2); height: 100%; border-radius: 8px; transition: width 0.3s; }
-        .question { padding: 24px; background: #f8f9fa; border-radius: 12px; margin-bottom: 24px; }
-        .question-num { font-weight: bold; color: #667eea; margin-bottom: 16px; font-size: 16px; }
-        .sentence { font-size: 18px; line-height: 1.8; margin-bottom: 20px; }
-        .blank { color: #667eea; font-weight: bold; text-decoration: underline; }
-        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 16px; }
-        .option:hover { border-color: #667eea; background: #f0f4ff; }
-        .option.correct { border-color: #4CAF50; background: #c8e6c9; }
-        .option.wrong { border-color: #f44336; background: #ffcdd2; }
-        .btn { display: block; width: 100%; padding: 16px; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; margin-top: 16px; transition: all 0.2s; }
-        .next-btn { background: #4CAF50; color: white; }
-        .next-btn:hover { background: #45a049; }
-        .answer-box { display: none; padding: 24px; background: #f0f7f0; border-radius: 12px; margin-top: 20px; border-left: 4px solid #4CAF50; }
-        .answer-box.show { display: block; }
-        .answer-box.wrong-answer { background: #fff5f5; border-left-color: #f44336; }
-        .answer-title { font-size: 18px; font-weight: bold; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-        .answer-title.correct { color: #4CAF50; }
-        .answer-title.wrong { color: #f44336; }
-        .answer-item { margin-bottom: 16px; line-height: 1.6; }
-        .answer-label { color: #666; font-size: 14px; margin-bottom: 4px; }
-        .answer-value { font-size: 16px; }
-        .word-title { font-size: 20px; font-weight: bold; color: #667eea; }
-        .full-sentence { font-size: 16px; line-height: 1.8; color: #333; background: #e8f5e9; padding: 12px; border-radius: 8px; }
-        .full-sentence .answer-word { color: #4CAF50; font-weight: bold; text-decoration: underline; }
-        .options-meaning { margin-top: 12px; }
-        .option-meaning-item { padding: 8px 12px; margin: 6px 0; background: #fff; border-radius: 6px; font-size: 15px; }
-        .option-meaning-item.correct-opt { background: #c8e6c9; border-left: 3px solid #4CAF50; }
-        .option-label { font-weight: bold; color: #666; margin-right: 8px; }
-        .option-word { font-weight: bold; color: #333; }
-        .option-meaning { color: #666; margin-left: 8px; }
-        .result { display: none; text-align: center; padding: 32px; }
-        .result.show { display: block; }
-        .result h2 { color: #333; margin-bottom: 16px; }
-        .result-score { font-size: 48px; font-weight: bold; color: #667eea; margin: 16px 0; }
-        .result-code { background: #333; color: #4CAF50; padding: 16px; border-radius: 8px; font-family: monospace; word-break: break-all; margin: 20px 0; font-size: 12px; }
-        .copy-btn { padding: 14px 28px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
-        .copy-btn:hover { background: #5a6fd6; }
-        .hidden { display: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; border-radius: 16px; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .progress { margin-bottom: 30px; }
+        .progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #4CAF50; transition: width 0.3s; }
+        .progress-text { margin-top: 10px; color: #666; font-size: 14px; }
+        .question { display: none; }
+        .question.active { display: block; }
+        .sentence { font-size: 18px; line-height: 1.8; margin-bottom: 25px; color: #333; }
+        .blank { background: #fff3e0; border-bottom: 2px solid #ff9800; min-width: 120px; display: inline-block; text-align: center; }
+        .options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .option { padding: 15px 20px; background: #f8f9fa; border: 2px solid #e0e0e0; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 16px; }
+        .option:hover { background: #e3f2fd; border-color: #2196F3; }
+        .result { margin-top: 30px; padding: 20px; border-radius: 12px; display: none; }
+        .result.correct { background: #e8f5e9; border: 2px solid #4CAF50; }
+        .result.wrong { background: #ffebee; border: 2px solid #f44336; }
+        .next-btn { margin-top: 20px; padding: 12px 30px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+        .result-code { margin-top: 30px; padding: 20px; background: #f5f5f5; border-radius: 12px; word-break: break-all; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🦐 英语单词复习 - 第26轮</h1>
-        <p class="subtitle">选择题（4选1）| 按到期时间排序 | 最早到期优先</p>
-
-        <div class="progress-info">
-            <span>进度: <span id="currentNum">1</span> / 20</span>
-            <span>正确: <span id="correctCount">0</span></span>
+        <div class="progress">
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="progress-text" id="progressText">第 1 题 / 共 30 题</div>
         </div>
-        <div class="progress"><div class="progress-bar" id="progressBar" style="width: 5%"></div></div>
-
-        <div id="questionArea"></div>
-
-        <div class="result" id="result">
-            <h2>🎉 第26轮复习完成！</h2>
-            <div class="result-score"><span id="finalScore">0</span> / 20</div>
-            <p>正确率: <span id="accuracy">0</span>%</p>
-            <p style="margin: 16px 0; color: #666;">请复制以下结果码发回飞书：</p>
-            <div class="result-code" id="resultCode"></div>
-            <button class="copy-btn" onclick="copyResult()">📋 复制结果码</button>
+        
+        <div id="questions"></div>
+        
+        <div id="resultArea" class="result"></div>
+        <button id="nextBtn" class="next-btn" style="display:none" onclick="nextQuestion()">下一题</button>
+        
+        <div id="resultCodeArea" style="display:none">
+            <h3>✅ 复习完成！</h3>
+            <p>请复制以下结果码发送给我：</p>
+            <div id="resultCode" class="result-code"></div>
         </div>
     </div>
-
+    
     <script>
-        const wordBank = {
-            "jargon": "行话，术语",
-            "momentum": "势头，动力",
-            "cropped up": "突然出现，冒出来",
-            "warp": "极快的速度",
-            "nonsensical": "荒谬的，无意义的",
-            "formation": "形成，构成",
-            "affiliation": "归属，从属关系",
-            "itinerants": "流动人员，流浪者",
-            "extracurricular": "课外的",
-            "forthcoming": "即将出版的，即将到来的",
-            "foul": "犯规",
-            "ged": "普通教育文凭",
-            "gurus": "专家，大师",
-            "harshest": "最严厉的，最苛刻的",
-            "high-volume": "高容量的",
-            "higher-stakes": "更高风险的",
-            "hurdle": "障碍，难关",
-            "hurtling": "猛冲，飞奔",
-            "initiatives": "倡议，举措",
-            "instant": "即时的，立即的"
-        };
-
-        const questions = [
-            { word: "jargon", meaning: "行话，术语", sentence: "That verbal shorthand persists in modern professional settings as ______.", answer: "jargon", options: ["jargon", "momentum", "affiliation", "formation"], translation: "那种口头简写在现代职业环境中作为术语持续存在。" },
-            { word: "momentum", meaning: "势头，动力", sentence: "It quickly gained ______ on TikTok and other social media platforms.", answer: "momentum", options: ["momentum", "jargon", "warp", "initiatives"], translation: "它迅速在TikTok和其他社交媒体平台上获得了势头。" },
-            { word: "cropped up", meaning: "突然出现，冒出来", sentence: "Evolving into a chant shouted in response whenever the numbers 6 or 7 ______ in casual conversation.", answer: "cropped up", options: ["cropped up", "formation", "instant", "hurdle"], translation: "演变成每当数字6或7在日常对话中突然出现时就会大声呼喊的口号。" },
-            { word: "warp", meaning: "极快的速度", sentence: "Its meteoric rise demonstrates the internet's power to propel fringe terms into the mainstream at ______ speed.", answer: "warp", options: ["warp", "momentum", "nonsensical", "instant"], translation: "它的迅速崛起展示了互联网以极快的速度将边缘术语推向主流的力量。" },
-            { word: "nonsensical", meaning: "荒谬的，无意义的", sentence: "Describing it as meaningless, ubiquitous, and ______ while acknowledging its usefulness to young users.", answer: "nonsensical", options: ["nonsensical", "warp", "jargon", "cropped up"], translation: "将其描述为毫无意义、无处不在且荒谬的，同时承认它对年轻用户的有用性。" },
-            { word: "formation", meaning: "形成，构成", sentence: "It functions as a dynamic social code that can offer insight into the complexity of identity ______ and belonging in a fast-paced digital world.", answer: "formation", options: ["formation", "momentum", "affiliation", "hurdle"], translation: "它作为一个动态的社会代码，可以提供对快节奏数字世界中身份形成和归属复杂性的洞察。" },
-            { word: "affiliation", meaning: "归属，从属关系", sentence: "It serves as lexical metadata that enables listeners to determine the speaker's ______.", answer: "affiliation", options: ["affiliation", "formation", "itinerants", "nonsensical"], translation: "它作为词汇元数据，使听众能够确定说话者的归属。" },
-            { word: "itinerants", meaning: "流动人员，流浪者", sentence: "The word slang originated in the 18th century as speech associated with an underclass of thieves, beggars, and the ______ connected with them.", answer: "itinerants", options: ["itinerants", "formation", "gurus", "harshest"], translation: "俚语一词起源于18世纪，作为与小偷、乞丐以及与他们有关的流动人员等下层阶级相关的语言。" },
-            { word: "extracurricular", meaning: "课外的", sentence: "In K–12 settings, psychologists and educators are leveraging esports to promote social-emotional learning and broaden access to ______ opportunities.", answer: "extracurricular", options: ["extracurricular", "forthcoming", "foul", "ged"], translation: "在K-12环境中，心理学家和教育工作者正在利用电子竞技来促进社会情感学习并扩大课外活动的机会。" },
-            { word: "forthcoming", meaning: "即将出版的，即将到来的", sentence: "The ______ guidelines, expected this spring, aim to set evidence-based standards in a largely unregulated industry.", answer: "forthcoming", options: ["forthcoming", "extracurricular", "gurus", "hurtling"], translation: "即将发布的指南预计今年春天推出，旨在在这个很大程度上不受监管的行业中制定循证标准。" },
-            { word: "foul", meaning: "犯规", sentence: "This would be akin to a player committing a flagrant ______ in basketball or rushing the mound in baseball.", answer: "foul", options: ["foul", "forthcoming", "ged", "high-volume"], translation: "这就像篮球运动员公然犯规或棒球运动员冲向投手丘一样。" },
-            { word: "ged", meaning: "普通教育文凭", sentence: "They also incorporated transition planning, encouraging players to apply to college or complete a ______.", answer: "ged", options: ["ged", "foul", "gurus", "initiatives"], translation: "他们还纳入了过渡规划，鼓励运动员申请大学或完成普通教育文凭。" },
-            { word: "gurus", meaning: "专家，大师", sentence: "Many of them compete with unregulated performance coaches or self-described mental-skills ______ with little formal training.", answer: "gurus", options: ["gurus", "ged", "harshest", "instant"], translation: "他们中的许多人与不受监管的表现教练或几乎没有正规培训的自称心理技能大师竞争。" },
-            { word: "harshest", meaning: "最严厉的，最苛刻的", sentence: "Players experiencing tilt also tended to direct the ______ reactions toward themselves.", answer: "harshest", options: ["harshest", "gurus", "high-volume", "hurtling"], translation: "经历心态失衡的玩家也倾向于对自己做出最严厉的反应。" },
-            { word: "high-volume", meaning: "高容量的", sentence: "Many participants said they understood that ______ gaming could have negative effects on their psychological well-being.", answer: "high-volume", options: ["high-volume", "harshest", "higher-stakes", "initiatives"], translation: "许多参与者表示他们理解高容量的游戏可能对他们的心理健康产生负面影响。" },
-            { word: "higher-stakes", meaning: "更高风险的", sentence: "Esports differ from casual video gaming because they constitute organized, ______ competitions with formal ranking systems.", answer: "higher-stakes", options: ["higher-stakes", "high-volume", "hurdle", "instant"], translation: "电子竞技与休闲视频游戏不同，因为它们构成了有组织的、更高风险的、具有正式排名系统的比赛。" },
-            { word: "hurdle", meaning: "障碍，难关", sentence: "My first ______ is convincing somebody that I have something to offer them as a doctor.", answer: "hurdle", options: ["hurdle", "higher-stakes", "hurtling", "initiatives"], translation: "我的第一个障碍是说服某人我作为医生可以为他们提供帮助。" },
-            { word: "hurtling", meaning: "猛冲，飞奔", sentence: "Tilt can lead players to perform reckless and self-destructive actions, such as ______ their character, unprotected, at an enemy.", answer: "hurtling", options: ["hurtling", "hurdle", "instant", "jargon"], translation: "心态失衡可能导致玩家做出鲁莽和自我毁灭的行为，例如让他们未受保护的角色猛冲向敌人。" },
-            { word: "initiatives", meaning: "倡议，举措", sentence: "At the same time, large-scale ______ like the Movember Project and EPPIC are setting encouraging standards across esports organizations, schools, and university programs.", answer: "initiatives", options: ["initiatives", "hurtling", "instant", "momentum"], translation: "同时，像Movember项目和EPPIC这样的大规模举措正在为电子竞技组织、学校和大学项目设定令人鼓舞的标准。" },
-            { word: "instant", meaning: "即时的，立即的", sentence: "Terao helps players and teams shift from chasing ______ gains in online rank to building systems for performance and self-regulation that are sustainable for the long term.", answer: "instant", options: ["instant", "initiatives", "jargon", "formation"], translation: "Terao帮助玩家和团队从追求在线排名的即时收益转向建立可持续长期的表现和自我调节系统。" }
+        const words = [
+            {word: "intense", meaning: "激烈的，强烈的", sentence: "Many professional players face ______ performance stressors that contribute to burnout and psychological distress.", correct: "intense", record_id: "recvfYt6hk3Srh"},
+            {word: "intervention", meaning: "干预，介入", sentence: "A mindset-reappraisal ______ that encouraged players to view stress as beneficial lowered players' anxiety and led to faster completion times.", correct: "intervention", record_id: "recvfYt6hkjrUj"},
+            {word: "lecturer", meaning: "讲师", sentence: "Benjamin Sharpe, PhD, a senior ______ in cognitive psychology and director of the Human Attention Laboratory at the University of Chichester.", correct: "lecturer", record_id: "recvfYt6hk8EXE"},
+            {word: "obsessive", meaning: "强迫性的，着迷的", sentence: "Diagnosing and treating ______-compulsive disorder.", correct: "obsessive", record_id: "recvfYsBuHSiQF"},
+            {word: "compulsive", meaning: "强迫性的，无法自控的", sentence: "Diagnosing and treating obsessive-______ disorder.", correct: "compulsive", record_id: "recvfYsBuHopim"},
+            {word: "elevated", meaning: "升高的，提高的", sentence: "Long diagnostic delays and ______ suicide risk make better screening and evidence-based treatments more important than ever.", correct: "elevated", record_id: "recvfYsBuHXqka"},
+            {word: "intrusive", meaning: "侵入性的，闯入性的", sentence: "OCD involves a cycle where ______ and distressing thoughts trigger mental or behavioral acts aimed at reducing that distress.", correct: "intrusive", record_id: "recvfYsBuH9Cxe"},
+            {word: "underdiagnosed", meaning: "诊断不足的，漏诊率高的", sentence: "Discuss why OCD is ______ and name several conditions with overlapping symptoms.", correct: "underdiagnosed", record_id: "recvfYsBuHRntO"},
+            {word: "tailored", meaning: "定制的，量身打造的", sentence: "Explain how OCD is treated, including through medications and ______ cognitive behavioral therapies.", correct: "tailored", record_id: "recvfYsBuHmcef"},
+            {word: "electronic", meaning: "电子的", sentence: "According to an analysis of more than 10 million ______ health records.", correct: "electronic", record_id: "recvfYsBuHp68C"},
+            {word: "misinterpreted", meaning: "被误解的，错误解读的", sentence: "Scary intrusive thoughts that are ______ as indicating suicidality or homicidality.", correct: "misinterpreted", record_id: "recvfYsBuHbR0k"},
+            {word: "homicidality", meaning: "杀人倾向，杀意", sentence: "Scary intrusive thoughts that are misinterpreted as indicating suicidality or ______.", correct: "homicidality", record_id: "recvfYsBuH9bFE"},
+            {word: "premature", meaning: "过早的，提前的", sentence: "People with OCD face an 82% higher rate of ______ death.", correct: "premature", record_id: "recvfYsBuH7bFu"},
+            {word: "intrusive moral", meaning: "侵入性的道德思维", sentence: "From contamination concerns and repeated checking to ______, sexual, or relationship-related concerns.", correct: "intrusive moral", record_id: "recvfYsBuHjile"},
+            {word: "urges", meaning: "冲动，欲求", sentence: "People with OCD experience obsessions—persistent and intrusive thoughts, ______, or images.", correct: "urges", record_id: "recvfYsBuHXqGW"},
+            {word: "triggering intense doubt", meaning: "引发强烈怀疑", sentence: "Often by ______, guilt, or shame.", correct: "triggering intense doubt", record_id: "recvfYsBuH437p"},
+            {word: "compulsions", meaning: "强迫行为，强迫症", sentence: "They perform ______—repetitive behaviors or mental acts.", correct: "compulsions", record_id: "recvfYsBuHCvR0"},
+            {word: "Distress", meaning: "痛苦，苦恼，焦虑", sentence: "Intrusive and distressing thoughts trigger mental or behavioral acts aimed at reducing that ______.", correct: "distress", record_id: "recvfYsBuHbkuf"},
+            {word: "Prevalence", meaning: "患病率，流行程度", sentence: "______ rates do not differ substantially across sexes, races, or ethnicities.", correct: "Prevalence", record_id: "recvfYsBuHnpjA"},
+            {word: "ethnicities", meaning: "种族，民族", sentence: "Prevalence rates do not differ substantially across sexes, races, or ______.", correct: "ethnicities", record_id: "recvfYsBuH6fTL"},
+            {word: "taboo", meaning: "禁忌的，忌讳的", sentence: "Many people with OCD experience intrusive thoughts that are horrific or ______.", correct: "taboo", record_id: "recvfYsBuHuxpf"},
+            {word: "ego-dystonic", meaning: "自我不和谐的", sentence: "These thoughts are ______, or inconsistent with a person's values or identity.", correct: "ego-dystonic", record_id: "recvfYsBuHmSqg"},
+            {word: "hospitalized", meaning: "住院治疗", sentence: "Being ______ when they disclose scary intrusive thoughts.", correct: "hospitalized", record_id: "recvfYsBuHurUL"},
+            {word: "rituals", meaning: "仪式化行为，仪式", sentence: "Compulsions (sometimes called ______) can be behavioral, such as repeatedly checking locks.", correct: "rituals", record_id: "recvfYsBuHmGoQ"},
+            {word: "covert and internal", meaning: "隐秘的和内在的", sentence: "They can also be ______.", correct: "covert and internal", record_id: "recvfYsBuHy7kW"},
+            {word: "rumination", meaning: "反刍性思考，反复思考", sentence: "Covert compulsions include ______, silent counting or praying.", correct: "rumination", record_id: "recvfYsBuHHKYx"},
+            {word: "neutralizing", meaning: "中和性的", sentence: "______ a bad thought with a good one.", correct: "Neutralizing", record_id: "recvfYsBuHjI2S"},
+            {word: "day-to-day basis", meaning: "日常生活中，日常", sentence: "Rituals may look like things many of us do on a ______.", correct: "day-to-day basis", record_id: "recvfYsBuHqs1V"},
+            {word: "germs or toxins", meaning: "细菌或毒素", sentence: "A fear of ______ leads to excessive cleaning.", correct: "germs or toxins", record_id: "recvfYsBuH8K0t"},
+            {word: "blasphemy", meaning: "亵渎神明，冒犯宗教", sentence: "Excessive concerns about ______ or religious wrongdoing.", correct: "blasphemy", record_id: "recvfYsBuHLXJa"}
         ];
-
-        let currentIndex = 0;
-        let correctCount = 0;
-        const results = [];
-        let startTime = null;
-
+        
+        let current = 0;
+        let results = [];
+        let startTime = new Date().toISOString();
+        
+        function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+        
         function renderQuestion() {
-            if (currentIndex === 0 && !startTime) {
-                startTime = new Date().toISOString();
-            }
-
-            const q = questions[currentIndex];
-            const area = document.getElementById('questionArea');
-
-            area.innerHTML = `
-                <div class="question">
-                    <div class="question-num">📖 第 ${currentIndex + 1} / ${questions.length} 题</div>
-                    <div class="sentence">${q.sentence.replace('______', '<span class="blank">______</span>')}</div>
-                    <div class="options" id="options">
-                        ${q.options.map((opt, i) => `<div class="option" onclick="selectAndSubmit('${opt}')">${String.fromCharCode(65 + i)}. ${opt}</div>`).join('')}
-                    </div>
-
-                    <div class="answer-box" id="answerBox">
-                        <div class="answer-title" id="answerTitle"></div>
-                        <div class="answer-item">
-                            <div class="answer-label">单词</div>
-                            <div class="answer-value word-title">${q.word}</div>
-                        </div>
-                        <div class="answer-item">
-                            <div class="answer-label">中文释义</div>
-                            <div class="answer-value">${q.meaning}</div>
-                        </div>
-                        <div class="answer-item">
-                            <div class="answer-label">完整句子</div>
-                            <div class="full-sentence">${q.sentence.replace('______', `<span class="answer-word">${q.answer}</span>`)}</div>
-                        </div>
-                        <div class="answer-item">
-                            <div class="answer-label">句子翻译</div>
-                            <div class="answer-value">${q.translation}</div>
-                        </div>
-                        <div class="answer-item">
-                            <div class="answer-label">所有选项释义</div>
-                            <div class="options-meaning">
-                                ${q.options.map((opt, i) => {
-                                    const isCorrect = opt === q.answer;
-                                    return `<div class="option-meaning-item ${isCorrect ? 'correct-opt' : ''}">
-                                        <span class="option-label">${String.fromCharCode(65 + i)}.</span>
-                                        <span class="option-word">${opt}</span>
-                                        <span class="option-meaning">- ${wordBank[opt] || '（释义缺失）'}</span>
-                                        ${isCorrect ? '<span style="color: #4CAF50; margin-left: 8px;">✓ 正确答案</span>' : ''}
-                                    </div>`;
-                                }).join('')}
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="btn next-btn hidden" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
+            const w = words[current];
+            const others = words.filter(x => x.word !== w.word).slice(0, 3).map(x => x.word);
+            const opts = shuffle([w.word, ...others]);
+            
+            document.getElementById('questions').innerHTML = `
+                <div class="question active">
+                    <div class="sentence">${w.sentence.replace('______', '<span class="blank">______</span>')}</div>
+                    <div class="options">${opts.map(o => `<div class="option" onclick="checkAnswer('${o}')">${o}</div>`).join('')}</div>
                 </div>
             `;
-
-            document.getElementById('currentNum').textContent = currentIndex + 1;
-            document.getElementById('progressBar').style.width = `${(currentIndex + 1) / questions.length * 100}%`;
+            
+            document.getElementById('progressFill').style.width = ((current + 1) / words.length * 100) + '%';
+            document.getElementById('progressText').textContent = `第 ${current + 1} 题 / 共 ${words.length} 题`;
         }
-
-        function selectAndSubmit(option) {
-            const q = questions[currentIndex];
-            const isCorrect = option === q.answer;
-            if (isCorrect) correctCount++;
-
-            results.push({ word: q.word, correct: isCorrect });
-
-            document.getElementById('correctCount').textContent = correctCount;
-
-            const options = document.querySelectorAll('.option');
-            options.forEach(opt => {
-                const optText = opt.textContent.split('. ')[1];
-                if (optText === q.answer) {
-                    opt.classList.add('correct');
-                } else if (optText === option && !isCorrect) {
-                    opt.classList.add('wrong');
-                }
-                opt.onclick = null;
-                opt.style.cursor = 'default';
-            });
-
-            const answerBox = document.getElementById('answerBox');
-            const answerTitle = document.getElementById('answerTitle');
-
-            if (isCorrect) {
-                answerTitle.innerHTML = '✅ 回答正确！';
-                answerTitle.className = 'answer-title correct';
-            } else {
-                answerTitle.innerHTML = '❌ 回答错误';
-                answerTitle.className = 'answer-title wrong';
-                answerBox.classList.add('wrong-answer');
-            }
-
-            answerBox.classList.add('show');
-            document.getElementById('nextBtn').classList.remove('hidden');
+        
+        function checkAnswer(answer) {
+            const w = words[current];
+            const isCorrect = answer.toLowerCase() === w.correct.toLowerCase();
+            results.push({w: w.word, r: w.record_id, c: isCorrect ? 1 : 0});
+            
+            const area = document.getElementById('resultArea');
+            area.style.display = 'block';
+            area.className = 'result ' + (isCorrect ? 'correct' : 'wrong');
+            area.innerHTML = `
+                <h3>${isCorrect ? '✅ 正确！' : '❌ 错误'}</h3>
+                <p><strong>单词</strong>：${w.word} - ${w.meaning}</p>
+                <p><strong>完整句子</strong>：${w.sentence.replace('______', `<strong>${w.correct}</strong>`)}</p>
+            `;
+            
+            document.querySelectorAll('.option').forEach(o => o.style.pointerEvents = 'none');
+            document.getElementById('nextBtn').style.display = 'block';
         }
-
+        
         function nextQuestion() {
-            currentIndex++;
-            if (currentIndex < questions.length) {
-                renderQuestion();
-            } else {
+            current++;
+            if (current >= words.length) {
                 showResult();
+            } else {
+                document.getElementById('resultArea').style.display = 'none';
+                document.getElementById('nextBtn').style.display = 'none';
+                renderQuestion();
             }
         }
-
+        
         function showResult() {
+            const correct = results.filter(r => r.c === 1).length;
             const endTime = new Date().toISOString();
-
-            document.getElementById('questionArea').classList.add('hidden');
-            document.getElementById('result').classList.add('show');
-            document.getElementById('finalScore').textContent = correctCount;
-            document.getElementById('accuracy').textContent = Math.round(correctCount / questions.length * 100);
-
-            const resultData = {
-                round: 26,
-                total: questions.length,
-                correct: correctCount,
-                results,
-                startTime,
-                endTime
-            };
-            const resultCode = 'ENGRESULT:' + btoa(JSON.stringify(resultData));
-            document.getElementById('resultCode').textContent = resultCode;
+            const code = btoa(JSON.stringify({round: 27, total: words.length, correct, results, startTime, endTime}));
+            
+            document.getElementById('questions').innerHTML = '';
+            document.getElementById('resultArea').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('resultCodeArea').style.display = 'block';
+            document.getElementById('resultCode').textContent = 'ENGRESULT:' + code;
         }
-
-        function copyResult() {
-            const code = document.getElementById('resultCode').textContent;
-            navigator.clipboard.writeText(code).then(() => {
-                alert('✅ 已复制！请粘贴到飞书发给我。');
-            });
-        }
-
+        
         renderQuestion();
     </script>
 </body>
