@@ -3,329 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词复习 - 第31轮</title>
+    <title>英语单词复习 - 第32轮</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-            background: #f5f5f5; 
-            padding: 12px; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
-        .container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            background: white; 
-            border-radius: 12px; 
-            padding: 16px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        .container { max-width: 600px; margin: 0 auto; }
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+            margin-bottom: 20px;
         }
-        .progress { margin-bottom: 20px; }
-        .progress-bar { height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
-        .progress-fill { height: 100%; background: #4CAF50; transition: width 0.3s; }
-        .progress-text { margin-top: 8px; color: #666; font-size: 13px; text-align: center; }
-        .sentence { font-size: 16px; line-height: 1.6; margin-bottom: 20px; color: #333; }
-        .blank { background: #fff3e0; border-bottom: 2px solid #ff9800; min-width: 80px; display: inline-block; text-align: center; font-weight: bold; color: #e65100; }
-        
-        /* 移动端选项单列 */
-        .options { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 10px; 
-            margin-top: 16px; 
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: #333; font-size: 24px; margin-bottom: 8px; }
+        .header .subtitle { color: #666; font-size: 14px; }
+        .progress { 
+            background: #f0f0f0; 
+            border-radius: 10px; 
+            height: 8px; 
+            margin: 20px 0;
+            overflow: hidden;
         }
-        .option { 
-            padding: 14px 16px; 
+        .progress-bar {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+        .question-text { 
+            font-size: 18px; 
+            color: #333; 
+            margin-bottom: 20px; 
+            line-height: 1.6;
+        }
+        .sentence { 
             background: #f8f9fa; 
-            border: 2px solid #e0e0e0; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            transition: all 0.2s; 
-            font-size: 15px; 
-            text-align: left; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #667eea;
         }
-        .option:hover { background: #e3f2fd; border-color: #2196F3; }
-        .option .en { font-weight: bold; color: #333; display: block; }
-        .option .cn { font-size: 13px; color: #666; margin-top: 3px; display: none; }
-        .show-translation .option .cn { display: block; }
-        
-        .result { margin-top: 20px; padding: 16px; border-radius: 10px; }
-        .result.correct { background: #e8f5e9; border: 2px solid #4CAF50; }
-        .result.wrong { background: #ffebee; border: 2px solid #f44336; }
-        .result-title { font-size: 18px; font-weight: bold; margin-bottom: 12px; }
-        .result-word { font-size: 16px; margin-bottom: 8px; }
-        .result-sentence { background: white; padding: 12px; border-radius: 8px; margin: 8px 0; }
-        .result-english { color: #333; font-weight: bold; font-size: 14px; }
-        .result-chinese { color: #666; font-style: italic; margin-top: 5px; font-size: 13px; }
-        .result-option { padding: 10px 12px; margin: 6px 0; background: #f5f5f5; border-radius: 8px; display: flex; justify-content: space-between; }
-        .result-option.correct { background: #c8e6c9; }
-        .result-option .en { color: #333; font-weight: bold; font-size: 14px; }
-        .result-option .cn { color: #666; font-size: 13px; }
-        
-        .next-btn { 
-            margin-top: 16px; 
-            padding: 14px 24px; 
-            background: #2196F3; 
-            color: white; 
-            border: none; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            font-size: 16px; 
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        .option {
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+            text-align: left;
+        }
+        .option:hover {
+            border-color: #667eea;
+            background: #f5f7ff;
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        .option.wrong {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        .result {
+            display: none;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .result.show { display: block; }
+        .result.correct { background: #d4edda; border: 2px solid #28a745; }
+        .result.wrong { background: #f8d7da; border: 2px solid #dc3545; }
+        .result-title { font-size: 20px; font-weight: bold; margin-bottom: 15px; }
+        .result.correct .result-title { color: #28a745; }
+        .result.wrong .result-title { color: #dc3545; }
+        .result-detail { margin-bottom: 10px; }
+        .result-detail strong { color: #333; }
+        .word { font-size: 22px; font-weight: bold; color: #667eea; }
+        .translation { color: #555; font-size: 16px; }
+        .answer-sentence { 
+            background: #fff3cd; 
+            padding: 12px; 
+            border-radius: 8px; 
+            margin: 10px 0;
+        }
+        .answer-sentence .highlight {
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .options-translation { margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
+        .options-translation h4 { font-size: 14px; color: #666; margin-bottom: 10px; }
+        .option-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .option-item .en { color: #333; }
+        .option-item .cn { color: #666; }
+        .option-item.correct { background: #d4edda; }
+        .option-item.correct .en { color: #28a745; font-weight: bold; }
+        .next-btn {
+            display: none;
             width: 100%;
-            display: none; 
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
         }
-        .next-btn:active { background: #1976D2; }
-        
-        .result-code { 
-            margin-top: 20px; 
-            padding: 14px; 
-            background: #f5f5f5; 
-            border-radius: 10px; 
-            word-break: break-all; 
-            font-size: 11px; 
-            max-height: 150px;
-            overflow-y: auto;
+        .next-btn.show { display: block; }
+        .result码 {
+            display: none;
+            background: #333;
+            color: #0f0;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
         }
-        
-        h3 { color: #4CAF50; margin-bottom: 12px; font-size: 18px; }
-        
-        /* 平板及以上屏幕恢复双列 */
-        @media (min-width: 600px) {
-            body { padding: 20px; }
-            .container { padding: 24px; border-radius: 16px; }
-            .sentence { font-size: 18px; }
-            .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-            .option { padding: 14px 18px; font-size: 15px; }
-            .result { margin-top: 24px; padding: 18px; }
-            .result-title { font-size: 20px; }
-            .result-word { font-size: 18px; }
-            .result-english { font-size: 15px; }
-            .next-btn { width: auto; padding: 14px 40px; font-size: 16px; }
-        }
+        .result码.show { display: block; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="progress">
-            <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
-            <div class="progress-text" id="progressText">准备开始...</div>
-        </div>
-        
-        <div id="questionArea"></div>
-        <div id="resultArea" class="result" style="display:none"></div>
-        <button id="nextBtn" class="next-btn" onclick="nextQuestion()">下一题</button>
-        
-        <div id="resultCodeArea" style="display:none">
-            <h3>✅ 复习完成！</h3>
-            <div id="statsArea"></div>
-            <p style="color:#666;margin:12px 0 8px;font-size:13px">请复制以下结果码发送给助手：</p>
-            <div class="result-code" id="resultCode"></div>
+        <div class="card">
+            <div class="header">
+                <h1>📚 英语单词复习 - 第32轮</h1>
+                <div class="subtitle">点击选项即可答题</div>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar" style="width: 2%"></div>
+            </div>
+            <div id="questionArea">
+                <div class="sentence" id="sentence"></div>
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="options"></div>
+            </div>
+            <div class="result" id="result">
+                <div class="result-title" id="resultTitle"></div>
+                <div class="result-detail">
+                    <div class="word" id="word"></div>
+                    <div class="translation" id="translation"></div>
+                </div>
+                <div class="answer-sentence" id="answerSentence"></div>
+                <div class="options-translation" id="optionsTranslation"></div>
+                <button class="next-btn" id="nextBtn" onclick="nextQuestion()">下一题 →</button>
+            </div>
         </div>
     </div>
 
     <script>
     const questions = [
-  {"word": "proficient", "meaning": "熟练的，精通的", "sentence": "Studies showed that people become proficient at that specific task and other tasks like it, but it does not help much with learning how to navigate an online health platform, because it is too far of a leap.", "record_id": "recvfYttSbS35k"},
-  {"word": "sudoku", "meaning": "数独", "sentence": "These findings reminded Wu of people who were very good at playing brain games such as sudoku but had trouble managing their online bank accounts.", "record_id": "recvfYttSbFeBw"},
-  {"word": "anecdotally", "meaning": "据传闻，根据轶事证据", "sentence": "After the classes had ended, Wu heard anecdotally that many participants went on to take online courses, private lessons, or classes through community groups to pursue their interests.", "record_id": "recvfYttSb7ROh"},
-  {"word": "stick figure", "meaning": "火柴人画，简笔画", "sentence": "There were people who had never drawn anything but a stick figure, and later they were selling their art and getting commissions.", "record_id": "recvfYttSbQ0hx"},
-  {"word": "Compounding", "meaning": "加重，使复杂化", "sentence": "Compounding the challenge is the time pressures faced by many middle-aged and older workers who must also juggle responsibilities related to children, aging parents, or other commitments, meaning less time for learning.", "record_id": "recvfYttSbSZh5"},
-  {"word": "juggle responsibilities", "meaning": "同时应对多项责任", "sentence": "Compounding the challenge is the time pressures faced by many middle-aged and older workers who must also juggle responsibilities related to children, aging parents, or other commitments, meaning less time for learning.", "record_id": "recvfYttSbm1Nc"},
-  {"word": "gig economy", "meaning": "零工经济，临时工经济", "sentence": "Beier also worries about people who are under or unemployed or contractors in the gig economy, who may not have access to on-the-job training or practice with current technologies.", "record_id": "recvfYttSbVrRz"},
-  {"word": "displaced", "meaning": "被取代的，被淘汰的", "sentence": "We need to find better ways for them to learn new things to stay employable, or I worry that they will be displaced because of technology and innovation.", "record_id": "recvfYttSbIjTK"},
-  {"word": "Tech-savvy", "meaning": "精通技术的，技术娴熟的", "sentence": "Tech-savvy older adults: Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive impairment.", "record_id": "recvfYttSbIKEh"},
-  {"word": "impairment", "meaning": "损伤，障碍", "sentence": "Evidence also suggests that people are capable of mastering new skills even after they start experiencing declines in memory, attention, executive function, and other areas associated with mild cognitive impairment.", "record_id": "recvfYttSb29kD"},
-  {"word": "technophobic", "meaning": "技术恐惧的", "sentence": "We found that the participants were not technophobic.", "record_id": "recvfYttSbmA7u"},
-  {"word": "dementia", "meaning": "痴呆症", "sentence": "A recent study of more than 13,500 adults age 50 and older revealed that increased isolation was associated with increased risk of mortality, disability, and dementia.", "record_id": "recvfYttSbwwPx"},
-  {"word": "shedding light", "meaning": "阐明，揭示", "sentence": "The latest studies are also shedding light on cognitive health's connection to other lifestyle factors beyond social connectedness.", "record_id": "recvfYttSbYPmb"},
-  {"word": "cardiovascular", "meaning": "心血管的", "sentence": "In Finland, researchers led a 2-year intervention for people at higher risk of dementia. Participants were educated and supported in areas of diet, physical activity, cognitive training, social activity, and monitoring of cardiovascular risk factors.", "record_id": "recvfYttSbauuE"},
-  {"word": "psychomotor", "meaning": "精神运动的，心理运动的", "sentence": "The people in the intervention group experienced significantly greater improvements than the control group in executive function, complex memory tasks, and psychomotor control.", "record_id": "recvfYttSbkrOm"},
-  {"word": "facilitated", "meaning": "促成的，协助的", "sentence": "In a similar study in the United States, participants in the structured intervention attended 38 facilitated peer team meetings over 2 years with education, goal setting, and accountability.", "record_id": "recvfYttSbmKKS"},
-  {"word": "executive function", "meaning": "执行功能", "sentence": "The people in the intervention group experienced significantly greater improvements than the control group in executive function, complex memory tasks, and psychomotor control.", "record_id": "recvfYttSb03Ld"},
-  {"word": "holistic", "meaning": "整体的，全面的", "sentence": "While these findings build the case for a holistic approach to brain health, many people do not have access to intensive, in-person support to make lifestyle changes.", "record_id": "recvfYttSbSTzu"},
-  {"word": "intensive", "meaning": "强化的，密集的", "sentence": "While these findings build the case for a holistic approach to brain health, many people do not have access to intensive, in-person support to make lifestyle changes.", "record_id": "recvfYttSbTG35"},
-  {"word": "Metacognition", "meaning": "元认知", "sentence": "Metacognition, which is the awareness of our own abilities, improves with age.", "record_id": "recvfYttSbX42O"},
-  {"word": "recruit", "meaning": "调动，招募，利用", "sentence": "We can recruit cognitive mechanisms to focus on remembering what is important and interesting.", "record_id": "recvfYttSbtdek"},
-  {"word": "are poised to", "meaning": "准备好，即将", "sentence": "Clinical psychologists are poised to help older adults identify their curiosities and what matters most to them and then take steps to acquire new skills in these areas.", "record_id": "recvfYttSbAR74"},
-  {"word": "portals", "meaning": "门户，平台，入口", "sentence": "Some of these older partners are struggling not only to learn how to support a family member with a neurocognitive disorder, but also to navigate health care portals, telehealth visits, transportation, and other details for the loved one.", "record_id": "recvfYttSbOo3D"},
-  {"word": "bypasses", "meaning": "绕过，避开", "sentence": "Buy now, pay later financing bypasses a number of cognitive and physical barriers to impulse buying, heightening the risk of financial and psychological stress for many people.", "record_id": "recvfYtGvx9JY1"},
-  {"word": "practitioners", "meaning": "从业者，实践者", "sentence": "Behavioral scientists and applied practitioners can help by continuing to research the real-world impacts of the cognitive mechanisms underlying these behaviors.", "record_id": "recvfYtGvxv5NU"},
-  {"word": "underlying", "meaning": "潜在的，根本的", "sentence": "Behavioral scientists and applied practitioners can help by continuing to research the real-world impacts of the cognitive mechanisms underlying these behaviors.", "record_id": "recvfYtGvxSuo6"},
-  {"word": "deferred", "meaning": "延期的，递延的", "sentence": "A single tap, a purchase made, a payment deferred.", "record_id": "recvfYtGvxuepg"},
-  {"word": "frictionless", "meaning": "无摩擦的，顺畅的", "sentence": "As AI algorithms predict consumers' desires and new frictionless payment methods dismantle the traditional pain of paying.", "record_id": "recvfYtGvxWeEx"},
-  {"word": "dismantle", "meaning": "拆除，瓦解，消除", "sentence": "New frictionless payment methods dismantle the traditional pain of paying.", "record_id": "recvfYtGvxaWuz"},
-  {"word": "converging technologies", "meaning": "融合技术，汇聚的技术", "sentence": "Cognitive psychologists are stepping in to reveal how these converging technologies are rewiring financial decision-making.", "record_id": "recvfYtGvxe39V"},
-  {"word": "rewiring", "meaning": "重塑，重新连接", "sentence": "Cognitive psychologists are stepping in to reveal how these converging technologies are rewiring financial decision-making.", "record_id": "recvfYtGvxKfC0"},
-  {"word": "exacerbating", "meaning": "加剧，恶化", "sentence": "Cognitive psychologists are stepping in to reveal how these converging technologies are rewiring financial decision-making and exacerbating debt-related mental health concerns.", "record_id": "recvfYtGvxbZry"},
-  {"word": "precarious", "meaning": "不稳定的，岌岌可危的", "sentence": "This work comes at a precarious time.", "record_id": "recvfYtGvx1wJ7"},
-  {"word": "Wearied by years of inflation", "meaning": "因多年的通货膨胀而疲惫不堪", "sentence": "Wearied by years of inflation, stagnant income, and elevated personal debt, many Americans believe their finances will worsen in 2026.", "record_id": "recvfYtGvx5hBz"},
-  {"word": "stagnant", "meaning": "停滞的，不景气的", "sentence": "Wearied by years of inflation, stagnant income, and elevated personal debt, many Americans believe their finances will worsen in 2026.", "record_id": "recvfYtGvx8jFT"},
-  {"word": "pessimism", "meaning": "悲观情绪，悲观主义", "sentence": "A 2025 Bankrate survey found that pessimism about personal finances is at the highest level since 2018.", "record_id": "recvfYtGvx2Roh"},
-  {"word": "blame", "meaning": "归咎于，责怪", "sentence": "A 2025 Bankrate survey found that pessimism about personal finances is at the highest level since 2018, with price increases primarily to blame.", "record_id": "recvfYtGvx35EV"},
-  {"word": "inflation", "meaning": "通货膨胀", "sentence": "A Gallup survey published in April 2025 found similar attitudes, with nearly 30% of Americans reporting that inflation is the most important financial problem facing their family today.", "record_id": "recvfYtGvxzuZw"},
-  {"word": "stopgap", "meaning": "权宜之计，临时措施", "sentence": "As a result, debt has shifted from a stopgap to a way of life for many people.", "record_id": "recvfYtGvxYXbY"},
-  {"word": "most commonly cited goal", "meaning": "最常被提及的目标", "sentence": "As a result, debt has shifted from a stopgap to a way of life for many people, with paying down debt the most commonly cited goal in the Bankrate survey.", "record_id": "recvfYtGvxopvi"},
-  {"word": "hyperpersonalized", "meaning": "超个性化的，高度定制化的", "sentence": "Yet this objective can retreat to the background as consumers struggle with the high cost of living combined with a steady stream of hyperpersonalized online ads.", "record_id": "recvfYtGvxZZlu"},
-  {"word": "installment", "meaning": "分期付款", "sentence": "A prime example is buy now, pay later (BNPL) services, where a single click or tap lets shoppers purchase items by splitting up the payments into smaller, interest-free installments.", "record_id": "recvfYtGvxFsCl"},
-  {"word": "barrage of temptation", "meaning": "连珠炮般的诱惑", "sentence": "Since AI models are better and better at predicting the products we want, targeted ads can create a constant barrage of temptation.", "record_id": "recvfYtGvx0IF6"},
-  {"word": "gadgets", "meaning": "电子设备，小器具", "sentence": "Clothing and fashion was the top category for this type of financing, followed by electronics and gadgets and furniture and home decor.", "record_id": "recvfYtGvxgjLf"},
-  {"word": "schemes", "meaning": "计划，方案，机制", "sentence": "Unlike credit cards, BNPL schemes do not require an official approval process.", "record_id": "recvfYtGvxl7qH"},
-  {"word": "stack up", "meaning": "堆积，累积", "sentence": "While these loans can help with short-term budgeting for individuals who can make the payments on time, they can increase stress when users stack up multiple BNPL loans simultaneously and start missing payments.", "record_id": "recvfYtGvxIL20"},
-  {"word": "unsecured debt", "meaning": "无担保债务，信用债务", "sentence": "Researchers recently found that people with certain mental health conditions were more likely to use BNPL products, and unsecured debt—debt that is not backed by collateral—is correlated with worse mental health.", "record_id": "recvfYtGvxVJTt"},
-  {"word": "collateral", "meaning": "抵押品，担保物", "sentence": "Unsecured debt—debt that is not backed by collateral—is correlated with worse mental health.", "record_id": "recvfYtGvx8pil"},
-  {"word": "exacerbate", "meaning": "加剧，使恶化", "sentence": "Researchers are studying the psychological mechanisms that shape financial decision-making in the ecommerce environment and how to help people resist spending that may exacerbate financial stress.", "record_id": "recvfYtGvxDYYL"},
-  {"word": "strain", "meaning": "压力，紧张，困境", "sentence": "When people are under economic strain, one of the challenges they face is that they have less room for error in financial decisions.", "record_id": "recvfYtGvxPy82"}
-];
+        {"word": "shedding light on", "cn": "阐明，揭示", "sentence": "After realizing how much they actually owed, 1 in 4 Americans say they've regretted using BNPL, and a new study is shedding light on why these plans are so tempting.", "correct": "shedding light on", "options": ["shedding light on", "getting rid of", "looking after", "taking over"]},
+        {"word": "tempting", "cn": "诱人的，有吸引力的", "sentence": "A new study is shedding light on why these plans are so tempting.", "correct": "tempting", "options": ["tempting", "boring", "confusing", "disappointing"]},
+        {"word": "numerosity", "cn": "数量效应，数值感知", "sentence": "Presenting an installment amount rather than the full price lowers a consumer's perception of the cost. This is due to the numerosity effect.", "correct": "numerosity", "options": ["numerosity", "authority", "popularity", "regularity"]},
+        {"word": "internalizing", "cn": "内化", "sentence": "With these installment plans, people may not be fully internalizing the cost of a purchase when deciding whether to buy or how much to spend.", "correct": "internalizing", "options": ["internalizing", "externalizing", "recognizing", "forgetting"]},
+        {"word": "literacy", "cn": "读写能力，素养", "sentence": "Professionals within esports psychology perform roles that combine high-performance coaching, clinical or counseling skills, and deep game literacy.", "correct": "literacy", "options": ["literacy", "ignorance", "violence", "clarity"]},
+        {"word": "nuanced", "cn": "细致入微的，微妙的", "sentence": "However, a more nuanced approach is necessary when esports competitors often require those hours to train and remain competitive.", "correct": "nuanced", "options": ["nuanced", "simple", "confusing", "useless"]},
+        {"word": "prioritized", "cn": "优先考虑的", "sentence": "Gardner and his team prioritized exercise, sleep routines, and intrinsic motivation, helping the Immortals players build healthier daily structures.", "correct": "prioritized", "options": ["prioritized", "ignored", "delayed", "cancelled"]},
+        {"word": "meteoric", "cn": "迅速的，流星般的", "sentence": "Its meteoric rise demonstrates the internet's power to propel fringe terms into the mainstream at warp speed.", "correct": "meteoric", "options": ["meteoric", "slow", "steady", "gradual"]},
+        {"word": "fringe", "cn": "边缘的，非主流的", "sentence": "Its meteoric rise demonstrates the internet's power to propel fringe terms into the mainstream at warp speed.", "correct": "fringe", "options": ["fringe", "mainstream", "popular", "traditional"]},
+        {"word": "rebellious", "cn": "叛逆的，反抗的", "sentence": "For young people, the appeal lies in its irreverent or rebellious qualities while also remaining opaque to adults.", "correct": "rebellious", "options": ["rebellious", "obedient", "passive", "calm"]},
+        {"word": "opaque", "cn": "晦涩难懂的，不透明的", "sentence": "For young people, the appeal lies in its irreverent or rebellious qualities while also remaining opaque to adults.", "correct": "opaque", "options": ["opaque", "clear", "obvious", "transparent"]},
+        {"word": "shorthand", "cn": "简写，速记", "sentence": "That verbal shorthand persists in modern professional settings as jargon.", "correct": "shorthand", "options": ["shorthand", "explanation", "conversation", "discussion"]},
+        {"word": "jargon", "cn": "行话，术语", "sentence": "That verbal shorthand persists in modern professional settings as jargon.", "correct": "jargon", "options": ["jargon", "language", "silence", "laughter"]},
+        {"word": "boost", "cn": "提升，增强，促进", "sentence": "Psychology researchers are developing cognitive interventions to help adults boost their brain health rather than being affected by harmful stereotypes about aging.", "correct": "boost", "options": ["boost", "reduce", "ignore", "destroy"]},
+        {"word": "upfront", "cn": "预先的，事先的", "sentence": "For older workers to overcome barriers to learning, they often need to know upfront how training will benefit them.", "correct": "upfront", "options": ["upfront", "afterwards", "never", "sometimes"]},
+        {"word": "adherent", "cn": "遵从的，坚持的", "sentence": "They were very adherent, and there was a low dropout rate.", "correct": "adherent", "options": ["adherent", "lazy", "careless", "irregular"]},
+        {"word": "curriculum", "cn": "课程", "sentence": "Garden State Esports developed the Esports Personal and Performance Improvement Curriculum (EPPIC).", "correct": "curriculum", "options": ["curriculum", "vacation", "punishment", "celebration"]},
+        {"word": "dearth", "cn": "缺乏，短缺", "sentence": "There is a dearth of appropriate evidence-based practices and ethical and professional standards.", "correct": "dearth", "options": ["dearth", "abundance", "variety", "quality"]},
+        {"word": "deliberate", "cn": "故意的，深思熟虑的", "sentence": "A study with Counter-Strike: Global Offensive and League of Legends players found that deliberate practice did not meaningfully predict long-term rank.", "correct": "deliberate", "options": ["deliberate", "accidental", "random", "casual"]},
+        {"word": "immortals", "cn": "不朽者（电竞战队名）", "sentence": "In 2018, he built what he describes as the first player development department in North American professional esports for the Immortals organization.", "correct": "immortals", "options": ["immortals", "amateurs", "beginners", "veterans"]},
+        {"word": "leveraging", "cn": "利用，借助", "sentence": "The rise of livestreaming platforms like Twitch, Discord, and YouTube—and the charismatic personalities of some of the athletes leveraging these platforms—has fueled this growth.", "correct": "leveraging", "options": ["leveraging", "avoiding", "ignoring", "rejecting"]},
+        {"word": "navigate", "cn": "导航，应对", "sentence": "While elite players within formal organizational structures often have access to professional psychological services, non-elite players must rely on inconsistent online resources or navigate support systems on their own.", "correct": "navigate", "options": ["navigate", "ignore", "avoid", "destroy"]},
+        {"word": "likened", "cn": "比作，比拟", "sentence": "Ryan Terao, PsyD, an esports and licensed clinical psychologist, likened the power of esports and gaming to fire.", "correct": "likened", "options": ["likened", "separated", "combined", "confused"]},
+        {"word": "marginalized", "cn": "边缘化的", "sentence": "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including neurodivergent youth.", "correct": "marginalized", "options": ["marginalized", "centralized", "included", "prioritized"]},
+        {"word": "merge", "cn": "合并，融合", "sentence": "I've been spending outside the game to learn all these skills and merge them with my passion for the game.", "correct": "merge", "options": ["merge", "separate", "divide", "ignore"]},
+        {"word": "mindset-reappraisal", "cn": "心态重新评估", "sentence": "A mindset-reappraisal intervention that encouraged players to view stress as beneficial lowered players' anxiety.", "correct": "mindset-reappraisal", "options": ["mindset-reappraisal", "mindset-ignoring", "stress-avoidance", "pressure-induction"]},
+        {"word": "mitigate", "cn": "减轻，缓解", "sentence": "What we really need to do is track young people over their development to understand when gaming is good and when it is bad, and then how to mitigate the bad and maximize the good.", "correct": "mitigate", "options": ["mitigate", "increase", "ignore", "create"]},
+        {"word": "mound", "cn": "投手丘（棒球）", "sentence": "This would be akin to a player committing a flagrant foul in basketball or rushing the mound in baseball.", "correct": "mound", "options": ["mound", "field", "audience", "scoreboard"]},
+        {"word": "movember", "cn": "Movember（男性健康慈善机构）", "sentence": "In 2024, the global men's health charity Movember recruited esports psychology researcher Dylan Poulus, PhD.", "correct": "movember", "options": ["movember", " november", "december", "october"]},
+        {"word": "multibillion-dollar", "cn": "数十亿美元的", "sentence": "Esports are a fast-evolving multibillion-dollar industry that draws hundreds of millions of competitive video game players worldwide.", "correct": "multibillion-dollar", "options": ["multibillion-dollar", "penny-wise", "money-losing", "budget"]},
+        {"word": "navigating", "cn": "应对，穿越", "sentence": "EPPIC addresses communication, teamwork, leadership, health and wellness, and navigating online toxicity and hate speech.", "correct": "navigating", "options": ["navigating", "avoiding", "creating", "ignoring"]},
+        {"word": "neurodivergent", "cn": "神经多样性者", "sentence": "Strobel views esports as widening accessibility for students who may be marginalized in traditional sports, including neurodivergent youth.", "correct": "neurodivergent", "options": ["neurodivergent", "neurotypical", "unintelligent", "inactive"]},
+        {"word": "normalizing", "cn": "正常化", "sentence": "Students gained access to an athletics-based sport psychologist, nutrition programming, and twice-weekly morning workouts aimed at normalizing physical conditioning.", "correct": "normalizing", "options": ["normalizing", "abnormalizing", "stopping", "destroying"]},
+        {"word": "norms", "cn": "规范，准则", "sentence": "Teams were also encouraged to develop their own norms around culture, accountability, and conflict management.", "correct": "norms", "options": ["norms", "chaos", "disorders", "mistakes"]},
+        {"word": "off-ramp", "cn": "退出通道，出路", "sentence": "Many pros go straight from an anonymous position on a ladder to a contract, with no Little League, no college team, and no off-ramp when it ends.", "correct": "off-ramp", "options": ["off-ramp", "on-ramp", "dead-end", "highway"]},
+        {"word": "pillars", "cn": "支柱，核心原则", "sentence": "Poulus and colleagues convened game publishers, tournament organizers, International Olympic Committee representatives, and mental health experts to finalize nine pillars of mental health support.", "correct": "pillars", "options": ["pillars", "weaknesses", "problems", "obstacles"]},
+        {"word": "pipeline", "cn": "管道，人才输送渠道", "sentence": "Esports is a sport without a childhood pipeline.", "correct": "pipeline", "options": ["pipeline", "obstruction", "barrier", "end"]},
+        {"word": "postgame", "cn": "赛后的", "sentence": "He often prepares clients to expect a temporary dip in performance as they reconstruct habits around sleep, practice structure, and postgame review.", "correct": "postgame", "options": ["postgame", "pregame", "midgame", "during-game"]},
+        {"word": "reckless", "cn": "鲁莽的，轻率的", "sentence": "Tilt can lead players to perform reckless and self-destructive actions, such as hurtling their character, unprotected, at an enemy.", "correct": "reckless", "options": ["reckless", "careful", "cautious", "slow"]},
+        {"word": "reconceptualize", "cn": "重新概念化", "sentence": "Getting players to reconceptualize stress as being beneficial and a challenge to overcome rather than a debilitating threat improved shooting accuracy.", "correct": "reconceptualize", "options": ["reconceptualize", "misunderstand", "ignore", "forget"]},
+        {"word": "recruited", "cn": "招募的", "sentence": "In 2024, the global men's health charity Movember recruited esports psychology researcher Dylan Poulus, PhD.", "correct": "recruited", "options": ["recruited", "fired", "ignored", "rejected"]},
+        {"word": "relegated", "cn": "被降级", "sentence": "As a result, neurodivergent youth in esports get to be the captain of the team versus the helper role they are often relegated to in traditional sports.", "correct": "relegated", "options": ["relegated", "promoted", "celebrated", "praised"]},
+        {"word": "resembled", "cn": "类似于", "sentence": "Researchers found 51 stressors, such as communication problems and pressures of competing before live audiences, resembled those affecting professional athletes in traditional sports.", "correct": "resembled", "options": ["resembled", "differed", "matched", "contradicted"]},
+        {"word": "rigor", "cn": "严谨性", "sentence": "The evidence base is expanding rapidly, but it lacks the rigor necessary for evidence-based practice.", "correct": "rigor", "options": ["rigor", "chaos", "carelessness", "inaccuracy"]},
+        {"word": "sanctioned", "cn": "认可的，批准的", "sentence": "Roose intentionally housed the program within the athletics department and adopted the NCAA's 20-hour rule for sanctioned activities.", "correct": "sanctioned", "options": ["sanctioned", "forbidden", "rejected", "ignored"]},
+        {"word": "scrutiny", "cn": "审查，审视", "sentence": "Many esports players begin competing professionally in adolescence, facing intense pressure, unstable schedules, and public scrutiny while still developing emotionally and socially.", "correct": "scrutiny", "options": ["scrutiny", "privacy", "secrecy", "freedom"]},
+        {"word": "self-efficacy", "cn": "自我效能感", "sentence": "However, mindset and self-efficacy are key.", "correct": "self-efficacy", "options": ["self-efficacy", "self-doubt", "self-pity", "self-criticism"]},
+        {"word": "self-sufficiency", "cn": "自给自足", "sentence": "Teams were also encouraged to develop their own norms around culture, accountability, and conflict management, fostering self-sufficiency and leadership skills.", "correct": "self-sufficiency", "options": ["self-sufficiency", "dependence", "reliance", "helplessness"]},
+        {"word": "semiprofessional", "cn": "半职业的", "sentence": "Players often compete as teams on digital platforms through systems run by amateur, semiprofessional, or professional leagues.", "correct": "semiprofessional", "options": ["semiprofessional", "unprofessional", "amateur", "fully-professional"]},
+        {"word": "sharpen", "cn": "加强，提高", "sentence": "New studies on stress, tilt, practice demands, and attention will sharpen understanding of what drives performance in the digital game environment.", "correct": "sharpen", "options": ["sharpen", "blur", "confuse", "weaken"]}
+    ];
 
-    const translations = {
-  "proficient": "研究表明，人们可以熟练掌握特定任务及其他类似任务，但这对学习如何导航在线健康平台帮助不大，因为跨越太大了。",
-  "sudoku": "这些发现让吴想起那些非常擅长玩数独等脑力游戏的人，却在管理在线银行账户方面遇到困难。",
-  "anecdotally": "课程结束后，吴听说许多参与者继续通过在线课程、私人课程或社区团体追求他们的兴趣。",
-  "stick figure": "有些人从来只会画火柴人，后来他们出售自己的作品并获得委托。",
-  "Compounding": "加剧这一挑战的是许多中老年工人面临的时间压力，他们还必须同时兼顾孩子、年迈父母或其他责任，这意味着学习时间更少。",
-  "juggle responsibilities": "加剧这一挑战的是许多中老年工人面临的时间压力，他们还必须同时兼顾孩子、年迈父母或其他责任，这意味着学习时间更少。",
-  "gig economy": "Beier还担心那些就业不足、失业或零工经济的承包商，他们可能无法获得在职培训或使用当前技术的机会。",
-  "displaced": "我们需要为他们找到更好的方式来学习新东西以保持就业，否则我担心他们会被技术和创新所取代。",
-  "Tech-savvy": "技术娴熟的老年人：证据还表明，即使人们开始经历记忆力、注意力、执行功能及其他与轻度认知障碍相关领域的衰退，他们仍能掌握新技能。",
-  "impairment": "证据还表明，即使人们开始经历记忆力、注意力、执行功能及其他与轻度认知障碍相关领域的衰退，他们仍能掌握新技能。",
-  "technophobic": "我们发现参与者并不技术恐惧。",
-  "dementia": "一项针对13,500多名50岁及以上成年人的最新研究显示，孤独感增加与死亡、残疾和痴呆风险增加相关。",
-  "shedding light": "最新研究也阐明了认知健康与除社会联系外其他生活因素之间的联系。",
-  "cardiovascular": "在芬兰，研究人员为痴呆高风险人群领导了一项为期2年的干预措施。参与者在饮食、体育活动、认知训练、社交活动和心血管风险因素监测方面得到教育和支持。",
-  "psychomotor": "干预组在执行功能、复杂记忆任务和精神运动控制方面比对照组有显著改善。",
-  "facilitated": "在美国的一项类似研究中，参与者在2年内参加了38次有组织的同伴团队会议，包括教育、目标设定和问责。",
-  "executive function": "干预组在执行功能、复杂记忆任务和精神运动控制方面比对照组有显著改善。",
-  "holistic": "虽然这些发现为大脑健康的整体方法提供了依据，但许多人无法获得强化的面对面支持来改变生活方式。",
-  "intensive": "虽然这些发现为大脑健康的整体方法提供了依据，但许多人无法获得强化的面对面支持来改变生活方式。",
-  "Metacognition": "元认知，即对我们自身能力的意识，会随着年龄增长而改善。",
-  "recruit": "我们可以调动认知机制来专注于记住重要和有趣的事情。",
-  "are poised to": "临床心理学家正准备帮助老年人识别他们的好奇心和最重要的是什么，然后采取步骤在这些领域获得新技能。",
-  "portals": "这些老年伴侣中的一些人不仅努力学习如何支持患有神经认知障碍的家人，还要导航医疗门户、远程医疗预约、交通和亲人的其他细节。",
-  "bypasses": "先买后付融资绕过了许多冲动购买的认知和身体障碍，加剧了许多人的金融和心理压力风险。",
-  "practitioners": "行为科学家和应用从业者可以通过继续研究这些行为背后的认知机制的现实影响来提供帮助。",
-  "underlying": "行为科学家和应用从业者可以通过继续研究这些行为背后的认知机制的现实影响来提供帮助。",
-  "deferred": "一次点击，一次购买，一次延期付款。",
-  "frictionless": "随着人工智能算法预测消费者的欲望，新的无摩擦支付方式消除了传统的支付痛苦。",
-  "dismantle": "新的无摩擦支付方式消除了传统的支付痛苦。",
-  "converging technologies": "认知心理学家正在介入，揭示这些融合技术如何重塑金融决策。",
-  "rewiring": "认知心理学家正在介入，揭示这些融合技术如何重塑金融决策。",
-  "exacerbating": "认知心理学家正在介入，揭示这些融合技术如何重塑金融决策，并加剧与债务相关的心理健康问题。",
-  "precarious": "这项工作正值不稳定时期。",
-  "Wearied by years of inflation": "由于多年通货膨胀、收入停滞和个人债务增加，许多美国人相信他们的财务状况将在2026年恶化。",
-  "stagnant": "由于多年通货膨胀、收入停滞和个人债务增加，许多美国人相信他们的财务状况将在2026年恶化。",
-  "pessimism": "2025年Bankrate调查发现，对个人财务的悲观情绪处于2018年以来的最高水平。",
-  "blame": "2025年Bankrate调查发现，对个人财务的悲观情绪处于2018年以来的最高水平，主要归咎于价格上涨。",
-  "inflation": "2025年4月发布的盖洛普调查发现了类似的态度，近30%的美国人表示通货膨胀是当今家庭面临的最重要的财务问题。",
-  "stopgap": "因此，债务对许多人来说从权宜之计变成了生活方式。",
-  "most commonly cited goal": "因此，债务对许多人来说从权宜之计变成了生活方式，在Bankrate调查中，偿还债务是最常被提及的目标。",
-  "hyperpersonalized": "然而，随着消费者与高昂的生活成本作斗争，加上源源不断的超个性化在线广告，这一目标可能会退居幕后。",
-  "installment": "一个典型的例子是先买后付（BNPL）服务，只需一次点击或 tap，用户就可以将付款分成更小的免息分期。",
-  "barrage of temptation": "由于人工智能模型越来越擅长预测我们想要的产品，定向广告可能会造成持续的诱惑冲击。",
-  "gadgets": "服装和时尚是这类融资的最大类别，其次是电子设备和家具家居装饰。",
-  "schemes": "与信用卡不同，BNPL方案不需要官方审批流程。",
-  "stack up": "虽然这些贷款可以帮助按时付款的人进行短期预算，但当用户同时积累多个BNPL贷款并开始逾期时，压力会增加。",
-  "unsecured debt": "研究人员最近发现，患有某些心理健康状况的人更有可能使用BNPL产品，而无担保债务——即没有抵押品支持的债务——与更差的心理健康相关。",
-  "collateral": "无担保债务——即没有抵押品支持的债务——与更差的心理健康相关。",
-  "exacerbate": "研究人员正在研究在电子商务环境中塑造金融决策的心理机制，以及如何帮助人们抵制可能加剧金融压力的消费。",
-  "strain": "当人们处于经济压力之下时，他们面临的挑战之一是他们在金融决策中出错的空间更小。"
-};
-
-    let currentIndex = 0, correctCount = 0, wrongCount = 0, startTime = Date.now();
-    let currentQuestion = null, currentOptions = [];
+    let currentIndex = 0;
+    let correctCount = 0;
+    let startTime = Date.now();
     let results = [];
-    
-    function shuffle(a) { for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]} return a; }
-    function getOptions(correct) { let opts = [correct]; let others = questions.filter(q=>q.word!==correct.word); shuffle(others); others.slice(0,3).forEach(o=>opts.push(o)); return shuffle(opts); }
-    
-    function showQuestion() {
-        currentQuestion = questions[currentIndex];
-        currentOptions = getOptions(currentQuestion);
-        
-        document.getElementById('progressFill').style.width = ((currentIndex+1)/questions.length*100)+'%';
-        document.getElementById('progressText').textContent = `第 ${currentIndex+1} 题 / 共 ${questions.length} 题`;
-        
-        const blankSentence = currentQuestion.sentence.replace(new RegExp(currentQuestion.word,'gi'),'<span class="blank">【______】</span>');
-        
-        let html = `<div class="sentence">${blankSentence}</div><div class="options" id="optionsContainer">`;
-        currentOptions.forEach((o, idx)=>{
-            html+=`<div class="option" data-index="${idx}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
-        });
-        html += '</div>';
-        document.getElementById('questionArea').innerHTML = html;
-        
-        document.querySelectorAll('.option').forEach(btn => {
-            btn.onclick = () => checkAnswer(parseInt(btn.dataset.index));
-        });
-        
-        document.getElementById('resultArea').style.display = 'none';
-        document.getElementById('nextBtn').style.display = 'none';
-    }
-    
-    function checkAnswer(selectedIdx) {
-        const selected = currentOptions[selectedIdx];
-        const correct = currentQuestion;
-        
-        document.querySelectorAll('.option').forEach(o=>o.style.pointerEvents='none');
-        
-        const isCorrect = selected.word === correct.word;
-        results.push({word: correct.word, correct: isCorrect});
-        
-        // 显示中文翻译
-        document.getElementById('optionsContainer').classList.add('show-translation');
-        
-        if(isCorrect) { 
-            correctCount++; 
-            document.querySelectorAll('.option')[selectedIdx].classList.add('correct'); 
-        } else { 
-            wrongCount++; 
-            document.querySelectorAll('.option')[selectedIdx].classList.add('wrong'); 
-            currentOptions.forEach((o, idx) => {
-                if(o.word === correct.word) {
-                    document.querySelectorAll('.option')[idx].classList.add('correct');
-                }
-            });
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
-        
-        const translation = translations[correct.word] || '';
-        
-        // 句子翻译默认隐藏，提交后显示
-        let resultHtml = `<div class="result ${isCorrect?'correct':'wrong'}"><div class="result-title">${isCorrect?'✅ 正确！':'❌ 错误！'}</div><div class="result-word"><strong>${correct.word}</strong></div><div class="result-sentence"><div class="result-english">${correct.sentence.replace(new RegExp(correct.word,'gi'),'<strong>'+correct.word+'</strong>')}</div><div class="result-chinese">${translation}</div></div><div>`;
-        currentOptions.forEach(o=>{
-            const isC = o.word === correct.word;
-            resultHtml+=`<div class="result-option ${isC?'correct':''}"><span class="en">${o.word}</span><span class="cn">${o.meaning}</span></div>`;
-        });
-        resultHtml += '</div></div>';
-        document.getElementById('resultArea').innerHTML = resultHtml;
-        document.getElementById('resultArea').style.display = 'block';
-        // 显示句子翻译
-        document.querySelector('.result-chinese').style.display = 'block';
-        document.getElementById('nextBtn').style.display = 'inline-block';
+        return array;
     }
-    
+
+    function renderQuestion() {
+        if (currentIndex >= questions.length) {
+            showResultCode();
+            return;
+        }
+
+        const q = questions[currentIndex];
+        const progress = ((currentIndex + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+
+        // 挖空句子
+        const blankedSentence = q.sentence.replace(new RegExp('\\b' + q.correct + '\\b', 'gi'), '【______】');
+        document.getElementById('sentence').textContent = blankedSentence;
+        
+        document.getElementById('questionText').textContent = `请选择正确的单词补全句子：`;
+
+        // 随机打乱选项
+        const shuffledOptions = shuffleArray([...q.options]);
+        
+        const optionsHtml = shuffledOptions.map(opt => 
+            `<div class="option" onclick="selectOption(this, '${opt}', '${q.correct}', '${q.word}', '${q.cn}', '${q.sentence}')">${opt}</div>`
+        ).join('');
+        
+        document.getElementById('options').innerHTML = optionsHtml;
+        document.getElementById('result').classList.remove('show', 'correct', 'wrong');
+    }
+
+    function selectOption(element, selected, correct, word, cn, sentence) {
+        // 禁用所有选项
+        document.querySelectorAll('.option').forEach(opt => opt.classList.add('disabled'));
+        
+        const isCorrect = selected === correct;
+        
+        // 标记正确和错误
+        document.querySelectorAll('.option').forEach(opt => {
+            if (opt.textContent === correct) {
+                opt.classList.add('correct');
+            } else if (opt.textContent === selected && !isCorrect) {
+                opt.classList.add('wrong');
+            }
+        });
+
+        // 记录结果
+        results.push({
+            word: word,
+            correct: isCorrect,
+            selected: selected
+        });
+
+        if (isCorrect) {
+            correctCount++;
+        }
+
+        // 显示答案解析
+        showResult(isCorrect, word, cn, correct, sentence);
+    }
+
+    function showResult(isCorrect, word, cn, correctAnswer, sentence) {
+        const resultDiv = document.getElementById('result');
+        const titleEl = document.getElementById('resultTitle');
+        const wordEl = document.getElementById('word');
+        const transEl = document.getElementById('translation');
+        const answerEl = document.getElementById('answerSentence');
+        const optTransEl = document.getElementById('optionsTranslation');
+        
+        resultDiv.classList.add('show');
+        resultDiv.classList.add(isCorrect ? 'correct' : 'wrong');
+        
+        titleEl.textContent = isCorrect ? '✅ 正确！' : '❌ 错误！';
+        wordEl.textContent = word;
+        transEl.textContent = cn;
+        
+        // 高亮答案
+        const highlightedSentence = sentence.replace(
+            new RegExp('\\b' + correctAnswer + '\\b', 'gi'),
+            `<span class="highlight">${correctAnswer}</span>`
+        );
+        answerEl.innerHTML = highlightedSentence;
+        
+        // 显示所有选项的中英文
+        const q = questions[currentIndex];
+        const allOptions = q.options.map(opt => ({
+            en: opt,
+            cn: getTranslation(opt),
+            correct: opt === correctAnswer
+        }));
+        
+        optTransEl.innerHTML = '<h4>所有选项：</h4>' + allOptions.map(opt => 
+            `<div class="option-item ${opt.correct ? 'correct' : ''}">
+                <span class="en">${opt.en} ${opt.correct ? '✓' : ''}</span>
+                <span class="cn">${opt.cn}</span>
+            </div>`
+        ).join('');
+
+        document.getElementById('nextBtn').classList.add('show');
+    }
+
+    function getTranslation(word) {
+        const q = questions.find(q => q.correct === word || q.word === word);
+        return q ? q.cn : '';
+    }
+
     function nextQuestion() {
         currentIndex++;
-        if(currentIndex >= questions.length) {
-            showFinalResult();
-        } else { showQuestion(); }
+        renderQuestion();
     }
-    
-    function showFinalResult() {
+
+    function showResultCode() {
         const endTime = Date.now();
-        const acc = Math.round(correctCount/questions.length*100);
+        const duration = Math.round((endTime - startTime) / 1000);
         
-        document.getElementById('questionArea').style.display = 'none';
-        document.getElementById('resultArea').style.display = 'none';
-        document.getElementById('nextBtn').style.display = 'none';
-        document.getElementById('progressFill').style.width = '100%';
+        const resultCode = `ENGRESULT:round=32,total=${questions.length},correct=${correctCount},duration=${duration}s,startTime=${startTime},endTime=${endTime},results=${results.map(r => r.word + ':' + (r.correct ? 'T' : 'F')).join(',')}`;
         
-        let resultsStr = results.map(r => r.word + ':' + (r.correct ? 'T' : 'F')).join(',');
-        let resultCode = `ENGRESULT:round=31,total=${questions.length},correct=${correctCount},wrong=${wrongCount},accuracy=${acc}%,startTime=${startTime},endTime=${endTime},results=${resultsStr}`;
-        
-        document.getElementById('statsArea').innerHTML = `<div style="text-align:center;margin:16px 0"><div style="font-size:20px;font-weight:bold">正确: ${correctCount} | 错误: ${wrongCount}</div><div style="font-size:28px;font-weight:bold;color:#4CAF50">${acc}%</div></div>`;
-        document.getElementById('resultCode').textContent = resultCode;
-        document.getElementById('resultCodeArea').style.display = 'block';
+        document.getElementById('questionArea').innerHTML = `
+            <div style="text-align: center; padding: 40px;">
+                <h2 style="color: #28a745; margin-bottom: 20px;">🎉 复习完成！</h2>
+                <p style="font-size: 18px; margin-bottom: 10px;">正确率：${correctCount}/${questions.length} (${Math.round(correctCount/questions.length*100)}%)</p>
+                <p style="color: #666; margin-bottom: 20px;">用时：${duration}秒</p>
+                <div class="result码 show">
+                    ${resultCode}
+                </div>
+            </div>
+        `;
     }
-    
-    showQuestion();
+
+    // 初始化
+    renderQuestion();
     </script>
 </body>
 </html>
