@@ -1115,12 +1115,10 @@
             document.getElementById('unfamiliar-count').textContent = unfamiliarCount;
             
             // 生成结果码
-            var resultCode = 'VOCABRESULT:' + currentRound + '|' + results.length + '|' + 
-                correctCount + '|' + wrongCount + '|' + knownCount + '|' + 
-                masteredCount + '|' + unfamiliarCount + '|' + 
+            var resultCode = currentRound + '|' + correctCount + '|' + wrongCount + '|' + 
                 startTime + '|' + endTime + '|' + 
                 results.map(function(r) { 
-                    return r.word + ':' + (r.correct?'1':'0') + ':' + (r.known?'1':'0'); 
+                    return r.word + ':' + r.correct; 
                 }).join(',');
             
             document.getElementById('code-result').textContent = resultCode;
@@ -1138,15 +1136,12 @@
         
         // 生成需要同步的数据（用于发给我更新表格）
         function generateSyncData() {
-            var syncData = results.map(function(r) {
-                var status = r.known ? '我认识' : (r.correct ? '正确' : '错误');
-                return r.word + '|' + status;
-            }).join('\n');
+            var wordResults = results.map(function(r) {
+                return r.word + ':' + r.correct;
+            }).join(',');
             
-            var round = currentRound;
-            var header = '【第' + round + '轮答题结果】\n';
-            
-            return header + syncData + '\n\n请把以上结果发给我，我来更新多维表格~';
+            return currentRound + '|' + correctCount + '|' + wrongCount + '|' + 
+                startTime + '|' + endTime + '|' + wordResults;
         }
         
         function copyForSync() {
