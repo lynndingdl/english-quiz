@@ -99,4 +99,8 @@ const vocabData = [
 {"word": "naughty", "meaning": "淘气的", "pos": "adj.", "sentence": "The naughty child broke the vase."},
 {"word": "naval", "meaning": "海军的", "pos": "adj.", "sentence": "He attended the naval academy."},
 {"word": "navigate", "meaning": "航行；导航", "pos": "v.", "sentence": "He navigated the ship through the storm."},
+{"word": "necessity", "meaning": "必要性；必需品", "pos": "n.", "sentence": "Water is a necessity of life."},
+{"word": "negative", "meaning": "消极的；负面的；否定的", "pos": "adj.", "sentence": "He has a negative attitude."},
+{"word": "neglect", "meaning": "忽视；疏忽", "pos": "v./n.", "sentence": "Don't neglect your health."},
+{"word": "negotiate", "meaning": "谈判；协商", "pos": "v.", "sentence": "They negotiated a peace treaty."},
 ];
