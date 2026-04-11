@@ -119,7 +119,7 @@
         {"word": "objectivity", "meaning": "客观性", "pos": "n.", "sentence": "Journalists should maintain objectivity."},
         {"word": "obligation", "meaning": "义务；责任", "pos": "n.", "sentence": "I have an obligation to help."},
         {"word": "obligatory", "meaning": "强制性的；义务的", "pos": "adj.", "sentence": "Attendance is obligatory."},
-        {"word": "oblige", "meaning": "迫使；帮……忙", "pos": "v.", "sentence": "I'm obliged to thank you."},
+        {"word": "oblige", "meaning": "迫使；帮忙", "pos": "v.", "sentence": "I'm obliged to thank you."},
         {"word": "obliterate", "meaning": "擦掉；消灭", "pos": "v.", "sentence": "The bomb obliterated the building."},
         {"word": "oblivious", "meaning": "遗忘的；不注意的", "pos": "adj.", "sentence": "She was oblivious to the danger."},
         {"word": "obnoxious", "meaning": "令人讨厌的", "pos": "adj.", "sentence": "His behavior was obnoxious."},
@@ -173,10 +173,11 @@
     let currentIndex = 0;
     let results = [];
     let startTime = null;
+    let currentOptions = [];
 
     function getDistractors(correctWord, pos) {
         let pool;
-        if (pos.includes('n.') && !pos.includes('adj.') && !pos.includes('a.')) pool = nouns;
+        if (pos.includes('n.') && !pos.includes('adj.')) pool = nouns;
         else if (pos.includes('adj.') || pos.includes('a.')) pool = adjectives;
         else if (pos.includes('v.')) pool = verbs;
         else if (pos.includes('adv.')) pool = adverbs;
@@ -199,34 +200,43 @@
         document.getElementById('progress').textContent = `第${currentIndex + 1}题 / ${vocabData.length}`;
         document.getElementById('question-word').textContent = wordData.word;
 
-        const options = getDistractors(wordData.word, wordData.pos);
-        const optionsHtml = options.map((opt, i) => 
-            `<div class="option" onclick="checkAnswer('${opt.word}', '${wordData.word}', '${opt.meaning}', '${wordData.meaning}', this)">${opt.meaning}</div>`
+        currentOptions = getDistractors(wordData.word, wordData.pos);
+        
+        const optionsHtml = currentOptions.map((opt, i) => 
+            `<div class="option" data-index="${i}">${opt.meaning}</div>`
         ).join('');
         document.getElementById('options').innerHTML = optionsHtml;
+
+        // 绑定点击事件
+        document.querySelectorAll('.option').forEach(el => {
+            el.addEventListener('click', function() {
+                const idx = parseInt(this.dataset.index);
+                const selected = currentOptions[idx];
+                checkAnswer(selected.word, wordData.word, idx);
+            });
+        });
 
         document.getElementById('quiz-card').classList.remove('hidden');
         document.getElementById('result-card').classList.add('hidden');
     }
 
-    function checkAnswer(selectedWord, correctWord, selectedMeaning, correctMeaning, element) {
+    function checkAnswer(selectedWord, correctWord, selectedIndex) {
         const isCorrect = selectedWord === correctWord;
         results.push({word: correctWord, correct: isCorrect});
 
-        const options = element.parentElement.children;
-        for (let opt of options) {
-            const meaning = opt.textContent;
-            if (vocabData.find(w => w.meaning === meaning)?.word === correctWord) {
+        const options = document.querySelectorAll('.option');
+        options.forEach((opt, i) => {
+            if (currentOptions[i].word === correctWord) {
                 opt.classList.add('correct');
-            } else if (opt === element && !isCorrect) {
+            } else if (i === selectedIndex && !isCorrect) {
                 opt.classList.add('wrong');
             }
-        }
+        });
 
-        setTimeout(() => showResult(selectedWord, correctWord, isCorrect), 500);
+        setTimeout(() => showResult(correctWord, isCorrect), 500);
     }
 
-    function showResult(selectedWord, correctWord, isCorrect) {
+    function showResult(correctWord, isCorrect) {
         const wordData = vocabData.find(v => v.word === correctWord);
         const banner = document.getElementById('result-banner');
         banner.className = 'result ' + (isCorrect ? 'correct' : 'wrong');
