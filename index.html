@@ -2,1181 +2,289 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>单词掌握程度测试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语单词测验 - 第8轮</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 15px;
-        }
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .header h1 { font-size: 18px; margin-bottom: 8px; }
-        .progress { font-size: 14px; opacity: 0.9; }
-        .question { padding: 25px 15px; text-align: center; }
-        .word { font-size: 28px; font-weight: bold; color: #333; margin-bottom: 8px; }
-        .pos { font-size: 13px; color: #888; margin-bottom: 15px; }
-        .options { padding: 0 15px 15px; }
-        .option {
-            display: block;
-            width: 100%;
-            padding: 14px 16px;
-            margin-bottom: 10px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            background: white;
-            font-size: 15px;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-align: left;
-            line-height: 1.4;
-        }
-        .option:active { transform: scale(0.98); }
-        .option:hover { border-color: #667eea; background: #f8f9ff; }
-        .option.selected { background: #667eea; color: white; border-color: #667eea; }
-        .know-btn {
-            display: block;
-            width: calc(100% - 30px);
-            margin: 5px 15px 15px;
-            padding: 14px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            cursor: pointer;
-        }
-        .know-btn:active { background: #45a049; transform: scale(0.98); }
-        
-        /* 加载页面 */
-        .loading-page { padding: 40px 20px; text-align: center; }
-        .loading-page h2 { font-size: 18px; color: #333; margin-bottom: 20px; }
-        .data-input {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 15px;
-            font-family: monospace;
-        }
-        .load-btn {
-            padding: 12px 30px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .hint { font-size: 12px; color: #888; margin-top: 15px; line-height: 1.5; }
-        
-        /* 结果页面 */
-        .result { padding: 30px 15px; text-align: center; }
-        .result h2 { font-size: 20px; color: #333; margin-bottom: 20px; }
-        .result-stats { display: flex; justify-content: space-around; margin-bottom: 20px; flex-wrap: wrap; }
-        .stat { text-align: center; padding: 10px; min-width: 80px; }
-        .stat-num { font-size: 28px; font-weight: bold; }
-        .stat-label { font-size: 11px; color: #666; margin-top: 4px; }
-        .stat-correct .stat-num { color: #4CAF50; }
-        .stat-wrong .stat-num { color: #f44336; }
-        .stat-known .stat-num { color: #2196F3; }
-        .stat-mastered .stat-num { color: #9C27B0; }
-        .result-btn {
-            padding: 12px 25px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .code-result {
-            background: #f5f5f5;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px;
-            font-family: monospace;
-            font-size: 11px;
-            word-break: break-all;
-            text-align: left;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-        .hidden { display: none !important; }
-        
-        /* 轮次选择 */
-        .round-select {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin: 15px 0;
-        }
-        .round-btn {
-            padding: 8px 16px;
-            background: #f0f0f0;
-            border: none;
-            border-radius: 6px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        .round-btn.active { background: #667eea; color: white; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); }
+        .progress { font-size: 14px; color: #666; margin-bottom: 16px; }
+        .word { font-size: 32px; font-weight: bold; text-align: center; margin: 20px 0; color: #333; }
+        .options { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 16px 20px; border: 2px solid #e0e0e0; border-radius: 12px; cursor: pointer; transition: all 0.2s; font-size: 18px; text-align: center; }
+        .option:hover { border-color: #667eea; background: #f5f5ff; }
+        .option.correct { background: #d4edda; border-color: #28a745; }
+        .option.wrong { background: #f8d7da; border-color: #dc3545; }
+        .result { text-align: center; padding: 20px; border-radius: 12px; margin: 20px 0; }
+        .result.correct { background: #d4edda; color: #155724; }
+        .result.wrong { background: #f8d7da; color: #721c24; }
+        .result-word { font-size: 24px; font-weight: bold; margin-bottom: 8px; }
+        .result-meaning { font-size: 18px; color: #666; margin-bottom: 16px; }
+        .example { background: #f8f9fa; padding: 16px; border-radius: 8px; margin: 16px 0; text-align: left; }
+        .example-sentence { font-size: 16px; line-height: 1.6; }
+        .highlight { background: #fff3cd; padding: 2px 4px; border-radius: 4px; }
+        .options-list { text-align: left; margin-top: 16px; }
+        .options-list li { padding: 8px 0; border-bottom: 1px solid #eee; }
+        .options-list li:last-child { border-bottom: none; }
+        .correct-mark { color: #28a745; font-weight: bold; }
+        .next-btn { width: 100%; padding: 16px; background: #667eea; color: white; border: none; border-radius: 12px; font-size: 18px; cursor: pointer; margin-top: 20px; }
+        .next-btn:hover { background: #5568d3; }
+        .result-code { background: #f0f0f0; padding: 16px; border-radius: 8px; font-family: monospace; word-break: break-all; margin-top: 20px; }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>📚 单词掌握程度测试</h1>
-            <div class="progress" id="progress">请先加载数据</div>
-        </div>
-        
-        <!-- 加载页面 -->
-        <div id="loading-page">
-            <div class="loading-page">
-                <h2>🚀 考研单词测试</h2>
-                <p style="color:#666;font-size:14px;margin-bottom:15px;">
-                    共 2185 词，每轮 100 题<br>
-                    两轮都选对 = 已掌握<br>
-                    第一轮选"我认识" = 已掌握
-                </p>
-                <div class="round-select">
-                    <button class="round-btn active" onclick="selectRound(1)">第1轮</button>
-                    <button class="round-btn" onclick="selectRound(2)">第2轮</button>
-                    <button class="round-btn" onclick="selectRound(3)">第3轮</button>
-                    <button class="round-btn" onclick="selectRound(4)">第4轮</button>
-                    <button class="round-btn" onclick="selectRound(5)">第5轮</button>
-                    <button class="round-btn" onclick="selectRound(6)">第6轮</button>
-                    <button class="round-btn" onclick="selectRound(7)">第7轮</button>
-                    <button class="round-btn" onclick="selectRound(8)">第8轮</button>
-                    <button class="round-btn" onclick="selectRound(9)">第9轮</button>
-                    <button class="round-btn" onclick="selectRound(10)">第10轮</button>
-                    <button class="round-btn" onclick="selectRound(11)">第11轮</button>
-                    <button class="round-btn" onclick="selectRound(12)">第12轮</button>
-                    <button class="round-btn" onclick="selectRound(13)">第13轮</button>
-                    <button class="round-btn" onclick="selectRound(14)">第14轮</button>
-                    <button class="round-btn" onclick="selectRound(15)">第15轮</button>
-                    <button class="round-btn" onclick="selectRound(16)">第16轮</button>
-                    <button class="round-btn" onclick="selectRound(17)">第18轮</button>
-                    <button class="round-btn" onclick="selectRound(18)">第19轮</button>
-                    <button class="round-btn" onclick="selectRound(19)">第20轮</button>
-                    <button class="round-btn" onclick="selectRound(21)">第22轮</button>
-                </div>
-                <textarea id="data-input" class="data-input" rows="3" placeholder="在此粘贴JSON数据（可选，已内置数据则忽略）"></textarea>
-                <button class="load-btn" onclick="startTest()">▶ 开始测试</button>
-                <p class="hint">
-                    💡 提示：点击"我认识"表示你确定会这个词<br>
-                    同一词两天都选对，或第一天点"我认识"，才算掌握
-                </p>
-            </div>
-        </div>
-        
-        <!-- 测试页面 -->
-        <div id="quiz-page" class="hidden">
-            <div class="question">
-                <div class="word" id="word">loading...</div>
-                <div class="pos" id="pos"></div>
-            </div>
+        <div class="card" id="quiz-card">
+            <div class="progress" id="progress">第1题 / 100</div>
+            <div class="word" id="question-word">limelight</div>
             <div class="options" id="options"></div>
-            <button class="know-btn" id="know-btn" onclick="handleKnow()">✅ 我认识</button>
         </div>
-        
-        <!-- 结果页面 -->
-        <div id="result-page" class="hidden">
-            <div class="result">
-                <h2>🎉 第<span id="result-round">1</span>轮完成！</h2>
-                <div class="result-stats">
-                    <div class="stat stat-correct">
-                        <div class="stat-num" id="correct-count">0</div>
-                        <div class="stat-label">答对</div>
-                    </div>
-                    <div class="stat stat-wrong">
-                        <div class="stat-num" id="wrong-count">0</div>
-                        <div class="stat-label">答错</div>
-                    </div>
-                    <div class="stat stat-known">
-                        <div class="stat-num" id="known-count">0</div>
-                        <div class="stat-label">我认识</div>
-                    </div>
-                </div>
-                <div class="result-stats">
-                    <div class="stat stat-mastered">
-                        <div class="stat-num" id="mastered-count">0</div>
-                        <div class="stat-label">已掌握</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num" id="unfamiliar-count">0</div>
-                        <div class="stat-label">待复习</div>
-                    </div>
-                </div>
-                <button class="result-btn" onclick="copyResult()">📋 复制结果码</button>
-                <button class="result-btn" onclick="copyForSync()">🔄 发给虾虾更新表格</button>
-                <button class="result-btn" onclick="nextRound()">➡️ 下一轮</button>
+        <div class="card hidden" id="result-card">
+            <div class="result" id="result-banner">
+                <div class="result-word" id="result-word"></div>
+                <div class="result-meaning" id="result-meaning"></div>
             </div>
-            <div class="code-result" id="code-result"></div>
+            <div class="example">
+                <div class="example-sentence" id="example-sentence"></div>
+            </div>
+            <ul class="options-list" id="options-list"></ul>
+            <button class="next-btn" id="next-btn" onclick="nextQuestion()">下一题</button>
+        </div>
+        <div class="card hidden" id="finish-card">
+            <h2>🎉 完成！</h2>
+            <p id="score-text"></p>
+            <p>请复制以下结果码发送给我：</p>
+            <div class="result-code" id="result-code"></div>
         </div>
     </div>
 
     <script>
-        // 内置数据（从飞书表格导入）
-        var EMBEDDED_DATA = [
-  {
-    "word": "trivial",
-    "cn": "琐碎的；不重要的",
-    "pos": "adj."
-  },
-  {
-    "word": "tumble",
-    "cn": "跌倒；暴跌",
-    "pos": "v."
-  },
-  {
-    "word": "turbulent",
-    "cn": "动荡的；狂暴的",
-    "pos": "adj."
-  },
-  {
-    "word": "turnover",
-    "cn": "营业额；人员更替率",
-    "pos": "n."
-  },
-  {
-    "word": "ultimate",
-    "cn": "最终的；根本的",
-    "pos": "adj."
-  },
-  {
-    "word": "unanimous",
-    "cn": "全体一致的",
-    "pos": "adj."
-  },
-  {
-    "word": "uncommitted",
-    "cn": "未承诺的；自由的；中立的",
-    "pos": "adj."
-  },
-  {
-    "word": "uncover",
-    "cn": "揭露；暴露",
-    "pos": "v."
-  },
-  {
-    "word": "underestimate",
-    "cn": "低估",
-    "pos": "v."
-  },
-  {
-    "word": "undergo",
-    "cn": "经历；经受",
-    "pos": "v."
-  },
-  {
-    "word": "underlying",
-    "cn": "潜在的；基础的",
-    "pos": "adj."
-  },
-  {
-    "word": "undermine",
-    "cn": "暗中破坏；逐渐削弱",
-    "pos": "v."
-  },
-  {
-    "word": "undertake",
-    "cn": "承担；着手做",
-    "pos": "v."
-  },
-  {
-    "word": "unemployment",
-    "cn": "失业",
-    "pos": "n."
-  },
-  {
-    "word": "unexpected",
-    "cn": "意外的",
-    "pos": "a."
-  },
-  {
-    "word": "unfold",
-    "cn": "展开；披露",
-    "pos": "v."
-  },
-  {
-    "word": "unify",
-    "cn": "统一",
-    "pos": "v."
-  },
-  {
-    "word": "unique",
-    "cn": "唯一的；独特的",
-    "pos": "a."
-  },
-  {
-    "word": "universal",
-    "cn": "普遍的；通用的",
-    "pos": "a."
-  },
-  {
-    "word": "universe",
-    "cn": "宇宙",
-    "pos": "n."
-  },
-  {
-    "word": "unveil",
-    "cn": "揭露；公布",
-    "pos": "v."
-  },
-  {
-    "word": "up-to-date",
-    "cn": "现代化的；最新的",
-    "pos": "a."
-  },
-  {
-    "word": "upgrade",
-    "cn": "升级；提高",
-    "pos": "v."
-  },
-  {
-    "word": "uphold",
-    "cn": "维持；支持",
-    "pos": "v."
-  },
-  {
-    "word": "upright",
-    "cn": "垂直的；正直的",
-    "pos": "a."
-  },
-  {
-    "word": "urban",
-    "cn": "城市的",
-    "pos": "a."
-  },
-  {
-    "word": "urge",
-    "cn": "催促；强烈要求",
-    "pos": "v."
-  },
-  {
-    "word": "urgent",
-    "cn": "紧急的；迫切的",
-    "pos": "a."
-  },
-  {
-    "word": "utensil",
-    "cn": "器皿；用具",
-    "pos": "n."
-  },
-  {
-    "word": "utilize",
-    "cn": "利用",
-    "pos": "v."
-  },
-  {
-    "word": "utmost",
-    "cn": "极限",
-    "pos": "n."
-  },
-  {
-    "word": "utter",
-    "cn": "说出",
-    "pos": "v."
-  },
-  {
-    "word": "vacant",
-    "cn": "空着的；茫然的",
-    "pos": "a."
-  },
-  {
-    "word": "vacuum",
-    "cn": "真空",
-    "pos": "n."
-  },
-  {
-    "word": "vague",
-    "cn": "模糊的；含糊的",
-    "pos": "a."
-  },
-  {
-    "word": "vain",
-    "cn": "徒劳的；虚荣的",
-    "pos": "a."
-  },
-  {
-    "word": "valid",
-    "cn": "有效的；正当的",
-    "pos": "a."
-  },
-  {
-    "word": "validity",
-    "cn": "有效性；真实性",
-    "pos": "n."
-  },
-  {
-    "word": "valley",
-    "cn": "山谷",
-    "pos": "n."
-  },
-  {
-    "word": "valuable",
-    "cn": "贵重的",
-    "pos": "a."
-  },
-  {
-    "word": "vanish",
-    "cn": "消失",
-    "pos": "v."
-  },
-  {
-    "word": "vanity",
-    "cn": "虚荣心",
-    "pos": "n."
-  },
-  {
-    "word": "variable",
-    "cn": "易变的；变量",
-    "pos": "adj./n."
-  },
-  {
-    "word": "variation",
-    "cn": "变化；变奏",
-    "pos": "n."
-  },
-  {
-    "word": "various",
-    "cn": "各种各样的",
-    "pos": "adj."
-  },
-  {
-    "word": "vary",
-    "cn": "变化；不同",
-    "pos": "v."
-  },
-  {
-    "word": "vast",
-    "cn": "巨大的；辽阔的",
-    "pos": "adj."
-  },
-  {
-    "word": "vegetation",
-    "cn": "植被",
-    "pos": "n."
-  },
-  {
-    "word": "vehicle",
-    "cn": "交通工具；车辆",
-    "pos": "n."
-  },
-  {
-    "word": "veil",
-    "cn": "面纱；遮盖",
-    "pos": "n./v."
-  },
-  {
-    "word": "velocity",
-    "cn": "速度",
-    "pos": "n."
-  },
-  {
-    "word": "vendor",
-    "cn": "小贩；卖主",
-    "pos": "n."
-  },
-  {
-    "word": "venture",
-    "cn": "风险投资；冒险",
-    "pos": "n./v."
-  },
-  {
-    "word": "venue",
-    "cn": "聚集地点；会场",
-    "pos": "n."
-  },
-  {
-    "word": "verdict",
-    "cn": "判决；定论",
-    "pos": "n."
-  },
-  {
-    "word": "verify",
-    "cn": "核实；证明",
-    "pos": "v."
-  },
-  {
-    "word": "versatile",
-    "cn": "多才多艺的；多用途的",
-    "pos": "adj."
-  },
-  {
-    "word": "version",
-    "cn": "版本；说法",
-    "pos": "n."
-  },
-  {
-    "word": "vertical",
-    "cn": "垂直的",
-    "pos": "adj."
-  },
-  {
-    "word": "vessel",
-    "cn": "船只；容器；血管",
-    "pos": "n."
-  },
-  {
-    "word": "veteran",
-    "cn": "老兵；经验丰富的人",
-    "pos": "n."
-  },
-  {
-    "word": "veto",
-    "cn": "否决",
-    "pos": "v./n."
-  },
-  {
-    "word": "via",
-    "cn": "经由；通过",
-    "pos": "prep."
-  },
-  {
-    "word": "viable",
-    "cn": "可行的；能养活的",
-    "pos": "adj."
-  },
-  {
-    "word": "viability",
-    "cn": "可行性；生存能力",
-    "pos": "n."
-  },
-  {
-    "word": "vibrate",
-    "cn": "震动",
-    "pos": "v."
-  },
-  {
-    "word": "vicious",
-    "cn": "恶毒的；剧烈的",
-    "pos": "adj."
-  },
-  {
-    "word": "victim",
-    "cn": "牺牲者；受害者",
-    "pos": "n."
-  },
-  {
-    "word": "victory",
-    "cn": "胜利",
-    "pos": "n."
-  },
-  {
-    "word": "vigorous",
-    "cn": "精力充沛的；有力的",
-    "pos": "adj."
-  },
-  {
-    "word": "violate",
-    "cn": "违反；侵犯",
-    "pos": "v."
-  },
-  {
-    "word": "violation",
-    "cn": "违反；侵害",
-    "pos": "n."
-  },
-  {
-    "word": "virtual",
-    "cn": "虚构的；虚拟的",
-    "pos": "a."
-  },
-  {
-    "word": "virtually",
-    "cn": "几乎；实际上",
-    "pos": "ad."
-  },
-  {
-    "word": "virtue",
-    "cn": "美德；优点",
-    "pos": "n."
-  },
-  {
-    "word": "virus",
-    "cn": "病毒",
-    "pos": "n."
-  },
-  {
-    "word": "vision",
-    "cn": "视力；远见",
-    "pos": "n."
-  },
-  {
-    "word": "visual",
-    "cn": "视觉的",
-    "pos": "a."
-  },
-  {
-    "word": "vital",
-    "cn": "极其重要的；充满活力的",
-    "pos": "a."
-  },
-  {
-    "word": "vitality",
-    "cn": "活力；生命力",
-    "pos": "n."
-  },
-  {
-    "word": "vivid",
-    "cn": "生动的；鲜艳的",
-    "pos": "a."
-  },
-  {
-    "word": "vocation",
-    "cn": "职业；天职",
-    "pos": "n."
-  },
-  {
-    "word": "vocational",
-    "cn": "职业的",
-    "pos": "adj."
-  },
-  {
-    "word": "void",
-    "cn": "空的；无效的；空虚",
-    "pos": "adj./n."
-  },
-  {
-    "word": "volcano",
-    "cn": "火山",
-    "pos": "n."
-  },
-  {
-    "word": "voluntary",
-    "cn": "自愿的",
-    "pos": "adj."
-  },
-  {
-    "word": "volunteer",
-    "cn": "志愿者；自愿",
-    "pos": "n./v."
-  },
-  {
-    "word": "vote",
-    "cn": "投票",
-    "pos": "v./n."
-  },
-  {
-    "word": "vow",
-    "cn": "发誓",
-    "pos": "v./n."
-  },
-  {
-    "word": "voyage",
-    "cn": "航海；航行",
-    "pos": "n./v."
-  },
-  {
-    "word": "vulnerable",
-    "cn": "易受攻击的；脆弱的",
-    "pos": "adj."
-  },
-  {
-    "word": "wage",
-    "cn": "工资",
-    "pos": "n."
-  },
-  {
-    "word": "wagon",
-    "cn": "运货马车",
-    "pos": "n."
-  },
-  {
-    "word": "waive",
-    "cn": "放弃；豁免",
-    "pos": "v."
-  },
-  {
-    "word": "wavering",
-    "cn": "犹豫不决的；动摇的",
-    "pos": "adj."
-  },
-  {
-    "word": "warehouse",
-    "cn": "仓库",
-    "pos": "n."
-  },
-  {
-    "word": "warrant",
-    "cn": "授权；搜查令；保证",
-    "pos": "n./v."
-  },
-  {
-    "word": "wasteful",
-    "cn": "浪费的",
-    "pos": "adj."
-  },
-  {
-    "word": "watertight",
-    "cn": "不透水的；严密的",
-    "pos": "adj."
-  },
-  {
-    "word": "weary",
-    "cn": "疲倦的；厌烦的",
-    "pos": "adj."
-  },
-  {
-    "word": "welfare",
-    "cn": "福利",
-    "pos": "n."
-  },
-  {
-    "word": "well-being",
-    "cn": "康乐；福祉",
-    "pos": "n."
-  },
-  {
-    "word": "whatsoever",
-    "cn": "无论什么",
-    "pos": "ad."
-  },
-  {
-    "word": "whereas",
-    "cn": "然而；但是",
-    "pos": "conj."
-  },
-  {
-    "word": "whereby",
-    "cn": "凭此；借以",
-    "pos": "adv."
-  },
-  {
-    "word": "whichever",
-    "cn": "无论哪个",
-    "pos": "pron./a."
-  },
-  {
-    "word": "whirl",
-    "cn": "旋转",
-    "pos": "v./n."
-  },
-  {
-    "word": "wholesome",
-    "cn": "有益健康的；健全的",
-    "pos": "adj."
-  },
-  {
-    "word": "wholly",
-    "cn": "完全地",
-    "pos": "adv."
-  },
-  {
-    "word": "wicked",
-    "cn": "邪恶的；调皮的",
-    "pos": "adj."
-  },
-  {
-    "word": "widespread",
-    "cn": "分布广的；普遍的",
-    "pos": "adj."
-  },
-  {
-    "word": "wield",
-    "cn": "挥舞；运用",
-    "pos": "v."
-  },
-  {
-    "word": "wildness",
-    "cn": "原始；荒凉",
-    "pos": "n."
-  },
-  {
-    "word": "withdraw",
-    "cn": "撤回；提取",
-    "pos": "v."
-  },
-  {
-    "word": "withdrawal",
-    "cn": "撤回；提款",
-    "pos": "n."
-  },
-  {
-    "word": "withstand",
-    "cn": "经受；抵挡",
-    "pos": "v."
-  },
-  {
-    "word": "witness",
-    "cn": "证人；目击；见证",
-    "pos": "n./v."
-  },
-  {
-    "word": "workforce",
-    "cn": "劳动力",
-    "pos": "n."
-  },
-  {
-    "word": "worthwhile",
-    "cn": "值得做的",
-    "pos": "adj."
-  },
-  {
-    "word": "worthy",
-    "cn": "值得的；可敬的",
-    "pos": "adj."
-  },
-  {
-    "word": "wreck",
-    "cn": "失事车/船；破坏",
-    "pos": "n./v."
-  },
-  {
-    "word": "wretched",
-    "cn": "极可怜的；卑鄙的",
-    "pos": "adj."
-  },
-  {
-    "word": "wrinkle",
-    "cn": "皱纹；起皱",
-    "pos": "n./v."
-  },
-  {
-    "word": "wrongful",
-    "cn": "不正当的；违法的",
-    "pos": "adj."
-  },
-  {
-    "word": "X-ray",
-    "cn": "X射线",
-    "pos": "n."
-  },
-  {
-    "word": "yard",
-    "cn": "码；院子",
-    "pos": "n."
-  },
-  {
-    "word": "yearn",
-    "cn": "渴望",
-    "pos": "v."
-  },
-  {
-    "word": "yield",
-    "cn": "产生；产量",
-    "pos": "v./n."
-  },
-  {
-    "word": "zeal",
-    "cn": "热心；热情",
-    "pos": "n."
-  },
-  {
-    "word": "zealous",
-    "cn": "热心的；狂热的",
-    "pos": "a."
-  },
-  {
-    "word": "zero",
-    "cn": "零",
-    "pos": "num."
-  },
-  {
-    "word": "zone",
-    "cn": "地带；区域",
-    "pos": "n."
-  }
-];
-        
-        // 尝试从本地存储加载
-        function loadData() {
-            var stored = localStorage.getItem('vocabData');
-            if (stored) {
-                try {
-                    return JSON.parse(stored);
-                } catch(e) {}
+    const vocabData = [
+        {"word": "limelight", "meaning": "聚光灯；公众瞩目的中心", "pos": "n.", "sentence": "The actor was in the limelight after the successful performance."},
+        {"word": "lineage", "meaning": "血统；世系", "pos": "n.", "sentence": "She traced her lineage back to the 18th century."},
+        {"word": "masterpiece", "meaning": "杰作", "pos": "n.", "sentence": "The painting is considered a masterpiece of Renaissance art."},
+        {"word": "mastery", "meaning": "掌握；精通", "pos": "n.", "sentence": "His mastery of the language impressed everyone."},
+        {"word": "materialism", "meaning": "唯物主义；享乐主义", "pos": "n.", "sentence": "Modern society is often criticized for its materialism."},
+        {"word": "maturity", "meaning": "成熟", "pos": "n.", "sentence": "The wine improves with maturity."},
+        {"word": "meager", "meaning": "贫乏的；瘦的", "pos": "adj.", "sentence": "They survived on a meager diet."},
+        {"word": "measurable", "meaning": "可测量的；显著的", "pos": "adj.", "sentence": "There has been a measurable improvement in his condition."},
+        {"word": "mechanic", "meaning": "技工", "pos": "n.", "sentence": "The mechanic fixed the car quickly."},
+        {"word": "mediate", "meaning": "调解；居中", "pos": "v.", "sentence": "The teacher mediated the conflict between the students."},
+        {"word": "medication", "meaning": "药物治疗；药物", "pos": "n.", "sentence": "She takes medication for her allergies."},
+        {"word": "medicine", "meaning": "医学；内服药", "pos": "n.", "sentence": "Modern medicine has advanced greatly."},
+        {"word": "medieval", "meaning": "中世纪的", "pos": "adj.", "sentence": "The castle dates back to medieval times."},
+        {"word": "mediocre", "meaning": "平庸的", "pos": "adj.", "sentence": "The food was mediocre at best."},
+        {"word": "meditate", "meaning": "沉思；冥想", "pos": "v.", "sentence": "She meditates for twenty minutes every morning."},
+        {"word": "membrane", "meaning": "膜", "pos": "n.", "sentence": "The cell membrane protects the cell."},
+        {"word": "memorable", "meaning": "值得纪念的", "pos": "adj.", "sentence": "It was a memorable experience for all of us."},
+        {"word": "memorandum", "meaning": "备忘录", "pos": "n.", "sentence": "Please read the memorandum carefully."},
+        {"word": "memorial", "meaning": "纪念碑；纪念的", "pos": "n./adj.", "sentence": "They built a memorial to honor the soldiers."},
+        {"word": "menace", "meaning": "威胁", "pos": "v./n.", "sentence": "The storm posed a menace to the coastal villages."},
+        {"word": "mentality", "meaning": "心理；心态", "pos": "n.", "sentence": "She has a positive mentality toward life."},
+        {"word": "merchandise", "meaning": "商品；买卖", "pos": "n./v.", "sentence": "The store merchandise is displayed in the window."},
+        {"word": "merciful", "meaning": "仁慈的", "pos": "adj.", "sentence": "The judge was merciful in his sentencing."},
+        {"word": "merely", "meaning": "仅仅", "pos": "adv.", "sentence": "It is merely a suggestion, not a requirement."},
+        {"word": "merge", "meaning": "合并", "pos": "v.", "sentence": "The two companies decided to merge."},
+        {"word": "merit", "meaning": "优点；功劳", "pos": "n./v.", "sentence": "The proposal has considerable merit."},
+        {"word": "messenger", "meaning": "信使", "pos": "n.", "sentence": "The messenger delivered the important letter."},
+        {"word": "metallic", "meaning": "金属的", "pos": "adj.", "sentence": "The metallic sound echoed through the hall."},
+        {"word": "metaphor", "meaning": "暗喻", "pos": "n.", "sentence": "She used a metaphor to describe her feelings."},
+        {"word": "meticulous", "meaning": "细心的；极注意细节的", "pos": "adj.", "sentence": "He is meticulous about his work."},
+        {"word": "metric", "meaning": "公制的", "pos": "adj.", "sentence": "The metric system is used in most countries."},
+        {"word": "metropolis", "meaning": "大都市", "pos": "n.", "sentence": "Tokyo is a bustling metropolis."},
+        {"word": "microscope", "meaning": "显微镜", "pos": "n.", "sentence": "Scientists use a microscope to observe cells."},
+        {"word": "midst", "meaning": "中间", "pos": "n.", "sentence": "In the midst of the forest, they found a cabin."},
+        {"word": "migrate", "meaning": "迁移；移居", "pos": "v.", "sentence": "Birds migrate south in winter."},
+        {"word": "militant", "meaning": "好战的", "pos": "adj.", "sentence": "The militant group claimed responsibility."},
+        {"word": "military", "meaning": "军事的", "pos": "adj.", "sentence": "He served in the military for five years."},
+        {"word": "millennium", "meaning": "一千年", "pos": "n.", "sentence": "The new millennium began in 2000."},
+        {"word": "mimic", "meaning": "模仿", "pos": "v.", "sentence": "The child mimics his father's gestures."},
+        {"word": "miniature", "meaning": "微型的；缩影", "pos": "adj./n.", "sentence": "She collects miniature dolls."},
+        {"word": "minimum", "meaning": "最小值", "pos": "adj./n.", "sentence": "The minimum age for voting is 18."},
+        {"word": "minister", "meaning": "部长；大臣", "pos": "n.", "sentence": "The Minister of Education announced new policies."},
+        {"word": "ministry", "meaning": "（政府的）部", "pos": "n.", "sentence": "She works at the Ministry of Health."},
+        {"word": "minority", "meaning": "少数；少数民族", "pos": "n.", "sentence": "Minority groups deserve equal rights."},
+        {"word": "miraculous", "meaning": "奇迹般的", "pos": "adj.", "sentence": "Her recovery was miraculous."},
+        {"word": "miscarriage", "meaning": "流产；失败", "pos": "n.", "sentence": "The project ended in a miscarriage."},
+        {"word": "mischievous", "meaning": "顽皮的；有害的", "pos": "adj.", "sentence": "The mischievous child broke the window."},
+        {"word": "miserable", "meaning": "痛苦的；可怜的", "pos": "adj.", "sentence": "She felt miserable after the bad news."},
+        {"word": "misery", "meaning": "苦难", "pos": "n.", "sentence": "The war brought great misery to the people."},
+        {"word": "mislead", "meaning": "误导", "pos": "v.", "sentence": "The advertisement misled consumers."},
+        {"word": "missionary", "meaning": "传教士", "pos": "n.", "sentence": "The missionary traveled to remote areas."},
+        {"word": "mistaken", "meaning": "错误的", "pos": "adj.", "sentence": "I was mistaken about his intentions."},
+        {"word": "mitigate", "meaning": "减轻；缓和", "pos": "v.", "sentence": "Measures were taken to mitigate the effects."},
+        {"word": "mixture", "meaning": "混合物", "pos": "n.", "sentence": "The mixture of colors created a beautiful effect."},
+        {"word": "mobilize", "meaning": "动员", "pos": "v.", "sentence": "The government mobilized resources for relief."},
+        {"word": "moderate", "meaning": "适度的；温和的；缓和", "pos": "adj./v.", "sentence": "We need moderate temperatures for the experiment."},
+        {"word": "modest", "meaning": "谦虚的；适度的", "pos": "adj.", "sentence": "She remained modest despite her success."},
+        {"word": "modesty", "meaning": "谦虚", "pos": "n.", "sentence": "His modesty made him popular."},
+        {"word": "modification", "meaning": "修改", "pos": "n.", "sentence": "The modification was approved by the committee."},
+        {"word": "moist", "meaning": "潮湿的", "pos": "adj.", "sentence": "The air is moist near the river."},
+        {"word": "moisture", "meaning": "水分；湿度", "pos": "n.", "sentence": "The moisture in the air caused problems."},
+        {"word": "molecule", "meaning": "分子", "pos": "n.", "sentence": "A water molecule consists of two hydrogen atoms."},
+        {"word": "momentary", "meaning": "瞬间的", "pos": "adj.", "sentence": "There was a momentary pause in the conversation."},
+        {"word": "monetary", "meaning": "货币的；金融的", "pos": "adj.", "sentence": "The monetary policy was adjusted."},
+        {"word": "monopoly", "meaning": "垄断", "pos": "n.", "sentence": "The company has a monopoly on the product."},
+        {"word": "monotonous", "meaning": "单调的", "pos": "adj.", "sentence": "The work became monotonous after a while."},
+        {"word": "monotony", "meaning": "单调；枯燥", "pos": "n.", "sentence": "She hated the monotony of daily routine."},
+        {"word": "monument", "meaning": "纪念碑；历史遗迹", "pos": "n.", "sentence": "The monument commemorates the historic event."},
+        {"word": "moral", "meaning": "道德的；寓意", "pos": "adj./n.", "sentence": "The moral of the story is clear."},
+        {"word": "morale", "meaning": "士气", "pos": "n.", "sentence": "The victory boosted the team's morale."},
+        {"word": "morality", "meaning": "道德", "pos": "n.", "sentence": "Questions of morality are often debated."},
+        {"word": "mortal", "meaning": "致命的；凡人", "pos": "adj./n.", "sentence": "All mortals will face death someday."},
+        {"word": "mortality", "meaning": "死亡率", "pos": "n.", "sentence": "The mortality rate has decreased significantly."},
+        {"word": "mortgage", "meaning": "抵押", "pos": "n./v.", "sentence": "They paid off their mortgage after 20 years."},
+        {"word": "mosquito", "meaning": "蚊子", "pos": "n.", "sentence": "The mosquito transmitted the disease."},
+        {"word": "motif", "meaning": "主题；动机", "pos": "n.", "sentence": "The musical motif appears throughout the piece."},
+        {"word": "motivate", "meaning": "激励；激发", "pos": "v.", "sentence": "The coach motivated the team to win."},
+        {"word": "motorway", "meaning": "高速公路", "pos": "n.", "sentence": "The motorway was closed due to the accident."},
+        {"word": "mould", "meaning": "模具；性格；塑造", "pos": "n./v.", "sentence": "The mould shaped the clay into a beautiful vase."},
+        {"word": "mount", "meaning": "登上；增长；山峰", "pos": "v./n.", "sentence": "They plan to mount the expedition next month."},
+        {"word": "mourn", "meaning": "哀悼", "pos": "v.", "sentence": "The family mourned the loss of their loved one."},
+        {"word": "multidisciplinary", "meaning": "多学科的", "pos": "adj.", "sentence": "The team takes a multidisciplinary approach."},
+        {"word": "multigenerational", "meaning": "多代人的；代际的", "pos": "adj.", "sentence": "The family live in a multigenerational household."},
+        {"word": "multimedia", "meaning": "多媒体", "pos": "n.", "sentence": "The presentation uses multimedia elements."},
+        {"word": "multiple", "meaning": "多样的；复合的", "pos": "adj.", "sentence": "She has multiple sclerosis."},
+        {"word": "multiply", "meaning": "乘；繁殖；增加", "pos": "v.", "sentence": "The bacteria multiply rapidly."},
+        {"word": "multitude", "meaning": "大量", "pos": "n.", "sentence": "A multitude of people attended the concert."},
+        {"word": "municipal", "meaning": "市政的；地方自治的", "pos": "adj.", "sentence": "The municipal government provides services."},
+        {"word": "muscular", "meaning": "肌肉的；强壮的", "pos": "adj.", "sentence": "He has a muscular build from years of training."},
+        {"word": "mutual", "meaning": "相互的；共同的", "pos": "adj.", "sentence": "They have a mutual respect for each other."},
+        {"word": "myriad", "meaning": "无数的", "pos": "adj.", "sentence": "Myriad stars filled the night sky."},
+        {"word": "naked", "meaning": "裸体的；明显的", "pos": "adj.", "sentence": "The naked truth was hard to accept."},
+        {"word": "namely", "meaning": "即；也就是", "pos": "adv.", "sentence": "Only one student passed, namely John."},
+        {"word": "nasty", "meaning": "令人厌恶的；下流的", "pos": "adj.", "sentence": "The weather turned nasty in the afternoon."},
+        {"word": "nationality", "meaning": "国籍；民族", "pos": "n.", "sentence": "What is your nationality?"},
+        {"word": "native", "meaning": "本地的；天赋的", "pos": "adj.", "sentence": "She is a native speaker of English."},
+        {"word": "nature", "meaning": "自然；性质；本性", "pos": "n.", "sentence": "It's in human nature to seek knowledge."},
+        {"word": "naughty", "meaning": "淘气的", "pos": "adj.", "sentence": "The naughty boy hid his sister's toys."},
+        {"word": "naval", "meaning": "海军的", "pos": "adj.", "sentence": "He served in the naval forces."},
+        {"word": "navigate", "meaning": "航行；导航", "pos": "v.", "sentence": "The captain navigated the ship through the storm."}
+    ];
+
+    // 按词性分组用于生成干扰选项
+    const nouns = vocabData.filter(w => w.pos.includes('n.')).map(w => ({word: w.word, meaning: w.meaning}));
+    const adjectives = vocabData.filter(w => w.pos.includes('adj.')).map(w => ({word: w.word, meaning: w.meaning}));
+    const verbs = vocabData.filter(w => w.pos.includes('v.')).map(w => ({word: w.word, meaning: w.meaning}));
+    const adverbs = vocabData.filter(w => w.pos.includes('adv.')).map(w => ({word: w.word, meaning: w.meaning}));
+
+    let currentIndex = 0;
+    let results = [];
+    let startTime = null;
+
+    function getDistractors(correctWord, pos) {
+        let pool;
+        if (pos.includes('n.') && !pos.includes('adj.')) pool = nouns;
+        else if (pos.includes('adj.')) pool = adjectives;
+        else if (pos.includes('v.')) pool = verbs;
+        else if (pos.includes('adv.')) pool = adverbs;
+        else pool = nouns;
+
+        const others = pool.filter(w => w.word !== correctWord);
+        const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
+        const options = [...shuffled, {word: vocabData.find(v => v.word === correctWord).word, meaning: vocabData.find(v => v.word === correctWord).meaning}];
+        return options.sort(() => Math.random() - 0.5);
+    }
+
+    function showQuestion() {
+        if (currentIndex >= vocabData.length) {
+            showFinish();
+            return;
+        }
+
+        const wordData = vocabData[currentIndex];
+        document.getElementById('progress').textContent = `第${currentIndex + 1}题 / ${vocabData.length}`;
+        document.getElementById('question-word').textContent = wordData.word;
+
+        const options = getDistractors(wordData.word, wordData.pos);
+        const optionsHtml = options.map((opt, i) => 
+            `<div class="option" onclick="checkAnswer('${opt.word}', '${wordData.word}', '${opt.meaning}', '${wordData.meaning}', this)">${opt.meaning}</div>`
+        ).join('');
+        document.getElementById('options').innerHTML = optionsHtml;
+
+        document.getElementById('quiz-card').classList.remove('hidden');
+        document.getElementById('result-card').classList.add('hidden');
+    }
+
+    function checkAnswer(selectedWord, correctWord, selectedMeaning, correctMeaning, element) {
+        const isCorrect = selectedWord === correctWord;
+        results.push({word: correctWord, correct: isCorrect});
+
+        const options = element.parentElement.children;
+        for (let opt of options) {
+            const meaning = opt.textContent;
+            if (vocabData.find(w => w.meaning === meaning)?.word === correctWord) {
+                opt.classList.add('correct');
+            } else if (opt === element && !isCorrect) {
+                opt.classList.add('wrong');
             }
-            return EMBEDDED_DATA;
         }
-        
-        var vocabData = loadData();
-        var currentIndex = 0;
-        var currentRound = 1;
-        var results = [];
-        var startTime = null;
-        var currentBatch = [];
-        
-        function selectRound(n) {
-            currentRound = n;
-            document.querySelectorAll('.round-btn').forEach((btn, i) => {
-                btn.classList.toggle('active', i + 1 === n);
-            });
-        }
-        
-        function startTest() {
-            // 检查是否有输入数据
-            var input = document.getElementById('data-input').value.trim();
-            if (input) {
-                try {
-                    vocabData = JSON.parse(input);
-                    localStorage.setItem('vocabData', JSON.stringify(vocabData));
-                } catch(e) {
-                    alert('JSON格式不正确');
-                    return;
-                }
-            }
-            
-            if (!vocabData || vocabData.length === 0) {
-                alert('请先导入数据或等待数据加载');
-                return;
-            }
-            
-            // 计算本轮单词范围
-            var BATCH_SIZE = 100;
-            var startIdx = (currentRound - 1) * BATCH_SIZE;
-            var endIdx = startIdx + BATCH_SIZE;
-            
-            if (startIdx >= vocabData.length) {
-                alert('测试已完成所有轮次！');
-                return;
-            }
-            
-            // 提取当前轮单词
-            currentBatch = vocabData.slice(startIdx, Math.min(endIdx, vocabData.length));
-            
-            // 打乱顺序
-            shuffleArray(currentBatch);
-            
-            // 重置状态
-            currentIndex = 0;
-            results = [];
-            startTime = Date.now();
-            
-            // 显示测试页面
-            document.getElementById('loading-page').classList.add('hidden');
-            document.getElementById('quiz-page').classList.remove('hidden');
-            document.getElementById('progress').textContent = 
-                '第' + (startIdx + 1) + '-' + Math.min(endIdx, vocabData.length) + '词';
-            
-            showQuestion();
-        }
-        
-        function showQuestion() {
-            if (currentIndex >= currentBatch.length) {
-                showResult();
-                return;
-            }
-            
-            var word = currentBatch[currentIndex];
-            document.getElementById('word').textContent = word.word || word[0];
-            document.getElementById('pos').textContent = word.pos || word[2] || '';
-            
-            generateOptions(word);
-            
-            document.getElementById('progress').textContent = 
-                '第' + ((currentRound-1)*100 + currentIndex + 1) + '题 / 共' + currentBatch.length + '题';
-        }
-        
-        function generateOptions(correctWord) {
-            var container = document.getElementById('options');
-            container.innerHTML = '';
-            
-            var correctCn = correctWord.cn || correctWord[1];
-            var correctPos = correctWord.pos || correctWord[2] || '';
-            
-            // 找相同词性的词作为干扰项
-            var samePOS = vocabData.filter(function(w) {
-                var pos = w.pos || w[2] || '';
-                return pos === correctPos && (w.word || w[0]) !== (correctWord.word || correctWord[0]);
-            });
-            var otherPOS = vocabData.filter(function(w) {
-                var pos = w.pos || w[2] || '';
-                return pos !== correctPos;
-            });
-            
-            shuffleArray(samePOS);
-            shuffleArray(otherPOS);
-            
-            var options = [];
-            
-            // 先尝试找相同词性的
-            var needWrong = 3;
-            if (samePOS.length >= needWrong) {
-                options = samePOS.slice(0, needWrong).map(function(w) {
-                    return { text: w.cn || w[1], correct: false };
-                });
-            } else {
-                // 相同词性不够，从其他补
-                samePOS.forEach(function(w) {
-                    options.push({ text: w.cn || w[1], correct: false });
-                });
-                var need = needWrong - options.length;
-                otherPOS.slice(0, need).forEach(function(w) {
-                    options.push({ text: w.cn || w[1], correct: false });
-                });
-            }
-            
-            // 添加正确答案
-            options.push({ text: correctCn, correct: true });
-            
-            shuffleArray(options);
-            
-            options.forEach(function(opt) {
-                var btn = document.createElement('button');
-                btn.className = 'option';
-                btn.textContent = opt.text;
-                btn.onclick = function() { handleAnswer(opt.correct); };
-                container.appendChild(btn);
-            });
-        }
-        
-        function handleAnswer(isCorrect) {
-            var word = currentBatch[currentIndex];
-            results.push({
-                word: word.word || word[0],
-                cn: word.cn || word[1],
-                correct: isCorrect,
-                known: false,
-                pos: word.pos || word[2] || ''
-            });
-            
-            currentIndex++;
-            showQuestion();
-        }
-        
-        function handleKnow() {
-            var word = currentBatch[currentIndex];
-            results.push({
-                word: word.word || word[0],
-                cn: word.cn || word[1],
-                correct: true,
-                known: true,
-                pos: word.pos || word[2] || ''
-            });
-            
-            currentIndex++;
-            showQuestion();
-        }
-        
-        function showResult() {
-            var endTime = Date.now();
-            
-            var correctCount = 0, wrongCount = 0, knownCount = 0;
-            var masteredCount = 0, unfamiliarCount = 0;
-            
-            // 获取第一轮结果
-            var firstRoundResults = [];
-            try {
-                firstRoundResults = JSON.parse(localStorage.getItem('round' + currentRound + '_results') || '[]');
-            } catch(e) {}
-            
-            // 保存当前轮结果
-            localStorage.setItem('round' + currentRound + '_results', JSON.stringify(results));
-            
-            results.forEach(function(r) {
-                if (r.known) {
-                    knownCount++;
-                    masteredCount++;
-                } else if (r.correct) {
-                    correctCount++;
-                    // 检查第一轮结果（如果是第二轮）
-                    var firstR = firstRoundResults.find(function(f) { return f.word === r.word; });
-                    if (firstR && (firstR.correct || firstR.known)) {
-                        masteredCount++;
-                    } else if (currentRound === 1) {
-                        // 第一轮答对，需要第二轮再确认
-                        unfamiliarCount++;
-                    } else {
-                        masteredCount++;
-                    }
-                } else {
-                    wrongCount++;
-                    unfamiliarCount++;
-                }
-            });
-            
-            document.getElementById('result-round').textContent = currentRound;
-            document.getElementById('correct-count').textContent = correctCount;
-            document.getElementById('wrong-count').textContent = wrongCount;
-            document.getElementById('known-count').textContent = knownCount;
-            document.getElementById('mastered-count').textContent = masteredCount;
-            document.getElementById('unfamiliar-count').textContent = unfamiliarCount;
-            
-            // 生成结果码
-            var resultCode = currentRound + '|' + correctCount + '|' + wrongCount + '|' + 
-                startTime + '|' + endTime + '|' + 
-                results.map(function(r) { 
-                    return r.word + ':' + r.correct; 
-                }).join(',');
-            
-            document.getElementById('code-result').textContent = resultCode;
-            
-            document.getElementById('quiz-page').classList.add('hidden');
-            document.getElementById('result-page').classList.remove('hidden');
-        }
-        
-        function copyResult() {
-            var code = document.getElementById('code-result').textContent;
-            navigator.clipboard.writeText(code).then(function() {
-                alert('结果码已复制！请把结果码发给我，我来更新多维表格~');
-            });
-        }
-        
-        // 生成需要同步的数据（用于发给我更新表格）
-        function generateSyncData() {
-            var wordResults = results.map(function(r) {
-                return r.word + ':' + r.correct;
-            }).join(',');
-            
-            return currentRound + '|' + correctCount + '|' + wrongCount + '|' + 
-                startTime + '|' + endTime + '|' + wordResults;
-        }
-        
-        function copyForSync() {
-            var data = generateSyncData();
-            navigator.clipboard.writeText(data).then(function() {
-                alert('已复制！请直接发给我，我会自动更新表格~');
-            });
-        }
-        
-        function nextRound() {
-            if (currentRound >= 22) {
-                alert('所有轮次已完成！');
-                return;
-            }
-            currentRound++;
-            selectRound(currentRound);
-            document.getElementById('result-page').classList.add('hidden');
-            document.getElementById('loading-page').classList.remove('hidden');
-            document.getElementById('progress').textContent = '第' + currentRound + '轮';
-        }
-        
-        function shuffleArray(array) {
-            for (var i = array.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var tmp = array[i];
-                array[i] = array[j];
-                array[j] = tmp;
-            }
-            return array;
-        }
-        
-        // 初始化时尝试加载已有数据
-        if (vocabData && vocabData.length > 0) {
-            document.getElementById('progress').textContent = '数据已加载: ' + vocabData.length + '词';
-        }
+
+        setTimeout(() => showResult(selectedWord, correctWord, isCorrect), 500);
+    }
+
+    function showResult(selectedWord, correctWord, isCorrect) {
+        const wordData = vocabData.find(v => v.word === correctWord);
+        const banner = document.getElementById('result-banner');
+        banner.className = 'result ' + (isCorrect ? 'correct' : 'wrong');
+        banner.innerHTML = isCorrect ? '✅ 正确！' : '❌ 错误！';
+
+        document.getElementById('result-word').textContent = wordData.word;
+        document.getElementById('result-meaning').textContent = wordData.meaning;
+
+        // 高亮句子中的正确答案
+        const highlightedSentence = wordData.sentence.replace(
+            new RegExp(`\\b${wordData.word}\\b`, 'gi'),
+            `<span class="highlight">${wordData.word}</span>`
+        );
+        document.getElementById('example-sentence').innerHTML = `<strong>例句：</strong>${highlightedSentence}`;
+
+        // 显示所有选项
+        let pool;
+        if (wordData.pos.includes('n.') && !wordData.pos.includes('adj.')) pool = nouns;
+        else if (wordData.pos.includes('adj.')) pool = adjectives;
+        else if (wordData.pos.includes('v.')) pool = verbs;
+        else if (wordData.pos.includes('adv.')) pool = adverbs;
+        else pool = nouns;
+
+        const others = pool.filter(w => w.word !== correctWord);
+        const allOptions = [...others.sort(() => Math.random() - 0.5).slice(0, 3), {word: wordData.word, meaning: wordData.meaning}];
+        const shuffledOptions = allOptions.sort(() => Math.random() - 0.5);
+
+        const optionsHtml = shuffledOptions.map(opt => {
+            const isCorrect = opt.word === correctWord;
+            return `<li>${isCorrect ? '<span class="correct-mark">✓ </span>' : ''}${opt.word} - ${opt.meaning}</li>`;
+        }).join('');
+        document.getElementById('options-list').innerHTML = optionsHtml;
+
+        document.getElementById('quiz-card').classList.add('hidden');
+        document.getElementById('result-card').classList.remove('hidden');
+    }
+
+    function nextQuestion() {
+        currentIndex++;
+        showQuestion();
+    }
+
+    function showFinish() {
+        const correct = results.filter(r => r.correct).length;
+        const incorrect = results.length - correct;
+
+        document.getElementById('score-text').textContent = `你答对了 ${correct} 题，答错了 ${incorrect} 题`;
+
+        const endTime = new Date().toISOString();
+        const resultStr = `8|${correct}|${incorrect}|${startTime}|${endTime}|` + results.map(r => `${r.word}:${r.correct}`).join(',');
+        document.getElementById('result-code').textContent = resultStr;
+
+        document.getElementById('quiz-card').classList.add('hidden');
+        document.getElementById('result-card').classList.add('hidden');
+        document.getElementById('finish-card').classList.remove('hidden');
+    }
+
+    startTime = new Date().toISOString();
+    showQuestion();
     </script>
 </body>
 </html>
