@@ -38,7 +38,7 @@
     <div class="container">
         <div class="card" id="quiz-card">
             <div class="progress" id="progress">第1题 / 100</div>
-            <div class="word" id="question-word">limelight</div>
+            <div class="word" id="question-word">navigation</div>
             <div class="options" id="options"></div>
         </div>
         <div class="card hidden" id="result-card">
@@ -62,111 +62,111 @@
 
     <script>
     const vocabData = [
-        {"word": "limelight", "meaning": "聚光灯；公众瞩目的中心", "pos": "n.", "sentence": "The actor was in the limelight after the successful performance."},
-        {"word": "lineage", "meaning": "血统；世系", "pos": "n.", "sentence": "She traced her lineage back to the 18th century."},
-        {"word": "masterpiece", "meaning": "杰作", "pos": "n.", "sentence": "The painting is considered a masterpiece of Renaissance art."},
-        {"word": "mastery", "meaning": "掌握；精通", "pos": "n.", "sentence": "His mastery of the language impressed everyone."},
-        {"word": "materialism", "meaning": "唯物主义；享乐主义", "pos": "n.", "sentence": "Modern society is often criticized for its materialism."},
-        {"word": "maturity", "meaning": "成熟", "pos": "n.", "sentence": "The wine improves with maturity."},
-        {"word": "meager", "meaning": "贫乏的；瘦的", "pos": "adj.", "sentence": "They survived on a meager diet."},
-        {"word": "measurable", "meaning": "可测量的；显著的", "pos": "adj.", "sentence": "There has been a measurable improvement in his condition."},
-        {"word": "mechanic", "meaning": "技工", "pos": "n.", "sentence": "The mechanic fixed the car quickly."},
-        {"word": "mediate", "meaning": "调解；居中", "pos": "v.", "sentence": "The teacher mediated the conflict between the students."},
-        {"word": "medication", "meaning": "药物治疗；药物", "pos": "n.", "sentence": "She takes medication for her allergies."},
-        {"word": "medicine", "meaning": "医学；内服药", "pos": "n.", "sentence": "Modern medicine has advanced greatly."},
-        {"word": "medieval", "meaning": "中世纪的", "pos": "adj.", "sentence": "The castle dates back to medieval times."},
-        {"word": "mediocre", "meaning": "平庸的", "pos": "adj.", "sentence": "The food was mediocre at best."},
-        {"word": "meditate", "meaning": "沉思；冥想", "pos": "v.", "sentence": "She meditates for twenty minutes every morning."},
-        {"word": "membrane", "meaning": "膜", "pos": "n.", "sentence": "The cell membrane protects the cell."},
-        {"word": "memorable", "meaning": "值得纪念的", "pos": "adj.", "sentence": "It was a memorable experience for all of us."},
-        {"word": "memorandum", "meaning": "备忘录", "pos": "n.", "sentence": "Please read the memorandum carefully."},
-        {"word": "memorial", "meaning": "纪念碑；纪念的", "pos": "n./adj.", "sentence": "They built a memorial to honor the soldiers."},
-        {"word": "menace", "meaning": "威胁", "pos": "v./n.", "sentence": "The storm posed a menace to the coastal villages."},
-        {"word": "mentality", "meaning": "心理；心态", "pos": "n.", "sentence": "She has a positive mentality toward life."},
-        {"word": "merchandise", "meaning": "商品；买卖", "pos": "n./v.", "sentence": "The store merchandise is displayed in the window."},
-        {"word": "merciful", "meaning": "仁慈的", "pos": "adj.", "sentence": "The judge was merciful in his sentencing."},
-        {"word": "merely", "meaning": "仅仅", "pos": "adv.", "sentence": "It is merely a suggestion, not a requirement."},
-        {"word": "merge", "meaning": "合并", "pos": "v.", "sentence": "The two companies decided to merge."},
-        {"word": "merit", "meaning": "优点；功劳", "pos": "n./v.", "sentence": "The proposal has considerable merit."},
-        {"word": "messenger", "meaning": "信使", "pos": "n.", "sentence": "The messenger delivered the important letter."},
-        {"word": "metallic", "meaning": "金属的", "pos": "adj.", "sentence": "The metallic sound echoed through the hall."},
-        {"word": "metaphor", "meaning": "暗喻", "pos": "n.", "sentence": "She used a metaphor to describe her feelings."},
-        {"word": "meticulous", "meaning": "细心的；极注意细节的", "pos": "adj.", "sentence": "He is meticulous about his work."},
-        {"word": "metric", "meaning": "公制的", "pos": "adj.", "sentence": "The metric system is used in most countries."},
-        {"word": "metropolis", "meaning": "大都市", "pos": "n.", "sentence": "Tokyo is a bustling metropolis."},
-        {"word": "microscope", "meaning": "显微镜", "pos": "n.", "sentence": "Scientists use a microscope to observe cells."},
-        {"word": "midst", "meaning": "中间", "pos": "n.", "sentence": "In the midst of the forest, they found a cabin."},
-        {"word": "migrate", "meaning": "迁移；移居", "pos": "v.", "sentence": "Birds migrate south in winter."},
-        {"word": "militant", "meaning": "好战的", "pos": "adj.", "sentence": "The militant group claimed responsibility."},
-        {"word": "military", "meaning": "军事的", "pos": "adj.", "sentence": "He served in the military for five years."},
-        {"word": "millennium", "meaning": "一千年", "pos": "n.", "sentence": "The new millennium began in 2000."},
-        {"word": "mimic", "meaning": "模仿", "pos": "v.", "sentence": "The child mimics his father's gestures."},
-        {"word": "miniature", "meaning": "微型的；缩影", "pos": "adj./n.", "sentence": "She collects miniature dolls."},
-        {"word": "minimum", "meaning": "最小值", "pos": "adj./n.", "sentence": "The minimum age for voting is 18."},
-        {"word": "minister", "meaning": "部长；大臣", "pos": "n.", "sentence": "The Minister of Education announced new policies."},
-        {"word": "ministry", "meaning": "（政府的）部", "pos": "n.", "sentence": "She works at the Ministry of Health."},
-        {"word": "minority", "meaning": "少数；少数民族", "pos": "n.", "sentence": "Minority groups deserve equal rights."},
-        {"word": "miraculous", "meaning": "奇迹般的", "pos": "adj.", "sentence": "Her recovery was miraculous."},
-        {"word": "miscarriage", "meaning": "流产；失败", "pos": "n.", "sentence": "The project ended in a miscarriage."},
-        {"word": "mischievous", "meaning": "顽皮的；有害的", "pos": "adj.", "sentence": "The mischievous child broke the window."},
-        {"word": "miserable", "meaning": "痛苦的；可怜的", "pos": "adj.", "sentence": "She felt miserable after the bad news."},
-        {"word": "misery", "meaning": "苦难", "pos": "n.", "sentence": "The war brought great misery to the people."},
-        {"word": "mislead", "meaning": "误导", "pos": "v.", "sentence": "The advertisement misled consumers."},
-        {"word": "missionary", "meaning": "传教士", "pos": "n.", "sentence": "The missionary traveled to remote areas."},
-        {"word": "mistaken", "meaning": "错误的", "pos": "adj.", "sentence": "I was mistaken about his intentions."},
-        {"word": "mitigate", "meaning": "减轻；缓和", "pos": "v.", "sentence": "Measures were taken to mitigate the effects."},
-        {"word": "mixture", "meaning": "混合物", "pos": "n.", "sentence": "The mixture of colors created a beautiful effect."},
-        {"word": "mobilize", "meaning": "动员", "pos": "v.", "sentence": "The government mobilized resources for relief."},
-        {"word": "moderate", "meaning": "适度的；温和的；缓和", "pos": "adj./v.", "sentence": "We need moderate temperatures for the experiment."},
-        {"word": "modest", "meaning": "谦虚的；适度的", "pos": "adj.", "sentence": "She remained modest despite her success."},
-        {"word": "modesty", "meaning": "谦虚", "pos": "n.", "sentence": "His modesty made him popular."},
-        {"word": "modification", "meaning": "修改", "pos": "n.", "sentence": "The modification was approved by the committee."},
-        {"word": "moist", "meaning": "潮湿的", "pos": "adj.", "sentence": "The air is moist near the river."},
-        {"word": "moisture", "meaning": "水分；湿度", "pos": "n.", "sentence": "The moisture in the air caused problems."},
-        {"word": "molecule", "meaning": "分子", "pos": "n.", "sentence": "A water molecule consists of two hydrogen atoms."},
-        {"word": "momentary", "meaning": "瞬间的", "pos": "adj.", "sentence": "There was a momentary pause in the conversation."},
-        {"word": "monetary", "meaning": "货币的；金融的", "pos": "adj.", "sentence": "The monetary policy was adjusted."},
-        {"word": "monopoly", "meaning": "垄断", "pos": "n.", "sentence": "The company has a monopoly on the product."},
-        {"word": "monotonous", "meaning": "单调的", "pos": "adj.", "sentence": "The work became monotonous after a while."},
-        {"word": "monotony", "meaning": "单调；枯燥", "pos": "n.", "sentence": "She hated the monotony of daily routine."},
-        {"word": "monument", "meaning": "纪念碑；历史遗迹", "pos": "n.", "sentence": "The monument commemorates the historic event."},
-        {"word": "moral", "meaning": "道德的；寓意", "pos": "adj./n.", "sentence": "The moral of the story is clear."},
-        {"word": "morale", "meaning": "士气", "pos": "n.", "sentence": "The victory boosted the team's morale."},
-        {"word": "morality", "meaning": "道德", "pos": "n.", "sentence": "Questions of morality are often debated."},
-        {"word": "mortal", "meaning": "致命的；凡人", "pos": "adj./n.", "sentence": "All mortals will face death someday."},
-        {"word": "mortality", "meaning": "死亡率", "pos": "n.", "sentence": "The mortality rate has decreased significantly."},
-        {"word": "mortgage", "meaning": "抵押", "pos": "n./v.", "sentence": "They paid off their mortgage after 20 years."},
-        {"word": "mosquito", "meaning": "蚊子", "pos": "n.", "sentence": "The mosquito transmitted the disease."},
-        {"word": "motif", "meaning": "主题；动机", "pos": "n.", "sentence": "The musical motif appears throughout the piece."},
-        {"word": "motivate", "meaning": "激励；激发", "pos": "v.", "sentence": "The coach motivated the team to win."},
-        {"word": "motorway", "meaning": "高速公路", "pos": "n.", "sentence": "The motorway was closed due to the accident."},
-        {"word": "mould", "meaning": "模具；性格；塑造", "pos": "n./v.", "sentence": "The mould shaped the clay into a beautiful vase."},
-        {"word": "mount", "meaning": "登上；增长；山峰", "pos": "v./n.", "sentence": "They plan to mount the expedition next month."},
-        {"word": "mourn", "meaning": "哀悼", "pos": "v.", "sentence": "The family mourned the loss of their loved one."},
-        {"word": "multidisciplinary", "meaning": "多学科的", "pos": "adj.", "sentence": "The team takes a multidisciplinary approach."},
-        {"word": "multigenerational", "meaning": "多代人的；代际的", "pos": "adj.", "sentence": "The family live in a multigenerational household."},
-        {"word": "multimedia", "meaning": "多媒体", "pos": "n.", "sentence": "The presentation uses multimedia elements."},
-        {"word": "multiple", "meaning": "多样的；复合的", "pos": "adj.", "sentence": "She has multiple sclerosis."},
-        {"word": "multiply", "meaning": "乘；繁殖；增加", "pos": "v.", "sentence": "The bacteria multiply rapidly."},
-        {"word": "multitude", "meaning": "大量", "pos": "n.", "sentence": "A multitude of people attended the concert."},
-        {"word": "municipal", "meaning": "市政的；地方自治的", "pos": "adj.", "sentence": "The municipal government provides services."},
-        {"word": "muscular", "meaning": "肌肉的；强壮的", "pos": "adj.", "sentence": "He has a muscular build from years of training."},
-        {"word": "mutual", "meaning": "相互的；共同的", "pos": "adj.", "sentence": "They have a mutual respect for each other."},
-        {"word": "myriad", "meaning": "无数的", "pos": "adj.", "sentence": "Myriad stars filled the night sky."},
-        {"word": "naked", "meaning": "裸体的；明显的", "pos": "adj.", "sentence": "The naked truth was hard to accept."},
-        {"word": "namely", "meaning": "即；也就是", "pos": "adv.", "sentence": "Only one student passed, namely John."},
-        {"word": "nasty", "meaning": "令人厌恶的；下流的", "pos": "adj.", "sentence": "The weather turned nasty in the afternoon."},
-        {"word": "nationality", "meaning": "国籍；民族", "pos": "n.", "sentence": "What is your nationality?"},
-        {"word": "native", "meaning": "本地的；天赋的", "pos": "adj.", "sentence": "She is a native speaker of English."},
-        {"word": "nature", "meaning": "自然；性质；本性", "pos": "n.", "sentence": "It's in human nature to seek knowledge."},
-        {"word": "naughty", "meaning": "淘气的", "pos": "adj.", "sentence": "The naughty boy hid his sister's toys."},
-        {"word": "naval", "meaning": "海军的", "pos": "adj.", "sentence": "He served in the naval forces."},
-        {"word": "navigate", "meaning": "航行；导航", "pos": "v.", "sentence": "The captain navigated the ship through the storm."}
+        {"word": "navigation", "meaning": "航行；导航", "pos": "n.", "sentence": "The GPS system provides accurate navigation."},
+        {"word": "navy", "meaning": "海军", "pos": "n.", "sentence": "He served in the navy for ten years."},
+        {"word": "nearly", "meaning": "几乎", "pos": "adv.", "sentence": "I've nearly finished the project."},
+        {"word": "nebula", "meaning": "星云", "pos": "n.", "sentence": "The nebula was visible through the telescope."},
+        {"word": "necessarily", "meaning": "必然地", "pos": "adv.", "sentence": "Success is not necessarily guaranteed."},
+        {"word": "necessary", "meaning": "必要的", "pos": "adj.", "sentence": "It is necessary to arrive on time."},
+        {"word": "necessitate", "meaning": "使成为必要；迫使", "pos": "v.", "sentence": "The situation necessitated immediate action."},
+        {"word": "necessity", "meaning": "必要性；必需品", "pos": "n.", "sentence": "Water is a basic necessity for life."},
+        {"word": "negative", "meaning": "负面的；否定的；负数", "pos": "adj./n.", "sentence": "She had a negative reaction to the news."},
+        {"word": "negligence", "meaning": "疏忽；过失", "pos": "n.", "sentence": "The accident was caused by negligence."},
+        {"word": "negotiable", "meaning": "可商议的", "pos": "adj.", "sentence": "The price is negotiable."},
+        {"word": "negotiate", "meaning": "谈判；商议", "pos": "v.", "sentence": "We need to negotiate the terms."},
+        {"word": "negotiation", "meaning": "谈判", "pos": "n.", "sentence": "The negotiation lasted for hours."},
+        {"word": "nerve", "meaning": "神经；胆量", "pos": "n.", "sentence": "It takes nerve to make that decision."},
+        {"word": "neutral", "meaning": "中立的", "pos": "adj.", "sentence": "She remained neutral in the debate."},
+        {"word": "neutrality", "meaning": "中立", "pos": "n.", "sentence": "The country maintained strict neutrality."},
+        {"word": "newly", "meaning": "新近", "pos": "adv.", "sentence": "They live in a newly built house."},
+        {"word": "newsletter", "meaning": "通讯；简报", "pos": "n.", "sentence": "Subscribe to our newsletter for updates."},
+        {"word": "noble", "meaning": "高尚的；贵族的", "pos": "adj.", "sentence": "He has noble intentions."},
+        {"word": "nominal", "meaning": "名义上的；微不足道的", "pos": "adj.", "sentence": "There was only a nominal fee."},
+        {"word": "nominate", "meaning": "提名；任命", "pos": "v.", "sentence": "They nominated him for president."},
+        {"word": "nomination", "meaning": "提名", "pos": "n.", "sentence": "She received two nominations."},
+        {"word": "nominee", "meaning": "被提名者", "pos": "n.", "sentence": "The nominee gave a speech."},
+        {"word": "nonetheless", "meaning": "尽管如此", "pos": "adv.", "sentence": "It was hard work; nonetheless, it was worth it."},
+        {"word": "nonsense", "meaning": "胡说", "pos": "n.", "sentence": "Don't talk nonsense!"},
+        {"word": "norm", "meaning": "规范；准则", "pos": "n.", "sentence": "Following social norms is important."},
+        {"word": "normalization", "meaning": "正常化", "pos": "n.", "sentence": "The normalization of relations took years."},
+        {"word": "normalize", "meaning": "使正常化", "pos": "v.", "sentence": "The treatment helped normalize his condition."},
+        {"word": "normally", "meaning": "正常地", "pos": "adv.", "sentence": "She normally wakes up at six."},
+        {"word": "northern", "meaning": "北方的", "pos": "adj.", "sentence": "The northern region is very cold."},
+        {"word": "nostalgia", "meaning": "怀旧", "pos": "n.", "sentence": "The old photos filled her with nostalgia."},
+        {"word": "notable", "meaning": "显著的；著名的", "pos": "adj.", "sentence": "She is a notable figure in science."},
+        {"word": "notably", "meaning": "显著地；尤其", "pos": "adv.", "sentence": "The city has changed, notably in its architecture."},
+        {"word": "notary", "meaning": "公证人", "pos": "n.", "sentence": "The notary certified the document."},
+        {"word": "noted", "meaning": "著名的", "pos": "a.", "sentence": "He is a noted expert in his field."},
+        {"word": "noticeable", "meaning": "显而易见的", "pos": "a.", "sentence": "There was a noticeable improvement."},
+        {"word": "notification", "meaning": "通知", "pos": "n.", "sentence": "I received a notification about the meeting."},
+        {"word": "notify", "meaning": "通知", "pos": "v.", "sentence": "Please notify me when it's ready."},
+        {"word": "notion", "meaning": "概念；见解", "pos": "n.", "sentence": "I have a notion about what to do."},
+        {"word": "notorious", "meaning": "臭名昭著的", "pos": "adj.", "sentence": "The city is notorious for traffic."},
+        {"word": "notwithstanding", "meaning": "虽然；尽管", "pos": "prep./adv.", "sentence": "Notwithstanding the weather, we went out."},
+        {"word": "nourish", "meaning": "滋养；怀有（希望）", "pos": "v.", "sentence": "The soil nourishes the plants."},
+        {"word": "nourishment", "meaning": "食物；营养", "pos": "n.", "sentence": "Children need proper nourishment."},
+        {"word": "novelty", "meaning": "新奇；新奇事物", "pos": "n.", "sentence": "The novelty of the job wore off."},
+        {"word": "nuisance", "meaning": "讨厌的人或事", "pos": "n.", "sentence": "The noise is a real nuisance."},
+        {"word": "nullify", "meaning": "使无效", "pos": "v.", "sentence": "The court nullified the contract."},
+        {"word": "numerical", "meaning": "数字的", "pos": "a.", "sentence": "We need numerical data."},
+        {"word": "nurture", "meaning": "养育；培育", "pos": "v./n.", "sentence": "Parents nurture their children."},
+        {"word": "nutrient", "meaning": "养分", "pos": "n.", "sentence": "Plants need nutrients to grow."},
+        {"word": "obedient", "meaning": "服从的", "pos": "a.", "sentence": "The dog was very obedient."},
+        {"word": "obese", "meaning": "肥胖的", "pos": "adj.", "sentence": "Obese patients need special care."},
+        {"word": "obesity", "meaning": "肥胖", "pos": "n.", "sentence": "Obesity is a growing problem."},
+        {"word": "objection", "meaning": "反对；异议", "pos": "n.", "sentence": "I have no objection to the plan."},
+        {"word": "objective", "meaning": "客观的；目标", "pos": "adj./n.", "sentence": "Our main objective is success."},
+        {"word": "objectivity", "meaning": "客观性", "pos": "n.", "sentence": "Journalists should maintain objectivity."},
+        {"word": "obligation", "meaning": "义务；责任", "pos": "n.", "sentence": "I have an obligation to help."},
+        {"word": "obligatory", "meaning": "强制性的；义务的", "pos": "adj.", "sentence": "Attendance is obligatory."},
+        {"word": "oblige", "meaning": "迫使；帮……忙", "pos": "v.", "sentence": "I'm obliged to thank you."},
+        {"word": "obliterate", "meaning": "擦掉；消灭", "pos": "v.", "sentence": "The bomb obliterated the building."},
+        {"word": "oblivious", "meaning": "遗忘的；不注意的", "pos": "adj.", "sentence": "She was oblivious to the danger."},
+        {"word": "obnoxious", "meaning": "令人讨厌的", "pos": "adj.", "sentence": "His behavior was obnoxious."},
+        {"word": "obscure", "meaning": "朦胧的；无名的", "pos": "adj.", "sentence": "The meaning was obscure."},
+        {"word": "observance", "meaning": "遵守；仪式", "pos": "n.", "sentence": "The observance of rules is required."},
+        {"word": "observation", "meaning": "观察；言论", "pos": "n.", "sentence": "The scientist made an observation."},
+        {"word": "observatory", "meaning": "天文台；气象台", "pos": "n.", "sentence": "Astronomers work at the observatory."},
+        {"word": "observe", "meaning": "观察；遵守", "pos": "v.", "sentence": "We observed the behavior carefully."},
+        {"word": "obsess", "meaning": "使痴迷", "pos": "v.", "sentence": "Don't let work obsess you."},
+        {"word": "obsession", "meaning": "痴迷；执念", "pos": "n.", "sentence": "His obsession with fitness is extreme."},
+        {"word": "obsolete", "meaning": "过时的；荒废的", "pos": "adj.", "sentence": "The technology is now obsolete."},
+        {"word": "obstacle", "meaning": "障碍", "pos": "n.", "sentence": "Lack of money is a major obstacle."},
+        {"word": "obstinate", "meaning": "顽固的", "pos": "adj.", "sentence": "He was very obstinate about the matter."},
+        {"word": "obstruct", "meaning": "阻碍", "pos": "v.", "sentence": "Trees obstruct the view."},
+        {"word": "obtain", "meaning": "获得", "pos": "v.", "sentence": "How can I obtain the information?"},
+        {"word": "obtainable", "meaning": "可获得的", "pos": "adj.", "sentence": "The book is readily obtainable."},
+        {"word": "obvious", "meaning": "明显的", "pos": "adj.", "sentence": "The answer is obvious."},
+        {"word": "occasional", "meaning": "偶然的", "pos": "a.", "sentence": "We have occasional meetings."},
+        {"word": "occupation", "meaning": "职业；占用", "pos": "n.", "sentence": "What's your occupation?"},
+        {"word": "occupational", "meaning": "职业的", "pos": "adj.", "sentence": "She has an occupational hazard."},
+        {"word": "occupy", "meaning": "占领；占用", "pos": "v.", "sentence": "The team occupies first place."},
+        {"word": "occurrence", "meaning": "发生；事件", "pos": "n.", "sentence": "Such occurrences are rare."},
+        {"word": "oceanic", "meaning": "海洋的", "pos": "adj.", "sentence": "The oceanic currents affect climate."},
+        {"word": "offence", "meaning": "犯罪；冒犯", "pos": "n.", "sentence": "He committed a serious offence."},
+        {"word": "offend", "meaning": "冒犯；违反", "pos": "v.", "sentence": "I didn't mean to offend you."},
+        {"word": "offensive", "meaning": "冒犯的；进攻性的", "pos": "adj.", "sentence": "His remarks were offensive."},
+        {"word": "official", "meaning": "官方的；官员", "pos": "adj./n.", "sentence": "This is the official statement."},
+        {"word": "offspring", "meaning": "后代", "pos": "n.", "sentence": "The parents and their offspring."},
+        {"word": "ointment", "meaning": "软膏", "pos": "n.", "sentence": "Apply the ointment to the wound."},
+        {"word": "ominous", "meaning": "不祥的", "pos": "adj.", "sentence": "There were ominous dark clouds."},
+        {"word": "omission", "meaning": "遗漏；忽略", "pos": "n.", "sentence": "The omission was unintentional."},
+        {"word": "omit", "meaning": "遗漏；忽略", "pos": "v.", "sentence": "Please don't omit any details."},
+        {"word": "oncoming", "meaning": "即将来临的", "pos": "adj.", "sentence": "Watch out for oncoming traffic."},
+        {"word": "onerous", "meaning": "繁重的；艰巨的", "pos": "adj.", "sentence": "It was an onerous task."},
+        {"word": "ongoing", "meaning": "正在进行的", "pos": "adj.", "sentence": "The project is ongoing."},
+        {"word": "onlooker", "meaning": "旁观者", "pos": "n.", "sentence": "The onlookers watched the accident."},
+        {"word": "onset", "meaning": "开始；发作", "pos": "n.", "sentence": "The onset of winter was harsh."},
+        {"word": "onslaught", "meaning": "猛攻", "pos": "n.", "sentence": "They faced an onslaught of criticism."},
+        {"word": "opaque", "meaning": "不透明的；晦涩的", "pos": "adj.", "sentence": "The glass is opaque."},
+        {"word": "operational", "meaning": "运作的", "pos": "adj.", "sentence": "The system is now operational."},
+        {"word": "operator", "meaning": "操作员", "pos": "n.", "sentence": "The operator answered the phone."},
+        {"word": "opportune", "meaning": "恰好的；及时的", "pos": "adj.", "sentence": "It was an opportune moment."}
     ];
 
     // 按词性分组用于生成干扰选项
-    const nouns = vocabData.filter(w => w.pos.includes('n.')).map(w => ({word: w.word, meaning: w.meaning}));
-    const adjectives = vocabData.filter(w => w.pos.includes('adj.')).map(w => ({word: w.word, meaning: w.meaning}));
+    const nouns = vocabData.filter(w => w.pos.includes('n.') && !w.pos.includes('adj.')).map(w => ({word: w.word, meaning: w.meaning}));
+    const adjectives = vocabData.filter(w => w.pos.includes('adj.') || w.pos.includes('a.')).map(w => ({word: w.word, meaning: w.meaning}));
     const verbs = vocabData.filter(w => w.pos.includes('v.')).map(w => ({word: w.word, meaning: w.meaning}));
     const adverbs = vocabData.filter(w => w.pos.includes('adv.')).map(w => ({word: w.word, meaning: w.meaning}));
 
@@ -176,15 +176,16 @@
 
     function getDistractors(correctWord, pos) {
         let pool;
-        if (pos.includes('n.') && !pos.includes('adj.')) pool = nouns;
-        else if (pos.includes('adj.')) pool = adjectives;
+        if (pos.includes('n.') && !pos.includes('adj.') && !pos.includes('a.')) pool = nouns;
+        else if (pos.includes('adj.') || pos.includes('a.')) pool = adjectives;
         else if (pos.includes('v.')) pool = verbs;
         else if (pos.includes('adv.')) pool = adverbs;
         else pool = nouns;
 
         const others = pool.filter(w => w.word !== correctWord);
         const shuffled = others.sort(() => Math.random() - 0.5).slice(0, 3);
-        const options = [...shuffled, {word: vocabData.find(v => v.word === correctWord).word, meaning: vocabData.find(v => v.word === correctWord).meaning}];
+        const correctData = vocabData.find(v => v.word === correctWord);
+        const options = [...shuffled, {word: correctData.word, meaning: correctData.meaning}];
         return options.sort(() => Math.random() - 0.5);
     }
 
@@ -243,8 +244,8 @@
 
         // 显示所有选项
         let pool;
-        if (wordData.pos.includes('n.') && !wordData.pos.includes('adj.')) pool = nouns;
-        else if (wordData.pos.includes('adj.')) pool = adjectives;
+        if (wordData.pos.includes('n.') && !wordData.pos.includes('adj.') && !wordData.pos.includes('a.')) pool = nouns;
+        else if (wordData.pos.includes('adj.') || wordData.pos.includes('a.')) pool = adjectives;
         else if (wordData.pos.includes('v.')) pool = verbs;
         else if (wordData.pos.includes('adv.')) pool = adverbs;
         else pool = nouns;
