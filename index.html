@@ -31,26 +31,25 @@
         .next-btn { width: 100%; padding: 16px; background: #667eea; color: white; border: none; border-radius: 12px; font-size: 18px; cursor: pointer; margin-top: 20px; }
         .next-btn:hover { background: #5568d3; }
         .result-code { background: #f0f0f0; padding: 16px; border-radius: 8px; font-family: monospace; word-break: break-all; margin-top: 20px; }
-        .hidden { display: none; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card" id="quiz-card">
             <div class="progress" id="progress">第1题 / 100</div>
-            <div class="word" id="question-word">navigation</div>
+            <div class="word" id="question-word">loading...</div>
             <div class="options" id="options"></div>
         </div>
         <div class="card hidden" id="result-card">
-            <div class="result" id="result-banner">
-                <div class="result-word" id="result-word"></div>
-                <div class="result-meaning" id="result-meaning"></div>
-            </div>
+            <div class="result" id="result-banner"></div>
+            <div class="result-word" id="result-word"></div>
+            <div class="result-meaning" id="result-meaning"></div>
             <div class="example">
                 <div class="example-sentence" id="example-sentence"></div>
             </div>
             <ul class="options-list" id="options-list"></ul>
-            <button class="next-btn" id="next-btn" onclick="nextQuestion()">下一题</button>
+            <button class="next-btn" id="next-btn">下一题</button>
         </div>
         <div class="card hidden" id="finish-card">
             <h2>🎉 完成！</h2>
@@ -70,7 +69,7 @@
         {"word": "necessary", "meaning": "必要的", "pos": "adj.", "sentence": "It is necessary to arrive on time."},
         {"word": "necessitate", "meaning": "使成为必要；迫使", "pos": "v.", "sentence": "The situation necessitated immediate action."},
         {"word": "necessity", "meaning": "必要性；必需品", "pos": "n.", "sentence": "Water is a basic necessity for life."},
-        {"word": "negative", "meaning": "负面的；否定的；负数", "pos": "adj./n.", "sentence": "She had a negative reaction to the news."},
+        {"word": "negative", "meaning": "负面的；否定的", "pos": "adj./n.", "sentence": "She had a negative reaction to the news."},
         {"word": "negligence", "meaning": "疏忽；过失", "pos": "n.", "sentence": "The accident was caused by negligence."},
         {"word": "negotiable", "meaning": "可商议的", "pos": "adj.", "sentence": "The price is negotiable."},
         {"word": "negotiate", "meaning": "谈判；商议", "pos": "v.", "sentence": "We need to negotiate the terms."},
@@ -81,7 +80,7 @@
         {"word": "newly", "meaning": "新近", "pos": "adv.", "sentence": "They live in a newly built house."},
         {"word": "newsletter", "meaning": "通讯；简报", "pos": "n.", "sentence": "Subscribe to our newsletter for updates."},
         {"word": "noble", "meaning": "高尚的；贵族的", "pos": "adj.", "sentence": "He has noble intentions."},
-        {"word": "nominal", "meaning": "名义上的；微不足道的", "pos": "adj.", "sentence": "There was only a nominal fee."},
+        {"word": "nominal", "meaning": "名义上的", "pos": "adj.", "sentence": "There was only a nominal fee."},
         {"word": "nominate", "meaning": "提名；任命", "pos": "v.", "sentence": "They nominated him for president."},
         {"word": "nomination", "meaning": "提名", "pos": "n.", "sentence": "She received two nominations."},
         {"word": "nominee", "meaning": "被提名者", "pos": "n.", "sentence": "The nominee gave a speech."},
@@ -103,7 +102,7 @@
         {"word": "notion", "meaning": "概念；见解", "pos": "n.", "sentence": "I have a notion about what to do."},
         {"word": "notorious", "meaning": "臭名昭著的", "pos": "adj.", "sentence": "The city is notorious for traffic."},
         {"word": "notwithstanding", "meaning": "虽然；尽管", "pos": "prep./adv.", "sentence": "Notwithstanding the weather, we went out."},
-        {"word": "nourish", "meaning": "滋养；怀有（希望）", "pos": "v.", "sentence": "The soil nourishes the plants."},
+        {"word": "nourish", "meaning": "滋养", "pos": "v.", "sentence": "The soil nourishes the plants."},
         {"word": "nourishment", "meaning": "食物；营养", "pos": "n.", "sentence": "Children need proper nourishment."},
         {"word": "novelty", "meaning": "新奇；新奇事物", "pos": "n.", "sentence": "The novelty of the job wore off."},
         {"word": "nuisance", "meaning": "讨厌的人或事", "pos": "n.", "sentence": "The noise is a real nuisance."},
@@ -118,19 +117,19 @@
         {"word": "objective", "meaning": "客观的；目标", "pos": "adj./n.", "sentence": "Our main objective is success."},
         {"word": "objectivity", "meaning": "客观性", "pos": "n.", "sentence": "Journalists should maintain objectivity."},
         {"word": "obligation", "meaning": "义务；责任", "pos": "n.", "sentence": "I have an obligation to help."},
-        {"word": "obligatory", "meaning": "强制性的；义务的", "pos": "adj.", "sentence": "Attendance is obligatory."},
-        {"word": "oblige", "meaning": "迫使；帮忙", "pos": "v.", "sentence": "I'm obliged to thank you."},
+        {"word": "obligatory", "meaning": "强制性的", "pos": "adj.", "sentence": "Attendance is obligatory."},
+        {"word": "oblige", "meaning": "迫使", "pos": "v.", "sentence": "I'm obliged to thank you."},
         {"word": "obliterate", "meaning": "擦掉；消灭", "pos": "v.", "sentence": "The bomb obliterated the building."},
-        {"word": "oblivious", "meaning": "遗忘的；不注意的", "pos": "adj.", "sentence": "She was oblivious to the danger."},
+        {"word": "oblivious", "meaning": "不注意的", "pos": "adj.", "sentence": "She was oblivious to the danger."},
         {"word": "obnoxious", "meaning": "令人讨厌的", "pos": "adj.", "sentence": "His behavior was obnoxious."},
         {"word": "obscure", "meaning": "朦胧的；无名的", "pos": "adj.", "sentence": "The meaning was obscure."},
         {"word": "observance", "meaning": "遵守；仪式", "pos": "n.", "sentence": "The observance of rules is required."},
         {"word": "observation", "meaning": "观察；言论", "pos": "n.", "sentence": "The scientist made an observation."},
-        {"word": "observatory", "meaning": "天文台；气象台", "pos": "n.", "sentence": "Astronomers work at the observatory."},
+        {"word": "observatory", "meaning": "天文台", "pos": "n.", "sentence": "Astronomers work at the observatory."},
         {"word": "observe", "meaning": "观察；遵守", "pos": "v.", "sentence": "We observed the behavior carefully."},
         {"word": "obsess", "meaning": "使痴迷", "pos": "v.", "sentence": "Don't let work obsess you."},
         {"word": "obsession", "meaning": "痴迷；执念", "pos": "n.", "sentence": "His obsession with fitness is extreme."},
-        {"word": "obsolete", "meaning": "过时的；荒废的", "pos": "adj.", "sentence": "The technology is now obsolete."},
+        {"word": "obsolete", "meaning": "过时的", "pos": "adj.", "sentence": "The technology is now obsolete."},
         {"word": "obstacle", "meaning": "障碍", "pos": "n.", "sentence": "Lack of money is a major obstacle."},
         {"word": "obstinate", "meaning": "顽固的", "pos": "adj.", "sentence": "He was very obstinate about the matter."},
         {"word": "obstruct", "meaning": "阻碍", "pos": "v.", "sentence": "Trees obstruct the view."},
@@ -138,46 +137,46 @@
         {"word": "obtainable", "meaning": "可获得的", "pos": "adj.", "sentence": "The book is readily obtainable."},
         {"word": "obvious", "meaning": "明显的", "pos": "adj.", "sentence": "The answer is obvious."},
         {"word": "occasional", "meaning": "偶然的", "pos": "a.", "sentence": "We have occasional meetings."},
-        {"word": "occupation", "meaning": "职业；占用", "pos": "n.", "sentence": "What's your occupation?"},
+        {"word": "occupation", "meaning": "职业", "pos": "n.", "sentence": "What's your occupation?"},
         {"word": "occupational", "meaning": "职业的", "pos": "adj.", "sentence": "She has an occupational hazard."},
         {"word": "occupy", "meaning": "占领；占用", "pos": "v.", "sentence": "The team occupies first place."},
         {"word": "occurrence", "meaning": "发生；事件", "pos": "n.", "sentence": "Such occurrences are rare."},
         {"word": "oceanic", "meaning": "海洋的", "pos": "adj.", "sentence": "The oceanic currents affect climate."},
         {"word": "offence", "meaning": "犯罪；冒犯", "pos": "n.", "sentence": "He committed a serious offence."},
         {"word": "offend", "meaning": "冒犯；违反", "pos": "v.", "sentence": "I didn't mean to offend you."},
-        {"word": "offensive", "meaning": "冒犯的；进攻性的", "pos": "adj.", "sentence": "His remarks were offensive."},
+        {"word": "offensive", "meaning": "冒犯的", "pos": "adj.", "sentence": "His remarks were offensive."},
         {"word": "official", "meaning": "官方的；官员", "pos": "adj./n.", "sentence": "This is the official statement."},
         {"word": "offspring", "meaning": "后代", "pos": "n.", "sentence": "The parents and their offspring."},
         {"word": "ointment", "meaning": "软膏", "pos": "n.", "sentence": "Apply the ointment to the wound."},
         {"word": "ominous", "meaning": "不祥的", "pos": "adj.", "sentence": "There were ominous dark clouds."},
-        {"word": "omission", "meaning": "遗漏；忽略", "pos": "n.", "sentence": "The omission was unintentional."},
-        {"word": "omit", "meaning": "遗漏；忽略", "pos": "v.", "sentence": "Please don't omit any details."},
+        {"word": "omission", "meaning": "遗漏", "pos": "n.", "sentence": "The omission was unintentional."},
+        {"word": "omit", "meaning": "遗漏", "pos": "v.", "sentence": "Please don't omit any details."},
         {"word": "oncoming", "meaning": "即将来临的", "pos": "adj.", "sentence": "Watch out for oncoming traffic."},
-        {"word": "onerous", "meaning": "繁重的；艰巨的", "pos": "adj.", "sentence": "It was an onerous task."},
+        {"word": "onerous", "meaning": "繁重的", "pos": "adj.", "sentence": "It was an onerous task."},
         {"word": "ongoing", "meaning": "正在进行的", "pos": "adj.", "sentence": "The project is ongoing."},
         {"word": "onlooker", "meaning": "旁观者", "pos": "n.", "sentence": "The onlookers watched the accident."},
         {"word": "onset", "meaning": "开始；发作", "pos": "n.", "sentence": "The onset of winter was harsh."},
         {"word": "onslaught", "meaning": "猛攻", "pos": "n.", "sentence": "They faced an onslaught of criticism."},
-        {"word": "opaque", "meaning": "不透明的；晦涩的", "pos": "adj.", "sentence": "The glass is opaque."},
+        {"word": "opaque", "meaning": "不透明的", "pos": "adj.", "sentence": "The glass is opaque."},
         {"word": "operational", "meaning": "运作的", "pos": "adj.", "sentence": "The system is now operational."},
         {"word": "operator", "meaning": "操作员", "pos": "n.", "sentence": "The operator answered the phone."},
         {"word": "opportune", "meaning": "恰好的；及时的", "pos": "adj.", "sentence": "It was an opportune moment."}
     ];
 
-    // 按词性分组用于生成干扰选项
-    const nouns = vocabData.filter(w => w.pos.includes('n.') && !w.pos.includes('adj.')).map(w => ({word: w.word, meaning: w.meaning}));
+    // 按词性分组
+    const nouns = vocabData.filter(w => w.pos.includes('n.') && !w.pos.includes('adj.') && !w.pos.includes('a.')).map(w => ({word: w.word, meaning: w.meaning}));
     const adjectives = vocabData.filter(w => w.pos.includes('adj.') || w.pos.includes('a.')).map(w => ({word: w.word, meaning: w.meaning}));
     const verbs = vocabData.filter(w => w.pos.includes('v.')).map(w => ({word: w.word, meaning: w.meaning}));
     const adverbs = vocabData.filter(w => w.pos.includes('adv.')).map(w => ({word: w.word, meaning: w.meaning}));
 
     let currentIndex = 0;
     let results = [];
-    let startTime = null;
+    let startTime = new Date().toISOString();
     let currentOptions = [];
 
     function getDistractors(correctWord, pos) {
         let pool;
-        if (pos.includes('n.') && !pos.includes('adj.')) pool = nouns;
+        if (pos.includes('n.') && !pos.includes('adj.') && !pos.includes('a.')) pool = nouns;
         else if (pos.includes('adj.') || pos.includes('a.')) pool = adjectives;
         else if (pos.includes('v.')) pool = verbs;
         else if (pos.includes('adv.')) pool = adverbs;
@@ -190,42 +189,49 @@
         return options.sort(() => Math.random() - 0.5);
     }
 
-    function showQuestion() {
+    function renderQuestion() {
         if (currentIndex >= vocabData.length) {
             showFinish();
             return;
         }
 
         const wordData = vocabData[currentIndex];
-        document.getElementById('progress').textContent = `第${currentIndex + 1}题 / ${vocabData.length}`;
+        document.getElementById('progress').textContent = '第' + (currentIndex + 1) + '题 / ' + vocabData.length;
         document.getElementById('question-word').textContent = wordData.word;
 
         currentOptions = getDistractors(wordData.word, wordData.pos);
         
-        const optionsHtml = currentOptions.map((opt, i) => 
-            `<div class="option" data-index="${i}">${opt.meaning}</div>`
-        ).join('');
-        document.getElementById('options').innerHTML = optionsHtml;
-
-        // 绑定点击事件
-        document.querySelectorAll('.option').forEach(el => {
-            el.addEventListener('click', function() {
-                const idx = parseInt(this.dataset.index);
-                const selected = currentOptions[idx];
-                checkAnswer(selected.word, wordData.word, idx);
-            });
+        const container = document.getElementById('options');
+        container.innerHTML = '';
+        
+        currentOptions.forEach(function(opt, i) {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.textContent = opt.meaning;
+            div.onclick = (function(idx) {
+                return function() {
+                    handleAnswer(idx);
+                };
+            })(i);
+            container.appendChild(div);
         });
 
         document.getElementById('quiz-card').classList.remove('hidden');
         document.getElementById('result-card').classList.add('hidden');
+        document.getElementById('finish-card').classList.add('hidden');
     }
 
-    function checkAnswer(selectedWord, correctWord, selectedIndex) {
+    function handleAnswer(selectedIndex) {
+        const wordData = vocabData[currentIndex];
+        const selectedWord = currentOptions[selectedIndex].word;
+        const correctWord = wordData.word;
         const isCorrect = selectedWord === correctWord;
+        
         results.push({word: correctWord, correct: isCorrect});
 
+        // 显示正确答案
         const options = document.querySelectorAll('.option');
-        options.forEach((opt, i) => {
+        options.forEach(function(opt, i) {
             if (currentOptions[i].word === correctWord) {
                 opt.classList.add('correct');
             } else if (i === selectedIndex && !isCorrect) {
@@ -233,26 +239,28 @@
             }
         });
 
-        setTimeout(() => showResult(correctWord, isCorrect), 500);
+        // 延迟显示结果页
+        setTimeout(function() {
+            showResult(wordData, isCorrect);
+        }, 500);
     }
 
-    function showResult(correctWord, isCorrect) {
-        const wordData = vocabData.find(v => v.word === correctWord);
+    function showResult(wordData, isCorrect) {
         const banner = document.getElementById('result-banner');
         banner.className = 'result ' + (isCorrect ? 'correct' : 'wrong');
-        banner.innerHTML = isCorrect ? '✅ 正确！' : '❌ 错误！';
+        banner.textContent = isCorrect ? '✅ 正确！' : '❌ 错误！';
 
         document.getElementById('result-word').textContent = wordData.word;
         document.getElementById('result-meaning').textContent = wordData.meaning;
 
-        // 高亮句子中的正确答案
-        const highlightedSentence = wordData.sentence.replace(
-            new RegExp(`\\b${wordData.word}\\b`, 'gi'),
-            `<span class="highlight">${wordData.word}</span>`
+        // 高亮句子
+        const highlighted = wordData.sentence.replace(
+            new RegExp('\\b' + wordData.word + '\\b', 'gi'),
+            '<span class="highlight">' + wordData.word + '</span>'
         );
-        document.getElementById('example-sentence').innerHTML = `<strong>例句：</strong>${highlightedSentence}`;
+        document.getElementById('example-sentence').innerHTML = '<strong>例句：</strong>' + highlighted;
 
-        // 显示所有选项
+        // 显示所有选项（英文+中文）
         let pool;
         if (wordData.pos.includes('n.') && !wordData.pos.includes('adj.') && !wordData.pos.includes('a.')) pool = nouns;
         else if (wordData.pos.includes('adj.') || wordData.pos.includes('a.')) pool = adjectives;
@@ -260,42 +268,48 @@
         else if (wordData.pos.includes('adv.')) pool = adverbs;
         else pool = nouns;
 
-        const others = pool.filter(w => w.word !== correctWord);
-        const allOptions = [...others.sort(() => Math.random() - 0.5).slice(0, 3), {word: wordData.word, meaning: wordData.meaning}];
-        const shuffledOptions = allOptions.sort(() => Math.random() - 0.5);
+        const others = pool.filter(function(w) { return w.word !== wordData.word; });
+        const allOptions = others.sort(function() { return Math.random() - 0.5; }).slice(0, 3);
+        allOptions.push({word: wordData.word, meaning: wordData.meaning});
+        
+        // 随机排序选项
+        allOptions.sort(function() { return Math.random() - 0.5; });
 
-        const optionsHtml = shuffledOptions.map(opt => {
-            const isCorrect = opt.word === correctWord;
-            return `<li>${isCorrect ? '<span class="correct-mark">✓ </span>' : ''}${opt.word} - ${opt.meaning}</li>`;
-        }).join('');
+        let optionsHtml = '';
+        allOptions.forEach(function(opt) {
+            const isCorrect = opt.word === wordData.word;
+            optionsHtml += '<li>' + (isCorrect ? '<span class="correct-mark">✓ </span>' : '') + opt.word + ' - ' + opt.meaning + '</li>';
+        });
         document.getElementById('options-list').innerHTML = optionsHtml;
+
+        // 绑定下一题按钮
+        document.getElementById('next-btn').onclick = function() {
+            currentIndex++;
+            renderQuestion();
+        };
 
         document.getElementById('quiz-card').classList.add('hidden');
         document.getElementById('result-card').classList.remove('hidden');
     }
 
-    function nextQuestion() {
-        currentIndex++;
-        showQuestion();
-    }
-
     function showFinish() {
-        const correct = results.filter(r => r.correct).length;
+        const correct = results.filter(function(r) { return r.correct; }).length;
         const incorrect = results.length - correct;
 
-        document.getElementById('score-text').textContent = `你答对了 ${correct} 题，答错了 ${incorrect} 题`;
+        document.getElementById('score-text').textContent = '你答对了 ' + correct + ' 题，答错了 ' + incorrect + ' 题';
 
         const endTime = new Date().toISOString();
-        const resultStr = `8|${correct}|${incorrect}|${startTime}|${endTime}|` + results.map(r => `${r.word}:${r.correct}`).join(',');
-        document.getElementById('result-code').textContent = resultStr;
+        const resultStr = '8|' + correct + '|' + incorrect + '|' + startTime + '|' + endTime + '|';
+        const resultsPart = results.map(function(r) { return r.word + ':' + r.correct; }).join(',');
+        document.getElementById('result-code').textContent = resultStr + resultsPart;
 
         document.getElementById('quiz-card').classList.add('hidden');
         document.getElementById('result-card').classList.add('hidden');
         document.getElementById('finish-card').classList.remove('hidden');
     }
 
-    startTime = new Date().toISOString();
-    showQuestion();
+    // 启动
+    renderQuestion();
     </script>
 </body>
 </html>
