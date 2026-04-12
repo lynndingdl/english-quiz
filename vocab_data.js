@@ -1,362 +1,357 @@
-// 英语单词测验数据 - 第1轮
+// 英语单词测验数据 - 第2轮
 // 包含50个重点单词（按下次复习时间和字母排序）
 
 const vocabData = [
   {
-    word: "Abide by",
-    meaning: "遵守",
-    pos: "v.",
-    sentence: "Citizens must abide by the law to maintain social order and stability.",
-    sentenceCn: "公民必须遵守法律以维护社会秩序和稳定。"
-  },
-  {
-    word: "Carry out",
-    meaning: "贯彻；执行；实现",
-    pos: "v.",
-    sentence: "The government decided to carry out a comprehensive survey on public health issues.",
-    sentenceCn: "政府决定开展一项关于公共卫生问题的全面调查。"
-  },
-  {
-    word: "accommodate",
-    meaning: "容纳，提供住宿，适应，顺应",
-    pos: "v.",
-    sentence: "The hotel can accommodate up to 500 guests during the peak season.",
-    sentenceCn: "这家酒店在旺季可以容纳多达500名客人。"
-  },
-  {
-    word: "accomplish",
-    meaning: "完成，实现，达到",
-    pos: "v.",
-    sentence: "Through hard work and determination, she accomplished her goal of becoming a doctor.",
-    sentenceCn: "通过努力工作和坚定的决心，她实现了成为医生的目标。"
-  },
-  {
-    word: "accurate",
-    meaning: "准确的，精确的，正确无误的",
-    pos: "adj.",
-    sentence: "It is crucial to provide accurate information when filling out official documents.",
-    sentenceCn: "填写正式文件时提供准确信息至关重要。"
-  },
-  {
-    word: "carrier",
-    actualWord: "carriers",
-    meaning: "搬运者；载体；航空母舰",
+    word: "etiquette",
+    meaning: "礼节；礼仪",
     pos: "n.",
-    sentence: "Aircraft carriers play a vital role in modern naval warfare and power projection.",
-    sentenceCn: "航空母舰在现代海战和力量投射中发挥着至关重要的作用。"
+    sentence: "Understanding proper business etiquette is essential for successful professional interactions.",
+    sentenceCn: "了解正确的商务礼仪对于成功的职业交往至关重要。"
   },
   {
-    word: "decay",
-    meaning: "腐烂；衰退",
-    pos: "v./n.",
-    sentence: "Without proper maintenance, the ancient building began to decay rapidly.",
-    sentenceCn: "没有适当的维护，这座古建筑开始迅速衰败。"
-  },
-  {
-    word: "deceive",
-    meaning: "欺骗；蒙蔽",
+    word: "evacuate",
+    meaning: "撤离；疏散",
     pos: "v.",
-    sentence: "The company deceived consumers by making false claims about their product's benefits.",
-    sentenceCn: "该公司通过对其产品功效的虚假宣传欺骗消费者。"
+    sentence: "Residents were ordered to evacuate the area due to the approaching hurricane.",
+    sentenceCn: "居民被命令撤离该地区，因为飓风正在逼近。"
   },
   {
-    word: "decent",
-    meaning: "体面的；正派的；像样的",
+    word: "evade",
+    meaning: "逃避；避开",
+    pos: "v.",
+    sentence: "The suspect tried to evade the police by fleeing through the back alley.",
+    sentenceCn: "嫌疑人试图通过后巷逃跑来躲避警察。"
+  },
+  {
+    word: "evaporate",
+    meaning: "蒸发；消失",
+    pos: "v.",
+    sentence: "The water in the shallow pond quickly evaporated under the scorching sun.",
+    sentenceCn: "浅池塘里的水在烈日下迅速蒸发。",
+    actualWord: "evaporated"
+  },
+  {
+    word: "evident",
+    meaning: "明显的",
     pos: "adj.",
-    sentence: "Every citizen deserves a decent standard of living and access to basic healthcare.",
-    sentenceCn: "每个公民都应享有体面的生活水平和基本医疗服务。"
+    sentence: "It was evident from his expression that he was deeply concerned about the situation.",
+    sentenceCn: "从他的表情可以明显看出他对局势深感忧虑。"
   },
   {
-    word: "deduce",
-    meaning: "推断；演绎",
-    pos: "v.",
-    sentence: "From the available evidence, we can deduce that the suspect was present at the scene.",
-    sentenceCn: "从现有证据，我们可以推断嫌疑人当时在现场。"
+    word: "expertise",
+    meaning: "专业知识；专长",
+    pos: "n.",
+    sentence: "The company hired a consultant with extensive expertise in international marketing.",
+    sentenceCn: "公司聘请了一位在国际营销方面有丰富专业知识的顾问。"
   },
   {
-    word: "defy",
-    meaning: "挑衅；违抗；藐视",
-    pos: "v.",
-    sentence: "The rebels continued to defy the government's authority despite severe consequences.",
-    sentenceCn: "尽管面临严重后果，叛乱分子继续蔑视政府的权威。"
-  },
-  {
-    word: "deliberate",
-    meaning: "故意的；深思熟虑的",
+    word: "extravagant",
+    meaning: "奢侈的；铺张的",
     pos: "adj.",
-    sentence: "The jury concluded that the defendant's actions were deliberate and premeditated.",
-    sentenceCn: "陪审团认定被告的行为是蓄意且有预谋的。"
+    sentence: "The celebrity's extravagant lifestyle was often featured in tabloid magazines.",
+    sentenceCn: "这位名人的奢侈生活方式经常出现在八卦杂志上。"
   },
   {
-    word: "denote",
-    meaning: "象征；表示",
-    pos: "v.",
-    sentence: "In this context, the color red denotes danger and requires immediate attention.",
-    sentenceCn: "在这种语境下，红色表示危险，需要立即关注。"
-  },
-  {
-    word: "denounce",
-    actualWord: "denounced",
-    meaning: "谴责；告发",
-    pos: "v.",
-    sentence: "Many countries denounced the military coup as a violation of democratic principles.",
-    sentenceCn: "许多国家谴责这次军事政变违反了民主原则。"
-  },
-  {
-    word: "depict",
-    actualWord: "depicts",
-    meaning: "描绘；描述",
-    pos: "v.",
-    sentence: "The novel vividly depicts the harsh reality of life during the Great Depression.",
-    sentenceCn: "这部小说生动地描绘了大萧条时期生活的残酷现实。"
-  },
-  {
-    word: "deprive",
-    actualWord: "deprived",
-    meaning: "剥夺；使丧失",
-    pos: "v.",
-    sentence: "No one should be deprived of their basic human rights under any circumstances.",
-    sentenceCn: "在任何情况下，任何人都不应被剥夺基本人权。"
-  },
-  {
-    word: "detach",
-    meaning: "分离；拆开",
-    pos: "v.",
-    sentence: "The surgeon carefully detached the infected tissue from the healthy organ.",
-    sentenceCn: "外科医生小心翼翼地将感染组织与健康器官分离。"
-  },
-  {
-    word: "deteriorate",
-    meaning: "恶化；变坏",
-    pos: "v.",
-    sentence: "His health condition began to deteriorate rapidly after he stopped taking medication.",
-    sentenceCn: "停止服药后，他的健康状况开始迅速恶化。"
-  },
-  {
-    word: "determine",
-    meaning: "决定；确定；决心",
-    pos: "v.",
-    sentence: "Genetic factors determine to a large extent how individuals respond to certain medications.",
-    sentenceCn: "遗传因素在很大程度上决定了个个体对某些药物的反应。"
-  },
-  {
-    word: "dialect",
-    meaning: "方言",
+    word: "faculty",
+    meaning: "全体教员；能力",
     pos: "n.",
-    sentence: "Linguists study how dialects vary across different regions and social groups.",
-    sentenceCn: "语言学家研究方言在不同地区和社会群体中的差异。"
+    sentence: "The university faculty held a meeting to discuss the new curriculum changes.",
+    sentenceCn: "大学全体教员召开会议讨论新的课程改革。"
   },
   {
-    word: "dilute",
-    meaning: "稀释；变淡",
-    pos: "v.",
-    sentence: "Adding water will dilute the concentration of the solution and reduce its effectiveness.",
-    sentenceCn: "加水会稀释溶液的浓度并降低其效果。"
-  },
-  {
-    word: "diplomat",
-    meaning: "外交官",
+    word: "famine",
+    meaning: "饥荒",
     pos: "n.",
-    sentence: "The diplomat successfully negotiated a peace treaty between the two warring nations.",
-    sentenceCn: "这位外交官成功地在两个交战国之间谈判达成了和平条约。"
+    sentence: "The prolonged drought led to a severe famine affecting millions of people.",
+    sentenceCn: "持续的干旱导致了严重的饥荒，影响了数百万人。"
   },
   {
-    word: "discharge",
-    actualWord: "discharging",
-    meaning: "释放；排出；解雇",
-    pos: "v./n.",
-    sentence: "The factory was fined for illegally discharging toxic waste into the river.",
-    sentenceCn: "这家工厂因非法向河流排放有毒废物而被罚款。"
+    word: "hostage",
+    meaning: "人质",
+    pos: "n.",
+    sentence: "The negotiations focused on securing the safe release of the hostages.",
+    sentenceCn: "谈判的重点是确保人质安全获释。"
   },
   {
-    word: "disguise",
-    meaning: "伪装；掩饰",
-    pos: "v./n.",
-    sentence: "The spy disguised himself as a journalist to gain access to the restricted area.",
-    sentenceCn: "间谍伪装成记者以进入限制区域。"
+    word: "household",
+    meaning: "家庭的；家务",
+    pos: "n./adj.",
+    sentence: "Household appliances have become increasingly smart and energy-efficient.",
+    sentenceCn: "家用电器变得越来越智能和节能。"
   },
   {
-    word: "dispel",
-    meaning: "驱散；消除",
+    word: "ignite",
+    meaning: "点燃；引发",
     pos: "v.",
-    sentence: "The new evidence helped dispel doubts about the defendant's innocence.",
-    sentenceCn: "新证据有助于消除对被告清白的疑虑。"
+    sentence: "The controversial policy ignited a heated debate among citizens.",
+    sentenceCn: "这项有争议的政策引发了市民之间的激烈辩论。"
   },
   {
-    word: "dispense",
-    meaning: "分配；分发；免除",
+    word: "immediate",
+    meaning: "立即的；直接的",
+    pos: "adj.",
+    sentence: "The situation required immediate attention from the emergency response team.",
+    sentenceCn: "这种情况需要紧急反应小组立即关注。"
+  },
+  {
+    word: "immense",
+    meaning: "巨大的；无限的",
+    pos: "adj.",
+    sentence: "The project had an immense impact on the local community's economic development.",
+    sentenceCn: "该项目对当地社区的经济发展产生了巨大影响。"
+  },
+  {
+    word: "impart",
+    meaning: "传授；告知",
     pos: "v.",
-    sentence: "Pharmacists are authorized to dispense prescription medications to patients.",
-    sentenceCn: "药剂师有权向患者配发处方药物。"
+    sentence: "Experienced teachers impart valuable knowledge and skills to their students.",
+    sentenceCn: "经验丰富的教师向学生传授宝贵的知识和技能。"
   },
   {
-    word: "dispute",
-    meaning: "争论；纠纷",
+    word: "impeach",
+    meaning: "弹劾；控告",
+    pos: "v.",
+    sentence: "The opposition party attempted to impeach the president over corruption allegations.",
+    sentenceCn: "反对党试图因腐败指控弹劾总统。"
+  },
+  {
+    word: "impetus",
+    meaning: "动力；推动力",
+    pos: "n.",
+    sentence: "The government's new policy provided the impetus for renewable energy development.",
+    sentenceCn: "政府的新政策为可再生能源发展提供了动力。"
+  },
+  {
+    word: "impose",
+    meaning: "强加；征收",
+    pos: "v.",
+    sentence: "The government decided to impose stricter regulations on environmental protection.",
+    sentenceCn: "政府决定对环境保护实施更严格的法规。"
+  },
+  {
+    word: "impoverish",
+    meaning: "使贫困；使枯竭",
+    pos: "v.",
+    sentence: "Continuous natural disasters can impoverish an entire region's economy.",
+    sentenceCn: "持续的自然灾害可能使整个地区的经济陷入贫困。"
+  },
+  {
+    word: "inaccessible",
+    meaning: "达不到的；难接近的",
+    pos: "adj.",
+    sentence: "The remote mountain village remained inaccessible during the winter months.",
+    sentenceCn: "这个偏远的山村在冬季仍然无法到达。"
+  },
+  {
+    word: "inaugurate",
+    meaning: "就职；开创",
+    pos: "v.",
+    sentence: "The newly elected president will inaugurate a series of reforms next month.",
+    sentenceCn: "新当选的总统下个月将开启一系列改革。"
+  },
+  {
+    word: "incentive",
+    meaning: "激励；动机",
+    pos: "n.",
+    sentence: "The company offered financial incentives to encourage employee innovation.",
+    sentenceCn: "公司提供经济激励以鼓励员工创新。"
+  },
+  {
+    word: "incidentally",
+    meaning: "顺便提一句；偶然地",
+    pos: "adv.",
+    sentence: "Incidentally, I ran into our former colleague at the conference yesterday.",
+    sentenceCn: "顺便说一句，我昨天在会议上遇到了我们以前的同事。"
+  },
+  {
+    word: "incompatible",
+    meaning: "不兼容的；不相容的",
+    pos: "adj.",
+    sentence: "The two software systems were incompatible and could not share data.",
+    sentenceCn: "这两个软件系统不兼容，无法共享数据。"
+  },
+  {
+    word: "incur",
+    meaning: "招致；遭受",
+    pos: "v.",
+    sentence: "The company incurred significant losses due to the market downturn.",
+    sentenceCn: "由于市场低迷，公司遭受了重大损失。"
+  },
+  {
+    word: "indefinite",
+    meaning: "不确定的；无限期的",
+    pos: "adj.",
+    sentence: "The committee postponed the decision for an indefinite period.",
+    sentenceCn: "委员会将决定无限期推迟。"
+  },
+  {
+    word: "indigenous",
+    meaning: "本土的；土著的",
+    pos: "adj.",
+    sentence: "Many indigenous communities work to preserve their traditional cultures.",
+    sentenceCn: "许多土著社区致力于保护他们的传统文化。"
+  },
+  {
+    word: "indignant",
+    meaning: "愤慨的；义愤的",
+    pos: "adj.",
+    sentence: "The citizens became indignant when they learned about the unfair treatment.",
+    sentenceCn: "当市民们得知不公平待遇时，他们感到愤慨。"
+  },
+  {
+    word: "indispensable",
+    meaning: "不可缺少的",
+    pos: "adj.",
+    sentence: "Smartphones have become indispensable tools in modern daily life.",
+    sentenceCn: "智能手机已成为现代日常生活中不可缺少的工具。"
+  },
+  {
+    word: "induce",
+    meaning: "诱导；引起",
+    pos: "v.",
+    sentence: "Certain medications can induce sleep as a side effect.",
+    sentenceCn: "某些药物可能会引起嗜睡作为副作用。"
+  },
+  {
+    word: "indulge",
+    meaning: "纵容；沉迷",
+    pos: "v.",
+    sentence: "She occasionally indulges in chocolate despite her strict diet.",
+    sentenceCn: "尽管严格控制饮食，她偶尔还是会沉迷于巧克力。"
+  },
+  {
+    word: "inevitable",
+    meaning: "不可避免的",
+    pos: "adj.",
+    sentence: "Change is inevitable in any organization's development process.",
+    sentenceCn: "在任何组织的发展过程中，变化都是不可避免的。"
+  },
+  {
+    word: "inflict",
+    meaning: "造成；施加",
+    pos: "v.",
+    sentence: "The severe storm inflicted extensive damage on coastal communities.",
+    sentenceCn: "严重的风暴给沿海社区造成了广泛破坏。"
+  },
+  {
+    word: "infringe",
+    meaning: "侵犯；违反",
+    pos: "v.",
+    sentence: "The company was sued for allegedly infringing on another's patent rights.",
+    sentenceCn: "该公司因涉嫌侵犯他人的专利权而被起诉。",
+    actualWord: "infringing"
+  },
+  {
+    word: "ingenious",
+    meaning: " ingenious独创的；精巧的",
+    pos: "adj.",
+    sentence: "The engineer came up with an ingenious solution to the complex problem.",
+    sentenceCn: "工程师想出了一个巧妙的解决方案来解决这个复杂问题。"
+  },
+  {
+    word: "inhibit",
+    meaning: "抑制；阻止",
+    pos: "v.",
+    sentence: "High interest rates can inhibit consumer spending and economic growth.",
+    sentenceCn: "高利率可能会抑制消费者支出和经济增长。"
+  },
+  {
+    word: "initiative",
+    meaning: "主动性；倡议",
+    pos: "n.",
+    sentence: "The government launched a new initiative to reduce carbon emissions.",
+    sentenceCn: "政府发起了一项减少碳排放的新倡议。"
+  },
+  {
+    word: "innumerable",
+    meaning: "无数的；数不清的",
+    pos: "adj.",
+    sentence: "There are innumerable stars visible in the night sky from rural areas.",
+    sentenceCn: "从农村地区可以看到夜空中无数的星星。"
+  },
+  {
+    word: "inscribe",
+    meaning: "刻写；题写",
+    pos: "v.",
+    sentence: "The author inscribed a personal message on the title page of the book.",
+    sentenceCn: "作者在书的扉页上题写了个人信息。"
+  },
+  {
+    word: "insomnia",
+    meaning: "失眠症",
+    pos: "n.",
+    sentence: "Chronic insomnia can have serious effects on both physical and mental health.",
+    sentenceCn: "慢性失眠症会对身心健康产生严重影响。"
+  },
+  {
+    word: "insult",
+    meaning: "侮辱；冒犯",
     pos: "n./v.",
-    sentence: "The two countries have been in a long-standing dispute over territorial boundaries.",
-    sentenceCn: "两国在领土边界问题上长期存在争议。"
+    sentence: "Making derogatory comments about someone's appearance is an insult.",
+    sentenceCn: "对某人的外表发表贬损言论是一种侮辱。"
   },
   {
-    word: "disturb",
-    meaning: "打扰；弄乱",
-    pos: "v.",
-    sentence: "Please do not disturb the experiment while it is in progress.",
-    sentenceCn: "实验进行期间请不要打扰。"
+    word: "intact",
+    meaning: "完整的；完好无损的",
+    pos: "adj.",
+    sentence: "Despite the earthquake, the historic building remained largely intact.",
+    sentenceCn: "尽管发生了地震，这座历史建筑仍然基本完好无损。"
   },
   {
-    word: "divert",
-    meaning: "转移；使转向；娱乐",
-    pos: "v.",
-    sentence: "The government decided to divert funds from defense to education programs.",
-    sentenceCn: "政府决定将资金从国防转向教育项目。"
+    word: "eccentric",
+    meaning: "古怪的；异乎寻常的",
+    pos: "adj.",
+    sentence: "The eccentric artist was known for his unconventional lifestyle and bizarre paintings.",
+    sentenceCn: "这位古怪的艺术家以其非传统的生活方式和奇异的画作而闻名。"
   },
   {
-    word: "divide",
-    meaning: "划分；分开；除",
-    pos: "v.",
-    sentence: "The issue of immigration has deeply divided public opinion in the country.",
-    sentenceCn: "移民问题在该国深刻地分裂了公众舆论。"
-  },
-  {
-    word: "donation",
-    meaning: "捐赠；捐款",
+    word: "fatigue",
+    meaning: "疲劳；疲乏",
     pos: "n.",
-    sentence: "The charitable organization received a generous donation from an anonymous benefactor.",
-    sentenceCn: "该慈善组织收到了一位匿名捐助者的慷慨捐赠。"
+    sentence: "Prolonged work without adequate rest can lead to severe fatigue.",
+    sentenceCn: "长时间工作而没有适当休息会导致严重疲劳。"
   },
   {
-    word: "doom",
-    meaning: "厄运；注定",
-    pos: "n./v.",
-    sentence: "The project was doomed to fail from the start due to insufficient funding.",
-    sentenceCn: "由于资金不足，该项目从一开始就注定要失败。"
-  },
-  {
-    word: "downright",
-    meaning: "彻底的；十足地",
-    pos: "adj./adv.",
-    sentence: "His behavior at the meeting was downright rude and completely unacceptable.",
-    sentenceCn: "他在会议上的行为简直粗鲁，完全不可接受。"
-  },
-  {
-    word: "dread",
-    meaning: "恐惧；担心",
-    pos: "v./n.",
-    sentence: "Students often dread the thought of taking final examinations.",
-    sentenceCn: "学生们经常害怕期末考试的想法。"
-  },
-  {
-    word: "dubious",
-    meaning: "可疑的；怀疑的",
-    pos: "adj.",
-    sentence: "Many consumers remain dubious about the safety of genetically modified foods.",
-    sentenceCn: "许多消费者对转基因食品的安全性仍持怀疑态度。"
-  },
-  {
-    word: "earnest",
-    meaning: "认真的；诚挚的",
-    pos: "adj.",
-    sentence: "She made an earnest attempt to reconcile with her estranged family members.",
-    sentenceCn: "她真诚地尝试与疏远的家庭成员和解。"
-  },
-  {
-    word: "editorial",
-    meaning: "编辑的；社论",
-    pos: "adj./n.",
-    sentence: "The newspaper published an editorial criticizing the government's economic policies.",
-    sentenceCn: "该报纸发表了一篇批评政府经济政策的社论。"
-  },
-  {
-    word: "elevate",
-    meaning: "提高；抬起；提拔",
-    pos: "v.",
-    sentence: "Education has the power to elevate individuals from poverty to prosperity.",
-    sentenceCn: "教育有能力使个人从贫困提升到富裕。"
-  },
-  {
-    word: "eligible",
-    meaning: "有资格的；合格的",
-    pos: "adj.",
-    sentence: "Only citizens over the age of 18 are eligible to vote in national elections.",
-    sentenceCn: "只有18岁以上的公民才有资格在全国选举中投票。"
-  },
-  {
-    word: "embody",
-    actualWord: "embodies",
-    meaning: "体现；包含",
-    pos: "v.",
-    sentence: "The statue embodies the spirit of freedom that the nation was founded upon.",
-    sentenceCn: "这座雕像体现了国家建立时的自由精神。"
-  },
-  {
-    word: "eminent",
-    meaning: "卓越的；著名的",
-    pos: "adj.",
-    sentence: "The conference was attended by eminent scientists from around the world.",
-    sentenceCn: "会议吸引了来自世界各地的杰出科学家参加。"
-  },
-  {
-    word: "encounter",
-    meaning: "遭遇；遇到",
-    pos: "v./n.",
-    sentence: "Researchers often encounter unexpected challenges when conducting field studies.",
-    sentenceCn: "研究人员进行实地研究时经常遇到意想不到的挑战。"
-  },
-  {
-    word: "endorse",
-    actualWord: "endorsed",
-    meaning: "背书；赞同；代言",
-    pos: "v.",
-    sentence: "Several celebrities endorsed the new environmental protection campaign.",
-    sentenceCn: "几位名人为这项新的环境保护运动代言。"
-  },
-  {
-    word: "entail",
-    meaning: "牵涉；必然导致",
-    pos: "v.",
-    sentence: "The project will entail significant investment and long-term commitment from all parties.",
-    sentenceCn: "该项目将需要各方的重大投资和长期承诺。"
-  },
-  {
-    word: "enumerate",
-    meaning: "列举",
-    pos: "v.",
-    sentence: "The report enumerates the various factors contributing to climate change.",
-    sentenceCn: "报告列举了导致气候变化的各种因素。"
-  },
-  {
-    word: "epoch",
-    meaning: "时代；纪元",
+    word: "feat",
+    meaning: "壮举；功绩",
     pos: "n.",
-    sentence: "The Renaissance was an epoch of great cultural and artistic achievement.",
-    sentenceCn: "文艺复兴是一个伟大的文化和艺术成就的时代。"
+    sentence: "Completing the marathon in under three hours was an impressive feat.",
+    sentenceCn: "在三个小时内完成马拉松是一项令人印象深刻的壮举。"
   },
   {
-    word: "erect",
-    meaning: "竖立；建立",
-    pos: "v.",
-    sentence: "The city decided to erect a monument in honor of the fallen soldiers.",
-    sentenceCn: "城市决定建立一座纪念碑以纪念阵亡士兵。"
-  },
-  {
-    word: "errand",
-    meaning: "差使；杂事",
-    pos: "n.",
-    sentence: "She went to the post office to run an errand for her elderly neighbor.",
-    sentenceCn: "她去邮局为她的年迈邻居办一件差事。"
-  },
-  {
-    word: "escort",
-    meaning: "护送；护卫",
-    pos: "v./n.",
-    sentence: "The security team escorted the visiting dignitary to the conference venue.",
-    sentenceCn: "安保团队护送来访的贵宾前往会议地点。"
-  },
-  {
-    word: "eternal",
-    meaning: "永恒的",
+    word: "feeble",
+    meaning: "虚弱的；无力的",
     pos: "adj.",
-    sentence: "The concept of eternal life is central to many religious beliefs.",
-    sentenceCn: "永恒生命的概念是许多宗教信仰的核心。"
+    sentence: "The patient made a feeble attempt to sit up in bed.",
+    sentenceCn: "病人虚弱地试图从床上坐起来。"
+  },
+  {
+    word: "feminine",
+    meaning: "女性的；女性化的",
+    pos: "adj.",
+    sentence: "Many cultures have different expectations for feminine behavior.",
+    sentenceCn: "许多文化对女性化的行为有不同的期望。"
+  },
+  {
+    word: "fiscal",
+    meaning: "财政的；会计的",
+    pos: "adj.",
+    sentence: "The government announced new fiscal policies to stimulate economic growth.",
+    sentenceCn: "政府宣布了新的财政政策以刺激经济增长。"
+  },
+  {
+    word: "fixture",
+    meaning: "固定装置；固定设施",
+    pos: "n.",
+    sentence: "Lighting fixtures can significantly affect the ambiance of a room.",
+    sentenceCn: "照明设备可以显著影响房间的氛围。"
+  },
+  {
+    word: "flatter",
+    meaning: "奉承；使高兴",
+    pos: "v.",
+    sentence: "Some people flatter others to gain favor or advantage.",
+    sentenceCn: "有些人奉承他人以获得好感或优势。"
   }
 ];
