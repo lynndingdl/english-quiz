@@ -325,6 +325,7 @@
         let endTime;
         let results = [];
         let answered = false;
+        let currentOptions = []; // 保存当前题目的选项
 
         // 按词性分组单词
         const wordsByPos = {};
@@ -371,6 +372,7 @@
             // 生成选项
             const distractors = getDistractors(current);
             const options = [...distractors, current].sort(() => Math.random() - 0.5);
+            currentOptions = options; // 保存选项，供结果页使用
             
             const optionsDiv = document.getElementById('options');
             optionsDiv.innerHTML = '';
@@ -431,9 +433,8 @@
             resultTitle.textContent = isCorrect ? '✅ 回答正确！' : '❌ 回答错误';
             resultTitle.className = 'result-title ' + (isCorrect ? 'correct' : 'wrong');
             
-            // 获取所有选项（包括正确答案和3个干扰项）
-            const distractors = getDistractors(target);
-            const allOptions = [...distractors, target].sort(() => Math.random() - 0.5);
+            // 使用保存的选项，而不是重新生成
+            const allOptions = currentOptions;
             
             // 显示所有选项的中文释义
             const resultDetail = document.getElementById('result-detail');
@@ -517,6 +518,7 @@
             wrongCount = 0;
             results = [];
             answered = false;
+            currentOptions = [];
             
             document.getElementById('final-card').style.display = 'none';
             startTime = new Date();
