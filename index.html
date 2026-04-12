@@ -3,274 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语单词测验 - 第3轮</title>
+    <title>英语单词第4轮例句式测验</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
-
+        
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
-
+        
         .header {
             text-align: center;
-            color: white;
             margin-bottom: 30px;
         }
-
+        
         .header h1 {
+            color: #333;
             font-size: 28px;
             margin-bottom: 10px;
         }
-
-        .header .progress {
+        
+        .progress-info {
+            color: #666;
             font-size: 16px;
-            opacity: 0.9;
         }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .question-number {
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .sentence {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #2d3748;
+        
+        .question-container {
             margin-bottom: 30px;
         }
-
+        
+        .question-number {
+            color: #667eea;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .sentence {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
         .blank {
             display: inline-block;
             min-width: 120px;
             border-bottom: 2px solid #667eea;
             margin: 0 5px;
-        }
-
-        .options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .option {
-            padding: 16px 20px;
-            background: #f7fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 16px;
             text-align: center;
-        }
-
-        .option:hover {
-            background: #edf2f7;
-            border-color: #667eea;
-            transform: translateY(-2px);
-        }
-
-        .option.selected {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .option.correct {
-            background: #48bb78;
-            color: white;
-            border-color: #48bb78;
-        }
-
-        .option.wrong {
-            background: #f56565;
-            color: white;
-            border-color: #f56565;
-        }
-
-        .result-card {
-            display: none;
-        }
-
-        .result-title {
-            font-size: 24px;
             font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .result-title.correct {
-            color: #48bb78;
-        }
-
-        .result-title.wrong {
-            color: #f56565;
-        }
-
-        .result-detail {
-            background: #f7fafc;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .result-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .result-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .result-word {
-            font-size: 18px;
-            font-weight: 600;
-            color: #2d3748;
-            margin-bottom: 5px;
-        }
-
-        .result-word.target {
             color: #667eea;
         }
-
-        .result-meaning {
-            color: #718096;
-            font-size: 14px;
-            line-height: 1.6;
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
-
-        .result-sentence {
-            margin-top: 20px;
-            padding: 15px;
-            background: #edf2f7;
-            border-radius: 8px;
-            color: #4a5568;
-            font-size: 14px;
+        
+        .option-btn {
+            padding: 18px 25px;
+            font-size: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .option-btn:hover {
+            border-color: #667eea;
+            background: #f0f3ff;
+            transform: translateY(-2px);
+        }
+        
+        .option-btn:active {
+            transform: translateY(0);
+        }
+        
+        .option-btn.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .option-btn.wrong {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        
+        .result-container {
+            display: none;
+        }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .result-header h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .score-info {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .score-info strong {
+            color: #667eea;
+            font-size: 24px;
+        }
+        
+        .answer-detail {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .answer-detail .word-info {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .answer-detail .word-info .pos {
+            font-size: 16px;
+            color: #666;
+            margin-left: 10px;
+        }
+        
+        .answer-detail .full-sentence {
+            font-size: 18px;
             line-height: 1.8;
+            color: #333;
+            margin-bottom: 10px;
         }
-
-        .btn {
+        
+        .answer-detail .highlight {
+            color: #28a745;
+            font-weight: bold;
+            background: #d4edda;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        .answer-detail .translation {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .answer-detail .options-review {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .answer-detail .options-review h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .answer-detail .options-review .option-item {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .answer-detail .options-review .option-item.correct {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .answer-detail .options-review .option-item .checkmark {
+            margin-left: 5px;
+        }
+        
+        .speech-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            color: #667eea;
+            font-size: 16px;
+        }
+        
+        .restart-btn {
+            display: block;
             width: 100%;
-            padding: 16px;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: bold;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            margin-top: 30px;
+            transition: all 0.3s;
         }
-
-        .btn:hover {
+        
+        .restart-btn:hover {
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .final-card {
-            display: none;
-            text-align: center;
-        }
-
-        .final-title {
-            font-size: 32px;
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-
-        .final-stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: bold;
-            color: #2d3748;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #718096;
-            margin-top: 5px;
-        }
-
-        .result-code {
-            background: #f7fafc;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            word-break: break-all;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #4a5568;
-            text-align: left;
-        }
-
-        .copy-btn {
-            background: #48bb78;
-            margin-bottom: 15px;
-        }
-
-        .restart-btn {
-            background: #718096;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 15px;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
-
-            .card {
+        
+        @media (max-width: 600px) {
+            .container {
                 padding: 20px;
             }
-
-            .sentence {
-                font-size: 16px;
+            
+            .header h1 {
+                font-size: 22px;
             }
-
-            .option {
-                padding: 14px 16px;
-                font-size: 15px;
+            
+            .sentence {
+                font-size: 18px;
+            }
+            
+            .options {
+                grid-template-columns: 1fr;
+            }
+            
+            .option-btn {
+                font-size: 16px;
             }
         }
     </style>
@@ -278,256 +262,244 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>英语单词测验</h1>
-            <div class="progress" id="progress">第 1 题 / 共 50 题</div>
+            <h1>英语单词第4轮例句式测验</h1>
+            <div class="progress-info" id="progressInfo">题目：0/50</div>
         </div>
-
-        <!-- 答题卡片 -->
-        <div class="card" id="question-card">
-            <div class="question-number" id="question-number">Question 1</div>
-            <div class="sentence" id="sentence"></div>
-            <div class="options" id="options"></div>
+        
+        <div class="question-container" id="questionContainer">
+            <!-- 题目内容将通过JavaScript动态生成 -->
         </div>
-
-        <!-- 结果卡片 -->
-        <div class="card result-card" id="result-card">
-            <div class="result-title" id="result-title"></div>
-            <div class="result-detail" id="result-detail"></div>
-            <div class="result-sentence" id="result-sentence"></div>
-            <button class="btn" onclick="nextQuestion()">下一题</button>
-        </div>
-
-        <!-- 最终结果卡片 -->
-        <div class="card final-card" id="final-card">
-            <div class="final-title">🎉 测验完成！</div>
-            <div class="final-stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="correct-count">0</div>
-                    <div class="stat-label">答对</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="wrong-count">0</div>
-                    <div class="stat-label">答错</div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-header">
+                <h2>测验完成！</h2>
+                <div class="score-info">
+                    答对 <strong id="correctCount">0</strong> 题，共 50 题
                 </div>
             </div>
-            <div class="result-code" id="result-code"></div>
-            <button class="btn copy-btn" onclick="copyResult()">📋 复制结果码</button>
-            <button class="btn restart-btn" onclick="restart()">重新开始</button>
+            <div id="answerDetails">
+                <!-- 答案详情将通过JavaScript动态生成 -->
+            </div>
+            <button class="restart-btn" onclick="restartQuiz()">重新开始</button>
         </div>
     </div>
-
-    <script src="vocab_data.js?v=3"></script>
+    
+    <script src="vocab_data.js?v=4"></script>
     <script>
-        let currentIndex = 0;
-        let correctCount = 0;
-        let wrongCount = 0;
-        let startTime;
-        let endTime;
-        let results = [];
-        let answered = false;
-        let currentOptions = []; // 保存当前题目的选项
-
-        // 按词性分组单词
-        const wordsByPos = {};
-        vocabData.forEach(item => {
-            const pos = item.pos.split('/')[0].trim(); // 取第一个词性
-            if (!wordsByPos[pos]) {
-                wordsByPos[pos] = [];
-            }
-            wordsByPos[pos].push(item);
-        });
-
-        // 获取相同词性的干扰选项
-        function getDistractors(targetWord, count = 3) {
-            const pos = targetWord.pos.split('/')[0].trim();
-            const candidates = wordsByPos[pos] ? wordsByPos[pos].filter(w => w.word !== targetWord.word) : [];
-            
-            // 如果同词性单词不够，从所有单词中随机选
-            if (candidates.length < count) {
-                const allOthers = vocabData.filter(w => w.word !== targetWord.word);
-                const shuffled = allOthers.sort(() => Math.random() - 0.5);
-                return shuffled.slice(0, count);
-            }
-            
-            // 随机打乱并选择
-            const shuffled = candidates.sort(() => Math.random() - 0.5);
-            return shuffled.slice(0, count);
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        let startTime = null;
+        let endTime = null;
+        let answers = [];
+        let questions = [];
+        
+        // 初始化
+        function init() {
+            startTime = new Date();
+            generateQuestions();
+            showQuestion();
         }
-
-        // 创建题目
-        function createQuestion() {
-            answered = false;
-            const current = vocabData[currentIndex];
-            
-            // 更新进度
-            document.getElementById('progress').textContent = `第 ${currentIndex + 1} 题 / 共 ${vocabData.length} 题`;
-            document.getElementById('question-number').textContent = `Question ${currentIndex + 1}`;
-            
-            // 显示例句（挖空目标单词）
-            const sentence = current.sentence;
-            const wordToBlank = current.actualWord || current.word; // 优先使用actualWord
-            const blankSentence = sentence.replace(new RegExp(wordToBlank, 'gi'), '<span class="blank">_______</span>');
-            document.getElementById('sentence').innerHTML = blankSentence;
-            
-            // 生成选项
-            const distractors = getDistractors(current);
-            const options = [...distractors, current].sort(() => Math.random() - 0.5);
-            currentOptions = options; // 保存选项，供结果页使用
-            
-            const optionsDiv = document.getElementById('options');
-            optionsDiv.innerHTML = '';
-            
-            options.forEach((option, index) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option';
-                optionDiv.textContent = option.word;
-                optionDiv.onclick = () => selectOption(optionDiv, option, current);
-                optionsDiv.appendChild(optionDiv);
-            });
-            
-            // 显示答题卡片
-            document.getElementById('question-card').style.display = 'block';
-            document.getElementById('result-card').style.display = 'none';
+        
+        // 生成题目（随机打乱）
+        function generateQuestions() {
+            questions = [...vocabData];
+            // 随机打乱题目顺序
+            for (let i = questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questions[i], questions[j]] = [questions[j], questions[i]];
+            }
         }
-
-        // 选择选项
-        function selectOption(element, selected, target) {
-            if (answered) return;
-            answered = true;
+        
+        // 显示题目
+        function showQuestion() {
+            const container = document.getElementById('questionContainer');
+            const progressInfo = document.getElementById('progressInfo');
             
-            const isCorrect = selected.word === target.word;
+            if (currentQuestion >= questions.length) {
+                showResult();
+                return;
+            }
             
-            // 记录结果
-            results.push({
-                word: target.word,
-                correct: isCorrect
+            const question = questions[currentQuestion];
+            progressInfo.textContent = `题目：${currentQuestion + 1}/${questions.length}`;
+            
+            // 生成选项（正确答案 + 3个干扰项）
+            const options = generateOptions(question);
+            
+            // 生成挖空句子
+            const blankSentence = createBlankSentence(question);
+            
+            container.innerHTML = `
+                <div class="question-number">第 ${currentQuestion + 1} 题</div>
+                <div class="sentence">${blankSentence}</div>
+                <div class="options">
+                    ${options.map((opt, idx) => `
+                        <button class="option-btn" onclick="selectOption('${opt.word}', '${question.word}')">
+                            ${opt.word}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        // 生成挖空句子
+        function createBlankSentence(question) {
+            const targetWord = question.actualWord || question.word;
+            const englishSentence = question.sentence.split('。')[0];
+            const regex = new RegExp(`\\b${targetWord}\\b`, 'gi');
+            return englishSentence.replace(regex, '<span class="blank">______</span>');
+        }
+        
+        // 生成选项
+        function generateOptions(correctQuestion) {
+            const options = [{ word: correctQuestion.word }];
+            
+            // 从其他题目中随机选择3个单词作为干扰项
+            const otherWords = vocabData.filter(q => q.word !== correctQuestion.word);
+            for (let i = otherWords.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [otherWords[i], otherWords[j]] = [otherWords[j], otherWords[i]];
+            }
+            
+            for (let i = 0; i < 3; i++) {
+                options.push({ word: otherWords[i].word });
+            }
+            
+            // 随机打乱选项顺序
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+            
+            return options;
+        }
+        
+        // 选择答案
+        function selectOption(selectedWord, correctWord) {
+            const isCorrect = selectedWord === correctWord;
+            answers.push({
+                question: questions[currentQuestion],
+                selected: selectedWord,
+                correct: correctWord,
+                isCorrect: isCorrect
             });
             
             if (isCorrect) {
-                correctCount++;
-                element.classList.add('correct');
-            } else {
-                wrongCount++;
-                element.classList.add('wrong');
+                correctAnswers++;
+            }
+            
+            currentQuestion++;
+            showQuestion();
+        }
+        
+        // 显示结果
+        function showResult() {
+            endTime = new Date();
+            
+            document.getElementById('questionContainer').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('correctCount').textContent = correctAnswers;
+            
+            const answerDetails = document.getElementById('answerDetails');
+            answerDetails.innerHTML = answers.map((answer, idx) => {
+                const q = answer.question;
+                const targetWord = q.actualWord || q.word;
+                const englishSentence = q.sentence.split('。')[0];
+                const chineseSentence = q.sentence.split('。')[1] || '';
+                const highlightedSentence = englishSentence.replace(
+                    new RegExp(`\\b${targetWord}\\b`, 'gi'),
+                    `<span class="highlight">${targetWord}</span>`
+                );
                 
-                // 高亮正确答案
-                const options = document.querySelectorAll('.option');
-                options.forEach(opt => {
-                    if (opt.textContent === target.word) {
-                        opt.classList.add('correct');
+                // 生成所有选项的对照
+                const allOptions = vocabData
+                    .filter(v => v.word === answer.correct || 
+                                 answers.some(a => a.selected === v.word && a.question.word === q.word))
+                    .slice(0, 4)
+                    .map(v => {
+                        const isCorrect = v.word === answer.correct;
+                        const isSelected = v.word === answer.selected;
+                        return `
+                            <div class="option-item ${isCorrect ? 'correct' : ''}">
+                                ${v.word} (${v.chinese.split('；')[0]})${isCorrect ? '<span class="checkmark">✓</span>' : ''}
+                            </div>
+                        `;
+                    }).join('');
+                
+                // 语音播放指示器
+                const speechIcon = answer.isCorrect ? '<span class="speech-indicator">🎵 已播放发音</span>' : '';
+                
+                return `
+                    <div class="answer-detail">
+                        <div class="word-info">
+                            ${q.word} <span class="pos">${q.pos}</span> ${q.chinese}${speechIcon}
+                        </div>
+                        <div class="full-sentence">${highlightedSentence}</div>
+                        <div class="translation">${chineseSentence}</div>
+                        <div class="options-review">
+                            <h4>选项对照：</h4>
+                            ${allOptions}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // 自动播放正确答案单词的发音
+            playCorrectAnswers();
+            
+            // 生成结果码
+            generateResultCode();
+        }
+        
+        // 播放正确答案单词的发音
+        function playCorrectAnswers() {
+            if ('speechSynthesis' in window) {
+                answers.forEach((answer, idx) => {
+                    if (answer.isCorrect) {
+                        setTimeout(() => {
+                            const utterance = new SpeechSynthesisUtterance(answer.correct);
+                            utterance.lang = 'en-US';
+                            utterance.rate = 0.8;
+                            window.speechSynthesis.speak(utterance);
+                        }, idx * 1000); // 每隔1秒播放一个
                     }
                 });
             }
-            
-            // 延迟显示结果页
-            setTimeout(() => showResult(selected, target, isCorrect), 800);
         }
-
-        // 显示结果
-        function showResult(selected, target, isCorrect) {
-            document.getElementById('question-card').style.display = 'none';
-            document.getElementById('result-card').style.display = 'block';
+        
+        // 生成结果码
+        function generateResultCode() {
+            const wrongCount = questions.length - correctAnswers;
+            const startTimeStr = startTime.toISOString();
+            const endTimeStr = endTime.toISOString();
             
-            // 结果标题
-            const resultTitle = document.getElementById('result-title');
-            resultTitle.textContent = isCorrect ? '✅ 回答正确！' : '❌ 回答错误';
-            resultTitle.className = 'result-title ' + (isCorrect ? 'correct' : 'wrong');
+            const answerDetails = answers.map(a => 
+                `${a.question.word}:${a.isCorrect}`
+            ).join(',');
             
-            // 使用保存的选项，而不是重新生成
-            const allOptions = currentOptions;
+            const resultCode = `4|${correctAnswers}|${wrongCount}|${startTimeStr}|${endTimeStr}|${answerDetails}`;
+            console.log('结果码：', resultCode);
             
-            // 显示所有选项的中文释义
-            const resultDetail = document.getElementById('result-detail');
-            resultDetail.innerHTML = allOptions.map(option => `
-                <div class="result-item">
-                    <div class="result-word ${option.word === target.word ? 'target' : ''}">${option.word} ${option.pos}</div>
-                    <div class="result-meaning">${option.meaning}</div>
-                </div>
-            `).join('');
-            
-            // 显示例句翻译
-            document.getElementById('result-sentence').innerHTML = `
-                <strong>例句：</strong>${target.sentence}<br><br>
-                <strong>翻译：</strong>${target.sentenceCn}
-            `;
+            // 可以将结果码显示在页面上或复制到剪贴板
+            // alert('结果码已生成：' + resultCode);
         }
-
-        // 下一题
-        function nextQuestion() {
-            currentIndex++;
-            
-            if (currentIndex >= vocabData.length) {
-                showFinalResult();
-            } else {
-                createQuestion();
-            }
-        }
-
-        // 显示最终结果
-        function showFinalResult() {
-            endTime = new Date();
-            
-            document.getElementById('result-card').style.display = 'none';
-            document.getElementById('final-card').style.display = 'block';
-            
-            document.getElementById('correct-count').textContent = correctCount;
-            document.getElementById('wrong-count').textContent = wrongCount;
-            
-            // 生成结果码
-            const round = 1;
-            const startTimeStr = formatTime(startTime);
-            const endTimeStr = formatTime(endTime);
-            const resultsStr = results.map(r => `${r.word}:${r.correct}`).join(',');
-            
-            const resultCode = `${round}|${correctCount}|${wrongCount}|${startTimeStr}|${endTimeStr}|${resultsStr}`;
-            document.getElementById('result-code').textContent = resultCode;
-        }
-
-        // 格式化时间
-        function formatTime(date) {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-            const hour = String(date.getHours()).padStart(2, '0');
-            const minute = String(date.getMinutes()).padStart(2, '0');
-            const second = String(date.getSeconds()).padStart(2, '0');
-            return `${year}${month}${day}${hour}${minute}${second}`;
-        }
-
-        // 复制结果
-        function copyResult() {
-            const resultCode = document.getElementById('result-code').textContent;
-            navigator.clipboard.writeText(resultCode).then(() => {
-                alert('结果码已复制到剪贴板！');
-            }).catch(err => {
-                // 降级方案
-                const textarea = document.createElement('textarea');
-                textarea.value = resultCode;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                alert('结果码已复制到剪贴板！');
-            });
-        }
-
+        
         // 重新开始
-        function restart() {
-            currentIndex = 0;
-            correctCount = 0;
-            wrongCount = 0;
-            results = [];
-            answered = false;
-            currentOptions = [];
-            
-            document.getElementById('final-card').style.display = 'none';
+        function restartQuiz() {
+            currentQuestion = 0;
+            correctAnswers = 0;
+            answers = [];
             startTime = new Date();
-            createQuestion();
+            
+            document.getElementById('resultContainer').style.display = 'none';
+            document.getElementById('questionContainer').style.display = 'block';
+            
+            generateQuestions();
+            showQuestion();
         }
-
-        // 初始化
-        startTime = new Date();
-        createQuestion();
+        
+        // 页面加载时初始化
+        window.onload = init;
     </script>
 </body>
 </html>

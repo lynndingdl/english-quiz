@@ -1,365 +1,356 @@
-// 第3轮例句式测验 - 50个单词（第1次❌ + 第2次为空）
+// 英语单词第4轮例句式测验 - 词库数据
+// 生成时间: 2026-04-12
+// 单词数量: 50个
+
 const vocabData = [
   {
-    word: "resent",
-    meaning: "怨恨；愤恨",
-    pos: "v.",
-    sentence: "She resented being treated unfairly by her supervisor.",
-    sentenceCn: "她怨恨受到上司的不公平对待。",
-    actualWord: "resented"
-  },
-  {
-    word: "resonance",
-    meaning: "共鸣；反响",
+    word: "flesh",
     pos: "n.",
-    sentence: "The speech had a deep resonance with the audience's concerns.",
-    sentenceCn: "演讲深深引起了观众关注问题的共鸣。"
+    chinese: "肉；肉体",
+    sentence: "The wound healed quickly, and new flesh began to form around the edges. 伤口很快愈合，新的肉开始从边缘生长。",
+    actualWord: null
   },
   {
-    word: "respective",
-    meaning: "各自的",
-    pos: "adj.",
-    sentence: "The three companies have their respective strengths in different markets.",
-    sentenceCn: "这三家公司各自在不同的市场上有自己的优势。"
+    word: "flicker",
+    pos: "v./n.",
+    chinese: "闪烁；摇曳",
+    sentence: "The candle flame flickered in the wind, casting dancing shadows on the wall. 蜡烛的火焰在风中闪烁，在墙上投下舞动的阴影。",
+    actualWord: "flickered"
   },
   {
-    word: "retort",
-    meaning: "反驳；回嘴",
+    word: "fling",
+    pos: "v./n.",
+    chinese: "掷；抛",
+    sentence: "In a fit of anger, he flung the documents across the room. 一怒之下，他把文件扔到了房间另一边。",
+    actualWord: "flung"
+  },
+  {
+    word: "flush",
+    pos: "v./n.",
+    chinese: "冲洗；脸红",
+    sentence: "She felt her cheeks flush with embarrassment when she realized her mistake. 当她意识到自己的错误时，她感到脸颊因尴尬而发烫。",
+    actualWord: null
+  },
+  {
+    word: "forge",
+    pos: "v.",
+    chinese: "伪造；锻造",
+    sentence: "The blacksmith forged a beautiful sword from the raw iron. 铁匠用生铁锻造了一把美丽的剑。",
+    actualWord: "forged"
+  },
+  {
+    word: "fragrance",
+    pos: "n.",
+    chinese: "芬芳；香味",
+    sentence: "The fragrance of fresh flowers filled the entire garden in spring. 春天，新鲜花朵的芬芳充满了整个花园。",
+    actualWord: null
+  },
+  {
+    word: "fringe",
+    pos: "n.",
+    chinese: "边缘；流苏",
+    sentence: "Small shops operate on the fringe of the mainstream economy. 小商店在主流经济的边缘运营。",
+    actualWord: null
+  },
+  {
+    word: "fumble",
+    pos: "v.",
+    chinese: "摸索；笨拙地做",
+    sentence: "The nervous speaker fumbled with his notes while giving the presentation. 紧张的演讲者在做报告时笨拙地翻动笔记。",
+    actualWord: "fumbled"
+  },
+  {
+    word: "fume",
     pos: "n./v.",
-    sentence: "He gave a sharp retort to his opponent's criticism.",
-    sentenceCn: "他对对手的批评作出了尖锐的反驳。"
+    chinese: "烟；气；冒烟；发怒",
+    sentence: "She sat in the corner, fuming about the unfair treatment she had received. 她坐在角落里，对受到的不公平待遇感到愤怒。",
+    actualWord: "fuming"
   },
   {
-    word: "reveal",
-    meaning: "揭露；显示",
-    pos: "v.",
-    sentence: "The investigation revealed widespread corruption in the government.",
-    sentenceCn: "调查揭露了政府中普遍存在的腐败现象。",
-    actualWord: "revealed"
-  },
-  {
-    word: "revive",
-    meaning: "复兴；苏醒",
-    pos: "v.",
-    sentence: "Efforts to revive the struggling economy are showing positive results.",
-    sentenceCn: "复苏挣扎中的经济的努力正在显示出积极的结果。"
-  },
-  {
-    word: "salient",
-    meaning: "显著的；突出的",
-    pos: "adj.",
-    sentence: "The salient points of the argument need to be addressed first.",
-    sentenceCn: "论点的要点需要首先解决。"
-  },
-  {
-    word: "saturate",
-    meaning: "浸透；使饱和",
-    pos: "v.",
-    sentence: "The market became saturated with similar products, leading to intense competition.",
-    sentenceCn: "市场充满了类似的产品，导致激烈的竞争。",
-    actualWord: "saturated"
-  },
-  {
-    word: "scandal",
-    meaning: "丑闻",
-    pos: "n.",
-    sentence: "The political scandal dominated the news headlines for weeks.",
-    sentenceCn: "政治丑闻连续几周占据了新闻头条。"
-  },
-  {
-    word: "scenic",
-    meaning: "风景优美的",
-    pos: "adj.",
-    sentence: "The scenic route along the coast attracts many tourists every year.",
-    sentenceCn: "沿海的风景区每年吸引许多游客。"
-  },
-  {
-    word: "scrutiny",
-    meaning: "详细检查；监视",
-    pos: "n.",
-    sentence: "The candidate's background underwent careful scrutiny before the election.",
-    sentenceCn: "候选人的背景在选举前接受了仔细的审查。"
-  },
-  {
-    word: "sector",
-    meaning: "部门；扇形",
-    pos: "n.",
-    sentence: "The financial sector plays a crucial role in the national economy.",
-    sentenceCn: "金融部门在国民经济中发挥着关键作用。"
-  },
-  {
-    word: "secular",
-    meaning: "世俗的",
-    pos: "adj.",
-    sentence: "The secular state ensures freedom of religion for all citizens.",
-    sentenceCn: "世俗国家确保所有公民的宗教自由。"
-  },
-  {
-    word: "shun",
-    meaning: "避开；避免",
-    pos: "v.",
-    sentence: "Health-conscious people shun processed foods high in sugar and fat.",
-    sentenceCn: "注重健康的人避免食用高糖和高脂肪的加工食品。"
-  },
-  {
-    word: "sinister",
-    meaning: "凶兆的；邪恶的",
-    pos: "adj.",
-    sentence: "The sinister plot was discovered before it could be carried out.",
-    sentenceCn: "邪恶的阴谋在实施之前就被发现了。"
-  },
-  {
-    word: "skim",
-    meaning: "撇去；略读",
-    pos: "v.",
-    sentence: "He skimmed through the report to find the most important information.",
-    sentenceCn: "他略读了报告以找到最重要的信息。",
-    actualWord: "skimmed"
-  },
-  {
-    word: "slaughter",
-    meaning: "屠宰；屠杀",
+    word: "fuse",
     pos: "n./v.",
-    sentence: "The war resulted in the slaughter of thousands of innocent civilians.",
-    sentenceCn: "战争导致了数以千计无辜平民的屠杀。"
+    chinese: "保险丝；熔合",
+    sentence: "The safety fuse is designed to prevent electrical circuits from overheating. 保险丝的设计是为了防止电路过热。",
+    actualWord: null
   },
   {
-    word: "slender",
-    meaning: "苗条的；微薄的",
-    pos: "adj.",
-    sentence: "She maintained a slender figure through regular exercise and healthy eating.",
-    sentenceCn: "她通过经常锻炼和健康饮食保持了苗条的身材。"
-  },
-  {
-    word: "slum",
-    meaning: "贫民窟",
-    pos: "n.",
-    sentence: "The government launched programs to improve living conditions in urban slums.",
-    sentenceCn: "政府推出了改善城市贫民窟生活条件的计划。",
-    actualWord: "slums"
-  },
-  {
-    word: "slump",
-    meaning: "暴跌；萧条",
+    word: "fuss",
     pos: "n./v.",
-    sentence: "The economy experienced a slump after the global financial crisis.",
-    sentenceCn: "全球金融危机后经济经历了萧条。"
+    chinese: "忙乱；大惊小怪",
+    sentence: "Don't make such a fuss about small problems; focus on the bigger picture. 不要为小问题大惊小怪；关注大局。",
+    actualWord: null
   },
   {
-    word: "smart",
-    meaning: "聪明的；时髦的",
+    word: "futile",
     pos: "adj.",
-    sentence: "The smart student always came up with innovative solutions to problems.",
-    sentenceCn: "聪明的学生总能想出创新的问题解决方案。"
+    chinese: "徒劳的；无用的",
+    sentence: "All attempts to negotiate a peaceful resolution proved to be futile. 所有谈判和平解决的尝试都证明是徒劳的。",
+    actualWord: null
   },
   {
-    word: "smuggle",
-    meaning: "走私",
-    pos: "v.",
-    sentence: "The criminals attempted to smuggle illegal goods across the border.",
-    sentenceCn: "罪犯试图将非法物品走私过境。"
-  },
-  {
-    word: "sober",
-    meaning: "清醒的；严肃的",
-    pos: "adj.",
-    sentence: "The sober analysis revealed serious flaws in the proposed plan.",
-    sentenceCn: "严肃的分析揭示了提议计划中的严重缺陷。"
-  },
-  {
-    word: "solemn",
-    meaning: "庄严的；严肃的",
-    pos: "adj.",
-    sentence: "The judge delivered a solemn verdict in the high-profile case.",
-    sentenceCn: "法官在这个备受关注的案件中作出了庄严的判决。"
-  },
-  {
-    word: "solicit",
-    meaning: "请求；恳求",
-    pos: "v.",
-    sentence: "The organization solicits donations from the public to fund its programs.",
-    sentenceCn: "该组织向公众募集捐款以资助其项目。",
-    actualWord: "solicits"
-  },
-  {
-    word: "solitary",
-    meaning: "孤独的；唯一的",
-    pos: "adj.",
-    sentence: "The solitary hiker enjoyed the peace and quiet of the wilderness.",
-    sentenceCn: "孤独的徒步者享受着荒野的宁静和安静。"
-  },
-  {
-    word: "spacious",
-    meaning: "宽敞的",
-    pos: "adj.",
-    sentence: "The new house features a spacious living room with large windows.",
-    sentenceCn: "新房子有一个宽敞的客厅，配有大窗户。"
-  },
-  {
-    word: "specialize",
-    meaning: "专门研究；专攻",
-    pos: "v.",
-    sentence: "The doctor decided to specialize in pediatric medicine after medical school.",
-    sentenceCn: "医学院毕业后，这位医生决定专攻儿科医学。"
-  },
-  {
-    word: "stagger",
-    meaning: "蹒跚；使吃惊",
-    pos: "v.",
-    sentence: "The shocking news made him stagger backward in disbelief.",
-    sentenceCn: "震惊的消息让他难以置信地蹒跚后退。"
-  },
-  {
-    word: "stale",
-    meaning: "陈腐的；不新鲜的",
-    pos: "adj.",
-    sentence: "The bread became stale after being left out for several days.",
-    sentenceCn: "面包在放了好几天后变得不新鲜了。"
-  },
-  {
-    word: "steer",
-    meaning: "驾驶；引导",
-    pos: "v.",
-    sentence: "The captain steered the ship carefully through the narrow channel.",
-    sentenceCn: "船长小心翼翼地驾驶船只通过狭窄的航道。",
-    actualWord: "steered"
-  },
-  {
-    word: "sterile",
-    meaning: "不育的；无菌的",
-    pos: "adj.",
-    sentence: "The laboratory maintained a sterile environment for the experiments.",
-    sentenceCn: "实验室为实验保持了无菌环境。"
-  },
-  {
-    word: "stipulate",
-    meaning: "规定；约定",
-    pos: "v.",
-    sentence: "The contract stipulates that the work must be completed within six months.",
-    sentenceCn: "合同规定工作必须在六个月内完成。",
-    actualWord: "stipulates"
-  },
-  {
-    word: "strife",
-    meaning: "冲突；争吵",
+    word: "garment",
     pos: "n.",
-    sentence: "The country has experienced years of internal strife and political instability.",
-    sentenceCn: "该国经历了多年的内部冲突和政治不稳定。"
+    chinese: "(一件)衣服",
+    sentence: "The textile industry produces a wide variety of garments for global markets. 纺织工业为全球市场生产各种各样的服装。",
+    actualWord: "garments"
   },
   {
-    word: "subpoena",
-    meaning: "传票；传唤",
+    word: "gracious",
+    pos: "adj.",
+    chinese: "亲切的；高尚的",
+    sentence: "She was gracious enough to host the event despite her busy schedule. 尽管日程繁忙，她还是慷慨地主持了这次活动。",
+    actualWord: null
+  },
+  {
+    word: "grand",
+    pos: "adj.",
+    chinese: "宏伟的；重大的",
+    sentence: "The grand cathedral took over a century to complete. 这座宏伟的大教堂花了一个多世纪才建成。",
+    actualWord: null
+  },
+  {
+    word: "Dwell on",
+    pos: "phr.",
+    chinese: "详述；细想",
+    sentence: "Instead of dwelling on past failures, we should focus on future opportunities. 与其沉湎于过去的失败，我们更应该关注未来的机会。",
+    actualWord: "dwelling"
+  },
+  {
+    word: "grill",
+    pos: "v.",
+    chinese: "烧烤；严厉盘问",
+    sentence: "The chef grilled the steak to perfection over an open flame. 厨师在明火上将牛排烤得恰到好处。",
+    actualWord: "grilled"
+  },
+  {
+    word: "grin",
+    pos: "v./n.",
+    chinese: "露齿而笑",
+    sentence: "She couldn't help but grin when she heard the good news. 听到这个好消息时，她忍不住咧嘴笑了。",
+    actualWord: null
+  },
+  {
+    word: "grind",
+    pos: "v.",
+    chinese: "磨碎；碾碎",
+    sentence: "Students often have to grind through endless hours of study before exams. 学生们经常在考试前需要苦读无数小时。",
+    actualWord: null
+  },
+  {
+    word: "grip",
+    pos: "v./n.",
+    chinese: "紧握；控制",
+    sentence: "The icy road made it difficult for drivers to maintain a firm grip on their vehicles. 结冰的道路使驾驶员难以牢牢控制车辆。",
+    actualWord: null
+  },
+  {
+    word: "guidance",
+    pos: "n.",
+    chinese: "指导；引导",
+    sentence: "Proper guidance from teachers can significantly influence students' academic success. 老师的正确引导可以显著影响学生的学业成功。",
+    actualWord: null
+  },
+  {
+    word: "halt",
+    pos: "v./n.",
+    chinese: "停止；暂停",
+    sentence: "The construction project came to a sudden halt due to lack of funding. 由于缺乏资金，建设项目突然停工。",
+    actualWord: null
+  },
+  {
+    word: "hamper",
+    pos: "v.",
+    chinese: "妨碍；束缚",
+    sentence: "Bad weather conditions can hamper rescue efforts in disaster zones. 恶劣的天气条件会阻碍灾区的救援工作。",
+    actualWord: null
+  },
+  {
+    word: "hatch",
+    pos: "v.",
+    chinese: "孵化；策划",
+    sentence: "The eggs will hatch after approximately 21 days of incubation. 这些蛋在孵化约21天后将会孵化。",
+    actualWord: null
+  },
+  {
+    word: "haul",
+    pos: "v./n.",
+    chinese: "拖曳；用力拖",
+    sentence: "The fishermen hauled in a massive catch after a long day at sea. 渔民们在海上度过漫长的一天后，拖上了一大批渔获。",
+    actualWord: "hauled"
+  },
+  {
+    word: "haunt",
+    pos: "v.",
+    chinese: "常去；（鬼魂）出没；缠绕",
+    sentence: "The memories of the accident continued to haunt him for years. 事故的记忆多年来一直困扰着他。",
+    actualWord: null
+  },
+  {
+    word: "hazard",
     pos: "n./v.",
-    sentence: "The court issued a subpoena requiring the witness to testify.",
-    sentenceCn: "法院发出了传票，要求证人作证。"
+    chinese: "危险；公害；尝试",
+    sentence: "Chemical waste poses a serious hazard to both human health and the environment. 化学废物对人类健康和环境都构成严重危害。",
+    actualWord: null
   },
   {
-    word: "succinct",
-    meaning: "简洁的",
+    word: "hedge",
+    pos: "n./v.",
+    chinese: "树篱；障碍物；规避",
+    sentence: "Investors often use hedging strategies to protect their portfolios against market volatility. 投资者经常使用对冲策略来保护其投资组合免受市场波动的影响。",
+    actualWord: "hedging"
+  },
+  {
+    word: "herald",
+    pos: "n./v.",
+    chinese: "使者；预兆；预示",
+    sentence: "The discovery of penicillin heralded a new era in the treatment of bacterial infections. 青霉素的发现宣告了细菌感染治疗新时代的到来。",
+    actualWord: "heralded"
+  },
+  {
+    word: "hierarchy",
+    pos: "n.",
+    chinese: "等级制度；阶层",
+    sentence: "The company has a strict hierarchy with clear reporting structures at every level. 该公司有严格的等级制度，每个层级都有明确的汇报结构。",
+    actualWord: null
+  },
+  {
+    word: "hollow",
     pos: "adj.",
-    sentence: "The professor provided a succinct summary of the complex theory.",
-    sentenceCn: "教授对复杂理论提供了简洁的总结。"
+    chinese: "空心的；虚伪的",
+    sentence: "The hollow tree trunk served as a perfect hiding place for the small animals. 空心树干成为小动物完美的藏身之处。",
+    actualWord: null
   },
   {
-    word: "succumb",
-    meaning: "屈服；死于",
-    pos: "v.",
-    sentence: "The patient succumbed to the illness after a long battle.",
-    sentenceCn: "病人在长期抗争后屈服于疾病。",
-    actualWord: "succumbed"
-  },
-  {
-    word: "superstition",
-    meaning: "迷信",
-    pos: "n.",
-    sentence: "Many ancient superstitions have been replaced by scientific understanding.",
-    sentenceCn: "许多古代迷信已被科学理解所取代。",
-    actualWord: "superstitions"
-  },
-  {
-    word: "sustain",
-    meaning: "维持；支撑；遭受",
-    pos: "v.",
-    sentence: "The organization works to sustain the livelihoods of rural communities.",
-    sentenceCn: "该组织致力于维持农村社区的生计。"
-  },
-  {
-    word: "synthetic",
-    meaning: "合成的；人造的",
+    word: "homogeneous",
     pos: "adj.",
-    sentence: "Many modern products are made from synthetic materials.",
-    sentenceCn: "许多现代产品是由合成材料制成的。"
+    chinese: "同种类的；同质的",
+    sentence: "The population in this region is relatively homogeneous in terms of cultural background. 该地区的人口在文化背景方面相对单一。",
+    actualWord: null
   },
   {
-    word: "tariff",
-    meaning: "关税；价目表",
-    pos: "n.",
-    sentence: "The government imposed high tariffs on imported goods to protect domestic industries.",
-    sentenceCn: "政府对进口商品征收高关税以保护国内产业。",
-    actualWord: "tariffs"
-  },
-  {
-    word: "tedious",
-    meaning: "乏味的；单调的",
+    word: "honorary",
     pos: "adj.",
-    sentence: "The tedious task of sorting through thousands of documents took weeks.",
-    sentenceCn: "整理数千份文件的乏味工作花了几周时间。"
+    chinese: "荣誉的；名誉的",
+    sentence: "The university awarded him an honorary doctorate for his contributions to science. 大学授予他荣誉博士学位，以表彰他对科学的贡献。",
+    actualWord: null
   },
   {
-    word: "temperament",
-    meaning: "气质；性格",
-    pos: "n.",
-    sentence: "Her artistic temperament made her sensitive to criticism.",
-    sentenceCn: "她的艺术气质使她对批评很敏感。"
+    word: "intellectual",
+    pos: "adj./n.",
+    chinese: "智力的；知识分子",
+    sentence: "The university attracts intellectual scholars from around the world. 这所大学吸引了来自世界各地的知识分子学者。",
+    actualWord: null
   },
   {
-    word: "tenure",
-    meaning: "任期；终身职位",
-    pos: "n.",
-    sentence: "The professor was granted tenure after years of excellent teaching and research.",
-    sentenceCn: "经过多年的优秀教学和研究，这位教授获得了终身职位。"
+    word: "intermittent",
+    pos: "adj.",
+    chinese: "间歇的；断断续续的",
+    sentence: "The intermittent rainfall made it difficult to plan outdoor activities. 间歇性降雨使得规划户外活动变得困难。",
+    actualWord: null
   },
   {
-    word: "terminology",
-    meaning: "术语",
-    pos: "n.",
-    sentence: "Medical terminology can be difficult for patients to understand.",
-    sentenceCn: "医学术语可能让患者难以理解。"
-  },
-  {
-    word: "territory",
-    meaning: "领土；领域",
-    pos: "n.",
-    sentence: "The country expanded its territory through peaceful negotiations.",
-    sentenceCn: "该国通过和平谈判扩大了其领土。"
-  },
-  {
-    word: "testify",
-    meaning: "作证；表明",
+    word: "intervene",
     pos: "v.",
-    sentence: "Several witnesses testified about what they saw on the night of the crime.",
-    sentenceCn: "几名证人就他们在犯罪当晚看到的情况作了证。",
-    actualWord: "testified"
+    chinese: "介入；干预",
+    sentence: "The international community may need to intervene to resolve the conflict peacefully. 国际社会可能需要介入以和平解决冲突。",
+    actualWord: null
   },
   {
-    word: "threshold",
-    meaning: "门槛；开端",
-    pos: "n.",
-    sentence: "Crossing the threshold into adulthood brings new responsibilities.",
-    sentenceCn: "跨入成年门槛带来了新的责任。"
+    word: "intimidate",
+    pos: "v.",
+    chinese: "恐吓；威胁",
+    sentence: "The witness was intimidated by the defendant's aggressive behavior in court. 证人被被告在法庭上的攻击性行为所恐吓。",
+    actualWord: "intimidated"
   },
   {
-    word: "thrift",
-    meaning: "节俭",
-    pos: "n.",
-    sentence: "Thrift is considered a virtue in many cultures around the world.",
-    sentenceCn: "节俭在世界许多文化中被视为一种美德。"
+    word: "intricate",
+    pos: "adj.",
+    chinese: "错综复杂的",
+    sentence: "The intricate design of the watch demonstrates the craftsman's exceptional skill. 手表复杂的设计展示了工匠的非凡技艺。",
+    actualWord: null
   },
   {
-    word: "toll",
-    meaning: "通行费；伤亡人数",
+    word: "intrigue",
+    pos: "v.",
+    chinese: "引起兴趣；诡计",
+    sentence: "The mysterious disappearance of the artifact continued to intrigue historians for decades. 文物的神秘失踪继续吸引历史学家数十年。",
+    actualWord: null
+  },
+  {
+    word: "invade",
+    pos: "v.",
+    chinese: "侵略；侵袭",
+    sentence: "The army decided to invade the neighboring territory after diplomatic efforts failed. 在外交努力失败后，军队决定入侵邻近领土。",
+    actualWord: null
+  },
+  {
+    word: "invaluable",
+    pos: "adj.",
+    chinese: "极宝贵的",
+    sentence: "Her experience and expertise have been invaluable to the project's success. 她的经验和专业知识对项目的成功具有不可估量的价值。",
+    actualWord: null
+  },
+  {
+    word: "invoice",
     pos: "n.",
-    sentence: "The toll of the accident included several injured passengers.",
-    sentenceCn: "事故的伤亡人数包括几名受伤的乘客。"
+    chinese: "发票；货单",
+    sentence: "Please submit the invoice for payment processing before the end of the month. 请在月底前提交发票进行付款处理。",
+    actualWord: null
+  },
+  {
+    word: "invoke",
+    pos: "v.",
+    chinese: "调用；诉诸；祈求",
+    sentence: "The lawyer invoked the Fifth Amendment to protect his client from self-incrimination. 律师援引第五修正案以保护其当事人免于自证其罪。",
+    actualWord: "invoked"
+  },
+  {
+    word: "involuntary",
+    pos: "adj.",
+    chinese: "不由自主的",
+    sentence: "The patient experienced involuntary muscle spasms as a side effect of the medication. 患者经历了药物副作用引起的非自愿肌肉痉挛。",
+    actualWord: null
+  },
+  {
+    word: "irrigate",
+    pos: "v.",
+    chinese: "灌溉",
+    sentence: "Farmers use advanced systems to irrigate their crops efficiently during dry seasons. 农民使用先进系统在干旱季节高效灌溉作物。",
+    actualWord: null
+  },
+  {
+    word: "irritate",
+    pos: "v.",
+    chinese: "激怒；使过敏",
+    sentence: "The chemical can irritate the skin and cause allergic reactions in some individuals. 这种化学物质会刺激皮肤，并在某些人中引起过敏反应。",
+    actualWord: null
+  },
+  {
+    word: "jaw",
+    pos: "n.",
+    chinese: "颌；嘴部",
+    sentence: "The shark's powerful jaw can crush even the hardest shells of sea turtles. 鲨鱼强有力的下颚甚至可以粉碎海龟最坚硬的壳。",
+    actualWord: null
+  },
+  {
+    word: "jerk",
+    pos: "v./n.",
+    chinese: "急拉；猛推",
+    sentence: "The bus came to a sudden jerk, causing passengers to lose their balance. 公交车突然颠簸了一下，导致乘客失去平衡。",
+    actualWord: null
+  },
+  {
+    word: "judicious",
+    pos: "adj.",
+    chinese: "明智的；审慎的",
+    sentence: "A judicious investment strategy can help protect your wealth during market downturns. 明智的投资策略可以帮助你在市场低迷时期保护财富。",
+    actualWord: null
+  },
+  {
+    word: "juncture",
+    pos: "n.",
+    chinese: "关键时刻；接合点",
+    sentence: "At this critical juncture, the company must make strategic decisions about its future. 在这个关键时刻，公司必须对其未来做出战略决策。",
+    actualWord: null
   }
 ];
