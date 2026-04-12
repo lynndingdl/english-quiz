@@ -1,0 +1,306 @@
+[
+  {
+    "word": "flesh",
+    "pos": "n.",
+    "chinese": "肉；肉体",
+    "sentence": "The wound healed quickly, and new flesh began to form around the edges. 伤口很快愈合，新的肉开始从边缘生长。"
+  },
+  {
+    "word": "flicker",
+    "pos": "v./n.",
+    "chinese": "闪烁；摇曳",
+    "sentence": "The candle flame flickered in the wind, casting dancing shadows on the wall. 蜡烛的火焰在风中闪烁，在墙上投下舞动的阴影。"
+  },
+  {
+    "word": "fling",
+    "pos": "v./n.",
+    "chinese": "掷；抛",
+    "sentence": "In a fit of anger, he flung the documents across the room. 一怒之下，他把文件扔到了房间另一边。",
+    "actualWord": "flung"
+  },
+  {
+    "word": "flush",
+    "pos": "v./n.",
+    "chinese": "冲洗；脸红",
+    "sentence": "She felt her cheeks flush with embarrassment when she realized her mistake. 当她意识到自己的错误时，她感到脸颊因尴尬而发烫。"
+  },
+  {
+    "word": "forge",
+    "pos": "v.",
+    "chinese": "伪造；锻造",
+    "sentence": "The blacksmith forged a beautiful sword from the raw iron. 铁匠用生铁锻造了一把美丽的剑。"
+  },
+  {
+    "word": "fragrance",
+    "pos": "n.",
+    "chinese": "芬芳；香味",
+    "sentence": "The fragrance of fresh flowers filled the entire garden in spring. 春天，新鲜花朵的芬芳充满了整个花园。"
+  },
+  {
+    "word": "fringe",
+    "pos": "n.",
+    "chinese": "边缘；流苏",
+    "sentence": "Small shops operate on the fringe of the mainstream economy. 小商店在主流经济的边缘运营。"
+  },
+  {
+    "word": "fumble",
+    "pos": "v.",
+    "chinese": "摸索；笨拙地做",
+    "sentence": "The nervous speaker fumbled with his notes while giving the presentation. 紧张的演讲者在做报告时笨拙地翻动笔记。"
+  },
+  {
+    "word": "fume",
+    "pos": "n./v.",
+    "chinese": "烟；气；冒烟；发怒",
+    "sentence": "She sat in the corner, fuming about the unfair treatment she had received. 她坐在角落里，对受到的不公平待遇感到愤怒。"
+  },
+  {
+    "word": "fuse",
+    "pos": "n./v.",
+    "chinese": "保险丝；熔合",
+    "sentence": "The safety fuse is designed to prevent electrical circuits from overheating. 保险丝的设计是为了防止电路过热。"
+  },
+  {
+    "word": "fuss",
+    "pos": "n./v.",
+    "chinese": "忙乱；大惊小怪",
+    "sentence": "Don't make such a fuss about small problems; focus on the bigger picture. 不要为小问题大惊小怪；关注大局。"
+  },
+  {
+    "word": "futile",
+    "pos": "adj.",
+    "chinese": "徒劳的；无用的",
+    "sentence": "All attempts to negotiate a peaceful resolution proved to be futile. 所有谈判和平解决的尝试都证明是徒劳的。"
+  },
+  {
+    "word": "garment",
+    "pos": "n.",
+    "chinese": "(一件)衣服",
+    "sentence": "The textile industry produces a wide variety of garments for global markets. 纺织工业为全球市场生产各种各样的服装。",
+    "actualWord": "garments"
+  },
+  {
+    "word": "gracious",
+    "pos": "adj.",
+    "chinese": "亲切的；高尚的",
+    "sentence": "She was gracious enough to host the event despite her busy schedule. 尽管日程繁忙，她还是慷慨地主持了这次活动。"
+  },
+  {
+    "word": "grand",
+    "pos": "adj.",
+    "chinese": "宏伟的；重大的",
+    "sentence": "The grand cathedral took over a century to complete. 这座宏伟的大教堂花了一个多世纪才建成。"
+  },
+  {
+    "word": "Dwell on",
+    "pos": "phr.",
+    "chinese": "详述；细想",
+    "sentence": "Instead of dwelling on past failures, we should focus on future opportunities. 与其沉湎于过去的失败，我们更应该关注未来的机会。",
+    "actualWord": "dwelling"
+  },
+  {
+    "word": "grill",
+    "pos": "v.",
+    "chinese": "烧烤；严厉盘问",
+    "sentence": "The chef grilled the steak to perfection over an open flame. 厨师在明火上将牛排烤得恰到好处。"
+  },
+  {
+    "word": "grin",
+    "pos": "v./n.",
+    "chinese": "露齿而笑",
+    "sentence": "She couldn't help but grin when she heard the good news. 听到这个好消息时，她忍不住咧嘴笑了。"
+  },
+  {
+    "word": "grind",
+    "pos": "v.",
+    "chinese": "磨碎；碾碎",
+    "sentence": "Students often have to grind through endless hours of study before exams. 学生们经常在考试前需要苦读无数小时。"
+  },
+  {
+    "word": "grip",
+    "pos": "v./n.",
+    "chinese": "紧握；控制",
+    "sentence": "The icy road made it difficult for drivers to maintain a firm grip on their vehicles. 结冰的道路使驾驶员难以牢牢控制车辆。"
+  },
+  {
+    "word": "guidance",
+    "pos": "n.",
+    "chinese": "指导；引导",
+    "sentence": "Proper guidance from teachers can significantly influence students' academic success. 老师的正确引导可以显著影响学生的学业成功。"
+  },
+  {
+    "word": "halt",
+    "pos": "v./n.",
+    "chinese": "停止；暂停",
+    "sentence": "The construction project came to a sudden halt due to lack of funding. 由于缺乏资金，建设项目突然停工。"
+  },
+  {
+    "word": "hamper",
+    "pos": "v.",
+    "chinese": "妨碍；束缚",
+    "sentence": "Bad weather conditions can hamper rescue efforts in disaster zones. 恶劣的天气条件会阻碍灾区的救援工作。"
+  },
+  {
+    "word": "hatch",
+    "pos": "v.",
+    "chinese": "孵化；策划",
+    "sentence": "The eggs will hatch after approximately 21 days of incubation. 这些蛋在孵化约21天后将会孵化。"
+  },
+  {
+    "word": "haul",
+    "pos": "v./n.",
+    "chinese": "拖曳；用力拖",
+    "sentence": "The fishermen hauled in a massive catch after a long day at sea. 渔民们在海上度过漫长的一天后，拖上了一大批渔获。"
+  },
+  {
+    "word": "haunt",
+    "pos": "v.",
+    "chinese": "常去；（鬼魂）出没；缠绕",
+    "sentence": "The memories of the accident continued to haunt him for years. 事故的记忆多年来一直困扰着他。"
+  },
+  {
+    "word": "hazard",
+    "pos": "n./v.",
+    "chinese": "危险；公害；尝试",
+    "sentence": "Chemical waste poses a serious hazard to both human health and the environment. 化学废物对人类健康和环境都构成严重危害。"
+  },
+  {
+    "word": "hedge",
+    "pos": "n./v.",
+    "chinese": "树篱；障碍物；规避",
+    "sentence": "Investors often use hedging strategies to protect their portfolios against market volatility. 投资者经常使用对冲策略来保护其投资组合免受市场波动的影响。",
+    "actualWord": "hedging"
+  },
+  {
+    "word": "herald",
+    "pos": "n./v.",
+    "chinese": "使者；预兆；预示",
+    "sentence": "The discovery of penicillin heralded a new era in the treatment of bacterial infections. 青霉素的发现宣告了细菌感染治疗新时代的到来。"
+  },
+  {
+    "word": "hierarchy",
+    "pos": "n.",
+    "chinese": "等级制度；阶层",
+    "sentence": "The company has a strict hierarchy with clear reporting structures at every level. 该公司有严格的等级制度，每个层级都有明确的汇报结构。"
+  },
+  {
+    "word": "hollow",
+    "pos": "adj.",
+    "chinese": "空心的；虚伪的",
+    "sentence": "The hollow tree trunk served as a perfect hiding place for the small animals. 空心树干成为小动物完美的藏身之处。"
+  },
+  {
+    "word": "homogeneous",
+    "pos": "adj.",
+    "chinese": "同种类的；同质的",
+    "sentence": "The population in this region is relatively homogeneous in terms of cultural background. 该地区的人口在文化背景方面相对单一。"
+  },
+  {
+    "word": "honorary",
+    "pos": "adj.",
+    "chinese": "荣誉的；名誉的",
+    "sentence": "The university awarded him an honorary doctorate for his contributions to science. 大学授予他荣誉博士学位，以表彰他对科学的贡献。"
+  },
+  {
+    "word": "intellectual",
+    "pos": "adj./n.",
+    "chinese": "智力的；知识分子",
+    "sentence": "The university attracts intellectual scholars from around the world. 这所大学吸引了来自世界各地的知识分子学者。"
+  },
+  {
+    "word": "intermittent",
+    "pos": "adj.",
+    "chinese": "间歇的；断断续续的",
+    "sentence": "The intermittent rainfall made it difficult to plan outdoor activities. 间歇性降雨使得规划户外活动变得困难。"
+  },
+  {
+    "word": "intervene",
+    "pos": "v.",
+    "chinese": "介入；干预",
+    "sentence": "The international community may need to intervene to resolve the conflict peacefully. 国际社会可能需要介入以和平解决冲突。"
+  },
+  {
+    "word": "intimidate",
+    "pos": "v.",
+    "chinese": "恐吓；威胁",
+    "sentence": "The witness was intimidated by the defendant's aggressive behavior in court. 证人被被告在法庭上的攻击性行为所恐吓。"
+  },
+  {
+    "word": "intricate",
+    "pos": "adj.",
+    "chinese": "错综复杂的",
+    "sentence": "The intricate design of the watch demonstrates the craftsman's exceptional skill. 手表复杂的设计展示了工匠的非凡技艺。"
+  },
+  {
+    "word": "intrigue",
+    "pos": "v.",
+    "chinese": "引起兴趣；诡计",
+    "sentence": "The mysterious disappearance of the artifact continued to intrigue historians for decades. 文物的神秘失踪继续吸引历史学家数十年。"
+  },
+  {
+    "word": "invade",
+    "pos": "v.",
+    "chinese": "侵略；侵袭",
+    "sentence": "The army decided to invade the neighboring territory after diplomatic efforts failed. 在外交努力失败后，军队决定入侵邻近领土。"
+  },
+  {
+    "word": "invaluable",
+    "pos": "adj.",
+    "chinese": "极宝贵的",
+    "sentence": "Her experience and expertise have been invaluable to the project's success. 她的经验和专业知识对项目的成功具有不可估量的价值。"
+  },
+  {
+    "word": "invoice",
+    "pos": "n.",
+    "chinese": "发票；货单",
+    "sentence": "Please submit the invoice for payment processing before the end of the month. 请在月底前提交发票进行付款处理。"
+  },
+  {
+    "word": "invoke",
+    "pos": "v.",
+    "chinese": "调用；诉诸；祈求",
+    "sentence": "The lawyer invoked the Fifth Amendment to protect his client from self-incrimination. 律师援引第五修正案以保护其当事人免于自证其罪。"
+  },
+  {
+    "word": "involuntary",
+    "pos": "adj.",
+    "chinese": "不由自主的",
+    "sentence": "The patient experienced involuntary muscle spasms as a side effect of the medication. 患者经历了药物副作用引起的非自愿肌肉痉挛。"
+  },
+  {
+    "word": "irrigate",
+    "pos": "v.",
+    "chinese": "灌溉",
+    "sentence": "Farmers use advanced systems to irrigate their crops efficiently during dry seasons. 农民使用先进系统在干旱季节高效灌溉作物。"
+  },
+  {
+    "word": "irritate",
+    "pos": "v.",
+    "chinese": "激怒；使过敏",
+    "sentence": "The chemical can irritate the skin and cause allergic reactions in some individuals. 这种化学物质会刺激皮肤，并在某些人中引起过敏反应。"
+  },
+  {
+    "word": "jaw",
+    "pos": "n.",
+    "chinese": "颌；嘴部",
+    "sentence": "The shark's powerful jaw can crush even the hardest shells of sea turtles. 鲨鱼强有力的下颚甚至可以粉碎海龟最坚硬的壳。"
+  },
+  {
+    "word": "jerk",
+    "pos": "v./n.",
+    "chinese": "急拉；猛推",
+    "sentence": "The bus came to a sudden jerk, causing passengers to lose their balance. 公交车突然颠簸了一下，导致乘客失去平衡。"
+  },
+  {
+    "word": "judicious",
+    "pos": "adj.",
+    "chinese": "明智的；审慎的",
+    "sentence": "A judicious investment strategy can help protect your wealth during market downturns. 明智的投资策略可以帮助你在市场低迷时期保护财富。"
+  },
+  {
+    "word": "juncture",
+    "pos": "n.",
+    "chinese": "关键时刻；接合点",
+    "sentence": "At this critical juncture, the company must make strategic decisions about its future. 在这个关键时刻，公司必须对其未来做出战略决策。"
+  }
+]

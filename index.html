@@ -43,6 +43,7 @@
             font-size: 16px;
         }
         
+        /* 题目页面样式 */
         .question-container {
             margin-bottom: 30px;
         }
@@ -103,28 +104,163 @@
             transform: translateY(0);
         }
         
-        .option-btn.correct {
+        /* 结果页面样式 */
+        .result-page {
+            display: none;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+        }
+        
+        .result-icon {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .result-icon.correct {
+            color: #28a745;
+        }
+        
+        .result-icon.wrong {
+            color: #dc3545;
+        }
+        
+        .result-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        
+        .result-title.correct {
+            color: #28a745;
+        }
+        
+        .result-title.wrong {
+            color: #dc3545;
+        }
+        
+        .correct-answer {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .correct-answer .word {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .correct-answer .pos {
+            color: #666;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        
+        .full-sentence {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .full-sentence .highlight {
+            color: #28a745;
+            font-weight: bold;
             background: #d4edda;
-            border-color: #28a745;
-            color: #155724;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
         
-        .option-btn.wrong {
+        .translation {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            padding: 10px 15px;
+            background: #fff3cd;
+            border-radius: 8px;
+        }
+        
+        .options-review {
+            margin-bottom: 25px;
+        }
+        
+        .options-review h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        .option-item {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .option-item.correct {
+            color: #28a745;
+            font-weight: bold;
+            background: #d4edda;
+            border: 1px solid #28a745;
+        }
+        
+        .option-item.selected-wrong {
+            color: #dc3545;
             background: #f8d7da;
-            border-color: #dc3545;
-            color: #721c24;
+            border: 1px solid #dc3545;
         }
         
-        .result-container {
+        .checkmark {
+            margin-left: 5px;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .next-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* 最终结果页面样式 */
+        .final-result-container {
             display: none;
         }
         
-        .result-header {
+        .final-result-header {
             text-align: center;
             margin-bottom: 30px;
         }
         
-        .result-header h2 {
+        .final-result-header h2 {
             color: #333;
             font-size: 24px;
             margin-bottom: 10px;
@@ -145,75 +281,11 @@
             padding: 20px;
             background: #f8f9fa;
             border-radius: 10px;
+            border-left: 4px solid #667eea;
         }
         
-        .answer-detail .word-info {
-            font-size: 22px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 15px;
-        }
-        
-        .answer-detail .word-info .pos {
-            font-size: 16px;
-            color: #666;
-            margin-left: 10px;
-        }
-        
-        .answer-detail .full-sentence {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .answer-detail .highlight {
-            color: #28a745;
-            font-weight: bold;
-            background: #d4edda;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-        
-        .answer-detail .translation {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        .answer-detail .options-review {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .answer-detail .options-review h4 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        
-        .answer-detail .options-review .option-item {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 5px;
-        }
-        
-        .answer-detail .options-review .option-item.correct {
-            color: #28a745;
-            font-weight: bold;
-        }
-        
-        .answer-detail .options-review .option-item .checkmark {
-            margin-left: 5px;
-        }
-        
-        .speech-indicator {
-            display: inline-block;
-            margin-left: 10px;
-            color: #667eea;
-            font-size: 16px;
+        .answer-detail.wrong {
+            border-left-color: #dc3545;
         }
         
         .restart-btn {
@@ -245,8 +317,8 @@
                 font-size: 22px;
             }
             
-            .sentence {
-                font-size: 18px;
+            .sentence, .full-sentence {
+                font-size: 16px;
             }
             
             .options {
@@ -266,12 +338,19 @@
             <div class="progress-info" id="progressInfo">题目：0/50</div>
         </div>
         
+        <!-- 题目页面 -->
         <div class="question-container" id="questionContainer">
             <!-- 题目内容将通过JavaScript动态生成 -->
         </div>
         
-        <div class="result-container" id="resultContainer">
-            <div class="result-header">
+        <!-- 单题结果页面 -->
+        <div class="result-page" id="resultPage">
+            <!-- 结果页内容将通过JavaScript动态生成 -->
+        </div>
+        
+        <!-- 最终结果页面 -->
+        <div class="final-result-container" id="finalResultContainer">
+            <div class="final-result-header">
                 <h2>测验完成！</h2>
                 <div class="score-info">
                     答对 <strong id="correctCount">0</strong> 题，共 50 题
@@ -292,6 +371,7 @@
         let endTime = null;
         let answers = [];
         let questions = [];
+        let currentOptions = [];
         
         // 初始化
         function init() {
@@ -316,7 +396,7 @@
             const progressInfo = document.getElementById('progressInfo');
             
             if (currentQuestion >= questions.length) {
-                showResult();
+                showFinalResult();
                 return;
             }
             
@@ -324,7 +404,7 @@
             progressInfo.textContent = `题目：${currentQuestion + 1}/${questions.length}`;
             
             // 生成选项（正确答案 + 3个干扰项）
-            const options = generateOptions(question);
+            currentOptions = generateOptions(question);
             
             // 生成挖空句子
             const blankSentence = createBlankSentence(question);
@@ -333,26 +413,29 @@
                 <div class="question-number">第 ${currentQuestion + 1} 题</div>
                 <div class="sentence">${blankSentence}</div>
                 <div class="options">
-                    ${options.map((opt, idx) => `
-                        <button class="option-btn" onclick="selectOption('${opt.word}', '${question.word}')">
+                    ${currentOptions.map((opt, idx) => `
+                        <button class="option-btn" onclick="selectOption(${idx})">
                             ${opt.word}
                         </button>
                     `).join('')}
                 </div>
             `;
+            
+            // 显示题目页面
+            container.style.display = 'block';
+            document.getElementById('resultPage').style.display = 'none';
         }
         
         // 生成挖空句子
         function createBlankSentence(question) {
             const targetWord = question.actualWord || question.word;
-            const englishSentence = question.sentence.split('。')[0];
             const regex = new RegExp(`\\b${targetWord}\\b`, 'gi');
-            return englishSentence.replace(regex, '<span class="blank">______</span>');
+            return question.example.replace(regex, '<span class="blank">______</span>');
         }
         
         // 生成选项
         function generateOptions(correctQuestion) {
-            const options = [{ word: correctQuestion.word }];
+            const options = [{ word: correctQuestion.word, meaning: correctQuestion.meaning }];
             
             // 从其他题目中随机选择3个单词作为干扰项
             const otherWords = vocabData.filter(q => q.word !== correctQuestion.word);
@@ -362,7 +445,7 @@
             }
             
             for (let i = 0; i < 3; i++) {
-                options.push({ word: otherWords[i].word });
+                options.push({ word: otherWords[i].word, meaning: otherWords[i].meaning });
             }
             
             // 随机打乱选项顺序
@@ -375,96 +458,154 @@
         }
         
         // 选择答案
-        function selectOption(selectedWord, correctWord) {
-            const isCorrect = selectedWord === correctWord;
+        function selectOption(optionIndex) {
+            const question = questions[currentQuestion];
+            const selectedWord = currentOptions[optionIndex].word;
+            const isCorrect = selectedWord === question.word;
+            
+            // 记录答案
             answers.push({
-                question: questions[currentQuestion],
+                question: question,
                 selected: selectedWord,
-                correct: correctWord,
-                isCorrect: isCorrect
+                isCorrect: isCorrect,
+                options: currentOptions
             });
             
             if (isCorrect) {
                 correctAnswers++;
             }
             
+            // 显示单题结果页
+            showQuestionResult(question, selectedWord, isCorrect, currentOptions);
+        }
+        
+        // 显示单题结果页
+        function showQuestionResult(question, selectedWord, isCorrect, options) {
+            const resultPage = document.getElementById('resultPage');
+            const targetWord = question.actualWord || question.word;
+            
+            // 高亮句子中的答案
+            const highlightedSentence = question.example.replace(
+                new RegExp(`\\b${targetWord}\\b`, 'gi'),
+                `<span class="highlight">${targetWord}</span>`
+            );
+            
+            // 生成选项对照列表
+            const optionsList = options.map(opt => {
+                const isCorrectOption = opt.word === question.word;
+                const isSelectedOption = opt.word === selectedWord;
+                let className = 'option-item';
+                if (isCorrectOption) {
+                    className += ' correct';
+                } else if (isSelectedOption && !isCorrect) {
+                    className += ' selected-wrong';
+                }
+                return `
+                    <div class="${className}">
+                        ${opt.word}（${opt.meaning}）${isCorrectOption ? '<span class="checkmark">✓</span>' : ''}
+                    </div>
+                `;
+            }).join('');
+            
+            resultPage.innerHTML = `
+                <div class="result-icon ${isCorrect ? 'correct' : 'wrong'}">
+                    ${isCorrect ? '✅' : '❌'}
+                </div>
+                <div class="result-title ${isCorrect ? 'correct' : 'wrong'}">
+                    ${isCorrect ? '正确！' : '错误！'}
+                </div>
+                
+                <div class="correct-answer">
+                    <span class="word">${question.word}</span>
+                    <span class="pos">（${question.pos} ${question.meaning}）</span>
+                </div>
+                
+                <div class="full-sentence">
+                    <strong>完整句子：</strong><br>
+                    ${highlightedSentence}
+                </div>
+                
+                <div class="translation">
+                    <strong>句子翻译：</strong><br>
+                    ${question.exampleCn}
+                </div>
+                
+                <div class="options-review">
+                    <h4>选项对照：</h4>
+                    ${optionsList}
+                </div>
+                
+                <button class="next-btn" onclick="nextQuestion()">
+                    ${currentQuestion < questions.length - 1 ? '下一题' : '查看结果'}
+                </button>
+            `;
+            
+            // 显示结果页面
+            document.getElementById('questionContainer').style.display = 'none';
+            resultPage.style.display = 'block';
+            
+            // 自动播放正确答案单词的发音
+            speakWord(question.word);
+        }
+        
+        // 下一题
+        function nextQuestion() {
             currentQuestion++;
             showQuestion();
         }
         
-        // 显示结果
-        function showResult() {
+        // 播放单词发音
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                // 取消之前的播放
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        
+        // 显示最终结果
+        function showFinalResult() {
             endTime = new Date();
             
             document.getElementById('questionContainer').style.display = 'none';
-            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('resultPage').style.display = 'none';
+            document.getElementById('finalResultContainer').style.display = 'block';
             document.getElementById('correctCount').textContent = correctAnswers;
             
             const answerDetails = document.getElementById('answerDetails');
             answerDetails.innerHTML = answers.map((answer, idx) => {
                 const q = answer.question;
                 const targetWord = q.actualWord || q.word;
-                const englishSentence = q.sentence.split('。')[0];
-                const chineseSentence = q.sentence.split('。')[1] || '';
-                const highlightedSentence = englishSentence.replace(
+                const highlightedSentence = q.example.replace(
                     new RegExp(`\\b${targetWord}\\b`, 'gi'),
                     `<span class="highlight">${targetWord}</span>`
                 );
                 
-                // 生成所有选项的对照
-                const allOptions = vocabData
-                    .filter(v => v.word === answer.correct || 
-                                 answers.some(a => a.selected === v.word && a.question.word === q.word))
-                    .slice(0, 4)
-                    .map(v => {
-                        const isCorrect = v.word === answer.correct;
-                        const isSelected = v.word === answer.selected;
-                        return `
-                            <div class="option-item ${isCorrect ? 'correct' : ''}">
-                                ${v.word} (${v.chinese.split('；')[0]})${isCorrect ? '<span class="checkmark">✓</span>' : ''}
-                            </div>
-                        `;
-                    }).join('');
-                
-                // 语音播放指示器
-                const speechIcon = answer.isCorrect ? '<span class="speech-indicator">🎵 已播放发音</span>' : '';
-                
                 return `
-                    <div class="answer-detail">
-                        <div class="word-info">
-                            ${q.word} <span class="pos">${q.pos}</span> ${q.chinese}${speechIcon}
+                    <div class="answer-detail ${answer.isCorrect ? '' : 'wrong'}">
+                        <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
+                            第 ${idx + 1} 题：${answer.isCorrect ? '✅ 正确' : '❌ 错误'}
+                        </div>
+                        <div style="font-size: 16px; margin-bottom: 10px;">
+                            <strong>正确答案：</strong>${q.word}（${q.pos} ${q.meaning}）
                         </div>
                         <div class="full-sentence">${highlightedSentence}</div>
-                        <div class="translation">${chineseSentence}</div>
-                        <div class="options-review">
-                            <h4>选项对照：</h4>
-                            ${allOptions}
-                        </div>
+                        <div class="translation">${q.exampleCn}</div>
+                        ${!answer.isCorrect ? `
+                            <div style="margin-top: 10px; color: #dc3545;">
+                                <strong>你的答案：</strong>${answer.selected}
+                            </div>
+                        ` : ''}
                     </div>
                 `;
             }).join('');
             
-            // 自动播放正确答案单词的发音
-            playCorrectAnswers();
-            
             // 生成结果码
             generateResultCode();
-        }
-        
-        // 播放正确答案单词的发音
-        function playCorrectAnswers() {
-            if ('speechSynthesis' in window) {
-                answers.forEach((answer, idx) => {
-                    if (answer.isCorrect) {
-                        setTimeout(() => {
-                            const utterance = new SpeechSynthesisUtterance(answer.correct);
-                            utterance.lang = 'en-US';
-                            utterance.rate = 0.8;
-                            window.speechSynthesis.speak(utterance);
-                        }, idx * 1000); // 每隔1秒播放一个
-                    }
-                });
-            }
         }
         
         // 生成结果码
@@ -479,9 +620,6 @@
             
             const resultCode = `4|${correctAnswers}|${wrongCount}|${startTimeStr}|${endTimeStr}|${answerDetails}`;
             console.log('结果码：', resultCode);
-            
-            // 可以将结果码显示在页面上或复制到剪贴板
-            // alert('结果码已生成：' + resultCode);
         }
         
         // 重新开始
@@ -491,7 +629,7 @@
             answers = [];
             startTime = new Date();
             
-            document.getElementById('resultContainer').style.display = 'none';
+            document.getElementById('finalResultContainer').style.display = 'none';
             document.getElementById('questionContainer').style.display = 'block';
             
             generateQuestions();
