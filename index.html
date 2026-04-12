@@ -363,7 +363,7 @@
         </div>
     </div>
     
-    <script src="vocab_data.js?v=4-final"></script>
+    <script src="vocab_data.js?v=4-fix2"></script>
     <script>
         let currentQuestion = 0;
         let correctAnswers = 0;
@@ -426,11 +426,20 @@
             document.getElementById('resultPage').style.display = 'none';
         }
         
-        // 生成挖空句子
+        // 生成挖空句子（只显示英文部分，不显示中文翻译）
         function createBlankSentence(question) {
             const targetWord = question.actualWord || question.word;
             const regex = new RegExp(`\\b${targetWord}\\b`, 'gi');
-            return question.example.replace(regex, '<span class="blank">______</span>');
+            
+            // 只保留英文部分（去除中文翻译）
+            // 方法：找到最后一个英文句号，提取到该位置的内容
+            const lastPeriodIndex = question.example.lastIndexOf('.');
+            let englishOnly = question.example;
+            if (lastPeriodIndex > 0) {
+                englishOnly = question.example.substring(0, lastPeriodIndex + 1);
+            }
+            
+            return englishOnly.replace(regex, '<span class="blank">______</span>');
         }
         
         // 生成选项
@@ -484,8 +493,14 @@
             const resultPage = document.getElementById('resultPage');
             const targetWord = question.actualWord || question.word;
             
-            // 高亮句子中的答案
-            const highlightedSentence = question.example.replace(
+            // 高亮句子中的答案（只显示英文部分）
+            const lastPeriodIndex = question.example.lastIndexOf('.');
+            let englishSentence = question.example;
+            if (lastPeriodIndex > 0) {
+                englishSentence = question.example.substring(0, lastPeriodIndex + 1);
+            }
+            
+            const highlightedSentence = englishSentence.replace(
                 new RegExp(`\\b${targetWord}\\b`, 'gi'),
                 `<span class="highlight">${targetWord}</span>`
             );
