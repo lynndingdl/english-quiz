@@ -39,6 +39,7 @@ const vocabData = [
   },
   {
     word: "carrier",
+    actualWord: "carriers",
     meaning: "搬运者；载体；航空母舰",
     pos: "n.",
     sentence: "Aircraft carriers play a vital role in modern naval warfare and power projection.",
@@ -95,6 +96,7 @@ const vocabData = [
   },
   {
     word: "denounce",
+    actualWord: "denounced",
     meaning: "谴责；告发",
     pos: "v.",
     sentence: "Many countries denounced the military coup as a violation of democratic principles.",
@@ -102,6 +104,7 @@ const vocabData = [
   },
   {
     word: "depict",
+    actualWord: "depicts",
     meaning: "描绘；描述",
     pos: "v.",
     sentence: "The novel vividly depicts the harsh reality of life during the Great Depression.",
@@ -109,6 +112,7 @@ const vocabData = [
   },
   {
     word: "deprive",
+    actualWord: "deprived",
     meaning: "剥夺；使丧失",
     pos: "v.",
     sentence: "No one should be deprived of their basic human rights under any circumstances.",
@@ -158,6 +162,7 @@ const vocabData = [
   },
   {
     word: "discharge",
+    actualWord: "discharging",
     meaning: "释放；排出；解雇",
     pos: "v./n.",
     sentence: "The factory was fined for illegally discharging toxic waste into the river.",
@@ -277,6 +282,7 @@ const vocabData = [
   },
   {
     word: "embody",
+    actualWord: "embodies",
     meaning: "体现；包含",
     pos: "v.",
     sentence: "The statue embodies the spirit of freedom that the nation was founded upon.",
@@ -298,6 +304,7 @@ const vocabData = [
   },
   {
     word: "endorse",
+    actualWord: "endorsed",
     meaning: "背书；赞同；代言",
     pos: "v.",
     sentence: "Several celebrities endorsed the new environmental protection campaign.",

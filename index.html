@@ -364,7 +364,8 @@
             
             // 显示例句（挖空目标单词）
             const sentence = current.sentence;
-            const blankSentence = sentence.replace(new RegExp(current.word, 'gi'), '<span class="blank">_______</span>');
+            const wordToBlank = current.actualWord || current.word; // 优先使用actualWord
+            const blankSentence = sentence.replace(new RegExp(wordToBlank, 'gi'), '<span class="blank">_______</span>');
             document.getElementById('sentence').innerHTML = blankSentence;
             
             // 生成选项
