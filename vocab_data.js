@@ -1,358 +1,363 @@
 // 英语单词测验数据 - 第3轮
-// 包含50个重点单词（按下次复习时间和字母排序）
+// 包含50个单词（22个错题 + 28个答对单词）
 
 const vocabData = [
   {
-    word: "flesh",
-    meaning: "肉；肉体",
+    word: "carrier",
+    meaning: "搬运者；载体；航空母舰",
     pos: "n.",
-    sentence: "The wound healed quickly, and new flesh began to form around the edges.",
-    sentenceCn: "伤口很快愈合，新的肉开始从边缘生长。"
+    sentence: "Aircraft carriers play a vital role in modern naval warfare and power projection.",
+    sentenceCn: "航空母舰在现代海战和力量投射中发挥着至关重要的作用。",
+    actualWord: "carriers"
   },
   {
-    word: "flicker",
-    meaning: "闪烁；摇曳",
+    word: "deceive",
+    meaning: "欺骗；蒙蔽",
     pos: "v.",
-    sentence: "The candle flame flickered in the gentle breeze.",
-    sentenceCn: "烛光在微风中轻轻摇曳。"
+    sentence: "The company deceived consumers by making false claims about their product's benefits.",
+    sentenceCn: "该公司通过对其产品功效的虚假宣传欺骗消费者。"
   },
   {
-    word: "fling",
-    meaning: "扔；抛；猛冲",
+    word: "decent",
+    meaning: "体面的；正派的；像样的",
+    pos: "adj.",
+    sentence: "Every citizen deserves a decent standard of living and access to basic healthcare.",
+    sentenceCn: "每个公民都应享有体面的生活水平和基本医疗服务。"
+  },
+  {
+    word: "deduce",
+    meaning: "推断；演绎",
     pos: "v.",
-    sentence: "She flung the door open and rushed out.",
-    sentenceCn: "她猛地推开门冲了出去。",
-    actualWord: "flung"
+    sentence: "From the available evidence, we can deduce that the suspect was present at the scene.",
+    sentenceCn: "从现有证据，我们可以推断嫌疑人当时在现场。"
   },
   {
-    word: "flush",
-    meaning: "冲洗；脸红",
+    word: "deliberate",
+    meaning: "故意的；深思熟虑的",
+    pos: "adj.",
+    sentence: "The jury concluded that the defendant's actions were deliberate and premeditated.",
+    sentenceCn: "陪审团认定被告的行为是蓄意且有预谋的。"
+  },
+  {
+    word: "depict",
+    meaning: "描绘；描述",
     pos: "v.",
-    sentence: "Please flush the toilet after use.",
-    sentenceCn: "使用后请冲厕所。"
+    sentence: "The novel vividly depicts the harsh reality of life during the Great Depression.",
+    sentenceCn: "这部小说生动地描绘了大萧条时期生活的残酷现实。",
+    actualWord: "depicts"
   },
   {
-    word: "forge",
-    meaning: "锻造；伪造",
-    pos: "v.",
-    sentence: "The blacksmith forged a beautiful sword from raw steel.",
-    sentenceCn: "铁匠用生铁锻造了一把美丽的剑。"
-  },
-  {
-    word: "fragrance",
-    meaning: "香味；香气",
+    word: "dialect",
+    meaning: "方言",
     pos: "n.",
-    sentence: "The fragrance of fresh flowers filled the room.",
-    sentenceCn: "新鲜花朵的香气弥漫了整个房间。"
+    sentence: "Linguists study how dialects vary across different regions and social groups.",
+    sentenceCn: "语言学家研究方言在不同地区和社会群体中的差异。",
+    actualWord: "dialects"
   },
   {
-    word: "fringe",
-    meaning: "边缘；刘海",
-    pos: "n.",
-    sentence: "The fringe benefits include health insurance and paid vacation.",
-    sentenceCn: "附加福利包括健康保险和带薪假期。"
-  },
-  {
-    word: "fumble",
-    meaning: "摸索；笨拙地做",
+    word: "discharge",
+    meaning: "释放；排出；解雇",
     pos: "v.",
-    sentence: "He fumbled in his pocket for the keys.",
-    sentenceCn: "他在口袋里摸索着找钥匙。"
+    sentence: "The factory was fined for illegally discharging toxic waste into the river.",
+    sentenceCn: "这家工厂因非法向河流排放有毒废物而被罚款。",
+    actualWord: "discharging"
   },
   {
-    word: "fume",
-    meaning: "冒烟；发怒",
+    word: "divert",
+    meaning: "转移；使转向；娱乐",
     pos: "v.",
-    sentence: "She was fuming with anger at his rude remarks.",
-    sentenceCn: "她对他的粗鲁言论怒不可遏。",
-    actualWord: "fuming"
+    sentence: "The government decided to divert funds from defense to education programs.",
+    sentenceCn: "政府决定将资金从国防转向教育项目。"
   },
   {
-    word: "fuse",
-    meaning: "熔化；保险丝；融合",
+    word: "divide",
+    meaning: "划分；分开；除",
+    pos: "v.",
+    sentence: "The issue of immigration has deeply divided public opinion in the country.",
+    sentenceCn: "移民问题在该国深刻地分裂了公众舆论。",
+    actualWord: "divided"
+  },
+  {
+    word: "doom",
+    meaning: "厄运；注定",
     pos: "n./v.",
-    sentence: "The two metals fused together under extreme heat.",
-    sentenceCn: "这两种金属在极端高温下融合在一起。"
+    sentence: "The project was doomed to fail from the start due to insufficient funding.",
+    sentenceCn: "由于资金不足，该项目从一开始就注定要失败。",
+    actualWord: "doomed"
   },
   {
-    word: "fuss",
-    meaning: "大惊小怪；忙乱",
+    word: "earnest",
+    meaning: "认真的；诚挚的",
+    pos: "adj.",
+    sentence: "She made an earnest attempt to reconcile with her estranged family members.",
+    sentenceCn: "她真诚地尝试与疏远的家庭成员和解。"
+  },
+  {
+    word: "elevate",
+    meaning: "提高；抬起；提拔",
+    pos: "v.",
+    sentence: "Education has the power to elevate individuals from poverty to prosperity.",
+    sentenceCn: "教育有能力使个人从贫困提升到富裕。"
+  },
+  {
+    word: "embody",
+    meaning: "体现；包含",
+    pos: "v.",
+    sentence: "The statue embodies the spirit of freedom that the nation was founded upon.",
+    sentenceCn: "这座雕像体现了国家建立时的自由精神。",
+    actualWord: "embodies"
+  },
+  {
+    word: "encounter",
+    meaning: "遭遇；遇到",
+    pos: "v.",
+    sentence: "Researchers often encounter unexpected challenges when conducting field studies.",
+    sentenceCn: "研究人员进行实地研究时经常遇到意想不到的挑战。"
+  },
+  {
+    word: "endorse",
+    meaning: "背书；赞同；代言",
+    pos: "v.",
+    sentence: "Several celebrities endorsed the new environmental protection campaign.",
+    sentenceCn: "几位名人为这项新的环境保护运动代言。"
+  },
+  {
+    word: "entail",
+    meaning: "牵涉；必然导致",
+    pos: "v.",
+    sentence: "The project will entail significant investment and long-term commitment from all parties.",
+    sentenceCn: "该项目将需要各方的重大投资和长期承诺。"
+  },
+  {
+    word: "enumerate",
+    meaning: "列举",
+    pos: "v.",
+    sentence: "The report enumerates the various factors contributing to climate change.",
+    sentenceCn: "报告列举了导致气候变化的各种因素。"
+  },
+  {
+    word: "epoch",
+    meaning: "时代；纪元",
+    pos: "n.",
+    sentence: "The Renaissance was an epoch of great cultural and artistic achievement.",
+    sentenceCn: "文艺复兴是一个伟大的文化和艺术成就的时代。"
+  },
+  {
+    word: "errand",
+    meaning: "差使；杂事",
+    pos: "n.",
+    sentence: "She went to the post office to run an errand for her elderly neighbor.",
+    sentenceCn: "她去邮局为她的年迈邻居办一件差事。"
+  },
+  {
+    word: "escort",
+    meaning: "护送；护卫",
+    pos: "v.",
+    sentence: "The security team escorted the visiting dignitary to the conference venue.",
+    sentenceCn: "安保团队护送来访的贵宾前往会议地点。"
+  },
+  {
+    word: "waive",
+    meaning: "放弃；豁免",
+    pos: "v.",
+    sentence: "The bank decided to waive the late payment fee as a courtesy.",
+    sentenceCn: "银行决定作为一项礼遇豁免逾期付款费。"
+  },
+  {
+    word: "accommodate",
+    meaning: "容纳，提供住宿，适应，顺应",
+    pos: "v.",
+    sentence: "The hotel can accommodate up to 500 guests during the peak season.",
+    sentenceCn: "这家酒店在旺季可以容纳多达500名客人。"
+  },
+  {
+    word: "accomplish",
+    meaning: "完成，实现，达到",
+    pos: "v.",
+    sentence: "Through hard work and determination, she accomplished her goal of becoming a doctor.",
+    sentenceCn: "通过努力工作和坚定的决心，她实现了成为医生的目标。"
+  },
+  {
+    word: "accurate",
+    meaning: "准确的，精确的，正确无误的",
+    pos: "adj.",
+    sentence: "It is crucial to provide accurate information when filling out official documents.",
+    sentenceCn: "填写正式文件时提供准确信息至关重要。"
+  },
+  {
+    word: "Abide by",
+    meaning: "遵守",
+    pos: "phr.v.",
+    sentence: "Citizens must abide by the law to maintain social order and stability.",
+    sentenceCn: "公民必须遵守法律以维护社会秩序和稳定。"
+  },
+  {
+    word: "Carry out",
+    meaning: "贯彻；执行；实现",
+    pos: "phr.v.",
+    sentence: "The government decided to carry out a comprehensive survey on public health issues.",
+    sentenceCn: "政府决定开展一项关于公共卫生问题的全面调查。"
+  },
+  {
+    word: "decay",
+    meaning: "腐烂；衰退",
+    pos: "v.",
+    sentence: "Without proper maintenance, the ancient building began to decay rapidly.",
+    sentenceCn: "没有适当的维护，这座古建筑开始迅速衰败。"
+  },
+  {
+    word: "defy",
+    meaning: "挑衅；违抗；藐视",
+    pos: "v.",
+    sentence: "The rebels continued to defy the government's authority despite severe consequences.",
+    sentenceCn: "尽管面临严重后果，叛乱分子继续蔑视政府的权威。"
+  },
+  {
+    word: "denote",
+    meaning: "象征；表示",
+    pos: "v.",
+    sentence: "In this context, the color red denotes danger and requires immediate attention.",
+    sentenceCn: "在这种语境下，红色表示危险，需要立即关注。"
+  },
+  {
+    word: "denounce",
+    meaning: "谴责；告发",
+    pos: "v.",
+    sentence: "Many countries denounced the military coup as a violation of democratic principles.",
+    sentenceCn: "许多国家谴责这次军事政变违反了民主原则。"
+  },
+  {
+    word: "deprive",
+    meaning: "剥夺；使丧失",
+    pos: "v.",
+    sentence: "No one should be deprived of their basic human rights under any circumstances.",
+    sentenceCn: "在任何情况下，任何人都不应被剥夺基本人权。",
+    actualWord: "deprived"
+  },
+  {
+    word: "detach",
+    meaning: "分离；拆开",
+    pos: "v.",
+    sentence: "The surgeon carefully detached the infected tissue from the healthy organ.",
+    sentenceCn: "外科医生小心翼翼地将感染组织与健康器官分离。"
+  },
+  {
+    word: "deteriorate",
+    meaning: "恶化；变坏",
+    pos: "v.",
+    sentence: "His health condition began to deteriorate rapidly after he stopped taking medication.",
+    sentenceCn: "停止服药后，他的健康状况开始迅速恶化。"
+  },
+  {
+    word: "determine",
+    meaning: "决定；确定；决心",
+    pos: "v.",
+    sentence: "Genetic factors determine to a large extent how individuals respond to certain medications.",
+    sentenceCn: "遗传因素在很大程度上决定了个个体对某些药物的反应。"
+  },
+  {
+    word: "dilute",
+    meaning: "稀释；变淡",
+    pos: "v.",
+    sentence: "Adding water will dilute the concentration of the solution and reduce its effectiveness.",
+    sentenceCn: "加水会稀释溶液的浓度并降低其效果。"
+  },
+  {
+    word: "diplomat",
+    meaning: "外交官",
+    pos: "n.",
+    sentence: "The diplomat successfully negotiated a peace treaty between the two warring nations.",
+    sentenceCn: "这位外交官成功地在两个交战国之间谈判达成了和平条约。"
+  },
+  {
+    word: "disguise",
+    meaning: "伪装；掩饰",
+    pos: "v.",
+    sentence: "The spy disguised himself as a journalist to gain access to the restricted area.",
+    sentenceCn: "间谍伪装成记者以进入限制区域。"
+  },
+  {
+    word: "dispel",
+    meaning: "驱散；消除",
+    pos: "v.",
+    sentence: "The new evidence helped dispel doubts about the defendant's innocence.",
+    sentenceCn: "新证据有助于消除对被告清白的疑虑。"
+  },
+  {
+    word: "dispense",
+    meaning: "分配；分发；免除",
+    pos: "v.",
+    sentence: "Pharmacists are authorized to dispense prescription medications to patients.",
+    sentenceCn: "药剂师有权向患者配发处方药物。"
+  },
+  {
+    word: "dispute",
+    meaning: "争论；纠纷",
     pos: "n./v.",
-    sentence: "Don't make such a fuss over a small mistake.",
-    sentenceCn: "不要为一个小错误大惊小怪。"
+    sentence: "The two countries have been in a long-standing dispute over territorial boundaries.",
+    sentenceCn: "两国在领土边界问题上长期存在争议。"
   },
   {
-    word: "futile",
-    meaning: "无用的；徒劳的",
-    pos: "adj.",
-    sentence: "All their efforts proved futile in the end.",
-    sentenceCn: "他们的所有努力最终都证明是徒劳的。"
-  },
-  {
-    word: "garment",
-    meaning: "服装；衣服",
-    pos: "n.",
-    sentence: "The garment industry is a major employer in this region.",
-    sentenceCn: "服装业是该地区的主要雇主。"
-  },
-  {
-    word: "gracious",
-    meaning: "亲切的；优雅的",
-    pos: "adj.",
-    sentence: "She was gracious enough to host the party at her home.",
-    sentenceCn: "她很亲切地在她家举办了派对。"
-  },
-  {
-    word: "grand",
-    meaning: "宏伟的；重大的",
-    pos: "adj.",
-    sentence: "The grand opening ceremony attracted thousands of visitors.",
-    sentenceCn: "盛大的开幕式吸引了数千名游客。"
-  },
-  {
-    word: "Dwell on",
-    meaning: "细想；详述；居住在",
+    word: "disturb",
+    meaning: "打扰；弄乱",
     pos: "v.",
-    sentence: "Don't dwell on past mistakes; focus on the future.",
-    sentenceCn: "不要纠结于过去的错误；关注未来。"
+    sentence: "Please do not disturb the experiment while it is in progress.",
+    sentenceCn: "实验进行期间请不要打扰。"
   },
   {
-    word: "grill",
-    meaning: "烤架；烧烤；盘问",
-    pos: "n./v.",
-    sentence: "They grilled the suspect for hours about his whereabouts.",
-    sentenceCn: "他们盘问了嫌疑人几个小时关于他的下落。"
+    word: "downright",
+    meaning: "彻底的；十足地",
+    pos: "adv./adj.",
+    sentence: "His behavior at the meeting was downright rude and completely unacceptable.",
+    sentenceCn: "他在会议上的行为简直粗鲁，完全不可接受。"
   },
   {
-    word: "grin",
-    meaning: "露齿笑；咧嘴笑",
-    pos: "v./n.",
-    sentence: "He grinned with satisfaction when he saw the results.",
-    sentenceCn: "看到结果时，他满意地咧嘴笑了。"
-  },
-  {
-    word: "grind",
-    meaning: "磨碎；摩擦；苦差事",
-    pos: "v./n.",
-    sentence: "The daily grind of office work can be exhausting.",
-    sentenceCn: "办公室日常工作的苦差事可能令人筋疲力尽。"
-  },
-  {
-    word: "grip",
-    meaning: "紧握；掌握；把手",
-    pos: "n./v.",
-    sentence: "She kept a firm grip on the steering wheel.",
-    sentenceCn: "她紧紧握住方向盘。"
-  },
-  {
-    word: "guidance",
-    meaning: "指导；引导",
-    pos: "n.",
-    sentence: "Students need proper guidance to choose their career paths.",
-    sentenceCn: "学生需要适当的指导来选择他们的职业道路。"
-  },
-  {
-    word: "halt",
-    meaning: "停止；暂停",
-    pos: "v./n.",
-    sentence: "The project came to a halt due to lack of funding.",
-    sentenceCn: "由于缺乏资金，项目停滞了。"
-  },
-  {
-    word: "hamper",
-    meaning: "妨碍；阻碍",
+    word: "dread",
+    meaning: "恐惧；担心",
     pos: "v.",
-    sentence: "Bad weather hampered the rescue operations.",
-    sentenceCn: "恶劣天气阻碍了救援行动。"
+    sentence: "Students often dread the thought of taking final examinations.",
+    sentenceCn: "学生们经常害怕期末考试的想法。"
   },
   {
-    word: "hatch",
-    meaning: "孵化；策划",
-    pos: "v.",
-    sentence: "The eggs will hatch in about two weeks.",
-    sentenceCn: "蛋大约两周后会孵化。"
-  },
-  {
-    word: "haul",
-    meaning: "拖运；用力拉",
-    pos: "v.",
-    sentence: "They hauled the heavy boxes up the stairs.",
-    sentenceCn: "他们把沉重的箱子拖上了楼梯。"
-  },
-  {
-    word: "haunt",
-    meaning: "萦绕；常去的地方",
-    pos: "v./n.",
-    sentence: "The memory of that day still haunts her.",
-    sentenceCn: "那天的记忆仍然萦绕在她心头。"
-  },
-  {
-    word: "hazard",
-    meaning: "危险；危害",
-    pos: "n.",
-    sentence: "Smoking is a serious health hazard.",
-    sentenceCn: "吸烟是一个严重的健康危害。"
-  },
-  {
-    word: "hedge",
-    meaning: "树篱；对冲",
-    pos: "n./v.",
-    sentence: "Investors use hedging strategies to minimize risk.",
-    sentenceCn: "投资者使用对冲策略来最小化风险。",
-    actualWord: "hedging"
-  },
-  {
-    word: "herald",
-    meaning: "预示；先驱",
-    pos: "v./n.",
-    sentence: "The swallows' arrival heralds the beginning of spring.",
-    sentenceCn: "燕子的到来预示着春天的开始。"
-  },
-  {
-    word: "hierarchy",
-    meaning: "等级制度；层次结构",
-    pos: "n.",
-    sentence: "The company has a strict hierarchy of management.",
-    sentenceCn: "公司有严格的管理等级制度。"
-  },
-  {
-    word: "hollow",
-    meaning: "空的；空洞的",
+    word: "dubious",
+    meaning: "可疑的；怀疑的",
     pos: "adj.",
-    sentence: "The tree trunk was completely hollow inside.",
-    sentenceCn: "树干内部完全空了。"
+    sentence: "Many consumers remain dubious about the safety of genetically modified foods.",
+    sentenceCn: "许多消费者对转基因食品的安全性仍持怀疑态度。"
   },
   {
-    word: "homogeneous",
-    meaning: "同质的；均匀的",
+    word: "editorial",
+    meaning: "编辑的；社论",
+    pos: "n./adj.",
+    sentence: "The newspaper published an editorial criticizing the government's economic policies.",
+    sentenceCn: "该报纸发表了一篇批评政府经济政策的社论。"
+  },
+  {
+    word: "eligible",
+    meaning: "有资格的；合格的",
     pos: "adj.",
-    sentence: "The population of this small town is quite homogeneous.",
-    sentenceCn: "这个小镇的人口相当同质化。"
+    sentence: "Only citizens over the age of 18 are eligible to vote in national elections.",
+    sentenceCn: "只有18岁以上的公民才有资格在全国选举中投票。"
   },
   {
-    word: "honorary",
-    meaning: "荣誉的；名誉的",
+    word: "eminent",
+    meaning: "卓越的；著名的",
     pos: "adj.",
-    sentence: "She received an honorary degree from the university.",
-    sentenceCn: "她获得了大学的荣誉学位。"
+    sentence: "The conference was attended by eminent scientists from around the world.",
+    sentenceCn: "会议吸引了来自世界各地的杰出科学家参加。"
   },
   {
-    word: "intellectual",
-    meaning: "智力的；知识分子",
-    pos: "adj./n.",
-    sentence: "The intellectual property rights must be protected.",
-    sentenceCn: "知识产权必须受到保护。"
-  },
-  {
-    word: "intermittent",
-    meaning: "间歇的；断断续续的",
-    pos: "adj.",
-    sentence: "The intermittent rain made it difficult to plan outdoor activities.",
-    sentenceCn: "断断续续的雨使户外活动难以计划。"
-  },
-  {
-    word: "intervene",
-    meaning: "干预；介入",
+    word: "erect",
+    meaning: "竖立；建立",
     pos: "v.",
-    sentence: "The government decided to intervene in the economic crisis.",
-    sentenceCn: "政府决定干预经济危机。"
+    sentence: "The city decided to erect a monument in honor of the fallen soldiers.",
+    sentenceCn: "城市决定建立一座纪念碑以纪念阵亡士兵。"
   },
   {
-    word: "intimidate",
-    meaning: "恐吓；威胁",
-    pos: "v.",
-    sentence: "He tried to intimidate the witness into silence.",
-    sentenceCn: "他试图恐吓证人使其保持沉默。"
-  },
-  {
-    word: "intricate",
-    meaning: "复杂的；错综复杂的",
+    word: "eternal",
+    meaning: "永恒的",
     pos: "adj.",
-    sentence: "The intricate design required months of careful work.",
-    sentenceCn: "这个复杂的设计需要数月的精心制作。"
-  },
-  {
-    word: "intrigue",
-    meaning: "激起兴趣；密谋",
-    pos: "v./n.",
-    sentence: "The mystery novel intrigued readers with its complex plot.",
-    sentenceCn: "这本悬疑小说以其复杂的情节吸引了读者。"
-  },
-  {
-    word: "invade",
-    meaning: "入侵；侵略",
-    pos: "v.",
-    sentence: "The army invaded the neighboring country at dawn.",
-    sentenceCn: "军队在黎明时入侵了邻国。"
-  },
-  {
-    word: "invaluable",
-    meaning: "无价的；非常宝贵的",
-    pos: "adj.",
-    sentence: "Her experience proved invaluable to the team.",
-    sentenceCn: "她的经验对团队来说证明是无价的。"
-  },
-  {
-    word: "invoice",
-    meaning: "发票；清单",
-    pos: "n./v.",
-    sentence: "Please send the invoice to our accounting department.",
-    sentenceCn: "请将发票发送到我们的会计部门。"
-  },
-  {
-    word: "invoke",
-    meaning: "援引；调用",
-    pos: "v.",
-    sentence: "The lawyer invoked the Fifth Amendment in court.",
-    sentenceCn: "律师在法庭上援引了第五修正案。"
-  },
-  {
-    word: "involuntary",
-    meaning: "非自愿的；无意识的",
-    pos: "adj.",
-    sentence: "He gave an involuntary shudder when he saw the spider.",
-    sentenceCn: "当他看到蜘蛛时，他不自觉地颤抖了一下。"
-  },
-  {
-    word: "irrigate",
-    meaning: "灌溉；冲洗",
-    pos: "v.",
-    sentence: "Farmers irrigate their fields with water from the river.",
-    sentenceCn: "农民用河水灌溉他们的田地。"
-  },
-  {
-    word: "irritate",
-    meaning: "激怒；刺激",
-    pos: "v.",
-    sentence: "The harsh chemicals irritated her sensitive skin.",
-    sentenceCn: "刺激性化学物质刺激了她敏感的皮肤。"
-  },
-  {
-    word: "jaw",
-    meaning: "下巴；颌",
-    pos: "n.",
-    sentence: "He broke his jaw in a car accident.",
-    sentenceCn: "他在车祸中摔断了下巴。"
-  },
-  {
-    word: "jerk",
-    meaning: "猛拉；急拉",
-    pos: "v./n.",
-    sentence: "He jerked the steering wheel to avoid the obstacle.",
-    sentenceCn: "他猛拉方向盘以避开障碍物。"
-  },
-  {
-    word: "judicious",
-    meaning: "明智的；审慎的",
-    pos: "adj.",
-    sentence: "A judicious decision requires careful consideration.",
-    sentenceCn: "明智的决定需要仔细考虑。"
-  },
-  {
-    word: "juncture",
-    meaning: "关头；时刻；连接点",
-    pos: "n.",
-    sentence: "At this critical juncture, we must make the right choice.",
-    sentenceCn: "在这个关键时刻，我们必须做出正确的选择。"
+    sentence: "The concept of eternal life is central to many religious beliefs.",
+    sentenceCn: "永恒生命的概念是许多宗教信仰的核心。"
   }
 ];
