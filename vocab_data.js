@@ -1,602 +1,246 @@
 const vocabData = [
-  {
-    "word": "limelight",
-    "meaning": "聚光灯；公众瞩目的中心",
-    "pos": "n.",
-    "sentence": "The limelight is important."
-  },
-  {
-    "word": "lineage",
-    "meaning": "血统；世系",
-    "pos": "n.",
-    "sentence": "The lineage is important."
-  },
-  {
-    "word": "mastery",
-    "meaning": "掌握；精通",
-    "pos": "n.",
-    "sentence": "The mastery is important."
-  },
-  {
-    "word": "materialism",
-    "meaning": "唯物主义；享乐主义",
-    "pos": "n.",
-    "sentence": "The materialism is important."
-  },
-  {
-    "word": "meager",
-    "meaning": "贫乏的；瘦的",
-    "pos": "adj.",
-    "sentence": "This is a meager example."
-  },
-  {
-    "word": "measurable",
-    "meaning": "可测量的；显著的",
-    "pos": "adj.",
-    "sentence": "This is a measurable example."
-  },
-  {
-    "word": "medieval",
-    "meaning": "中世纪的",
-    "pos": "adj.",
-    "sentence": "This is a medieval example."
-  },
-  {
-    "word": "mediocre",
-    "meaning": "平庸的",
-    "pos": "adj.",
-    "sentence": "This is a mediocre example."
-  },
-  {
-    "word": "menace",
-    "meaning": "威胁",
-    "pos": "v./n.",
-    "sentence": "The menace is important."
-  },
-  {
-    "word": "merciful",
-    "meaning": "仁慈的",
-    "pos": "adj.",
-    "sentence": "This is a merciful example."
-  },
-  {
-    "word": "merit",
-    "meaning": "优点；功劳",
-    "pos": "n./v.",
-    "sentence": "The merit is important."
-  },
-  {
-    "word": "metaphor",
-    "meaning": "暗喻",
-    "pos": "n.",
-    "sentence": "The metaphor is important."
-  },
-  {
-    "word": "meticulous",
-    "meaning": "细心的；极注意细节的",
-    "pos": "adj.",
-    "sentence": "This is a meticulous example."
-  },
-  {
-    "word": "metropolis",
-    "meaning": "大都市",
-    "pos": "n.",
-    "sentence": "The metropolis is important."
-  },
-  {
-    "word": "migrate",
-    "meaning": "迁移；移居",
-    "pos": "v.",
-    "sentence": "We need to migrate carefully."
-  },
-  {
-    "word": "millennium",
-    "meaning": "一千年",
-    "pos": "n.",
-    "sentence": "The millennium is important."
-  },
-  {
-    "word": "misery",
-    "meaning": "苦难",
-    "pos": "n.",
-    "sentence": "The misery is important."
-  },
-  {
-    "word": "missionary",
-    "meaning": "传教士",
-    "pos": "n.",
-    "sentence": "The missionary is important."
-  },
-  {
-    "word": "mobilize",
-    "meaning": "动员",
-    "pos": "v.",
-    "sentence": "We need to mobilize carefully."
-  },
-  {
-    "word": "modest",
-    "meaning": "谦虚的；适度的",
-    "pos": "adj.",
-    "sentence": "This is a modest example."
-  },
-  {
-    "word": "modesty",
-    "meaning": "谦虚",
-    "pos": "n.",
-    "sentence": "The modesty is important."
-  },
-  {
-    "word": "momentary",
-    "meaning": "瞬间的",
-    "pos": "adj.",
-    "sentence": "This is a momentary example."
-  },
-  {
-    "word": "morale",
-    "meaning": "士气",
-    "pos": "n.",
-    "sentence": "The morale is important."
-  },
-  {
-    "word": "mortal",
-    "meaning": "致命的；凡人",
-    "pos": "adj./n.",
-    "sentence": "The mortal is important."
-  },
-  {
-    "word": "motif",
-    "meaning": "主题；动机",
-    "pos": "n.",
-    "sentence": "The motif is important."
-  },
-  {
-    "word": "mourn",
-    "meaning": "哀悼",
-    "pos": "v.",
-    "sentence": "We need to mourn carefully."
-  },
-  {
-    "word": "myriad",
-    "meaning": "无数的",
-    "pos": "adj.",
-    "sentence": "This is a myriad example."
-  },
-  {
-    "word": "nasty",
-    "meaning": "令人厌恶的；下流的",
-    "pos": "adj.",
-    "sentence": "This is a nasty example."
-  },
-  {
-    "word": "patriot",
-    "meaning": "爱国者",
-    "pos": "n.",
-    "sentence": "The patriot is important."
-  },
-  {
-    "word": "patriotic",
-    "meaning": "爱国者的",
-    "pos": "adj.",
-    "sentence": "This is a patriotic example."
-  },
-  {
-    "word": "patrol",
-    "meaning": "巡逻",
-    "pos": "v./n.",
-    "sentence": "The patrol is important."
-  },
-  {
-    "word": "patronage",
-    "meaning": "资助；光顾",
-    "pos": "n.",
-    "sentence": "The patronage is important."
-  },
-  {
-    "word": "paucity",
-    "meaning": "缺乏",
-    "pos": "n.",
-    "sentence": "The paucity is important."
-  },
-  {
-    "word": "pavement",
-    "meaning": "人行道",
-    "pos": "n.",
-    "sentence": "The pavement is important."
-  },
-  {
-    "word": "pedal",
-    "meaning": "踏板；骑自行车",
-    "pos": "n./v.",
-    "sentence": "The pedal is important."
-  },
-  {
-    "word": "pedant",
-    "meaning": "迂腐的人；学究",
-    "pos": "n.",
-    "sentence": "The pedant is important."
-  },
-  {
-    "word": "pedestrian",
-    "meaning": "行人；徒步的；乏味的",
-    "pos": "n./adj.",
-    "sentence": "The pedestrian is important."
-  },
-  {
-    "word": "pedigree",
-    "meaning": "血统；家谱",
-    "pos": "n.",
-    "sentence": "The pedigree is important."
-  },
-  {
-    "word": "predicament",
-    "meaning": "困境",
-    "pos": "n.",
-    "sentence": "The predicament is important."
-  },
-  {
-    "word": "preeminent",
-    "meaning": "卓越的；杰出的",
-    "pos": "adj.",
-    "sentence": "This is a preeminent example."
-  },
-  {
-    "word": "preliminary",
-    "meaning": "初步的",
-    "pos": "adj.",
-    "sentence": "This is a preliminary example."
-  },
-  {
-    "word": "preposterous",
-    "meaning": "荒谬的",
-    "pos": "adj.",
-    "sentence": "This is a preposterous example."
-  },
-  {
-    "word": "preservative",
-    "meaning": "防腐剂",
-    "pos": "n.",
-    "sentence": "The preservative is important."
-  },
-  {
-    "word": "presidency",
-    "meaning": "总统任期",
-    "pos": "n.",
-    "sentence": "The presidency is important."
-  },
-  {
-    "word": "presumption",
-    "meaning": "假定；放肆",
-    "pos": "n.",
-    "sentence": "The presumption is important."
-  },
-  {
-    "word": "pretentious",
-    "meaning": "自命不凡的",
-    "pos": "adj.",
-    "sentence": "This is a pretentious example."
-  },
-  {
-    "word": "pretext",
-    "meaning": "借口",
-    "pos": "n.",
-    "sentence": "The pretext is important."
-  },
-  {
-    "word": "primate",
-    "meaning": "灵长类",
-    "pos": "n.",
-    "sentence": "The primate is important."
-  },
-  {
-    "word": "princely",
-    "meaning": "豪华的",
-    "pos": "adj.",
-    "sentence": "This is a princely example."
-  },
-  {
-    "word": "proactive",
-    "meaning": "积极主动的；先发制人的",
-    "pos": "adj.",
-    "sentence": "This is a proactive example."
-  },
-  {
-    "word": "probation",
-    "meaning": "缓刑；见习期",
-    "pos": "n.",
-    "sentence": "The probation is important."
-  },
-  {
-    "word": "problematic",
-    "meaning": "成问题的；存疑的",
-    "pos": "adj.",
-    "sentence": "This is a problematic example."
-  },
-  {
-    "word": "process",
-    "meaning": "过程；处理",
-    "pos": "n./v.",
-    "sentence": "The process is important."
-  },
-  {
-    "word": "procession",
-    "meaning": "队伍",
-    "pos": "n.",
-    "sentence": "The procession is important."
-  },
-  {
-    "word": "procrastinate",
-    "meaning": "拖延",
-    "pos": "v.",
-    "sentence": "We need to procrastinate carefully."
-  },
-  {
-    "word": "profane",
-    "meaning": "世俗的；亵渎的",
-    "pos": "adj.",
-    "sentence": "This is a profane example."
-  },
-  {
-    "word": "proficiency",
-    "meaning": "熟练",
-    "pos": "n.",
-    "sentence": "The proficiency is important."
-  },
-  {
-    "word": "profuse",
-    "meaning": "丰富的",
-    "pos": "adj.",
-    "sentence": "This is a profuse example."
-  },
-  {
-    "word": "prognosis",
-    "meaning": "预测；预后",
-    "pos": "n.",
-    "sentence": "The prognosis is important."
-  },
-  {
-    "word": "progressive",
-    "meaning": "进步的",
-    "pos": "adj.",
-    "sentence": "This is a progressive example."
-  },
-  {
-    "word": "prohibitive",
-    "meaning": "禁止性的；昂贵的",
-    "pos": "adj.",
-    "sentence": "This is a prohibitive example."
-  },
-  {
-    "word": "proliferate",
-    "meaning": "激增；繁殖",
-    "pos": "v.",
-    "sentence": "We need to proliferate carefully."
-  },
-  {
-    "word": "prolific",
-    "meaning": "多产的",
-    "pos": "adj.",
-    "sentence": "This is a prolific example."
-  },
-  {
-    "word": "prologue",
-    "meaning": "序言",
-    "pos": "n.",
-    "sentence": "The prologue is important."
-  },
-  {
-    "word": "promising",
-    "meaning": "有前途的",
-    "pos": "adj.",
-    "sentence": "This is a promising example."
-  },
-  {
-    "word": "promote",
-    "meaning": "提升；促进；促销",
-    "pos": "v.",
-    "sentence": "We need to promote carefully."
-  },
-  {
-    "word": "promotion",
-    "meaning": "提升；促销",
-    "pos": "n.",
-    "sentence": "The promotion is important."
-  },
-  {
-    "word": "prone",
-    "meaning": "易于……的；俯卧的",
-    "pos": "adj.",
-    "sentence": "This is a prone example."
-  },
-  {
-    "word": "pronounced",
-    "meaning": "显著的",
-    "pos": "adj.",
-    "sentence": "This is a pronounced example."
-  },
-  {
-    "word": "propellant",
-    "meaning": "推进剂",
-    "pos": "n.",
-    "sentence": "The propellant is important."
-  },
-  {
-    "word": "propensity",
-    "meaning": "倾向",
-    "pos": "n.",
-    "sentence": "The propensity is important."
-  },
-  {
-    "word": "property",
-    "meaning": "财产；属性",
-    "pos": "n.",
-    "sentence": "The property is important."
-  },
-  {
-    "word": "prophecy",
-    "meaning": "预言",
-    "pos": "n.",
-    "sentence": "The prophecy is important."
-  },
-  {
-    "word": "prophesy",
-    "meaning": "预言",
-    "pos": "v.",
-    "sentence": "We need to prophesy carefully."
-  },
-  {
-    "word": "prophetic",
-    "meaning": "预言的",
-    "pos": "adj.",
-    "sentence": "This is a prophetic example."
-  },
-  {
-    "word": "prophylactic",
-    "meaning": "预防性的",
-    "pos": "adj.",
-    "sentence": "This is a prophylactic example."
-  },
-  {
-    "word": "proprietary",
-    "meaning": "专有的",
-    "pos": "adj.",
-    "sentence": "This is a proprietary example."
-  },
-  {
-    "word": "propriety",
-    "meaning": "得体；礼节",
-    "pos": "n.",
-    "sentence": "The propriety is important."
-  },
-  {
-    "word": "propulsion",
-    "meaning": "推进力",
-    "pos": "n.",
-    "sentence": "The propulsion is important."
-  },
-  {
-    "word": "prosaic",
-    "meaning": "平淡的；乏味的",
-    "pos": "adj.",
-    "sentence": "This is a prosaic example."
-  },
-  {
-    "word": "masterpiece",
-    "meaning": "杰作",
-    "pos": "n.",
-    "sentence": "The masterpiece is important."
-  },
-  {
-    "word": "maturity",
-    "meaning": "成熟",
-    "pos": "n.",
-    "sentence": "The maturity is important."
-  },
-  {
-    "word": "mechanic",
-    "meaning": "技工",
-    "pos": "n.",
-    "sentence": "The mechanic is important."
-  },
-  {
-    "word": "mediate",
-    "meaning": "调解；居中",
-    "pos": "v.",
-    "sentence": "We need to mediate carefully."
-  },
-  {
-    "word": "medication",
-    "meaning": "药物治疗；药物",
-    "pos": "n.",
-    "sentence": "The medication is important."
-  },
-  {
-    "word": "medicine",
-    "meaning": "医学；内服药",
-    "pos": "n.",
-    "sentence": "The medicine is important."
-  },
-  {
-    "word": "meditate",
-    "meaning": "沉思；冥想",
-    "pos": "v.",
-    "sentence": "We need to meditate carefully."
-  },
-  {
-    "word": "membrane",
-    "meaning": "膜",
-    "pos": "n.",
-    "sentence": "The membrane is important."
-  },
-  {
-    "word": "memorable",
-    "meaning": "值得纪念的",
-    "pos": "adj.",
-    "sentence": "This is a memorable example."
-  },
-  {
-    "word": "memorandum",
-    "meaning": "备忘录",
-    "pos": "n.",
-    "sentence": "The memorandum is important."
-  },
-  {
-    "word": "memorial",
-    "meaning": "纪念碑；纪念的",
-    "pos": "n./adj.",
-    "sentence": "The memorial is important."
-  },
-  {
-    "word": "mentality",
-    "meaning": "心理；心态",
-    "pos": "n.",
-    "sentence": "The mentality is important."
-  },
-  {
-    "word": "merchandise",
-    "meaning": "商品；买卖",
-    "pos": "n./v.",
-    "sentence": "The merchandise is important."
-  },
-  {
-    "word": "merely",
-    "meaning": "仅仅",
-    "pos": "adv.",
-    "sentence": "We need to merely carefully."
-  },
-  {
-    "word": "merge",
-    "meaning": "合并",
-    "pos": "v.",
-    "sentence": "We need to merge carefully."
-  },
-  {
-    "word": "messenger",
-    "meaning": "信使",
-    "pos": "n.",
-    "sentence": "The messenger is important."
-  },
-  {
-    "word": "metallic",
-    "meaning": "金属的",
-    "pos": "adj.",
-    "sentence": "This is a metallic example."
-  },
-  {
-    "word": "metric",
-    "meaning": "公制的",
-    "pos": "adj.",
-    "sentence": "This is a metric example."
-  },
-  {
-    "word": "microscope",
-    "meaning": "显微镜",
-    "pos": "n.",
-    "sentence": "The microscope is important."
-  },
-  {
-    "word": "midst",
-    "meaning": "中间",
-    "pos": "n.",
-    "sentence": "The midst is important."
-  }
+{"word": "plunge", "meaning": "投入；猛跌", "pos": "v.", "sentence": "The stock market plunged yesterday."},
+{"word": "plurality", "meaning": "多数；多元性", "pos": "n.", "sentence": "A plurality of opinions exists."},
+{"word": "pneumonia", "meaning": "肺炎", "pos": "n.", "sentence": "He was diagnosed with pneumonia."},
+{"word": "poignant", "meaning": "辛辣的；沉痛的", "pos": "a.", "sentence": "A poignant reminder of the past."},
+{"word": "pointer", "meaning": "指针；提示", "pos": "n.", "sentence": "Use the pointer to navigate."},
+{"word": "pointless", "meaning": "无意义的", "pos": "a.", "sentence": "The argument was pointless."},
+{"word": "poise", "meaning": "姿态", "pos": "n.", "sentence": "She showed great poise under pressure."},
+{"word": "poisonous", "meaning": "有毒的", "pos": "a.", "sentence": "Some mushrooms are poisonous."},
+{"word": "polarity", "meaning": "极性", "pos": "n.", "sentence": "The polarity of the magnet is important."},
+{"word": "polarize", "meaning": "使极化；使分化", "pos": "v.", "sentence": "The issue polarized the community."},
+{"word": "policymaker", "meaning": "决策者", "pos": "n.", "sentence": "Policymakers must consider all options."},
+{"word": "poll", "meaning": "民意测验；投票", "pos": "n.", "sentence": "The poll showed strong support."},
+{"word": "pollen", "meaning": "花粉", "pos": "n.", "sentence": "Pollen causes allergies in spring."},
+{"word": "pollutant", "meaning": "污染物", "pos": "n.", "sentence": "Air pollutants affect health."},
+{"word": "pollute", "meaning": "污染", "pos": "v.", "sentence": "Factories pollute the environment."},
+{"word": "pompous", "meaning": "傲慢的；华而不实的", "pos": "a.", "sentence": "His pompous speech annoyed everyone."},
+{"word": "ponder", "meaning": "沉思", "pos": "v.", "sentence": "He pondered the question carefully."},
+{"word": "poorly", "meaning": "贫穷地；拙劣地", "pos": "ad.", "sentence": "The project was poorly managed."},
+{"word": "populous", "meaning": "人口稠密的", "pos": "a.", "sentence": "China is a populous country."},
+{"word": "porch", "meaning": "门廊", "pos": "n.", "sentence": "They sat on the porch talking."},
+{"word": "porous", "meaning": "有孔的；能渗透的", "pos": "a.", "sentence": "Sponge is a porous material."},
+{"word": "portable", "meaning": "轻便的；便携的", "pos": "adj.", "sentence": "This device is portable."},
+{"word": "portfolio", "meaning": "公事包；文件夹；投资组合", "pos": "n.", "sentence": "She manages an investment portfolio."},
+{"word": "portrayal", "meaning": "描绘", "pos": "n.", "sentence": "His portrayal of the character was excellent."},
+{"word": "posh", "meaning": "优雅的；豪华的", "pos": "adj.", "sentence": "They stayed at a posh hotel."},
+{"word": "possessive", "meaning": "所有格的；占有欲强的", "pos": "adj.", "sentence": "She is possessive about her books."},
+{"word": "postage", "meaning": "邮资", "pos": "n.", "sentence": "The postage cost is increasing."},
+{"word": "postal", "meaning": "邮政的", "pos": "adj.", "sentence": "The postal service is reliable."},
+{"word": "posterity", "meaning": "后代", "pos": "n.", "sentence": "We must preserve this for posterity."},
+{"word": "postgraduate", "meaning": "研究生；毕业后的", "pos": "n./adj.", "sentence": "She is a postgraduate student."},
+{"word": "posthumous", "meaning": "死后的", "pos": "a.", "sentence": "He received a posthumous award."},
+{"word": "postpone", "meaning": "推迟", "pos": "v.", "sentence": "We had to postpone the meeting."},
+{"word": "postponement", "meaning": "延期", "pos": "n.", "sentence": "The postponement caused problems."},
+{"word": "postscript", "meaning": "附言", "pos": "n.", "sentence": "She added a postscript to the letter."},
+{"word": "postulate", "meaning": "假设", "pos": "v.", "sentence": "Scientists postulate new theories."},
+{"word": "posture", "meaning": "姿势；态度", "pos": "n.", "sentence": "Good posture is important for health."},
+{"word": "potency", "meaning": "力量；潜能", "pos": "n.", "sentence": "The potency of the drug is high."},
+{"word": "potentiality", "meaning": "潜力", "pos": "n.", "sentence": "The potentiality for growth is immense."},
+{"word": "pounce", "meaning": "扑向", "pos": "v.", "sentence": "The cat pounced on the mouse."},
+{"word": "poverty", "meaning": "贫困", "pos": "n.", "sentence": "Poverty remains a global issue."},
+{"word": "practicable", "meaning": "可行的", "pos": "a.", "sentence": "The plan seems practicable."},
+{"word": "practical", "meaning": "实际的；实用的", "pos": "a.", "sentence": "Give me a practical solution."},
+{"word": "practitioner", "meaning": "从业者；执业医生/律师", "pos": "n.", "sentence": "Consult a medical practitioner."},
+{"word": "pragmatic", "meaning": "务实的", "pos": "a.", "sentence": "We need a pragmatic approach."},
+{"word": "praiseworthy", "meaning": "值得称赞的", "pos": "a.", "sentence": "His efforts are praiseworthy."},
+{"word": "prearious", "meaning": "不稳固的；危险的", "pos": "a.", "sentence": "The situation is precarious."},
+{"word": "precaution", "meaning": "预防措施", "pos": "n.", "sentence": "Take necessary precautions."},
+{"word": "precedence", "meaning": "优先；领先", "pos": "n.", "sentence": "Safety takes precedence over speed."},
+{"word": "precedent", "meaning": "先例", "pos": "n.", "sentence": "This sets a dangerous precedent."},
+{"word": "preceding", "meaning": "在前的", "pos": "a.", "sentence": "The preceding chapter was informative."},
+{"word": "precipice", "meaning": "悬崖", "pos": "n.", "sentence": "They stood at the edge of the precipice."},
+{"word": "precipitate", "meaning": "促成；猛摔", "pos": "v.", "sentence": "The decision precipitated a crisis."},
+{"word": "precipitation", "meaning": "降水；仓促", "pos": "n.", "sentence": "Heavy precipitation is expected."},
+{"word": "precision", "meaning": "精确", "pos": "n.", "sentence": "The work requires great precision."},
+{"word": "preclude", "meaning": "排除；阻止", "pos": "v.", "sentence": "This does not preclude other options."},
+{"word": "precocious", "meaning": "早熟的", "pos": "a.", "sentence": "A precocious child learns quickly."},
+{"word": "predecessor", "meaning": "前任；前辈", "pos": "n.", "sentence": "He succeeded his predecessor."},
+{"word": "Protestant", "meaning": "新教徒", "pos": "n.", "sentence": "Martin Luther was a Protestant leader."},
+{"word": "Learn by heart", "meaning": "背诵；熟记", "pos": "phr.", "sentence": "Learn the poem by heart."},
+{"word": "In light of", "meaning": "鉴于；由于", "pos": "phr.", "sentence": "In light of recent events, we must act."},
+{"word": "Measure up to", "meaning": "符合；达到（标准）", "pos": "phr.", "sentence": "He didn't measure up to expectations."},
+{"word": "None the less", "meaning": "尽管如此", "pos": "phr.", "sentence": "He failed; none the less, he tried hard."},
+{"word": "On the grounds of", "meaning": "根据；基于（原因）", "pos": "phr.", "sentence": "He was fired on the grounds of misconduct."},
+{"word": "Opt for", "meaning": "选择", "pos": "phr.", "sentence": "You can opt for a different plan."},
+{"word": "Postpone doing sth.", "meaning": "推迟做某事", "pos": "phr.", "sentence": "We postponed making a decision."},
+{"word": "Prior to", "meaning": "在……之前", "pos": "phr.", "sentence": "Prior to the meeting, we had lunch."},
+{"word": "Provide for", "meaning": "供养；规定", "pos": "phr.", "sentence": "He must provide for his family."},
+{"word": "relieve", "meaning": "减轻；解除", "pos": "v.", "sentence": "This medicine relieves pain."},
+{"word": "reluctance", "meaning": "不情愿", "pos": "n.", "sentence": "He showed reluctance to accept."},
+{"word": "remedy", "meaning": "补救；治疗法", "pos": "n.", "sentence": "There is a remedy for every problem."},
+{"word": "remnant", "meaning": "残余物", "pos": "n.", "sentence": "Only remnants of the building remain."},
+{"word": "renaissance", "meaning": "文艺复兴；再生", "pos": "n.", "sentence": "The Renaissance was a period of rebirth."},
+{"word": "renovate", "meaning": "翻新；修复", "pos": "v.", "sentence": "They plan to renovate the house."},
+{"word": "repeal", "meaning": "废除；撤销", "pos": "v./n.", "sentence": "The law was repealed last year."},
+{"word": "repel", "meaning": "击退；抵制", "pos": "v.", "sentence": "The coating repels water."},
+{"word": "repetitive", "meaning": "重复的", "pos": "a.", "sentence": "The work is repetitive and boring."},
+{"word": "reproduce", "meaning": "繁殖；复制", "pos": "v.", "sentence": "Cells reproduce by division."},
+{"word": "reputation", "meaning": "名声；名誉", "pos": "n.", "sentence": "She has a good reputation."},
+{"word": "resemblance", "meaning": "相似；形似", "pos": "n.", "sentence": "There is a strong resemblance."},
+{"word": "resent", "meaning": "怨恨；愤恨", "pos": "v.", "sentence": "He resents the criticism."},
+{"word": "reservation", "meaning": "预订；保留意见", "pos": "n.", "sentence": "Make a reservation for dinner."},
+{"word": "reserve", "meaning": "保留；预订", "pos": "v.", "sentence": "Reserve a table for two."},
+{"word": "reservoir", "meaning": "水库；蓄水池", "pos": "n.", "sentence": "The reservoir supplies water to the city."},
+{"word": "resilience", "meaning": "韧性；弹力", "pos": "n.", "sentence": "She showed great resilience."},
+{"word": "resist", "meaning": "抵抗；忍耐", "pos": "v.", "sentence": "He couldn't resist the temptation."},
+{"word": "resolution", "meaning": "决心；决议；分辨率", "pos": "n.", "sentence": "Make a New Year's resolution."},
+{"word": "resolve", "meaning": "解决；决定；分解", "pos": "v.", "sentence": "We must resolve this issue."},
+{"word": "resonance", "meaning": "共鸣；反响", "pos": "n.", "sentence": "The music had deep resonance."},
+{"word": "resort", "meaning": "度假胜地", "pos": "n.", "sentence": "They stayed at a ski resort."},
+{"word": "resource", "meaning": "资源；谋略", "pos": "n.", "sentence": "Natural resources are limited."},
+{"word": "respective", "meaning": "各自的", "pos": "a.", "sentence": "They went to their respective homes."},
+{"word": "responsibility", "meaning": "责任；职责", "pos": "n.", "sentence": "Take responsibility for your actions."},
+{"word": "resume", "meaning": "继续；重新开始", "pos": "v./n.", "sentence": "Resume your work after the break."},
+{"word": "retain", "meaning": "保持；保留", "pos": "v.", "sentence": "Retain all the original features."},
+{"word": "retention", "meaning": "保留；记忆力", "pos": "n.", "sentence": "Employee retention is important."},
+{"word": "retort", "meaning": "反驳；回嘴", "pos": "v./n.", "sentence": "She made a quick retort."},
+{"word": "retrieve", "meaning": "取回；挽回", "pos": "v.", "sentence": "Retrieve the lost data."},
+{"word": "retrospect", "meaning": "回顾", "pos": "n./v.", "sentence": "In retrospect, it was a good decision."},
+{"word": "reveal", "meaning": "揭露；显示", "pos": "v.", "sentence": "The report reveals the truth."},
+{"word": "revenue", "meaning": "收入；税收", "pos": "n.", "sentence": "Tax revenue increased this year."},
+{"word": "reverence", "meaning": "尊敬", "pos": "n.", "sentence": "Show reverence to your elders."},
+{"word": "reverse", "meaning": "相反", "pos": "a.", "sentence": "The situation is the reverse of what we expected."},
+{"word": "revive", "meaning": "复兴；苏醒", "pos": "v.", "sentence": "The economy is starting to revive."},
+{"word": "salient", "meaning": "显著的；突出的", "pos": "a.", "sentence": "The salient points were highlighted."},
+{"word": "sanitary", "meaning": "卫生的", "pos": "a.", "sentence": "Maintain sanitary conditions."},
+{"word": "saturate", "meaning": "浸透；使饱和", "pos": "v.", "sentence": "The market is saturated."},
+{"word": "scandal", "meaning": "丑闻", "pos": "n.", "sentence": "The scandal ruined his career."},
+{"word": "scant", "meaning": "不足的；缺乏的", "pos": "a.", "sentence": "There is scant evidence."},
+{"word": "scarcity", "meaning": "稀少；缺乏", "pos": "n.", "sentence": "Water scarcity is a serious problem."},
+{"word": "scenic", "meaning": "风景优美的", "pos": "a.", "sentence": "Take the scenic route."},
+{"word": "scrutiny", "meaning": "详细检查；监视", "pos": "n.", "sentence": "The proposal deserves careful scrutiny."},
+{"word": "sculpture", "meaning": "雕塑", "pos": "n.", "sentence": "A beautiful sculpture in the park."},
+{"word": "secondary", "meaning": "次要的；中级的", "pos": "adj.", "sentence": "This is a secondary concern."},
+{"word": "sector", "meaning": "部门；扇形", "pos": "n.", "sentence": "The private sector is growing."},
+{"word": "secular", "meaning": "世俗的", "pos": "adj.", "sentence": "We live in a secular society."},
+{"word": "segregate", "meaning": "隔离；分开", "pos": "v.", "sentence": "Segregate the waste materials."},
+{"word": "sensible", "meaning": "明智的；感觉得到的", "pos": "a.", "sentence": "That's a sensible suggestion."},
+{"word": "sequence", "meaning": "序列；先后次序", "pos": "n.", "sentence": "Follow the correct sequence."},
+{"word": "serene", "meaning": "安详的；晴朗的", "pos": "a.", "sentence": "A serene landscape."},
+{"word": "setback", "meaning": "挫折；退步", "pos": "n.", "sentence": "This was a major setback."},
+{"word": "settlement", "meaning": "解决；定居点", "pos": "n.", "sentence": "They reached a settlement."},
+{"word": "severe", "meaning": "严重的；严厉的", "pos": "a.", "sentence": "The punishment was severe."},
+{"word": "shabby", "meaning": "破旧的；卑鄙的", "pos": "a.", "sentence": "The house looks shabby."},
+{"word": "sham", "meaning": "伪装；虚假", "pos": "n./a.", "sentence": "It was a sham election."},
+{"word": "shear", "meaning": "剪；剥夺", "pos": "v.", "sentence": "Shear the sheep for wool."},
+{"word": "sheer", "meaning": "纯粹的；陡峭的", "pos": "a.", "sentence": "It was sheer luck."},
+{"word": "shelter", "meaning": "掩体", "pos": "n.", "sentence": "They sought shelter from the storm."},
+{"word": "shiver", "meaning": "战栗；发抖", "pos": "v./n.", "sentence": "She shivered in the cold."},
+{"word": "shrewd", "meaning": "精明的；敏锐的", "pos": "a.", "sentence": "A shrewd businessman."},
+{"word": "shrug", "meaning": "耸肩", "pos": "v./n.", "sentence": "He shrugged his shoulders."},
+{"word": "shudder", "meaning": "发抖；震动", "pos": "v./n.", "sentence": "The thought made her shudder."},
+{"word": "shun", "meaning": "避开；避免", "pos": "v.", "sentence": "Shun bad company."},
+{"word": "simulate", "meaning": "模拟；假装", "pos": "v.", "sentence": "Simulate real-world conditions."},
+{"word": "sinister", "meaning": "凶兆的；邪恶的", "pos": "a.", "sentence": "A sinister smile."},
+{"word": "skim", "meaning": "撇去；略读", "pos": "v.", "sentence": "Skim through the report."},
+{"word": "slaughter", "meaning": "屠宰；屠杀", "pos": "v./n.", "sentence": "The slaughter of animals for food."},
+{"word": "slender", "meaning": "苗条的；微薄的", "pos": "a.", "sentence": "She has a slender figure."},
+{"word": "slum", "meaning": "贫民窟", "pos": "n.", "sentence": "They live in a slum area."},
+{"word": "slump", "meaning": "暴跌；萧条", "pos": "n./v.", "sentence": "The economy is in a slump."},
+{"word": "smart", "meaning": "聪明的；时髦的", "pos": "a.", "sentence": "A smart decision."},
+{"word": "smuggle", "meaning": "走私", "pos": "v.", "sentence": "They tried to smuggle goods."},
+{"word": "soar", "meaning": "猛增；翱翔", "pos": "v.", "sentence": "Prices soared last year."},
+{"word": "sober", "meaning": "清醒的；严肃的", "pos": "a.", "sentence": "Stay sober at the meeting."},
+{"word": "sociable", "meaning": "社交的；好交际的", "pos": "a.", "sentence": "She is very sociable."},
+{"word": "solemn", "meaning": "庄严的；严肃的", "pos": "a.", "sentence": "A solemn ceremony."},
+{"word": "solicit", "meaning": "请求；恳求", "pos": "v.", "sentence": "Solicit donations for charity."},
+{"word": "solidarity", "meaning": "团结；一致", "pos": "n.", "sentence": "Show solidarity with the workers."},
+{"word": "solitary", "meaning": "孤独的；唯一的", "pos": "a.", "sentence": "A solitary figure in the distance."},
+{"word": "sophisticated", "meaning": "复杂的；精密的；老练的", "pos": "a.", "sentence": "A sophisticated system."},
+{"word": "spacious", "meaning": "宽敞的", "pos": "a.", "sentence": "A spacious living room."},
+{"word": "specialize", "meaning": "专门研究；专攻", "pos": "v.", "sentence": "Specialize in a specific field."},
+{"word": "species", "meaning": "物种；种类", "pos": "n.", "sentence": "Endangered species need protection."},
+{"word": "specimen", "meaning": "标本；样品", "pos": "n.", "sentence": "Collect a specimen for testing."},
+{"word": "spectacular", "meaning": "壮观的；惊人的", "pos": "adj.", "sentence": "A spectacular view."},
+{"word": "sphere", "meaning": "球体；范围；领域", "pos": "n.", "sentence": "Sphere of influence."},
+{"word": "spiritual", "meaning": "精神的；心灵的", "pos": "adj.", "sentence": "Spiritual growth is important."},
+{"word": "splendid", "meaning": "壮丽的；极好的", "pos": "a.", "sentence": "A splendid performance."},
+{"word": "stagger", "meaning": "蹒跚；使吃惊", "pos": "v.", "sentence": "The news staggered everyone."},
+{"word": "stale", "meaning": "陈腐的；不新鲜的", "pos": "a.", "sentence": "The bread is stale."},
+{"word": "stammer", "meaning": "口吃；结巴", "pos": "v./n.", "sentence": "He stammers when nervous."},
+{"word": "stationary", "meaning": "静止的", "pos": "a.", "sentence": "The car remained stationary."},
+{"word": "steer", "meaning": "驾驶；引导", "pos": "v.", "sentence": "Steer the car carefully."},
+{"word": "sterile", "meaning": "不育的；无菌的", "pos": "a.", "sentence": "Use sterile equipment."},
+{"word": "stimulate", "meaning": "刺激；激发", "pos": "v.", "sentence": "Exercise stimulates the body."},
+{"word": "stipulate", "meaning": "规定；约定", "pos": "v.", "sentence": "The contract stipulates the terms."},
+{"word": "strategy", "meaning": "战略；策略", "pos": "n.", "sentence": "Develop a marketing strategy."},
+{"word": "stride", "meaning": "大步走；进展", "pos": "v./n.", "sentence": "He strode across the room."},
+{"word": "strife", "meaning": "冲突；争吵", "pos": "n.", "sentence": "Political strife divides the country."},
+{"word": "striking", "meaning": "显著的；引人注目的", "pos": "a.", "sentence": "A striking resemblance."},
+{"word": "stringent", "meaning": "严格的；紧迫的", "pos": "a.", "sentence": "Stringent regulations apply."},
+{"word": "subjective", "meaning": "主观的", "pos": "adj.", "sentence": "This is a subjective opinion."},
+{"word": "subjectivity", "meaning": "主观性", "pos": "n.", "sentence": "Avoid subjectivity in research."},
+{"word": "subpoena", "meaning": "传票；传唤", "pos": "n./v.", "sentence": "He received a subpoena."},
+{"word": "substantiate", "meaning": "证实", "pos": "v.", "sentence": "Substantiate your claims."},
+{"word": "successor", "meaning": "继承者", "pos": "n.", "sentence": "He named his successor."},
+{"word": "succinct", "meaning": "简洁的", "pos": "a.", "sentence": "A succinct explanation."},
+{"word": "succumb", "meaning": "屈服；死于", "pos": "v.", "sentence": "Don't succumb to pressure."},
+{"word": "superficial", "meaning": "a. 表面的；肤浅的", "pos": "adj.", "sentence": "A superficial analysis."},
+{"word": "superfluous", "meaning": "多余的", "pos": "a.", "sentence": "Remove superfluous details."},
+{"word": "superiority", "meaning": "优越性", "pos": "n.", "sentence": "Demonstrate your superiority."},
+{"word": "superstition", "meaning": "迷信", "pos": "n.", "sentence": "Superstition has no place in science."},
+{"word": "supplement", "meaning": "补充；增刊", "pos": "n./v.", "sentence": "Take vitamin supplements."},
+{"word": "suppression", "meaning": "镇压；抑制", "pos": "n.", "sentence": "The suppression of free speech."},
+{"word": "surpass", "meaning": "超过；胜过", "pos": "v.", "sentence": "Surpass all expectations."},
+{"word": "surplus", "meaning": "过剩；盈余", "pos": "n.", "sentence": "A trade surplus."},
+{"word": "suspend", "meaning": "悬挂；暂停；推迟", "pos": "v.", "sentence": "Suspend the account."},
+{"word": "suspense", "meaning": "悬念；焦虑", "pos": "n.", "sentence": "The movie kept us in suspense."},
+{"word": "sustain", "meaning": "维持；支撑；遭受", "pos": "v.", "sentence": "Sustain economic growth."},
+{"word": "swindle", "meaning": "诈骗", "pos": "v./n.", "sentence": "He was accused of swindle."},
+{"word": "symptom", "meaning": "症状；征兆", "pos": "n.", "sentence": "Recognize the symptoms early."},
+{"word": "synopsis", "meaning": "大纲；梗概", "pos": "n.", "sentence": "Read the synopsis first."},
+{"word": "synthetic", "meaning": "合成的；人造的", "pos": "adj.", "sentence": "Synthetic materials are common."},
+{"word": "tackle", "meaning": "解决；应付；对付", "pos": "v.", "sentence": "Tackle the problem directly."},
+{"word": "tactics", "meaning": "战术；策略", "pos": "n.", "sentence": "Military tactics."},
+{"word": "tangible", "meaning": "有形的；切实的", "pos": "adj.", "sentence": "Tangible benefits."},
+{"word": "tariff", "meaning": "关税；价目表", "pos": "n.", "sentence": "Import tariffs increased."},
+{"word": "tedious", "meaning": "乏味的；单调的", "pos": "a.", "sentence": "A tedious task."},
+{"word": "temperament", "meaning": "气质；性格", "pos": "n.", "sentence": "She has a calm temperament."},
+{"word": "temptation", "meaning": "诱惑", "pos": "n.", "sentence": "Resist temptation."},
+{"word": "tenancy", "meaning": "租赁；租期", "pos": "n.", "sentence": "The tenancy agreement."},
+{"word": "tenant", "meaning": "承租人；房客", "pos": "n.", "sentence": "The tenant pays rent monthly."},
+{"word": "tentative", "meaning": "试验性的；暂定的", "pos": "a.", "sentence": "A tentative plan."},
+{"word": "tenure", "meaning": "任期；终身职位", "pos": "n.", "sentence": "Academic tenure."},
+{"word": "terminate", "meaning": "停止；结束", "pos": "v.", "sentence": "Terminate the contract."},
+{"word": "terminology", "meaning": "术语", "pos": "n.", "sentence": "Medical terminology."},
+{"word": "terrestrial", "meaning": "陆地的；地球的", "pos": "a.", "sentence": "Terrestrial animals."},
+{"word": "territory", "meaning": "领土；领域", "pos": "n.", "sentence": "Disputed territory."},
+{"word": "testify", "meaning": "作证；表明", "pos": "v.", "sentence": "He testified in court."},
+{"word": "testimony", "meaning": "证言；证据", "pos": "n.", "sentence": "Give testimony."},
+{"word": "texture", "meaning": "质地；结构", "pos": "n.", "sentence": "The texture of the fabric."},
+{"word": "therapeutic", "meaning": "治疗的", "pos": "a.", "sentence": "Therapeutic effects."},
+{"word": "therapy", "meaning": "治疗；疗法", "pos": "n.", "sentence": "Physical therapy."},
+{"word": "threshold", "meaning": "门槛；开端", "pos": "n.", "sentence": "Cross the threshold."},
+{"word": "thrift", "meaning": "节俭", "pos": "n.", "sentence": "Practice thrift."},
+{"word": "thrive", "meaning": "兴旺；繁荣", "pos": "v.", "sentence": "Businesses thrive here."},
+{"word": "token", "meaning": "象征；代币；标志", "pos": "n.", "sentence": "A token of appreciation."},
+{"word": "tolerable", "meaning": "可忍受的", "pos": "a.", "sentence": "The pain is tolerable."},
+{"word": "tolerance", "meaning": "宽容；忍耐力", "pos": "n.", "sentence": "Build tolerance."},
+{"word": "tolerate", "meaning": "容忍", "pos": "v.", "sentence": "I won't tolerate such behavior."},
+{"word": "toll", "meaning": "通行费；伤亡人数", "pos": "n.", "sentence": "Pay the highway toll."},
+{"word": "tournament", "meaning": "锦标赛", "pos": "n.", "sentence": "A tennis tournament."},
+{"word": "Quite a few", "meaning": "相当的", "pos": "phr.", "sentence": "Quite a few people attended."},
+{"word": "Refer to", "meaning": "提到；查阅；参考", "pos": "phr.", "sentence": "Refer to the manual."},
+{"word": "Get rid of", "meaning": "摆脱", "pos": "phr.", "sentence": "Get rid of old items."},
+{"word": "Subject to", "meaning": "受制于；易遭受", "pos": "phr.", "sentence": "Subject to approval."},
+{"word": "Substitute for", "meaning": "代替", "pos": "phr.", "sentence": "Substitute for the missing player."},
+{"word": "Tell from", "meaning": "辨别", "pos": "phr.", "sentence": "Tell right from wrong."},
+{"word": "Be vulnerable to", "meaning": "易受……的影响", "pos": "phr.", "sentence": "Be vulnerable to attack."},
+{"word": "In vain", "meaning": "徒劳", "pos": "phr.", "sentence": "All efforts were in vain."},
+{"word": "By way of", "meaning": "经由；通过……方式", "pos": "phr.", "sentence": "Travel by way of Paris."},
+{"word": "Set about", "meaning": "着手", "pos": "phr.", "sentence": "Set about solving the problem."},
+{"word": "Set aside", "meaning": "留出", "pos": "phr.", "sentence": "Set aside some money."},
+{"word": "Set down", "meaning": "写下", "pos": "phr.", "sentence": "Set down your thoughts."},
+{"word": "Set off", "meaning": "出发", "pos": "phr.", "sentence": "Set off early in the morning."},
+{"word": "Set out", "meaning": "出发", "pos": "phr.", "sentence": "Set out on a journey."},
+{"word": "Set up", "meaning": "建立", "pos": "phr.", "sentence": "Set up a new business."},
+{"word": "Take after", "meaning": "像", "pos": "phr.", "sentence": "She takes after her mother."},
+{"word": "Take for", "meaning": "误认为", "pos": "phr.", "sentence": "Don't take him for a fool."},
+{"word": "Take in", "meaning": "欺骗", "pos": "phr.", "sentence": "Don't be taken in by scams."},
+{"word": "Take off", "meaning": "起飞", "pos": "phr.", "sentence": "The plane will take off soon."},
+{"word": "Take on", "meaning": "承担", "pos": "phr.", "sentence": "Take on new responsibilities."},
+{"word": "Take over", "meaning": "接管", "pos": "phr.", "sentence": "Take over the company."},
+{"word": "Take up", "meaning": "从事", "pos": "phr.", "sentence": "Take up a new hobby."},
+{"word": "Stand for", "meaning": "代表", "pos": "phr.", "sentence": "What does this symbol stand for?"}
 ];
