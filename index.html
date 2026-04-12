@@ -300,7 +300,7 @@
         document.getElementById('score-text').textContent = '你答对了 ' + correct + ' 题，答错了 ' + incorrect + ' 题';
 
         const endTime = new Date().toISOString();
-        const resultStr = '8|' + correct + '|' + incorrect + '|' + startTime + '|' + endTime + '|';
+        const resultStr = 'ENGRESULT:19|' + correct + '|' + incorrect + '|' + startTime + '|' + endTime + '|';
         const resultsPart = results.map(function(r) { return r.word + ':' + r.correct; }).join(',');
         document.getElementById('result-code').textContent = resultStr + resultsPart;
 
