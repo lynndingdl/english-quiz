@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>第22轮英语单词复习 - 50题</title>
+  <title>第23轮英语单词复习 - 50题</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
@@ -49,7 +49,7 @@
   <div class="container">
     <div id="quiz">
       <div class="header">
-        <div class="title">📝 第22轮英语单词复习</div>
+        <div class="title">📝 第23轮英语单词复习</div>
         <div class="progress" id="progress">1/50</div>
       </div>
       <div class="question-box">
@@ -80,256 +80,269 @@
       </div>
     </div>
   </div>
-
 <script>
 const vocabData = [
-  {"word": "juxtapose", "meaning": "并列；并置", "pos": "v.", "sentence": "The artist chose to juxtapose modern and traditional elements in his painting.", "sentenceCn": "艺术家选择在他的画作中将现代元素与传统元素并置。"},
-  {"word": "keen", "meaning": "敏锐的；热心的；激烈的", "pos": "adj.", "sentence": "She has a keen eye for detail, which makes her an excellent editor.", "sentenceCn": "她对细节有敏锐的眼光，这使她成为一名优秀的编辑。"},
-  {"word": "kinetic", "meaning": "运动的；动能的", "pos": "adj.", "sentence": "Kinetic energy is converted into electrical energy in many renewable power systems.", "sentenceCn": "在许多可再生能源系统中，动能被转化为电能。"},
-  {"word": "kiosk", "meaning": "报刊亭；售货亭", "pos": "n.", "sentence": "Information kiosks are available throughout the airport to assist travelers.", "sentenceCn": "机场各处都设有信息亭，为旅客提供帮助。", "actualWord": "kiosks"},
-  {"word": "knit", "meaning": "编织；紧密结合", "pos": "v.", "sentence": "She learned to knit sweaters from her grandmother when she was a child.", "sentenceCn": "她小时候从祖母那里学会了织毛衣。"},
-  {"word": "Hang on to", "meaning": "紧紧抓住；保留", "pos": "phr.", "sentence": "You should hang on to your principles even when facing difficulties.", "sentenceCn": "即使面对困难，你也应该坚持自己的原则。", "actualWord": "hang on to"},
-  {"word": "In the light of", "meaning": "鉴于；根据", "pos": "phr.", "sentence": "In the light of recent discoveries, scientists have revised their theory.", "sentenceCn": "鉴于最近的发现，科学家们修改了他们的理论。", "actualWord": "In the light of"},
-  {"word": "lavish", "meaning": "奢侈的；大方的", "pos": "adj.", "sentence": "The couple hosted a lavish wedding reception for over 500 guests.", "sentenceCn": "这对夫妇为500多位客人举办了一场奢华的婚宴。"},
-  {"word": "legislation", "meaning": "立法；法律", "pos": "n.", "sentence": "New environmental legislation requires companies to reduce their carbon emissions significantly.", "sentenceCn": "新的环境立法要求公司大幅减少碳排放。"},
-  {"word": "levy", "meaning": "征收（税等）", "pos": "v./n.", "sentence": "The government decided to levy a tax on luxury goods to fund public services.", "sentenceCn": "政府决定对奢侈品征税以资助公共服务。"},
-  {"word": "liberal", "meaning": "慷慨的；开明的；自由的", "pos": "adj.", "sentence": "The university has a liberal policy on course selection for undergraduate students.", "sentenceCn": "该大学对本科生的课程选择采取开放的政策。"},
-  {"word": "liberate", "meaning": "解放；释放", "pos": "v.", "sentence": "The army fought to liberate the occupied territories from enemy control.", "sentenceCn": "军队为从敌人控制下解放被占领土而战。"},
-  {"word": "liberty", "meaning": "自由", "pos": "n.", "sentence": "The Constitution guarantees fundamental liberties such as freedom of speech and religion.", "sentenceCn": "宪法保障基本自由，如言论和宗教自由。", "actualWord": "liberties"},
-  {"word": "linger", "meaning": "逗留；徘徊", "pos": "v.", "sentence": "The aroma of fresh coffee continued to linger in the kitchen long after breakfast.", "sentenceCn": "早餐后很长一段时间，新鲜咖啡的香味仍在厨房里萦绕。"},
-  {"word": "linguistic", "meaning": "语言的；语言学的", "pos": "adj.", "sentence": "The study examines linguistic variations across different regions of the country.", "sentenceCn": "该研究考察了该国不同地区的语言差异。"},
-  {"word": "literacy", "meaning": "识字；文化修养", "pos": "n.", "sentence": "Improving literacy rates is essential for economic development in developing countries.", "sentenceCn": "提高识字率对发展中国家的经济发展至关重要。"},
-  {"word": "literary", "meaning": "文学的", "pos": "adj.", "sentence": "She has achieved great success in her literary career with several bestselling novels.", "sentenceCn": "她在文学事业上取得了巨大成功，出版了几部畅销小说。"},
-  {"word": "liver", "meaning": "肝脏", "pos": "n.", "sentence": "Excessive alcohol consumption can cause serious damage to the liver over time.", "sentenceCn": "过度饮酒会随着时间的推移对肝脏造成严重损害。"},
-  {"word": "lobby", "meaning": "大厅；游说", "pos": "n./v.", "sentence": "The hotel lobby was beautifully decorated with fresh flowers and elegant furniture.", "sentenceCn": "酒店大堂装饰精美，摆放着鲜花和优雅的家具。"},
-  {"word": "longing", "meaning": "渴望", "pos": "n.", "sentence": "She felt a deep longing for her hometown after living abroad for many years.", "sentenceCn": "在国外生活多年后，她对家乡产生了深深的思念。"},
-  {"word": "lubricate", "meaning": "润滑", "pos": "v.", "sentence": "Mechanics use special oils to lubricate engine parts and reduce friction.", "sentenceCn": "机械师使用特殊的油来润滑发动机部件并减少摩擦。"},
-  {"word": "lucrative", "meaning": "有利可图的；赚钱的", "pos": "adj.", "sentence": "The tech industry has proven to be highly lucrative for early investors.", "sentenceCn": "科技产业已被证明对早期投资者来说利润丰厚。"},
-  {"word": "lump", "meaning": "块；肿块；归在一起", "pos": "n./v.", "sentence": "The doctor discovered a small lump during the routine examination and recommended further tests.", "sentenceCn": "医生在常规检查中发现了一个小肿块，建议进一步检查。"},
-  {"word": "lure", "meaning": "诱惑；诱惑物", "pos": "v./n.", "sentence": "The company used attractive bonuses to lure top talent from competitors.", "sentenceCn": "该公司利用诱人的奖金吸引竞争对手的顶尖人才。"},
-  {"word": "magnificent", "meaning": "壮丽的；宏伟的", "pos": "adj.", "sentence": "The palace features magnificent architecture and is considered a national treasure.", "sentenceCn": "这座宫殿拥有宏伟的建筑，被视为国宝。"},
-  {"word": "mandate", "meaning": "授权；命令", "pos": "n./v.", "sentence": "The new government received a clear mandate from voters to implement healthcare reforms.", "sentenceCn": "新政府从选民那里获得了明确的授权，实施医疗改革。"},
-  {"word": "maneuver", "meaning": "策略；演习；操纵", "pos": "n./v.", "sentence": "The general executed a brilliant military maneuver that caught the enemy by surprise.", "sentenceCn": "将军执行了一次精彩的军事演习，让敌人措手不及。"},
-  {"word": "manifest", "meaning": "显现；明显的", "pos": "v./adj.", "sentence": "The symptoms of the disease began to manifest themselves after several days.", "sentenceCn": "这种疾病的症状在几天后开始显现。"},
-  {"word": "marginal", "meaning": "边缘的；微小的", "pos": "adj.", "sentence": "The company made only marginal profits this quarter due to increased competition.", "sentenceCn": "由于竞争加剧，公司本季度仅获得微薄利润。"},
-  {"word": "marital", "meaning": "婚姻的", "pos": "adj.", "sentence": "Marital problems can have significant effects on both partners' mental health.", "sentenceCn": "婚姻问题会对双方的心理健康产生重大影响。"},
-  {"word": "maritime", "meaning": "海事的；航海的", "pos": "adj.", "sentence": "The country's maritime industry is crucial to its economy and trade relationships.", "sentenceCn": "该国的海运业对其经济和贸易关系至关重要。"},
-  {"word": "massacre", "meaning": "屠杀", "pos": "n./v.", "sentence": "The historical massacre is remembered as one of the darkest chapters in the nation's history.", "sentenceCn": "这场历史性大屠杀被铭记为国家历史上最黑暗的篇章之一。"},
-  {"word": "nebula", "meaning": "星云", "pos": "n.", "sentence": "A nebula is a vast cloud of gas and dust in outer space.", "sentenceCn": "星云是外太空中巨大的气体和尘埃云。"},
-  {"word": "negotiable", "meaning": "可商议的", "pos": "adj.", "sentence": "The terms of the contract are negotiable and open to discussion.", "sentenceCn": "合同条款是可以协商的，可以公开讨论。"},
-  {"word": "nostalgia", "meaning": "怀旧", "pos": "n.", "sentence": "Looking at old photographs filled her with nostalgia for her childhood days.", "sentenceCn": "看着旧照片，她对童年时光充满了怀念。"},
-  {"word": "notable", "meaning": "显著的；著名的", "pos": "adj.", "sentence": "The scientist made a notable contribution to the field of renewable energy.", "sentenceCn": "这位科学家对可再生能源领域做出了显著贡献。"},
-  {"word": "notary", "meaning": "公证人", "pos": "n.", "sentence": "A notary public is authorized to witness and certify legal documents.", "sentenceCn": "公证人被授权见证和认证法律文件。"},
-  {"word": "notorious", "meaning": "臭名昭著的", "pos": "adj.", "sentence": "The notorious criminal was finally captured after years on the run.", "sentenceCn": "这个臭名昭著的罪犯在逃亡多年后终于被捕。"},
-  {"word": "notwithstanding", "meaning": "虽然；尽管", "pos": "prep./adv.", "sentence": "Notwithstanding the challenges, the team completed the project on time.", "sentenceCn": "尽管面临挑战，团队还是按时完成了项目。"},
-  {"word": "nurture", "meaning": "养育；培育", "pos": "v./n.", "sentence": "Parents have a responsibility to nurture their children's talents and abilities.", "sentenceCn": "父母有责任培养孩子的才能和能力。"},
-  {"word": "obligatory", "meaning": "强制性的；义务的", "pos": "adj.", "sentence": "Vaccination is obligatory for all students enrolling in public schools.", "sentenceCn": "所有在公立学校入学的学生都必须接种疫苗。"},
-  {"word": "obliterate", "meaning": "擦掉；消灭", "pos": "v.", "sentence": "The nuclear explosion threatened to obliterate the entire city.", "sentenceCn": "核爆炸威胁要彻底摧毁整个城市。"},
-  {"word": "oblivious", "meaning": "遗忘的；不注意的", "pos": "adj.", "sentence": "He remained oblivious to the danger until it was almost too late.", "sentenceCn": "他对危险一直毫不知情，直到几乎为时已晚。"},
-  {"word": "obscure", "meaning": "朦胧的；无名的", "pos": "adj.", "sentence": "The meaning of the ancient text remains obscure to modern scholars.", "sentenceCn": "古代文本的含义对现代学者来说仍然晦涩难懂。"},
-  {"word": "observance", "meaning": "遵守；仪式", "pos": "n.", "sentence": "Strict observance of traffic laws is essential for road safety.", "sentenceCn": "严格遵守交通法规对道路安全至关重要。"},
-  {"word": "observation", "meaning": "观察；言论", "pos": "n.", "sentence": "Scientific observation requires careful attention to detail and objectivity.", "sentenceCn": "科学观察需要仔细关注细节和客观性。"},
-  {"word": "observatory", "meaning": "天文台；气象台", "pos": "n.", "sentence": "The observatory provides valuable data about celestial bodies and space phenomena.", "sentenceCn": "天文台提供有关天体和太空现象的宝贵数据。"},
-  {"word": "obsess", "meaning": "使痴迷", "pos": "v.", "sentence": "He tends to obsess over minor details, which delays his work.", "sentenceCn": "他倾向于纠结于细枝末节，这会延误他的工作。"},
-  {"word": "obsolete", "meaning": "过时的；荒废的", "pos": "adj.", "sentence": "Typewriters have become obsolete in the age of computers and smartphones.", "sentenceCn": "在电脑和智能手机时代，打字机已经过时了。"},
-  {"word": "obstruct", "meaning": "阻碍", "pos": "v.", "sentence": "The fallen tree obstructed the road, blocking traffic for hours.", "sentenceCn": "倒下的树挡住了道路，阻塞交通数小时。", "actualWord": "obstructed"}
+  {"word": "abolish", "meaning": "废除，废止，取消", "pos": "v.", "sentence": "The government decided to abolish the old regulation that had been in effect for decades.", "sentenceCn": "政府决定废除已实施数十年的旧法规。"},
+  {"word": "abortion", "meaning": "流产，堕胎", "pos": "n.", "sentence": "The debate over abortion rights remains controversial in many countries.", "sentenceCn": "关于堕胎权的争论在许多国家仍然存在争议。"},
+  {"word": "abundance", "meaning": "丰富，充裕，大量", "pos": "n.", "sentence": "The region is known for its abundance of natural resources and beautiful landscapes.", "sentenceCn": "该地区以其丰富的自然资源和美丽的风景而闻名。"},
+  {"word": "abundant", "meaning": "丰富的，充裕的，大量的", "pos": "adj.", "sentence": "Fresh water is abundant in this area, thanks to the numerous rivers and lakes.", "sentenceCn": "由于众多河流和湖泊，这个地区淡水充足。"},
+  {"word": "accessory", "meaning": "附件，配件，装饰品，从犯", "pos": "n.", "sentence": "She bought several accessories to complement her new outfit for the party.", "sentenceCn": "她买了几个配饰来搭配她的新派对服装。"},
+  {"word": "accord", "meaning": "协议，条约；一致，符合", "pos": "n.", "sentence": "The two countries signed a peace accord after years of conflict.", "sentenceCn": "两国在多年冲突后签署了和平协议。"},
+  {"word": "accountant", "meaning": "会计，会计师", "pos": "n.", "sentence": "The accountant carefully reviewed all the financial documents for the audit.", "sentenceCn": "会计师仔细审查了所有财务文件以进行审计。"},
+  {"word": "accumulate", "meaning": "积累，积聚，逐渐增加", "pos": "v.", "sentence": "Over the years, she managed to accumulate a substantial amount of savings.", "sentenceCn": "这些年来，她设法积累了一笔可观的储蓄。"},
+  {"word": "accuse", "meaning": "指控，控告，指责，谴责", "pos": "v.", "sentence": "The police accused him of stealing valuable artifacts from the museum.", "sentenceCn": "警方指控他从博物馆偷窃贵重文物。"},
+  {"word": "accustomed", "meaning": "习惯的，通常的，惯常的", "pos": "adj.", "sentence": "After living abroad for years, she became accustomed to different cultural practices.", "sentenceCn": "在国外生活多年后，她习惯了不同的文化习俗。"},
+  {"word": "achievement", "meaning": "成就，成绩，功绩", "pos": "n.", "sentence": "Graduating from university at age 16 was an remarkable achievement that attracted media attention.", "sentenceCn": "16岁从大学毕业是一个非凡的成就，引起了媒体关注。"},
+  {"word": "acknowledge", "meaning": "承认，认可，答谢，确认收到", "pos": "v.", "sentence": "The company acknowledged the customer's complaint and offered a full refund.", "sentenceCn": "公司承认了客户的投诉并提供了全额退款。"},
+  {"word": "acquaint", "meaning": "使熟悉，使了解，告知", "pos": "v.", "sentence": "The orientation program helps new students acquaint themselves with campus facilities.", "sentenceCn": "迎新项目帮助新生熟悉校园设施。"},
+  {"word": "acquisition", "meaning": "获得，收购，习得", "pos": "n.", "sentence": "The acquisition of the rival company cost billions but strengthened their market position.", "sentenceCn": "收购竞争对手公司花费数十亿，但加强了他们的市场地位。"},
+  {"word": "adequate", "meaning": "足够的，适当的，合格的", "pos": "adj.", "sentence": "The evidence provided was not adequate to prove his guilt beyond reasonable doubt.", "sentenceCn": "提供的证据不足以超出合理怀疑地证明他有罪。"},
+  {"word": "In accordance with", "meaning": "依照、根据", "pos": "prep.", "sentence": "In accordance with the new policy, all employees must complete safety training.", "sentenceCn": "根据新政策，所有员工必须完成安全培训。"},
+  {"word": "On account of", "meaning": "由于、因为", "pos": "prep.", "sentence": "On account of the heavy snowfall, all flights were cancelled at the airport.", "sentenceCn": "由于大雪，机场的所有航班都被取消了。"},
+  {"word": "Adhere to", "meaning": "坚持", "pos": "v.", "sentence": "All team members must adhere to the agreed-upon schedule and deadlines.", "sentenceCn": "所有团队成员必须坚持商定的时间表和截止日期。"},
+  {"word": "badge", "meaning": "徽章；标记", "pos": "n.", "sentence": "Security personnel wore visible badges to identify themselves to visitors.", "sentenceCn": "安保人员佩戴明显的徽章让访客辨认他们的身份。"},
+  {"word": "baggage", "meaning": "行李", "pos": "n.", "sentence": "Please make sure your baggage is properly labeled before checking in at the counter.", "sentenceCn": "请确保在柜台办理登机手续前，您的行李已正确贴标。"},
+  {"word": "balcony", "meaning": "阳台", "pos": "n.", "sentence": "The hotel room featured a spacious balcony overlooking the beach and the ocean.", "sentenceCn": "酒店房间有一个宽敞的阳台，可以俯瞰海滩和大海。"},
+  {"word": "bald", "meaning": "秃头的；明显的", "pos": "adj.", "sentence": "Despite his young age, he started to become bald due to genetic factors.", "sentenceCn": "尽管年纪轻轻，他就因为遗传因素开始秃头了。"},
+  {"word": "ballot", "meaning": "投票；投票总数；选票", "pos": "n.", "sentence": "The union held a secret ballot to decide whether to strike for better working conditions.", "sentenceCn": "工会举行了无记名投票，决定是否为更好的工作条件而罢工。"},
+  {"word": "bandage", "meaning": "绷带；用绷带扎缚", "pos": "n./v.", "sentence": "The nurse carefully wrapped a bandage around the patient's injured wrist to provide support.", "sentenceCn": "护士小心翼翼地在病人受伤的手腕上缠上绷带以提供支撑。"},
+  {"word": "bankrupt", "meaning": "破产的；使破产", "pos": "adj./v.", "sentence": "The company went bankrupt after failing to adapt to changing market conditions.", "sentenceCn": "公司在未能适应市场变化后破产了。"},
+  {"word": "barely", "meaning": "仅仅；几乎不", "pos": "adv.", "sentence": "She barely passed the exam despite studying for several weeks before it.", "sentenceCn": "尽管考试前学习了好几个星期，她勉强通过了考试。"},
+  {"word": "bargain", "meaning": "廉价货；契约；讨价还价", "pos": "n./v.", "sentence": "The jacket was a real bargain at 50% off the original price.", "sentenceCn": "夹克打五折真是便宜货。"},
+  {"word": "barrel", "meaning": "桶；枪管", "pos": "n.", "sentence": "The old wine had been aged in oak barrels for over twenty years.", "sentenceCn": "这瓶老酒在橡木桶中陈酿了二十多年。"},
+  {"word": "batch", "meaning": "一批；一组", "pos": "n.", "sentence": "The first batch of students graduated from the new training program last summer.", "sentenceCn": "去年夏天，第一批学生从新的培训项目毕业。"},
+  {"word": "canal", "meaning": "运河；沟渠", "pos": "n.", "sentence": "The Panama Canal serves as a crucial waterway connecting the Atlantic and Pacific Oceans.", "sentenceCn": "巴拿马运河是连接大西洋和太平洋的重要水道。"},
+  {"word": "caption", "meaning": "标题；说明文字", "pos": "n.", "sentence": "The photograph showed a stunning sunset, but the caption provided no additional information.", "sentenceCn": "照片显示了壮观的日落，但标题没有提供额外信息。"},
+  {"word": "cargo", "meaning": "货物", "pos": "n.", "sentence": "The cargo ship was carrying thousands of tons of grain to the port.", "sentenceCn": "货船正运送数千吨粮食到港口。"},
+  {"word": "catalog", "meaning": "目录；为……编目", "pos": "n./v.", "sentence": "The library catalog is now available online, making it easier for students to find books.", "sentenceCn": "图书馆目录现在可以在网上访问，让学生更容易找到书籍。"},
+  {"word": "catastrophe", "meaning": "大灾难", "pos": "n.", "sentence": "The earthquake was a catastrophe that destroyed thousands of homes and displaced many families.", "sentenceCn": "地震是一场摧毁了数千房屋、使许多家庭流离失所的大灾难。"},
+  {"word": "Comply with", "meaning": "遵守；服从", "pos": "v.", "sentence": "All companies must comply with environmental regulations to reduce pollution.", "sentenceCn": "所有公司必须遵守环境法规以减少污染。"},
+  {"word": "Conform to", "meaning": "遵守；符合", "pos": "v.", "sentence": "Products must conform to safety standards before they can be sold in the market.", "sentenceCn": "产品必须符合安全标准才能在市场上销售。"},
+  {"word": "dash", "meaning": "冲撞；猛冲；破折号", "pos": "v./n.", "sentence": "The runner made a sudden dash toward the finish line as the race reached its climax.", "sentenceCn": "当比赛达到高潮时，跑步者突然向终点线冲去。"},
+  {"word": "decade", "meaning": "十年", "pos": "n.", "sentence": "Over the past decade, technology has transformed the way we communicate and work.", "sentenceCn": "在过去的十年里，科技改变了我们沟通和工作方式。"},
+  {"word": "decline", "meaning": "下降；衰落；谢绝", "pos": "v./n.", "sentence": "Sales of the product have declined steadily due to increased competition from newer alternatives.", "sentenceCn": "由于来自更新替代品的竞争加剧，该产品的销售额持续下降。"},
+  {"word": "dedicate", "meaning": "奉献；题献", "pos": "v.", "sentence": "The author dedicated her new book to her parents who supported her throughout her career.", "sentenceCn": "作者把她的新书献给了在她整个职业生涯中支持她的父母。"},
+  {"word": "deed", "meaning": "行为；契约", "pos": "n.", "sentence": "Signing the deed transferred ownership of the property to the new owner officially.", "sentenceCn": "签署契约正式将房产所有权转移给新主人。"},
+  {"word": "defect", "meaning": "缺点；瑕疵", "pos": "n.", "sentence": "The product was recalled after consumers reported a safety defect in its design.", "sentenceCn": "在消费者报告设计存在安全缺陷后，该产品被召回了。"},
+  {"word": "delegate", "meaning": "代表；委派……为代表", "pos": "n./v.", "sentence": "Each department will delegate one representative to attend the annual conference.", "sentenceCn": "每个部门将委派一名代表参加年度会议。"},
+  {"word": "delicate", "meaning": "精致的；脆弱的；微妙的", "pos": "adj.", "sentence": "The scientist handled the delicate equipment with extreme care during the experiment.", "sentenceCn": "在实验过程中，科学家非常小心地处理精密设备。"},
+  {"word": "democracy", "meaning": "民主；民主国家", "pos": "n.", "sentence": "Democracy gives citizens the right to participate in decisions that affect their lives.", "sentenceCn": "民主赋予公民参与影响他们生活的决策的权利。"},
+  {"word": "demolish", "meaning": "拆除；推翻；破坏", "pos": "v.", "sentence": "The city plans to demolish the old factory to make way for a modern shopping center.", "sentenceCn": "该市计划拆除旧工厂，为建设现代化购物中心让路。"},
+  {"word": "dense", "meaning": "密集的；浓厚的", "pos": "adj.", "sentence": "The dense fog reduced visibility on the highway to less than 50 meters.", "sentenceCn": "浓雾将高速公路上的能见度降低到不足50米。"},
+  {"word": "deny", "meaning": "否认；拒绝给予", "pos": "v.", "sentence": "Despite mounting evidence, he continued to deny any involvement in the scandal.", "sentenceCn": "尽管证据越来越多，他仍继续否认参与这起丑闻。"}
 ];
+
+// Initialize AudioContext early for speech synthesis
+let audioContext = null;
+window.speechSynthesis.cancel();
+
+// Ensure AudioContext resumes on first user interaction
+document.addEventListener('click', function initAudio() {
+    if (audioContext && audioContext.state === 'suspended') {
+        audioContext.resume();
+    }
+}, { once: true });
 
 let currentIndex = 0;
 let correctCount = 0;
 let wrongCount = 0;
-let startTime = '';
+let results = {};
+let startTime = new Date();
 let currentOptions = [];
-let userAnswers = {};
-let shuffledData = [];
+let selectedAnswer = null;
+let answered = false;
 
 function shuffle(array) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
 }
 
 function getActualWord(item) {
-  return item.actualWord || item.word;
+    return item.actualWord || item.word;
+}
+
+function getDisplayWord(item) {
+    return item.actualWord ? item.word : item.word;
 }
 
 function generateOptions(correctItem) {
-  const correct = correctItem.word;
-  const others = vocabData.filter(item => item.word !== correct);
-  const shuffledOthers = shuffle(others).slice(0, 3);
-  const options = shuffle([correctItem, ...shuffledOthers]);
-  return options.map(item => ({
-    word: item.word,
-    meaning: item.meaning,
-    isCorrect: item.word === correct
-  }));
-}
-
-function renderQuestion() {
-  const item = shuffledData[currentIndex];
-  const actualWord = getActualWord(item);
-  const sentence = item.sentence;
-
-  // Create blank by replacing the actual word (case-insensitive)
-  const escapedWord = actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regexWithBoundary = new RegExp('\\b' + escapedWord + '\\b', 'gi');
-  let displaySentence = sentence.replace(regexWithBoundary, '<span class="blank">_______</span>');
-
-  // If no replacement was made, try without word boundary
-  if (displaySentence === sentence) {
-    const regexNoBoundary = new RegExp(escapedWord, 'gi');
-    displaySentence = sentence.replace(regexNoBoundary, '<span class="blank">_______</span>');
-  }
-
-  document.getElementById('sentence').innerHTML = displaySentence;
-  document.getElementById('progress').textContent = `${currentIndex + 1}/${shuffledData.length}`;
-
-  // Generate and store options globally
-  currentOptions = generateOptions(item);
-
-  const optionsEl = document.getElementById('options');
-  optionsEl.innerHTML = '';
-  currentOptions.forEach((opt, idx) => {
-    const btn = document.createElement('button');
-    btn.className = 'option';
-    btn.textContent = opt.word;
-    btn.onclick = () => handleAnswer(idx);
-    optionsEl.appendChild(btn);
-  });
-
-  document.getElementById('quiz').classList.remove('hidden');
-  document.getElementById('result').classList.add('hidden');
-  document.getElementById('endScreen').classList.add('hidden');
-}
-
-function handleAnswer(selectedIdx) {
-  const item = shuffledData[currentIndex];
-  const actualWord = getActualWord(item);
-  const selected = currentOptions[selectedIdx];
-  const isCorrect = selected.isCorrect;
-
-  userAnswers[item.word] = isCorrect;
-
-  // Disable all options and show correct/wrong
-  const buttons = document.querySelectorAll('.option');
-  buttons.forEach((btn, idx) => {
-    btn.classList.add('disabled');
-    if (currentOptions[idx].isCorrect) {
-      btn.classList.add('correct');
-    } else if (idx === selectedIdx && !isCorrect) {
-      btn.classList.add('wrong');
-    }
-  });
-
-  if (isCorrect) {
-    correctCount++;
-  } else {
-    wrongCount++;
-  }
-
-  setTimeout(() => showResult(item, selected, isCorrect), 600);
-}
-
-function showResult(item, selected, isCorrect) {
-  const actualWord = getActualWord(item);
-
-  document.getElementById('resultIcon').textContent = isCorrect ? '✅' : '❌';
-  document.getElementById('resultWord').textContent = item.word + ' (' + item.pos + ')';
-  document.getElementById('resultMeaning').textContent = item.meaning;
-
-  // Highlight the answer in the sentence
-  const escapedWord = actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regexWithBoundary = new RegExp('(' + escapedWord + ')', 'gi');
-  let highlightedSentence = item.sentence.replace(regexWithBoundary, '<span class="highlight">$1</span>');
-  if (highlightedSentence === item.sentence) {
-    const regexNoBoundary = new RegExp('(' + escapedWord + ')', 'gi');
-    highlightedSentence = item.sentence.replace(regexNoBoundary, '<span class="highlight">$1</span>');
-  }
-  document.getElementById('resultSentence').innerHTML = highlightedSentence;
-  document.getElementById('resultCn').textContent = item.sentenceCn;
-
-  // Options review with Chinese (use stored currentOptions, not regenerated)
-  const optionsReview = document.getElementById('optionsReview');
-  optionsReview.innerHTML = '<div class="options-review-title">所有选项：</div>';
-  currentOptions.forEach(opt => {
-    const div = document.createElement('div');
-    div.className = 'option-review' + (opt.isCorrect ? ' correct' : '');
-    div.innerHTML = `<span class="check">${opt.isCorrect ? '✓' : ''}</span>${opt.word} — ${opt.meaning}`;
-    optionsReview.appendChild(div);
-  });
-
-  document.getElementById('quiz').classList.add('hidden');
-  document.getElementById('result').classList.remove('hidden');
-
-  // ⭐ 关键：点击选项后立即自动播放正确答案发音
-  speakWord(actualWord);
+    const options = [];
+    const correctWord = getActualWord(correctItem);
+    options.push({ word: correctWord, meaning: correctItem.meaning, isCorrect: true });
+    
+    const otherWords = vocabData
+        .filter(item => getActualWord(item) !== correctWord)
+        .map(item => ({ word: getActualWord(item), meaning: item.meaning, isCorrect: false }));
+    
+    const shuffled = shuffle(otherWords).slice(0, 3);
+    options.push(...shuffled);
+    
+    return shuffle(options);
 }
 
 function speakWord(word) {
-  if ('speechSynthesis' in window) {
-    speechSynthesis.cancel();
+    window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(word);
     utterance.lang = 'en-US';
-    utterance.rate = 0.9;
-    speechSynthesis.speak(utterance);
-  }
+    utterance.rate = 0.8;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
 }
 
-function nextQuestion() {
-  currentIndex++;
-  if (currentIndex >= shuffledData.length) {
-    showEndScreen();
-  } else {
-    renderQuestion();
-  }
+function displayQuestion() {
+    const item = vocabData[currentIndex];
+    const actualWord = getActualWord(item);
+    const sentence = item.sentence;
+    
+    // Create blank by replacing the actual word
+    const regex = new RegExp('\\b' + actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+    const displaySentence = sentence.replace(regex, '<span class="blank">_______</span>');
+    
+    document.getElementById('sentence').innerHTML = displaySentence;
+    document.getElementById('progress').textContent = `${currentIndex + 1}/50`;
+    
+    currentOptions = generateOptions(item);
+    const optionsContainer = document.getElementById('options');
+    optionsContainer.innerHTML = '';
+    
+    currentOptions.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = opt.word;
+        btn.dataset.index = idx;
+        btn.addEventListener('click', () => selectOption(idx));
+        optionsContainer.appendChild(btn);
+    });
+    
+    document.getElementById('quiz').classList.remove('hidden');
+    document.getElementById('result').classList.add('hidden');
+    document.getElementById('endScreen').classList.add('hidden');
+    
+    answered = false;
+    selectedAnswer = null;
+}
+
+function selectOption(index) {
+    if (answered) return;
+    answered = true;
+    
+    const item = vocabData[currentIndex];
+    const correctWord = getActualWord(item);
+    selectedAnswer = index;
+    
+    // Immediately speak the correct answer
+    speakWord(correctWord);
+    
+    const isCorrect = currentOptions[index].isCorrect;
+    if (isCorrect) {
+        correctCount++;
+    } else {
+        wrongCount++;
+    }
+    results[currentIndex] = isCorrect;
+    
+    // Disable all options
+    const buttons = document.querySelectorAll('.option');
+    buttons.forEach((btn, idx) => {
+        btn.classList.add('disabled');
+        if (currentOptions[idx].isCorrect) {
+            btn.classList.add('correct');
+        } else if (idx === index && !isCorrect) {
+            btn.classList.add('wrong');
+        }
+    });
+    
+    setTimeout(() => showResult(isCorrect), 300);
+}
+
+function showResult(isCorrect) {
+    const item = vocabData[currentIndex];
+    const correctWord = getActualWord(item);
+    
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    
+    document.getElementById('resultIcon').textContent = isCorrect ? '✅' : '❌';
+    document.getElementById('resultWord').textContent = correctWord + ' ' + item.pos;
+    document.getElementById('resultMeaning').textContent = item.meaning;
+    
+    // Highlight correct answer in sentence
+    const sentence = item.sentence;
+    const regex = new RegExp('(' + correctWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    document.getElementById('resultSentence').innerHTML = sentence.replace(regex, '<span class="highlight">$1</span>');
+    document.getElementById('resultCn').textContent = item.sentenceCn;
+    
+    // Options review with both English and Chinese
+    const optionsReview = document.getElementById('optionsReview');
+    optionsReview.innerHTML = '<div class="options-review-title">选项</div>';
+    currentOptions.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'option-review' + (opt.isCorrect ? ' correct' : '');
+        const checkMark = opt.isCorrect ? '✓' : '';
+        div.innerHTML = `<span class="check">${checkMark}</span>${opt.word} - ${opt.meaning}`;
+        optionsReview.appendChild(div);
+    });
+    
+    // Speaker button for result page
+    document.getElementById('speakerBtn').onclick = () => speakWord(correctWord);
+    
+    // Double保险：确保发音播放
+    setTimeout(() => speakWord(correctWord), 100);
 }
 
 function showEndScreen() {
-  const endTime = new Date().toISOString();
-  document.getElementById('quiz').classList.add('hidden');
-  document.getElementById('result').classList.add('hidden');
-  document.getElementById('endScreen').classList.remove('hidden');
+    const endTime = new Date();
+    const duration = Math.round((endTime - startTime) / 1000);
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.add('hidden');
+    document.getElementById('endScreen').classList.remove('hidden');
+    
+    document.getElementById('endStats').innerHTML = `
+        正确率：<strong>${correctCount}/50</strong><br>
+        用时：<strong>${minutes}分${seconds}秒</strong>
+    `;
+    
+    // Generate result code
+    const resultCode = `23|${correctCount}|${wrongCount}|${startTime.toISOString()}|${endTime.toISOString()}|${Object.entries(results).map(([k, v]) => `${k}:${v}`).join(',')}`;
+    document.getElementById('copyBtn').dataset.code = resultCode;
+}
 
-  const stats = document.getElementById('endStats');
-  stats.innerHTML = `
-    共 <strong>${shuffledData.length}</strong> 题<br>
-    答对 <strong>${correctCount}</strong> 题<br>
-    答错 <strong>${wrongCount}</strong> 题<br>
-    正确率 <strong>${Math.round(correctCount / shuffledData.length * 100)}%</strong>
-  `;
+document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex++;
+    if (currentIndex >= vocabData.length) {
+        showEndScreen();
+    } else {
+        displayQuestion();
+    }
+});
 
-  // Build result code: 轮次|答对数|错误数|开始时间|结束时间|单词1:true,...
-  const resultCode = `22|${correctCount}|${wrongCount}|${startTime}|${endTime}|${Object.entries(userAnswers).map(([w, v]) => `${w}:${v}`).join(',')}`;
-  document.getElementById('copyBtn').onclick = () => {
-    navigator.clipboard.writeText(resultCode).then(() => {
-      alert('结果码已复制！');
+document.getElementById('copyBtn').addEventListener('click', function() {
+    const code = this.dataset.code;
+    navigator.clipboard.writeText(code).then(() => {
+        const original = this.textContent;
+        this.textContent = '已复制!';
+        setTimeout(() => this.textContent = original, 1500);
     });
-  };
-}
+});
 
-function init() {
-  startTime = new Date().toISOString();
-  shuffledData = shuffle([...vocabData]);
-  currentIndex = 0;
-  correctCount = 0;
-  wrongCount = 0;
-  userAnswers = {};
-  renderQuestion();
-}
+document.getElementById('restartBtn').addEventListener('click', () => {
+    currentIndex = 0;
+    correctCount = 0;
+    wrongCount = 0;
+    results = {};
+    startTime = new Date();
+    displayQuestion();
+});
 
-document.getElementById('speakerBtn').onclick = () => {
-  const item = shuffledData[currentIndex];
-  speakWord(getActualWord(item));
-};
-
-document.getElementById('nextBtn').onclick = nextQuestion;
-
-document.getElementById('restartBtn').onclick = init;
-
-init();
+// Start
+displayQuestion();
 </script>
 </body>
 </html>
