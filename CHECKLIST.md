@@ -22,16 +22,20 @@
 
 ## 二、生成时检查
 
-### 1. 词形变化检查（LRN-20260412-002）
+### 1. 词形变化检查（LRN-20260412-002, LRN-20260413-001）
+
+**⚠️ 强制要求：逐个检查每个单词！**
 
 **步骤**：
-1. 检查每个例句中目标单词的实际词形
-2. 如果例句中的词形与词根不同，添加 `actualWord` 字段
+1. **逐个检查**每个例句中目标单词的实际词形
+2. 如果例句中的词形与词根不同，**必须**添加 `actualWord` 字段
+3. **禁止**只抽查部分单词
 
 **常见词形变化**：
 - 动词：-ing, -ed, -s
 - 名词：复数-s/-es
 - 被动语态：-ed
+- **⚠️ 不规则动词**：fling→flung, cling→clung, swing→swung 等
 
 **示例**：
 ```javascript
@@ -42,6 +46,32 @@
   sentence: "The factory was fined for illegally discharging toxic waste."
 }
 ```
+
+**第19轮漏掉的问题**（共5个）：
+- `forge` → 例句中 `forged` → 缺少 `actualWord: "forged"`
+- `flicker` → 例句中 `flickered` → 缺少 `actualWord: "flickered"`
+- `fling` → 例句中 `flung` → 缺少 `actualWord: "flung"`（不规则变化！）
+- `deceive` → 例句中 `deceived` → 缺少 `actualWord: "deceived"`
+- `enumerate` → 例句中 `enumerates` → 缺少 `actualWord: "enumerates"`
+
+**具体词形变化表**：
+
+| 单词 | 原形 | 例句形式 | 过去式 | 过去分词 | 现在分词 | 变化类型 |
+|------|------|---------|--------|---------|---------|---------|
+| forge | forge | forged | forged | forged | forging | 规则 |
+| flicker | flicker | flickered | flickered | flickered | flickering | 规则 |
+| **fling** | fling | **flung** | **flung** | **flung** | flinging | **不规则** |
+| deceive | deceive | deceived | deceived | deceived | deceiving | 规则 |
+| enumerate | enumerate | enumerates | enumerated | enumerated | enumerating | 规则 |
+
+**强制检查流程**：
+- [ ] 检查第1个单词
+- [ ] 检查第10个单词
+- [ ] 检查第20个单词
+- [ ] 检查第30个单词
+- [ ] 检查第40个单词
+- [ ] 检查第50个单词
+- [ ] **逐个检查所有动词**（pos 包含 v.）
 
 ### 2. 选项一致性检查（LRN-20260412-003）
 

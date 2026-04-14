@@ -1,720 +1,320 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>英语单词第19轮例句式测验</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .progress-info {
-            color: #666;
-            font-size: 16px;
-        }
-        
-        /* 题目页面样式 */
-        .question-container {
-            margin-bottom: 30px;
-        }
-        
-        .question-number {
-            color: #667eea;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .sentence {
-            font-size: 20px;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .blank {
-            display: inline-block;
-            min-width: 120px;
-            border-bottom: 2px solid #667eea;
-            margin: 0 5px;
-            text-align: center;
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        
-        .option-btn {
-            padding: 18px 25px;
-            font-size: 18px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            font-weight: 500;
-        }
-        
-        .option-btn:hover {
-            border-color: #667eea;
-            background: #f0f3ff;
-            transform: translateY(-2px);
-        }
-        
-        .option-btn:active {
-            transform: translateY(0);
-        }
-        
-        /* 结果页面样式 */
-        .result-page {
-            display: none;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-        }
-        
-        .result-icon {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .result-icon.correct {
-            color: #28a745;
-        }
-        
-        .result-icon.wrong {
-            color: #dc3545;
-        }
-        
-        .result-title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-        
-        .result-title.correct {
-            color: #28a745;
-        }
-        
-        .result-title.wrong {
-            color: #dc3545;
-        }
-        
-        .correct-answer {
-            text-align: center;
-            font-size: 22px;
-            margin-bottom: 25px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .correct-answer .word {
-            font-weight: bold;
-            color: #667eea;
-        }
-        
-        .correct-answer .pos {
-            color: #666;
-            font-size: 16px;
-            margin-left: 10px;
-        }
-        
-        .full-sentence {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .full-sentence .highlight {
-            color: #28a745;
-            font-weight: bold;
-            background: #d4edda;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-        
-        .translation {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 25px;
-            padding: 10px 15px;
-            background: #fff3cd;
-            border-radius: 8px;
-        }
-        
-        .options-review {
-            margin-bottom: 25px;
-        }
-        
-        .options-review h4 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 18px;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 10px;
-        }
-        
-        .option-item {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 10px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-        
-        .option-item.correct {
-            color: #28a745;
-            font-weight: bold;
-            background: #d4edda;
-            border: 1px solid #28a745;
-        }
-        
-        .option-item.selected-wrong {
-            color: #dc3545;
-            background: #f8d7da;
-            border: 1px solid #dc3545;
-        }
-        
-        .checkmark {
-            margin-left: 5px;
-            color: #28a745;
-            font-weight: bold;
-        }
-        
-        .next-btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            font-size: 18px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-        
-        .next-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        /* 最终结果页面样式 */
-        .final-result-container {
-            display: none;
-        }
-        
-        .final-result-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .final-result-header h2 {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        
-        .score-info {
-            font-size: 18px;
-            color: #666;
-        }
-        
-        .score-info strong {
-            color: #667eea;
-            font-size: 24px;
-        }
-        
-        .answer-detail {
-            margin-bottom: 20px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .answer-detail.wrong {
-            border-left-color: #dc3545;
-        }
-        
-        .restart-btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            font-size: 18px;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            margin-top: 30px;
-            transition: all 0.3s;
-        }
-        
-        .restart-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 22px;
-            }
-            
-            .sentence, .full-sentence {
-                font-size: 16px;
-            }
-            
-            .options {
-                grid-template-columns: 1fr;
-            }
-            
-            .option-btn {
-                font-size: 16px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第21轮英语单词复习 - 50题</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .container { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 32px; max-width: 600px; width: 100%; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .title { font-size: 22px; font-weight: 700; color: #333; }
+    .progress { font-size: 14px; color: #666; background: #f0f0f0; padding: 6px 14px; border-radius: 20px; }
+    .question-box { background: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .sentence { font-size: 18px; line-height: 1.8; color: #333; word-break: break-word; }
+    .blank { display: inline-block; background: #4a90d9; color: white; padding: 2px 12px; border-radius: 4px; min-width: 80px; text-align: center; font-weight: 600; }
+    .options { display: flex; flex-direction: column; gap: 12px; }
+    .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px; cursor: pointer; transition: all 0.2s; background: white; text-align: left; }
+    .option:hover:not(.disabled) { border-color: #4a90d9; background: #f0f7ff; }
+    .option.correct { border-color: #28a745; background: #d4edda; color: #155724; }
+    .option.wrong { border-color: #dc3545; background: #f8d7da; color: #721c24; }
+    .option.disabled { cursor: default; opacity: 0.7; }
+    .option.disabled.correct { opacity: 1; }
+    .hidden { display: none; }
+    .result-box { text-align: center; }
+    .result-icon { font-size: 64px; margin-bottom: 16px; }
+    .result-word { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 8px; }
+    .result-meaning { font-size: 16px; color: #666; margin-bottom: 20px; }
+    .result-sentence { font-size: 17px; line-height: 1.7; color: #333; margin-bottom: 12px; word-break: break-word; }
+    .result-sentence .highlight { background: #fff3cd; padding: 1px 6px; border-radius: 3px; font-weight: 600; }
+    .result-cn { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .options-review { text-align: left; margin-bottom: 20px; }
+    .options-review-title { font-size: 14px; color: #666; margin-bottom: 10px; }
+    .option-review { padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; font-size: 15px; background: #f0f0f0; }
+    .option-review.correct { background: #d4edda; color: #155724; }
+    .option-review .check { margin-right: 6px; }
+    .btn { display: inline-block; padding: 14px 32px; background: #4a90d9; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: #3a7bc8; }
+    .speaker-btn { background: none; border: none; cursor: pointer; font-size: 20px; padding: 8px; margin-bottom: 16px; }
+    .end-screen { text-align: center; }
+    .end-title { font-size: 26px; font-weight: 700; color: #333; margin-bottom: 20px; }
+    .end-stats { font-size: 18px; color: #666; margin-bottom: 24px; line-height: 1.8; }
+    .end-stats strong { color: #4a90d9; }
+    .copy-btn { background: #28a745; margin-right: 12px; }
+    .copy-btn:hover { background: #218838; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>英语单词第19轮例句式测验</h1>
-            <div class="progress-info" id="progressInfo">题目：0/50</div>
-        </div>
-        
-        <!-- 题目页面 -->
-        <div class="question-container" id="questionContainer">
-            <!-- 题目内容将通过JavaScript动态生成 -->
-        </div>
-        
-        <!-- 单题结果页面 -->
-        <div class="result-page" id="resultPage">
-            <!-- 结果页内容将通过JavaScript动态生成 -->
-        </div>
-        
-        <!-- 最终结果页面 -->
-        <div class="final-result-container" id="finalResultContainer">
-            <div class="final-result-header">
-                <h2>测验完成！</h2>
-                <div class="score-info">
-                    答对 <strong id="correctCount">0</strong> 题，共 50 题
-                </div>
-            </div>
-            <div id="answerDetails">
-                <!-- 答案详情将通过JavaScript动态生成 -->
-            </div>
-            <button class="restart-btn" onclick="restartQuiz()">重新开始</button>
-        </div>
+  <div class="container">
+    <div id="quiz">
+      <div class="header">
+        <div class="title">📝 第21轮英语单词复习</div>
+        <div class="progress" id="progress">1/50</div>
+      </div>
+      <div class="question-box">
+        <div class="sentence" id="sentence"></div>
+      </div>
+      <div class="options" id="options"></div>
     </div>
-    
-    <script>
-// 第5轮英语单词测验题库（内嵌版本，绕过CDN缓存）
-// 生成时间：2026-04-12 19:28
-    <script>
-// 第19轮英语单词测验题库（内嵌版本，绕过CDN缓存）
-// 生成时间：2026-04-13 08:00
+    <div id="result" class="hidden">
+      <div class="result-box">
+        <div class="result-icon" id="resultIcon"></div>
+        <div class="result-word" id="resultWord"></div>
+        <div class="result-meaning" id="resultMeaning"></div>
+        <button class="speaker-btn" id="speakerBtn" title="播放发音">🔊</button>
+        <div class="result-sentence" id="resultSentence"></div>
+        <div class="result-cn" id="resultCn"></div>
+        <div class="options-review" id="optionsReview"></div>
+        <div>
+          <button class="btn" id="nextBtn">下一题</button>
+        </div>
+      </div>
+    </div>
+    <div id="endScreen" class="hidden end-screen">
+      <div class="end-title">🎉 测验完成！</div>
+      <div class="end-stats" id="endStats"></div>
+      <div>
+        <button class="btn copy-btn" id="copyBtn">复制结果码</button>
+        <button class="btn" id="restartBtn">重新开始</button>
+      </div>
+    </div>
+  </div>
+
+<script>
 const vocabData = [
-  { word: "accommodate", meaning: "容纳；使适应；供给住宿", pos: "v.", example: "The hotel can accommodate up to 500 guests during the peak season.", exampleCn: "这家酒店在旺季可容纳多达500位客人。" },
-  { word: "accomplish", meaning: "完成；实现", pos: "v.", example: "Through hard work and determination, she accomplished her goal of becoming a doctor.", exampleCn: "通过努力工作和坚定决心，她实现了成为医生的目标。" },
-  { word: "accurate", meaning: "准确的；精确的", pos: "adj.", example: "It is crucial to provide accurate information when filling out official documents.", exampleCn: "填写官方文件时提供准确信息至关重要。" },
-  { word: "decay", meaning: "腐烂；衰退", pos: "v./n.", example: "Without proper maintenance, the ancient building began to decay rapidly.", exampleCn: "没有适当的维护，这座古建筑开始迅速衰败。" },
-  { word: "deceive", meaning: "欺骗；蒙蔽", pos: "v.", example: "The company deceived consumers by making false claims about their product's benefits.", exampleCn: "该公司通过对其产品功效的虚假宣传欺骗消费者。" },
-  { word: "decent", meaning: "体面的；正派的；像样的", pos: "adj.", example: "Every citizen deserves a decent standard of living and access to basic healthcare.", exampleCn: "每个公民都应享有体面的生活水平和基本医疗服务。" },
-  { word: "deduce", meaning: "推断；演绎", pos: "v.", example: "From the available evidence, we can deduce that the suspect was present at the scene.", exampleCn: "从现有证据，我们可以推断嫌疑人当时在现场。" },
-  { word: "defy", meaning: "挑衅；违抗；藐视", pos: "v.", example: "The rebels continued to defy the government's authority despite severe consequences.", exampleCn: "尽管面临严重后果，叛乱分子继续蔑视政府的权威。" },
-  { word: "deliberate", meaning: "故意的；深思熟虑的", pos: "adj.", example: "The jury concluded that the defendant's actions were deliberate and premeditated.", exampleCn: "陪审团认定被告的行为是蓄意且有预谋的。" },
-  { word: "denote", meaning: "象征；表示", pos: "v.", example: "In this context, the color red denotes danger and requires immediate attention.", exampleCn: "在这种语境下，红色表示危险，需要立即关注。", actualWord: "denotes" },
-  { word: "denounce", meaning: "谴责；告发", pos: "v.", example: "Many countries denounced the military coup as a violation of democratic principles.", exampleCn: "许多国家谴责这次军事政变违反了民主原则。", actualWord: "denounced" },
-  { word: "depict", meaning: "描绘；描述", pos: "v.", example: "The novel vividly depicts the harsh reality of life during the Great Depression.", exampleCn: "这部小说生动地描绘了大萧条时期生活的残酷现实。", actualWord: "depicts" },
-  { word: "deprive", meaning: "剥夺；使丧失", pos: "v.", example: "No one should be deprived of their basic human rights under any circumstances.", exampleCn: "在任何情况下，任何人都不应被剥夺基本人权。", actualWord: "deprived" },
-  { word: "detach", meaning: "分离；拆开", pos: "v.", example: "The surgeon carefully detached the infected tissue from the healthy organ.", exampleCn: "外科医生小心翼翼地将感染组织与健康器官分离。" },
-  { word: "deteriorate", meaning: "恶化；变坏", pos: "v.", example: "His health condition began to deteriorate rapidly after he stopped taking medication.", exampleCn: "停止服药后，他的健康状况开始迅速恶化。" },
-  { word: "determine", meaning: "决定；确定；决心", pos: "v.", example: "Genetic factors determine to a large extent how individuals respond to certain medications.", exampleCn: "遗传因素在很大程度上决定了个个体对某些药物的反应。" },
-  { word: "dialect", meaning: "方言", pos: "n.", example: "Linguists study how dialects vary across different regions and social groups.", exampleCn: "语言学家研究方言在不同地区和社会群体中的差异。", actualWord: "dialects" },
-  { word: "dilute", meaning: "稀释；变淡", pos: "v.", example: "Adding water will dilute the concentration of the solution and reduce its effectiveness.", exampleCn: "加水会稀释溶液的浓度并降低其效果。" },
-  { word: "diplomat", meaning: "外交官", pos: "n.", example: "The diplomat successfully negotiated a peace treaty between the two warring nations.", exampleCn: "这位外交官成功地在两个交战国之间谈判达成了和平条约。" },
-  { word: "discharge", meaning: "释放；排出；解雇", pos: "v./n.", example: "The factory was fined for illegally discharging toxic waste into the river.", exampleCn: "这家工厂因非法向河流排放有毒废物而被罚款。", actualWord: "discharging" },
-  { word: "disguise", meaning: "伪装；掩饰", pos: "v./n.", example: "The spy disguised himself as a journalist to gain access to the restricted area.", exampleCn: "间谍伪装成记者以进入限制区域。" },
-  { word: "dispel", meaning: "驱散；消除", pos: "v.", example: "The new evidence helped dispel doubts about the defendant's innocence.", exampleCn: "新证据有助于消除对被告清白的疑虑。" },
-  { word: "dispense", meaning: "分配；分发；免除", pos: "v.", example: "Pharmacists are authorized to dispense prescription medications to patients.", exampleCn: "药剂师有权向患者配发处方药物。" },
-  { word: "dispute", meaning: "争论；纠纷", pos: "n./v.", example: "The two countries have been in a long-standing dispute over territorial boundaries.", exampleCn: "两国在领土边界问题上长期存在争议。" },
-  { word: "disturb", meaning: "打扰；弄乱", pos: "v.", example: "Please do not disturb the experiment while it is in progress.", exampleCn: "实验进行期间请不要打扰。" },
-  { word: "divert", meaning: "转移；使转向；娱乐", pos: "v.", example: "The government decided to divert funds from defense to education programs.", exampleCn: "政府决定将资金从国防转向教育项目。" },
-  { word: "divide", meaning: "划分；分开；除", pos: "v.", example: "The issue of immigration has deeply divided public opinion in the country.", exampleCn: "移民问题在该国深刻地分裂了公众舆论。", actualWord: "divided" },
-  { word: "donation", meaning: "捐赠；捐款", pos: "n.", example: "The charitable organization received a generous donation from an anonymous benefactor.", exampleCn: "该慈善组织收到了一位匿名捐助者的慷慨捐赠。" },
-  { word: "doom", meaning: "厄运；注定", pos: "n./v.", example: "The project was doomed to fail from the start due to insufficient funding.", exampleCn: "由于资金不足，该项目从一开始就注定要失败。", actualWord: "doomed" },
-  { word: "downright", meaning: "彻底的；十足地", pos: "adj./adv.", example: "His behavior at the meeting was downright rude and completely unacceptable.", exampleCn: "他在会议上的行为简直粗鲁，完全不可接受。" },
-  { word: "dread", meaning: "恐惧；担心", pos: "v./n.", example: "Students often dread the thought of taking final examinations.", exampleCn: "学生们经常害怕期末考试的想法。" },
-  { word: "dubious", meaning: "可疑的；怀疑的", pos: "adj.", example: "Many consumers remain dubious about the safety of genetically modified foods.", exampleCn: "许多消费者对转基因食品的安全性仍持怀疑态度。" },
-  { word: "eccentric", meaning: "古怪的；异乎寻常的", pos: "adj.", example: "The eccentric artist was known for his unconventional lifestyle and bizarre paintings.", exampleCn: "这位古怪的艺术家以其非传统的生活方式和奇异的画作而闻名。" },
-  { word: "editorial", meaning: "编辑的；社论", pos: "adj./n.", example: "The newspaper published an editorial criticizing the government's economic policies.", exampleCn: "该报纸发表了一篇批评政府经济政策的社论。" },
-  { word: "elevate", meaning: "提高；抬起；提拔", pos: "v.", example: "Education has the power to elevate individuals from poverty to prosperity.", exampleCn: "教育有能力使个人从贫困提升到富裕。" },
-  { word: "eligible", meaning: "有资格的；合格的", pos: "adj.", example: "Only citizens over the age of 18 are eligible to vote in national elections.", exampleCn: "只有18岁以上的公民才有资格在全国选举中投票。" },
-  { word: "embody", meaning: "体现；包含", pos: "v.", example: "The statue embodies the spirit of freedom that the nation was founded upon.", exampleCn: "这座雕像体现了国家建立时的自由精神。", actualWord: "embodies" },
-  { word: "eminent", meaning: "卓越的；著名的", pos: "adj.", example: "The conference was attended by eminent scientists from around the world.", exampleCn: "会议吸引了来自世界各地的杰出科学家参加。" },
-  { word: "encounter", meaning: "遭遇；遇到", pos: "v./n.", example: "Researchers often encounter unexpected challenges when conducting field studies.", exampleCn: "研究人员进行实地研究时经常遇到意想不到的挑战。" },
-  { word: "endorse", meaning: "背书；赞同；代言", pos: "v.", example: "Several celebrities endorsed the new environmental protection campaign.", exampleCn: "几位名人为这项新的环境保护运动代言。", actualWord: "endorsed" },
-  { word: "entail", meaning: "牵涉；必然导致", pos: "v.", example: "The project will entail significant investment and long-term commitment from all parties.", exampleCn: "该项目将需要各方的重大投资和长期承诺。" },
-  { word: "enumerate", meaning: "列举", pos: "v.", example: "The report enumerates the various factors contributing to climate change.", exampleCn: "报告列举了导致气候变化的各种因素。" },
-  { word: "epoch", meaning: "时代；纪元", pos: "n.", example: "The Renaissance was an epoch of great cultural and artistic achievement.", exampleCn: "文艺复兴是一个伟大的文化和艺术成就的时代。" },
-  { word: "erect", meaning: "竖立；建立", pos: "v.", example: "The city decided to erect a monument in honor of the fallen soldiers.", exampleCn: "城市决定建立一座纪念碑以纪念阵亡士兵。" },
-  { word: "errand", meaning: "差使；杂事", pos: "n.", example: "She went to the post office to run an errand for her elderly neighbor.", exampleCn: "她去邮局为她的年迈邻居办一件差事。" },
-  { word: "escort", meaning: "护送；护卫", pos: "v./n.", example: "The security team escorted the visiting dignitary to the conference venue.", exampleCn: "安保团队护送来访的贵宾前往会议地点。", actualWord: "escorted" },
-  { word: "eternal", meaning: "永恒的", pos: "adj.", example: "The concept of eternal life is central to many religious beliefs.", exampleCn: "永恒生命的概念是许多宗教信仰的核心。" },
-  { word: "etiquette", meaning: "礼节；礼仪", pos: "n.", example: "Understanding proper business etiquette is essential for successful professional interactions.", exampleCn: "了解正确的商务礼仪对于成功的职业交往至关重要。" },
-  { word: "evacuate", meaning: "撤离；疏散", pos: "v.", example: "Residents were ordered to evacuate the area due to the approaching hurricane.", exampleCn: "居民被命令撤离该地区，因为飓风正在逼近。" },
-  { word: "evade", meaning: "逃避；避开", pos: "v.", example: "The suspect tried to evade the police by fleeing through the back alley.", exampleCn: "嫌疑人试图通过后巷逃跑来躲避警察。" }
+  {"word": "deceive", "meaning": "欺骗；蒙蔽", "pos": "v.", "sentence": "The company deceived consumers by making false claims about their product's benefits.", "sentenceCn": "该公司通过对其产品功效的虚假宣传欺骗消费者。", "record_id": "recvgahyluj7UA"},
+  {"word": "decent", "meaning": "体面的；正派的；像样的", "pos": "adj.", "sentence": "Every citizen deserves a decent standard of living and access to basic healthcare.", "sentenceCn": "每个公民都应享有体面的生活水平和基本医疗服务。", "record_id": "recvgahyluNo5E"},
+  {"word": "divert", "meaning": "转移；使转向；娱乐", "pos": "v.", "sentence": "The government decided to divert funds from defense to education programs.", "sentenceCn": "政府决定将资金从国防转向教育项目。", "record_id": "recvgahyluk4vi"},
+  {"word": "embody", "meaning": "体现；包含", "pos": "v.", "sentence": "The statue embodies the spirit of freedom that the nation was founded upon.", "sentenceCn": "这座雕像体现了国家建立时的自由精神。", "record_id": "recvgahECPSkgl"},
+  {"word": "enumerate", "meaning": "列举", "pos": "v.", "sentence": "The report enumerates the various factors contributing to climate change.", "sentenceCn": "报告列举了导致气候变化的各种因素。", "record_id": "recvgahECPB0y4"},
+  {"word": "accommodate", "meaning": "容纳，提供住宿，适应，顺应", "pos": "v.", "sentence": "The hotel can accommodate up to 500 guests during the peak season.", "sentenceCn": "这家酒店在旺季可以容纳多达500名客人。", "record_id": "recvgagWtUMpdt"},
+  {"word": "accomplish", "meaning": "完成，实现，达到", "pos": "v.", "sentence": "Through hard work and determination, she accomplished her goal of becoming a doctor.", "sentenceCn": "通过努力工作和坚定的决心，她实现了成为医生的目标。", "record_id": "recvgagWtUSqP5"},
+  {"word": "accurate", "meaning": "准确的，精确的，正确无误的", "pos": "adj.", "sentence": "It is crucial to provide accurate information when filling out official documents.", "sentenceCn": "填写正式文件时提供准确信息至关重要。", "record_id": "recvgagWtU15e0"},
+  {"word": "Abide by", "meaning": "遵守", "pos": "v.", "sentence": "Citizens must abide by the law to maintain social order and stability.", "sentenceCn": "公民必须遵守法律以维护社会秩序和稳定。", "record_id": "recvgah04WGfO0"},
+  {"word": "Carry out", "meaning": "贯彻；执行；实现", "pos": "v.", "sentence": "The government decided to carry out a comprehensive survey on public health issues.", "sentenceCn": "政府决定开展一项关于公共卫生问题的全面调查。", "record_id": "recvgahjn39Qyz"},
+  {"word": "decay", "meaning": "腐烂；衰退", "pos": "v./n.", "sentence": "Without proper maintenance, the ancient building began to decay rapidly.", "sentenceCn": "没有适当的维护，这座古建筑开始迅速衰败。", "record_id": "recvgahyluvT86"},
+  {"word": "defy", "meaning": "挑衅；违抗；藐视", "pos": "v.", "sentence": "The rebels continued to defy the government's authority despite severe consequences.", "sentenceCn": "尽管面临严重后果，叛乱分子继续蔑视政府的权威。", "record_id": "recvgahyluEXup"},
+  {"word": "denounce", "meaning": "谴责；告发", "pos": "v.", "sentence": "Many countries denounced the military coup as a violation of democratic principles.", "sentenceCn": "许多国家谴责这次军事政变违反了民主原则。", "record_id": "recvgahylubK6Y"},
+  {"word": "deprive", "meaning": "剥夺；使丧失", "pos": "v.", "sentence": "No one should be deprived of their basic human rights under any circumstances.", "sentenceCn": "在任何情况下，任何人都不应被剥夺基本人权。", "record_id": "recvgahyluOOK3"},
+  {"word": "detach", "meaning": "分离；拆开", "pos": "v.", "sentence": "The surgeon carefully detached the infected tissue from the healthy organ.", "sentenceCn": "外科医生小心翼翼地将感染组织与健康器官分离。", "record_id": "recvgahylu2QNS"},
+  {"word": "deteriorate", "meaning": "恶化；变坏", "pos": "v.", "sentence": "His health condition began to deteriorate rapidly after he stopped taking medication.", "sentenceCn": "停止服药后，他的健康状况开始迅速恶化。", "record_id": "recvgahylufAML"},
+  {"word": "determine", "meaning": "决定；确定；决心", "pos": "v.", "sentence": "Genetic factors determine to a large extent how individuals respond to certain medications.", "sentenceCn": "遗传因素在很大程度上决定了个体对某些药物的反应。", "record_id": "recvgahyluI4TP"},
+  {"word": "dilute", "meaning": "稀释；变淡", "pos": "v.", "sentence": "Adding water will dilute the concentration of the solution and reduce its effectiveness.", "sentenceCn": "加水会稀释溶液的浓度并降低其效果。", "record_id": "recvgahylukU8x"},
+  {"word": "disguise", "meaning": "伪装；掩饰", "pos": "v./n.", "sentence": "The spy disguised himself as a journalist to gain access to the restricted area.", "sentenceCn": "间谍伪装成记者以进入限制区域。", "record_id": "recvgahyluz9UP"},
+  {"word": "dispute", "meaning": "争论；纠纷", "pos": "n./v.", "sentence": "The two countries have been in a long-standing dispute over territorial boundaries.", "sentenceCn": "两国在领土边界问题上长期存在争议。", "record_id": "recvgahyluZ5qM"},
+  {"word": "disturb", "meaning": "打扰；弄乱", "pos": "v.", "sentence": "Please do not disturb the experiment while it is in progress.", "sentenceCn": "实验进行期间请不要打扰。", "record_id": "recvgahyluTkgl"},
+  {"word": "dread", "meaning": "恐惧；担心", "pos": "v./n.", "sentence": "Students often dread the thought of taking final examinations.", "sentenceCn": "学生们经常害怕期末考试的想法。", "record_id": "recvgahylu2R5S"},
+  {"word": "dubious", "meaning": "可疑的；怀疑的", "pos": "adj.", "sentence": "Many consumers remain dubious about the safety of genetically modified foods.", "sentenceCn": "许多消费者对转基因食品的安全性仍持怀疑态度。", "record_id": "recvgahyluZ1El"},
+  {"word": "editorial", "meaning": "编辑的；社论", "pos": "adj./n.", "sentence": "The newspaper published an editorial criticizing the government's economic policies.", "sentenceCn": "该报纸发表了一篇批评政府经济政策的社论。", "record_id": "recvgahECPHVPz"},
+  {"word": "eligible", "meaning": "有资格的；合格的", "pos": "adj.", "sentence": "Only citizens over the age of 18 are eligible to vote in national elections.", "sentenceCn": "只有18岁以上的公民才有资格在全国选举中投票。", "record_id": "recvgahECPwZyh"},
+  {"word": "eminent", "meaning": "卓越的；著名的", "pos": "adj.", "sentence": "The conference was attended by eminent scientists from around the world.", "sentenceCn": "会议吸引了来自世界各地的杰出科学家参加。", "record_id": "recvgahECPlyIe"},
+  {"word": "eternal", "meaning": "永恒的", "pos": "adj.", "sentence": "The concept of eternal life is central to many religious beliefs.", "sentenceCn": "永恒生命的概念是许多宗教信仰的核心。", "record_id": "recvgahECPHzkw"},
+  {"word": "flesh", "meaning": "肉；肉体", "pos": "n.", "sentence": "The wound healed quickly, and new flesh began to form around the edges.", "sentenceCn": "伤口很快愈合，新的肉开始从边缘生长。", "record_id": "recvgahMHK9AZ1"},
+  {"word": "herald", "meaning": "使者；预兆；预示", "pos": "n./v.", "sentence": "The discovery of penicillin heralded a new era in the treatment of bacterial infections.", "sentenceCn": "青霉素的发现宣告了细菌感染治疗新时代的到来。", "record_id": "recvgaicx7zOoh"},
+  {"word": "hierarchy", "meaning": "等级制度；阶层", "pos": "n.", "sentence": "The company has a strict hierarchy with clear reporting structures at every level.", "sentenceCn": "该公司有严格的等级制度，每个层级都有明确的汇报结构。", "record_id": "recvgaicx7quYY"},
+  {"word": "hollow", "meaning": "空心的；虚伪的", "pos": "adj.", "sentence": "The hollow tree trunk served as a perfect hiding place for the small animals.", "sentenceCn": "空心树干成为小动物完美的藏身之处。", "record_id": "recvgaicx7KT7G"},
+  {"word": "homogeneous", "meaning": "同种类的；同质的", "pos": "adj.", "sentence": "The population in this region is relatively homogeneous in terms of cultural background.", "sentenceCn": "该地区的人口在文化背景方面相对单一。", "record_id": "recvgaicx7Xj6U"},
+  {"word": "honorary", "meaning": "荣誉的；名誉的", "pos": "adj.", "sentence": "The university awarded him an honorary doctorate for his contributions to science.", "sentenceCn": "大学授予他荣誉博士学位，以表彰他对科学的贡献。", "record_id": "recvgaicx7Xj6U1"},
+  {"word": "intellectual", "meaning": "智力的；知识分子", "pos": "adj./n.", "sentence": "The university attracts intellectual scholars from around the world.", "sentenceCn": "这所大学吸引了来自世界各地的知识分子学者。", "record_id": "recvgaicx7Xj6U2"},
+  {"word": "intermittent", "meaning": "间歇的；断断续续的", "pos": "adj.", "sentence": "The intermittent rainfall made it difficult to plan outdoor activities.", "sentenceCn": "间歇性降雨使得规划户外活动变得困难。", "record_id": "recvgaicx7Xj6U3"},
+  {"word": "intervene", "meaning": "介入；干预", "pos": "v.", "sentence": "The international community may need to intervene to resolve the conflict peacefully.", "sentenceCn": "国际社会可能需要介入以和平解决冲突。", "record_id": "recvgaicx7Xj6U4"},
+  {"word": "intimidate", "meaning": "恐吓；威胁", "pos": "v.", "sentence": "The witness was intimidated by the defendant's aggressive behavior in court.", "sentenceCn": "证人被被告在法庭上的攻击性行为所恐吓。", "record_id": "recvgaicx7Xj6U5"},
+  {"word": "intricate", "meaning": "错综复杂的", "pos": "adj.", "sentence": "The intricate design of the watch demonstrates the craftsman's exceptional skill.", "sentenceCn": "手表复杂的设计展示了工匠的非凡技艺。", "record_id": "recvgaicx7Xj6U6"},
+  {"word": "intrigue", "meaning": "引起兴趣；诡计", "pos": "v.", "sentence": "The mysterious disappearance of the artifact continued to intrigue historians for decades.", "sentenceCn": "文物的神秘失踪继续吸引历史学家数十年。", "record_id": "recvgaicx7Xj6U7"},
+  {"word": "invade", "meaning": "侵略；侵袭", "pos": "v.", "sentence": "The army decided to invade the neighboring territory after diplomatic efforts failed.", "sentenceCn": "在外交努力失败后，军队决定入侵邻近领土。", "record_id": "recvgaicx7Xj6U8"},
+  {"word": "invaluable", "meaning": "极宝贵的", "pos": "adj.", "sentence": "Her experience and expertise have been invaluable to the project's success.", "sentenceCn": "她的经验和专业知识对项目的成功具有不可估量的价值。", "record_id": "recvgaicx7Xj6U9"},
+  {"word": "invoice", "meaning": "发票；货单", "pos": "n.", "sentence": "Please submit the invoice for payment processing before the end of the month.", "sentenceCn": "请在月底前提交发票进行付款处理。", "record_id": "recvgaicx7Xj6U10"},
+  {"word": "invoke", "meaning": "调用；诉诸；祈求", "pos": "v.", "sentence": "The lawyer invoked the Fifth Amendment to protect his client from self-incrimination.", "sentenceCn": "律师援引第五修正案以保护其当事人免于自证其罪。", "record_id": "recvgaicx7Xj6U11"},
+  {"word": "involuntary", "meaning": "不由自主的", "pos": "adj.", "sentence": "The patient experienced involuntary muscle spasms as a side effect of the medication.", "sentenceCn": "患者经历了药物副作用引起的非自愿肌肉痉挛。", "record_id": "recvgaicx7Xj6U12"},
+  {"word": "irrigate", "meaning": "灌溉", "pos": "v.", "sentence": "Farmers use advanced systems to irrigate their crops efficiently during dry seasons.", "sentenceCn": "农民使用先进系统在干旱季节高效灌溉作物。", "record_id": "recvgaicx7Xj6U13"},
+  {"word": "irritate", "meaning": "激怒；使过敏", "pos": "v.", "sentence": "The chemical can irritate the skin and cause allergic reactions in some individuals.", "sentenceCn": "这种化学物质会刺激皮肤，并在某些人中引起过敏反应。", "record_id": "recvgaicx7Xj6U14"},
+  {"word": "jaw", "meaning": "颌；嘴部", "pos": "n.", "sentence": "The shark's powerful jaw can crush even the hardest shells of sea turtles.", "sentenceCn": "鲨鱼强有力的下颚甚至可以粉碎海龟最坚硬的壳。", "record_id": "recvgaicx7Xj6U15"},
+  {"word": "jerk", "meaning": "急拉；猛推", "pos": "v./n.", "sentence": "The bus came to a sudden jerk, causing passengers to lose their balance.", "sentenceCn": "公交车突然颠簸了一下，导致乘客失去平衡。", "record_id": "recvgaicx7Xj6U16"},
+  {"word": "judicious", "meaning": "明智的；审慎的", "pos": "adj.", "sentence": "A judicious investment strategy can help protect your wealth during market downturns.", "sentenceCn": "明智的投资策略可以帮助你在市场低迷时期保护财富。", "record_id": "recvgaicx7Xj6U17"},
+  {"word": "juncture", "meaning": "关键时刻；接合点", "pos": "n.", "sentence": "At this critical juncture, the company must make strategic decisions about its future.", "sentenceCn": "在这个关键时刻，公司必须对其未来做出战略决策。", "record_id": "recvgaicx7Xj6U18"}
 ];
-    </script>
-    <script>
-        let currentQuestion = 0;
-        let correctAnswers = 0;
-        let startTime = null;
-        let endTime = null;
-        let answers = [];
-        let questions = [];
-        let currentOptions = [];
-        
-        // 初始化
-        function init() {
-            startTime = new Date();
-            generateQuestions();
-            showQuestion();
-        }
-        
-        // 生成题目（随机打乱）
-        function generateQuestions() {
-            questions = [...vocabData];
-            // 随机打乱题目顺序
-            for (let i = questions.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [questions[i], questions[j]] = [questions[j], questions[i]];
-            }
-        }
-        
-        // 显示题目
-        function showQuestion() {
-            const container = document.getElementById('questionContainer');
-            const progressInfo = document.getElementById('progressInfo');
-            
-            if (currentQuestion >= questions.length) {
-                showFinalResult();
-                return;
-            }
-            
-            const question = questions[currentQuestion];
-            progressInfo.textContent = `题目：${currentQuestion + 1}/${questions.length}`;
-            
-            // 生成选项（正确答案 + 3个干扰项）
-            currentOptions = generateOptions(question);
-            
-            // 生成挖空句子
-            const blankSentence = createBlankSentence(question);
-            
-            container.innerHTML = `
-                <div class="question-number">第 ${currentQuestion + 1} 题</div>
-                <div class="sentence">${blankSentence}</div>
-                <div class="options">
-                    ${currentOptions.map((opt, idx) => `
-                        <button class="option-btn" onclick="selectOption(${idx})">
-                            ${opt.word}
-                        </button>
-                    `).join('')}
-                </div>
-            `;
-            
-            // 显示题目页面
-            container.style.display = 'block';
-            document.getElementById('resultPage').style.display = 'none';
-        }
-        
-        // 生成挖空句子（只显示英文部分，不显示中文翻译）
-        function createBlankSentence(question) {
-            const targetWord = question.actualWord || question.word;
-            const regex = new RegExp(`\\b${targetWord}\\b`, 'gi');
-            
-            // 只保留英文部分（去除中文翻译）
-            // 方法：找到最后一个英文句号，提取到该位置的内容
-            const lastPeriodIndex = question.example.lastIndexOf('.');
-            let englishOnly = question.example;
-            if (lastPeriodIndex > 0) {
-                englishOnly = question.example.substring(0, lastPeriodIndex + 1);
-            }
-            
-            return englishOnly.replace(regex, '<span class="blank">______</span>');
-        }
-        
-        // 生成选项
-        function generateOptions(correctQuestion) {
-            const options = [{ word: correctQuestion.word, meaning: correctQuestion.meaning }];
-            
-            // 从其他题目中随机选择3个单词作为干扰项
-            const otherWords = vocabData.filter(q => q.word !== correctQuestion.word);
-            for (let i = otherWords.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [otherWords[i], otherWords[j]] = [otherWords[j], otherWords[i]];
-            }
-            
-            for (let i = 0; i < 3; i++) {
-                options.push({ word: otherWords[i].word, meaning: otherWords[i].meaning });
-            }
-            
-            // 随机打乱选项顺序
-            for (let i = options.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [options[i], options[j]] = [options[j], options[i]];
-            }
-            
-            return options;
-        }
-        
-        // 选择答案
-        function selectOption(optionIndex) {
-            const question = questions[currentQuestion];
-            const selectedWord = currentOptions[optionIndex].word;
-            const isCorrect = selectedWord === question.word;
-            
-            // 记录答案
-            answers.push({
-                question: question,
-                selected: selectedWord,
-                isCorrect: isCorrect,
-                options: currentOptions
-            });
-            
-            if (isCorrect) {
-                correctAnswers++;
-            }
-            
-            // 显示单题结果页
-            showQuestionResult(question, selectedWord, isCorrect, currentOptions);
-        }
-        
-        // 显示单题结果页
-        function showQuestionResult(question, selectedWord, isCorrect, options) {
-            const resultPage = document.getElementById('resultPage');
-            const targetWord = question.actualWord || question.word;
-            
-            // 高亮句子中的答案（只显示英文部分）
-            const lastPeriodIndex = question.example.lastIndexOf('.');
-            let englishSentence = question.example;
-            if (lastPeriodIndex > 0) {
-                englishSentence = question.example.substring(0, lastPeriodIndex + 1);
-            }
-            
-            const highlightedSentence = englishSentence.replace(
-                new RegExp(`\\b${targetWord}\\b`, 'gi'),
-                `<span class="highlight">${targetWord}</span>`
-            );
-            
-            // 生成选项对照列表
-            const optionsList = options.map(opt => {
-                const isCorrectOption = opt.word === question.word;
-                const isSelectedOption = opt.word === selectedWord;
-                let className = 'option-item';
-                if (isCorrectOption) {
-                    className += ' correct';
-                } else if (isSelectedOption && !isCorrect) {
-                    className += ' selected-wrong';
-                }
-                return `
-                    <div class="${className}">
-                        ${opt.word}（${opt.meaning}）${isCorrectOption ? '<span class="checkmark">✓</span>' : ''}
-                    </div>
-                `;
-            }).join('');
-            
-            resultPage.innerHTML = `
-                <div class="result-icon ${isCorrect ? 'correct' : 'wrong'}">
-                    ${isCorrect ? '✅' : '❌'}
-                </div>
-                <div class="result-title ${isCorrect ? 'correct' : 'wrong'}">
-                    ${isCorrect ? '正确！' : '错误！'}
-                </div>
-                
-                <div class="correct-answer">
-                    <span class="word">${question.word}</span>
-                    <span class="pos">（${question.pos} ${question.meaning}）</span>
-                </div>
-                
-                <div class="full-sentence">
-                    <strong>完整句子：</strong><br>
-                    ${highlightedSentence}
-                </div>
-                
-                <div class="translation">
-                    <strong>句子翻译：</strong><br>
-                    ${question.exampleCn}
-                </div>
-                
-                <div class="options-review">
-                    <h4>选项对照：</h4>
-                    ${optionsList}
-                </div>
-                
-                <button class="next-btn" onclick="nextQuestion()">
-                    ${currentQuestion < questions.length - 1 ? '下一题' : '查看结果'}
-                </button>
-            `;
-            
-            // 显示结果页面
-            document.getElementById('questionContainer').style.display = 'none';
-            resultPage.style.display = 'block';
-            
-            // 自动播放正确答案单词的发音
-            speakWord(question.word);
-        }
-        
-        // 下一题
-        function nextQuestion() {
-            currentQuestion++;
-            showQuestion();
-        }
-        
-        // 播放单词发音
-        function speakWord(word) {
-            if ('speechSynthesis' in window) {
-                // 取消之前的播放
-                window.speechSynthesis.cancel();
-                
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.lang = 'en-US';
-                utterance.rate = 0.8;
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-        
-        // 显示最终结果
-        function showFinalResult() {
-            endTime = new Date();
-            
-            document.getElementById('questionContainer').style.display = 'none';
-            document.getElementById('resultPage').style.display = 'none';
-            document.getElementById('finalResultContainer').style.display = 'block';
-            document.getElementById('correctCount').textContent = correctAnswers;
-            
-            const answerDetails = document.getElementById('answerDetails');
-            answerDetails.innerHTML = answers.map((answer, idx) => {
-                const q = answer.question;
-                const targetWord = q.actualWord || q.word;
-                const highlightedSentence = q.example.replace(
-                    new RegExp(`\\b${targetWord}\\b`, 'gi'),
-                    `<span class="highlight">${targetWord}</span>`
-                );
-                
-                return `
-                    <div class="answer-detail ${answer.isCorrect ? '' : 'wrong'}">
-                        <div style="font-size: 18px; font-weight: bold; margin-bottom: 10px;">
-                            第 ${idx + 1} 题：${answer.isCorrect ? '✅ 正确' : '❌ 错误'}
-                        </div>
-                        <div style="font-size: 16px; margin-bottom: 10px;">
-                            <strong>正确答案：</strong>${q.word}（${q.pos} ${q.meaning}）
-                        </div>
-                        <div class="full-sentence">${highlightedSentence}</div>
-                        <div class="translation">${q.exampleCn}</div>
-                        ${!answer.isCorrect ? `
-                            <div style="margin-top: 10px; color: #dc3545;">
-                                <strong>你的答案：</strong>${answer.selected}
-                            </div>
-                        ` : ''}
-                    </div>
-                `;
-            }).join('');
-            
-            // 生成结果码
-            generateResultCode();
-        }
-        
-        // 生成结果码
-        function generateResultCode() {
-            const wrongCount = questions.length - correctAnswers;
-            const startTimeStr = startTime.toISOString();
-            const endTimeStr = endTime.toISOString();
-            
-            const answerDetails = answers.map(a => 
-                `${a.question.word}:${a.isCorrect}`
-            ).join(',');
-            
-            const resultCode = `4|${correctAnswers}|${wrongCount}|${startTimeStr}|${endTimeStr}|${answerDetails}`;
-            console.log('结果码：', resultCode);
-        }
-        
-        // 重新开始
-        function restartQuiz() {
-            currentQuestion = 0;
-            correctAnswers = 0;
-            answers = [];
-            startTime = new Date();
-            
-            document.getElementById('finalResultContainer').style.display = 'none';
-            document.getElementById('questionContainer').style.display = 'block';
-            
-            generateQuestions();
-            showQuestion();
-        }
-        
-        // 页面加载时初始化
-        window.onload = init;
-    </script>
+
+let currentIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let startTime = '';
+let currentOptions = [];
+let userAnswers = {};
+let shuffledData = [];
+
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function getActualWord(item) {
+  return item.actualWord || item.word;
+}
+
+function generateOptions(correctItem) {
+  const correct = correctItem.word;
+  const others = vocabData.filter(item => item.word !== correct);
+  const shuffledOthers = shuffle(others).slice(0, 3);
+  const options = shuffle([correctItem, ...shuffledOthers]);
+  return options.map(item => ({
+    word: item.word,
+    meaning: item.meaning,
+    isCorrect: item.word === correct
+  }));
+}
+
+function renderQuestion() {
+  const item = shuffledData[currentIndex];
+  const actualWord = getActualWord(item);
+  const sentence = item.sentence;
+  
+  // Create blank by replacing the actual word (case-insensitive)
+  const regex = new RegExp('\\b' + actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+  const displaySentence = sentence.replace(regex, '<span class="blank">_______</span>');
+  
+  document.getElementById('sentence').innerHTML = displaySentence;
+  document.getElementById('progress').textContent = `${currentIndex + 1}/${shuffledData.length}`;
+  
+  // Generate and store options
+  currentOptions = generateOptions(item);
+  
+  const optionsEl = document.getElementById('options');
+  optionsEl.innerHTML = '';
+  currentOptions.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.textContent = opt.word;
+    btn.onclick = () => handleAnswer(idx);
+    optionsEl.appendChild(btn);
+  });
+  
+  document.getElementById('quiz').classList.remove('hidden');
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('endScreen').classList.add('hidden');
+}
+
+function handleAnswer(selectedIdx) {
+  const item = shuffledData[currentIndex];
+  const actualWord = getActualWord(item);
+  const selected = currentOptions[selectedIdx];
+  const isCorrect = selected.isCorrect;
+  
+  userAnswers[item.word] = isCorrect;
+  
+  // Disable all options
+  const buttons = document.querySelectorAll('.option');
+  buttons.forEach((btn, idx) => {
+    btn.classList.add('disabled');
+    if (currentOptions[idx].isCorrect) {
+      btn.classList.add('correct');
+    } else if (idx === selectedIdx && !isCorrect) {
+      btn.classList.add('wrong');
+    }
+  });
+  
+  if (isCorrect) {
+    correctCount++;
+  } else {
+    wrongCount++;
+  }
+  
+  setTimeout(() => showResult(item, selected, isCorrect), 600);
+}
+
+function showResult(item, selected, isCorrect) {
+  const actualWord = getActualWord(item);
+  
+  document.getElementById('resultIcon').textContent = isCorrect ? '✅' : '❌';
+  document.getElementById('resultWord').textContent = item.word + ' (' + item.pos + ')';
+  document.getElementById('resultMeaning').textContent = item.meaning;
+  
+  // Highlight the answer in the sentence
+  const regex = new RegExp('(' + actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  const highlightedSentence = item.sentence.replace(regex, '<span class="highlight">$1</span>');
+  document.getElementById('resultSentence').innerHTML = highlightedSentence;
+  document.getElementById('resultCn').textContent = item.sentenceCn;
+  
+  // Options review with Chinese
+  const optionsReview = document.getElementById('optionsReview');
+  optionsReview.innerHTML = '<div class="options-review-title">所有选项：</div>';
+  currentOptions.forEach(opt => {
+    const div = document.createElement('div');
+    div.className = 'option-review' + (opt.isCorrect ? ' correct' : '');
+    div.innerHTML = `<span class="check">${opt.isCorrect ? '✓' : ''}</span>${opt.word} — ${opt.meaning}`;
+    optionsReview.appendChild(div);
+  });
+  
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+}
+
+function speakWord(word) {
+  if ('speechSynthesis' in window) {
+    speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    speechSynthesis.speak(utterance);
+  }
+}
+
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex >= shuffledData.length) {
+    showEndScreen();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showEndScreen() {
+  const endTime = new Date().toISOString();
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.add('hidden');
+  document.getElementById('endScreen').classList.remove('hidden');
+  
+  const stats = document.getElementById('endStats');
+  stats.innerHTML = `
+    共 <strong>${shuffledData.length}</strong> 题<br>
+    答对 <strong>${correctCount}</strong> 题<br>
+    答错 <strong>${wrongCount}</strong> 题<br>
+    正确率 <strong>${Math.round(correctCount / shuffledData.length * 100)}%</strong>
+  `;
+  
+  // Build result code
+  const resultCode = `21|${correctCount}|${wrongCount}|${startTime}|${endTime}|${Object.entries(userAnswers).map(([w, v]) => `${w}:${v}`).join(',')}`;
+  document.getElementById('copyBtn').onclick = () => {
+    navigator.clipboard.writeText(resultCode).then(() => {
+      alert('结果码已复制！');
+    });
+  };
+}
+
+function init() {
+  startTime = new Date().toISOString();
+  shuffledData = shuffle([...vocabData]);
+  currentIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  userAnswers = {};
+  renderQuestion();
+}
+
+document.getElementById('speakerBtn').onclick = () => {
+  const item = shuffledData[currentIndex];
+  speakWord(item.word);
+};
+
+document.getElementById('nextBtn').onclick = nextQuestion;
+
+document.getElementById('restartBtn').onclick = init;
+
+init();
+</script>
 </body>
 </html>
