@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第26轮英语单词复习 - 50题</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+    .container { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 32px; max-width: 600px; width: 100%; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .title { font-size: 22px; font-weight: 700; color: #333; }
+    .progress { font-size: 14px; color: #666; background: #f0f0f0; padding: 6px 14px; border-radius: 20px; }
+    .question-box { background: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .sentence { font-size: 18px; line-height: 1.8; color: #333; word-break: break-word; }
+    .blank { display: inline-block; background: #4a90d9; color: white; padding: 2px 12px; border-radius: 4px; min-width: 80px; text-align: center; font-weight: 600; }
+    .options { display: flex; flex-direction: column; gap: 12px; }
+    .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px; cursor: pointer; transition: all 0.2s; background: white; text-align: left; }
+    .option:hover:not(.disabled) { border-color: #4a90d9; background: #f0f7ff; }
+    .option.correct { border-color: #28a745; background: #d4edda; color: #155724; }
+    .option.wrong { border-color: #dc3545; background: #f8d7da; color: #721c24; }
+    .option.disabled { cursor: default; opacity: 0.7; }
+    .option.disabled.correct { opacity: 1; }
+    .hidden { display: none; }
+    .result-box { text-align: center; }
+    .result-icon { font-size: 64px; margin-bottom: 16px; }
+    .result-word { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 8px; }
+    .result-meaning { font-size: 16px; color: #666; margin-bottom: 20px; }
+    .result-sentence { font-size: 17px; line-height: 1.7; color: #333; margin-bottom: 12px; word-break: break-word; }
+    .result-sentence .highlight { background: #fff3cd; padding: 1px 6px; border-radius: 3px; font-weight: 600; }
+    .result-cn { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .options-review { text-align: left; margin-bottom: 20px; }
+    .options-review-title { font-size: 14px; color: #666; margin-bottom: 10px; }
+    .option-review { padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; font-size: 15px; background: #f0f0f0; }
+    .option-review.correct { background: #d4edda; color: #155724; }
+    .option-review .check { margin-right: 6px; }
+    .btn { display: inline-block; padding: 14px 32px; background: #4a90d9; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: #3a7bc8; }
+    .speaker-btn { background: none; border: none; cursor: pointer; font-size: 20px; padding: 8px; margin-bottom: 16px; }
+    .end-screen { text-align: center; }
+    .end-title { font-size: 26px; font-weight: 700; color: #333; margin-bottom: 20px; }
+    .end-stats { font-size: 18px; color: #666; margin-bottom: 24px; line-height: 1.8; }
+    .end-stats strong { color: #4a90d9; }
+    .copy-btn { background: #28a745; margin-right: 12px; }
+    .copy-btn:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="quiz">
+      <div class="header">
+        <div class="title">📝 第26轮英语单词复习</div>
+        <div class="progress" id="progress">1/50</div>
+      </div>
+      <div class="question-box">
+        <div class="sentence" id="sentence"></div>
+      </div>
+      <div class="options" id="options"></div>
+    </div>
+    <div id="result" class="hidden">
+      <div class="result-box">
+        <div class="result-icon" id="resultIcon"></div>
+        <div class="result-word" id="resultWord"></div>
+        <div class="result-meaning" id="resultMeaning"></div>
+        <button class="speaker-btn" id="speakerBtn" title="播放发音">🔊</button>
+        <div class="result-sentence" id="resultSentence"></div>
+        <div class="result-cn" id="resultCn"></div>
+        <div class="options-review" id="optionsReview"></div>
+        <div>
+          <button class="btn" id="nextBtn">下一题</button>
+        </div>
+      </div>
+    </div>
+    <div id="endScreen" class="hidden end-screen">
+      <div class="end-title">🎉 测验完成！</div>
+      <div class="end-stats" id="endStats"></div>
+      <div>
+        <button class="btn copy-btn" id="copyBtn">复制结果码</button>
+        <button class="btn" id="restartBtn">重新开始</button>
+      </div>
+    </div>
+  </div>
+<script>
+const vocabData = [
+  {"word": "abnormal", "meaning": "反常的，异常的", "pos": "adj.", "sentence": "Abnormal behavior in children may indicate underlying psychological issues.", "sentenceCn": "儿童的异常行为可能表明存在潜在的心理问题。"},
+  {"word": "abolition", "meaning": "废除，取消", "pos": "n.", "sentence": "The abolition of slavery was a major milestone in human rights history.", "sentenceCn": "废除奴隶制是人权历史上的一个重要里程碑。"},
+  {"word": "abstain", "meaning": "弃权；放弃", "pos": "v.", "sentence": "Several members chose to abstain from voting on the controversial proposal.", "sentenceCn": "几位成员选择放弃对有争议提案的投票。"},
+  {"word": "abstract", "meaning": "抽象的；摘要", "pos": "adj./n.", "sentence": "The artist created an abstract painting that was open to various interpretations.", "sentenceCn": "艺术家创作了一幅可以多种解读的抽象画。"},
+  {"word": "absurd", "meaning": "荒谬的；荒唐的", "pos": "adj.", "sentence": "The idea that machines could think was considered absurd just a century ago.", "sentenceCn": "仅仅一个世纪前，认为机器能思考被认为是荒谬的。"},
+  {"word": "abundance", "meaning": "丰富，充裕，大量", "pos": "n.", "sentence": "The region is known for its abundance of natural resources and scenic beauty.", "sentenceCn": "该地区以丰富的自然资源和美丽的风景而闻名。"},
+  {"word": "abundant", "meaning": "丰富的，充裕的，大量的", "pos": "adj.", "sentence": "The library has an abundant collection of books on various subjects.", "sentenceCn": "图书馆有丰富的各学科书籍收藏。"},
+  {"word": "academic", "meaning": "学术的；学院的", "pos": "adj.", "sentence": "She received an academic scholarship to pursue her doctoral studies abroad.", "sentenceCn": "她获得学术奖学金去国外攻读博士学位。"},
+  {"word": "accelerate", "meaning": "加速；加快", "pos": "v.", "sentence": "The new policy aims to accelerate economic growth in rural areas.", "sentenceCn": "新政策旨在加速农村地区的经济增长。"},
+  {"word": "acceptance", "meaning": "接受；认可", "pos": "n.", "sentence": "The acceptance of new ideas often takes time in traditional societies.", "sentenceCn": "在接受新观念通常需要时间。"},
+  {"word": "accessible", "meaning": "可进入的；可使用的", "pos": "adj.", "sentence": "The museum is fully accessible to visitors with disabilities.", "sentenceCn": "博物馆对残障游客完全无障碍开放。"},
+  {"word": "accidental", "meaning": "意外的；偶然的", "pos": "adj.", "sentence": "The fire was ruled accidental after the investigation concluded.", "sentenceCn": "经过调查后，确定火灾是意外造成的。"},
+  {"word": "accommodate", "meaning": "容纳；提供食宿", "pos": "v.", "sentence": "The new stadium can accommodate over 50,000 spectators.", "sentenceCn": "新体育场可容纳超过50,000名观众。"},
+  {"word": "accompany", "meaning": "陪伴；伴奏", "pos": "v.", "sentence": "The teacher accompanied the students on their field trip to the museum.", "sentenceCn": "老师陪同学生去博物馆进行实地考察。"},
+  {"word": "accountability", "meaning": "责任；可说明性", "pos": "n.", "sentence": "Accountability is a fundamental principle in democratic governance.", "sentenceCn": "问责制是民主治理的基本原则。"},
+  {"word": "accountant", "meaning": "会计师", "pos": "n.", "sentence": "The accountant prepared the company's financial statements for the quarter.", "sentenceCn": "会计师准备了公司本季度的财务报表。"},
+  {"word": "accredit", "meaning": "归因于；授权", "pos": "v.", "sentence": "The success of the project is accredited to the hard work of the entire team.", "sentenceCn": "项目的成功归功于整个团队的辛勤工作。"},
+  {"word": "accumulate", "meaning": "积累；积聚", "pos": "v.", "sentence": "Over the years, she accumulated a wealth of knowledge in her field.", "sentenceCn": "多年来，她在自己的领域积累了丰富的知识。"},
+  {"word": "accuracy", "meaning": "准确性；精确度", "pos": "n.", "sentence": "The accuracy of the weather forecast has improved significantly with new technology.", "sentenceCn": "随着新技术的应用，天气预报的准确性显著提高。"},
+  {"word": "accurate", "meaning": "准确的；精确的", "pos": "adj.", "sentence": "Accurate historical records are essential for understanding past civilizations.", "sentenceCn": "准确的历史记录对于理解过去的文明至关重要。"},
+  {"word": "accuse", "meaning": "指控；指责", "pos": "v.", "sentence": "The prosecution accused the defendant of committing fraud and embezzlement.", "sentenceCn": "控方指控被告犯有欺诈和挪用公款罪。"},
+  {"word": "acquaintance", "meaning": "相识的人；了解", "pos": "n.", "sentence": "She is not a close friend, just a casual acquaintance from work.", "sentenceCn": "她不是密友，只是工作中的一般相识。"},
+  {"word": "acquisition", "meaning": "获得；收购", "pos": "n.", "sentence": "The acquisition of the rival company expanded the business significantly.", "sentenceCn": "对竞争对手公司的收购大大扩展了业务。"},
+  {"word": "acquit", "meaning": "宣判无罪", "pos": "v.", "sentence": "After a lengthy trial, the jury acquitted the defendant of all charges.", "sentenceCn": "经过漫长的审判，陪审团宣判被告所有罪名不成立。"},
+  {"word": "activate", "meaning": "激活；使活动", "pos": "v.", "sentence": "Please activate your account by clicking the link sent to your email.", "sentenceCn": "请通过点击发送到您邮箱的链接来激活您的账户。"},
+  {"word": "acute", "meaning": "严重的；急性的", "pos": "adj.", "sentence": "Acute pain usually serves as a warning signal for the body.", "sentenceCn": "急性疼痛通常是身体的警告信号。"},
+  {"word": "adaptation", "meaning": "适应；改编", "pos": "n.", "sentence": "The adaptation of the novel into a film was highly successful.", "sentenceCn": "小说改编成电影非常成功。"},
+  {"word": "addict", "meaning": "上瘾者；使成瘾", "pos": "n./v.", "sentence": "The gambler became an addict and lost all his savings.", "sentenceCn": "赌徒成了赌瘾患者，失去所有积蓄。"},
+  {"word": "adequate", "meaning": "足够的；适当的", "pos": "adj.", "sentence": "The salary is adequate for the responsibilities and workload involved.", "sentenceCn": "这个薪水对于所涉及的职责和工作量来说是足够的。"},
+  {"word": "adhere", "meaning": "粘附；坚持", "pos": "v.", "sentence": "All employees must adhere to the company's code of conduct.", "sentenceCn": "所有员工必须遵守公司的行为准则。"},
+  {"word": "adjacent", "meaning": "相邻的；邻近的", "pos": "adj.", "sentence": "The park is located adjacent to the university campus.", "sentenceCn": "公园位于大学校园旁边。"},
+  {"word": "adjust", "meaning": "调整；调节", "pos": "v.", "sentence": "You can adjust the temperature using the thermostat on the wall.", "sentenceCn": "你可以用墙上的恒温器调节温度。"},
+  {"word": "administer", "meaning": "管理；执行", "pos": "v.", "sentence": "The nurse can administer medication under the doctor's supervision.", "sentenceCn": "护士可以在医生的监督下给药。"},
+  {"word": "administration", "meaning": "管理；行政", "pos": "n.", "sentence": "The administration of the school is responsible for its daily operations.", "sentenceCn": "学校管理层负责其日常运营。"},
+  {"word": "admire", "meaning": "钦佩；欣赏", "pos": "v.", "sentence": "Visitors often admire the sunset view from this hilltop vantage point.", "sentenceCn": "游客经常欣赏从这个山顶观景点的日落景色。"},
+  {"word": "adolescent", "meaning": "青少年", "pos": "n.", "sentence": "Adolescent rebellion is a normal part of growing up.", "sentenceCn": "青少年叛逆是成长过程中的正常部分。"},
+  {"word": "adopt", "meaning": "采用；收养", "pos": "v.", "sentence": "Many couples adopt children who need loving homes.", "sentenceCn": "许多夫妇收养需要爱心家庭的孩子。"},
+  {"word": "adore", "meaning": "热爱；崇拜", "pos": "v.", "sentence": "Children adore stories about magical adventures and heroic characters.", "sentenceCn": "孩子们热爱关于魔法冒险和英雄人物的故事。"},
+  {"word": "advantage", "meaning": "优势；优点", "pos": "n.", "sentence": "Living in a big city has many advantages, including better job opportunities.", "sentenceCn": "生活在大城市有很多优势，包括更好的就业机会。"},
+  {"word": "advent", "meaning": "出现；到来", "pos": "n.", "sentence": "The advent of the internet revolutionized how we communicate and access information.", "sentenceCn": "互联网的出现彻底改变了我们的沟通和信息获取方式。"},
+  {"word": "adverse", "meaning": "不利的；相反的", "pos": "adj.", "sentence": "Adverse weather conditions forced the cancellation of the outdoor event.", "sentenceCn": "恶劣的天气条件迫使户外活动取消。"},
+  {"word": "advertise", "meaning": "做广告；宣传", "pos": "v.", "sentence": "Companies advertise their products through various media channels.", "sentenceCn": "公司通过各种媒体渠道宣传其产品。"},
+  {"word": "advocate", "meaning": "提倡者；拥护", "pos": "n./v.", "sentence": "She is a strong advocate for environmental protection.", "sentenceCn": "她是环境保护的坚定倡导者。"},
+  {"word": "aesthetic", "meaning": "美学的；审美的", "pos": "adj.", "sentence": "The building's aesthetic appeal makes it a popular tourist attraction.", "sentenceCn": "建筑的美学吸引力使其成为热门旅游景点。"},
+  {"word": "affection", "meaning": "喜爱；爱慕", "pos": "n.", "sentence": "The dog showed great affection for its owner after being reunited.", "sentenceCn": "狗在重新团聚后对主人表现出极大的喜爱。"},
+  {"word": "affiliate", "meaning": "附属机构；使隶属于", "pos": "n./v.", "sentence": "The charity is an affiliate of a larger international organization.", "sentenceCn": "这个慈善机构是一个更大国际组织的附属机构。"},
+  {"word": "affirm", "meaning": "肯定；确认", "pos": "v.", "sentence": "The witness affirmed the truth of her statement under oath.", "sentenceCn": "证人在誓言下肯定了她陈述的真实性。"},
+  {"word": "afflict", "meaning": "折磨；使痛苦", "pos": "v.", "sentence": "The disease afflicts millions of people worldwide every year.", "sentenceCn": "这种疾病每年折磨着全世界数百万人。"},
+  {"word": "agenda", "meaning": "议程；日程", "pos": "n.", "sentence": "The main item on the agenda was the budget proposal for next year.", "sentenceCn": "议程上的主要项目是明年的预算提案。"}
+];
+
+let audioContext = null;
+window.speechSynthesis.cancel();
+document.addEventListener('click', function initAudio() {
+    if (audioContext && audioContext.state === 'suspended') { audioContext.resume(); }
+}, { once: true });
+
+let currentIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let results = {};
+let startTime = new Date();
+let currentOptions = [];
+let answered = false;
+
+function shuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function getActualWord(item) { return item.actualWord || item.word; }
+
+function generateOptions(correctItem) {
+    const options = [];
+    const correctWord = getActualWord(correctItem);
+    options.push({ word: correctWord, meaning: correctItem.meaning, isCorrect: true });
+    const otherWords = vocabData.filter(item => getActualWord(item) !== correctWord).map(item => ({ word: getActualWord(item), meaning: item.meaning, isCorrect: false }));
+    options.push(...shuffle(otherWords).slice(0, 3));
+    return shuffle(options);
+}
+
+function speakWord(word) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+    window.speechSynthesis.speak(utterance);
+}
+
+function displayQuestion() {
+    const item = vocabData[currentIndex];
+    const actualWord = getActualWord(item);
+    const regex = new RegExp('\\b' + actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+    document.getElementById('sentence').innerHTML = item.sentence.replace(regex, '<span class="blank">_______</span>');
+    document.getElementById('progress').textContent = `${currentIndex + 1}/${vocabData.length}`;
+    currentOptions = generateOptions(item);
+    const optionsContainer = document.getElementById('options');
+    optionsContainer.innerHTML = '';
+    currentOptions.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = opt.word;
+        btn.addEventListener('click', () => selectOption(idx));
+        optionsContainer.appendChild(btn);
+    });
+    document.getElementById('quiz').classList.remove('hidden');
+    document.getElementById('result').classList.add('hidden');
+    document.getElementById('endScreen').classList.add('hidden');
+    answered = false;
+}
+
+function selectOption(index) {
+    if (answered) return;
+    answered = true;
+    const item = vocabData[currentIndex];
+    const correctWord = getActualWord(item);
+    speakWord(correctWord);
+    const isCorrect = currentOptions[index].isCorrect;
+    if (isCorrect) { correctCount++; } else { wrongCount++; }
+    results[currentIndex] = isCorrect;
+    const buttons = document.querySelectorAll('.option');
+    buttons.forEach((btn, idx) => {
+        btn.classList.add('disabled');
+        if (currentOptions[idx].isCorrect) { btn.classList.add('correct'); }
+        else if (idx === index) { btn.classList.add('wrong'); }
+    });
+    setTimeout(() => showResult(isCorrect), 300);
+}
+
+function showResult(isCorrect) {
+    const item = vocabData[currentIndex];
+    const correctWord = getActualWord(item);
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('resultIcon').textContent = isCorrect ? '✅' : '❌';
+    document.getElementById('resultWord').textContent = correctWord + ' ' + item.pos;
+    document.getElementById('resultMeaning').textContent = item.meaning;
+    const regex = new RegExp('(' + correctWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    document.getElementById('resultSentence').innerHTML = item.sentence.replace(regex, '<span class="highlight">$1</span>');
+    document.getElementById('resultCn').textContent = item.sentenceCn;
+    const optionsReview = document.getElementById('optionsReview');
+    optionsReview.innerHTML = '<div class="options-review-title">选项</div>';
+    currentOptions.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'option-review' + (opt.isCorrect ? ' correct' : '');
+        div.innerHTML = `<span class="check">${opt.isCorrect ? '✓' : ''}</span>${opt.word} - ${opt.meaning}`;
+        optionsReview.appendChild(div);
+    });
+    document.getElementById('speakerBtn').onclick = () => speakWord(correctWord);
+    setTimeout(() => speakWord(correctWord), 100);
+}
+
+function showEndScreen() {
+    const endTime = new Date();
+    const duration = Math.round((endTime - startTime) / 1000);
+    const minutes = Math.floor(duration / 60);
+    const seconds = duration % 60;
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.add('hidden');
+    document.getElementById('endScreen').classList.remove('hidden');
+    document.getElementById('endStats').innerHTML = `正确率：<strong>${correctCount}/${vocabData.length}</strong><br>用时：<strong>${minutes}分${seconds}秒</strong>`;
+    const resultCode = `26|${correctCount}|${wrongCount}|${startTime.toISOString()}|${endTime.toISOString()}|${Object.entries(results).map(([k, v]) => `${k}:${v}`).join(',')}`;
+    document.getElementById('copyBtn').dataset.code = resultCode;
+}
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex++;
+    if (currentIndex >= vocabData.length) { showEndScreen(); } else { displayQuestion(); }
+});
+
+document.getElementById('copyBtn').addEventListener('click', function() {
+    const code = this.dataset.code;
+    navigator.clipboard.writeText(code).then(() => {
+        const original = this.textContent;
+        this.textContent = '已复制!';
+        setTimeout(() => this.textContent = original, 1500);
+    });
+});
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+    currentIndex = 0; correctCount = 0; wrongCount = 0; results = {}; startTime = new Date(); displayQuestion();
+});
+
+displayQuestion();
+</script>
+</body>
+</html>
