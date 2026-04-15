@@ -322,15 +322,11 @@
             });
             const blanks = shuffled.slice(0, actualBlanks);
             
-            // 如果fallback也没有找到，返回原文（至少让用户能看到答案）
+            // 如果fallback也没有找到，直接用第一个3-6字词
             if (blanks.length === 0) {
-                // 尝试2-4字的中文词组（更可能是关键词）
-                const words = text.match(/[\u4e00-\u9fa5]{2,4}/g) || [];
-                // 过滤掉常见通用词
-                const filtered = words.filter(w => !['的是', '什么', '一个', '人们', '通过', '进行', '可以', '能够', '这是', '其他', '或者', '对于', '就是', '也是', '并且', '而且', '但是', '因此', '所以', '因为', '如果', '虽然', '即使', '只有', '除了', '关于', '根据', '按照', '由于', '为了', '这个', '那个', '各种', '某些', '每个', '各个', '以及', '其中', '不是', '都是', '而是', '应该', '可能', '一般', '通常', '主要', '部分', '一定', '基本', '对于', '有关', '可以', '能够', '因为', '所以', '这是', '不是', '都是'].includes(w));
-                if (filtered.length > 0) {
-                    // 取最长的作为关键词
-                    blanks.push(filtered.sort((a, b) => b.length - a.length)[0]);
+                const words = text.match(/[\u4e00-\u9fa5]{3,6}/g);
+                if (words && words.length > 0) {
+                    blanks.push(words[0]);
                 }
             }
             
