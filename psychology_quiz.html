@@ -264,49 +264,41 @@
         let currentStatus = null;
         let startTime = new Date();
 
-        // 创建挖空
-        function createBlanks(text, numBlanks) {
+        // 创建挖空 - 使用固定分割确保一致性
+        function createBlanks(text, numBlanks, seed) {
             // 提取关键术语
             const keyTerms = [];
             
             // 按中英文标点和分号、逗号分割
-            const parts = text.split(/(?<=[，。；；、：:；;,])(?=[^，，])/);
+            const parts = text.split(/(?<=[，。；：、,;])(?=[^，。；：、,;])/);
             
-            // 过滤出适合挖空的短语（长度>=2且不包含空）
+            // 过滤出适合挖空的短语
             for (let p of parts) {
                 p = p.trim();
-                if (p.length >= 2 && !keyTerms.includes(p)) {
+                if (p.length >= 2 && p.length <= 20 && !keyTerms.includes(p)) {
                     keyTerms.push(p);
                 }
             }
             
-            // 如果分割出来的关键术语不够，随机从长句子里提取
-            if (keyTerms.length < numBlanks) {
-                const longMatches = text.match(/[^，。；；、：:；;,]{4,10}/g) || [];
-                for (let m of longMatches) {
-                    if (!keyTerms.includes(m) && keyTerms.length < numBlanks * 2) {
-                        keyTerms.push(m);
-                    }
-                }
-            }
-            
-            // 随机选择numBlanks个作为答案
-            const shuffled = keyTerms.sort(() => Math.random() - 0.5);
+            // 使用确定性随机（基于题目ID的哈希）选择 blanks
+            const hash = seed || 0;
+            const shuffled = keyTerms.sort((a, b) => {
+                const hashA = (hash * 31 + a.charCodeAt(0)) % 1000;
+                const hashB = (hash * 31 + b.charCodeAt(0)) % 1000;
+                return hashA - hashB;
+            });
             const blanks = shuffled.slice(0, Math.min(numBlanks, shuffled.length));
             
             // 创建挖空句子
             let sentence = text;
-            const blankMap = {};
             blanks.forEach((b, i) => {
-                const placeholder = `__BLANK${i}__`;
-                blankMap[placeholder] = b;
-                sentence = sentence.replace(b, placeholder);
+                sentence = sentence.replace(b, `__BLANK${i}__`);
             });
             
             // 替换占位符为HTML
             sentence = sentence.replace(/__BLANK(\d)__/g, '<span class="blank">_______</span>');
             
-            return { sentence, blanks, blankMap };
+            return { sentence, blanks };
         }
 
         function loadQuestion() {
@@ -321,7 +313,9 @@
             if (item.answer.length > 100) numBlanks = 3;
             if (item.answer.length > 200) numBlanks = 4;
             
-            const { sentence } = createBlanks(item.answer, numBlanks);
+            // 使用ID的字符码和作为确定性随机种子
+            const seed = item.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+            const { sentence } = createBlanks(item.answer, numBlanks, seed);
             document.getElementById('sentenceBox').innerHTML = sentence;
             document.getElementById('answerInput').value = '';
             
@@ -353,8 +347,14 @@
             document.getElementById('userAnswerSection').classList.remove('hidden');
             document.getElementById('userAnswerText').textContent = userAnswer || '(未填写)';
             
-            // Show answer comparison with blanks highlighted
-            const { sentence: answerSentence, blanks } = createBlanks(item.answer, blanks ? blanks.length : 2);
+            // Determine numBlanks based on answer length
+            let numBlanks = 2;
+            if (item.answer.length > 100) numBlanks = 3;
+            if (item.answer.length > 200) numBlanks = 4;
+            
+            // Use same seed as loadQuestion for consistent blanks
+            const seed = item.id.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+            const { blanks } = createBlanks(item.answer, numBlanks, seed);
             const answerHtml = blanks.map((b, i) => `<span class="result-correct">${b}</span>`).join('；');
             document.getElementById('resultAnswer').innerHTML = answerHtml;
             
