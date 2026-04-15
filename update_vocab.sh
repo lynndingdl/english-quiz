@@ -61,9 +61,20 @@ echo "【步骤5/6】验证修改结果..."
 echo "  文件引用: $(grep "vocab_data" index.html)"
 echo "  页面标题: $(grep "<title>" index.html)"
 
-# 步骤6：Git 提交
+# 步骤6：检查并移除 .agent 目录
 echo ""
-echo "【步骤6/6】Git 提交..."
+echo "【步骤6/7】检查 .agent 目录..."
+if git ls-files | grep -q "^.agent$"; then
+    echo "  ⚠️ 发现 .agent 被追踪，正在移除..."
+    git rm -r --cached .agent
+    echo "  ✓ 已移除 .agent"
+else
+    echo "  ✓ 无需处理"
+fi
+
+# 步骤7：Git 提交
+echo ""
+echo "【步骤7/7】Git 提交..."
 git add .
 git commit -m "Round ${ROUND_NUM}: Update vocab data" || echo "  ⚠️ 没有变更需要提交"
 git push

@@ -12,14 +12,15 @@
 
 ### 2. 推送前检查 .agent 目录
 
-**⚠️ 必须检查**：`.agent` 目录可能已被 Git 追踪，导致 GitHub Actions Pages 部署失败。
-
+**⚠️ 必须检查（每次都要查！）**：
 ```bash
-# 检查
 git ls-files | grep agent
-
-# 如果被追踪，删除后再推送
+```
+如果有任何输出，执行：
+```bash
 git rm -r --cached .agent
+git commit -m "Remove .agent from tracking"
+git push origin main
 ```
 
 ### 2. 已知问题清单
