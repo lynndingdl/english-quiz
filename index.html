@@ -149,7 +149,8 @@ function displayQuestion() {
     const sentence = item.sentence;
     
     // Create blank by replacing the actual word
-    const regex = new RegExp('\\b' + actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'gi');
+    // 简单替换，不使用单词边界（兼容词形变化如wreck->wrecked）
+    const regex = new RegExp(actualWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
     const displaySentence = sentence.replace(regex, '<span class="blank">_______</span>');
     
     document.getElementById('sentence').innerHTML = displaySentence;
