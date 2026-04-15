@@ -22,7 +22,7 @@ echo ""
 
 # 步骤1：检查 vocab_data.js 第一个单词
 echo "【步骤1/6】检查 vocab_data.js 内容..."
-FIRST_WORD=$(head -2 vocab_data.js | grep -o '"word": "[^"]*"' | head -1 | cut -d'"' -f4)
+FIRST_WORD=$(head -3 vocab_data.js | grep -o 'word: "[^"]*"' | head -1 | cut -d'"' -f2)
 echo "  ✓ 第一个单词: $FIRST_WORD"
 
 if [ -z "$FIRST_WORD" ]; then

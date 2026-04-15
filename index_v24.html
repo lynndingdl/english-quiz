@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第24轮英语单词复习 - 48题</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f5f5; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px; }
+    .container { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 32px; max-width: 600px; width: 100%; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .title { font-size: 22px; font-weight: 700; color: #333; }
+    .progress { font-size: 14px; color: #666; background: #f0f0f0; padding: 6px 14px; border-radius: 20px; }
+    .question-box { background: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+    .sentence { font-size: 18px; line-height: 1.8; color: #333; }
+    .blank { display: inline-block; background: #4a90d9; color: white; padding: 2px 12px; border-radius: 4px; min-width: 80px; text-align: center; font-weight: 600; }
+    .options { display: flex; flex-direction: column; gap: 12px; }
+    .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 16px; cursor: pointer; transition: all 0.2s; background: white; text-align: left; }
+    .option:hover:not(.disabled) { border-color: #4a90d9; background: #f0f7ff; }
+    .option.correct { border-color: #28a745; background: #d4edda; color: #155724; }
+    .option.wrong { border-color: #dc3545; background: #f8d7da; color: #721c24; }
+    .option.disabled { cursor: default; opacity: 0.7; }
+    .hidden { display: none; }
+    .result-box { text-align: center; }
+    .result-icon { font-size: 64px; margin-bottom: 16px; }
+    .result-word { font-size: 28px; font-weight: 700; color: #333; margin-bottom: 8px; }
+    .result-meaning { font-size: 16px; color: #666; margin-bottom: 20px; }
+    .result-sentence { font-size: 17px; line-height: 1.7; color: #333; margin-bottom: 12px; }
+    .result-sentence .highlight { background: #fff3cd; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+    .result-cn { font-size: 14px; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .options-review { text-align: left; margin-bottom: 20px; }
+    .option-review { padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; background: #f0f0f0; font-size: 15px; }
+    .option-review.correct { background: #d4edda; color: #155724; }
+    .option-review .check { margin-right: 8px; }
+    .btn { display: inline-block; padding: 14px 32px; background: #4a90d9; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; }
+    .btn:hover { background: #3a7bc8; }
+    .speaker-btn { background: none; border: none; cursor: pointer; font-size: 24px; margin-bottom: 16px; }
+    .end-screen { text-align: center; }
+    .end-title { font-size: 26px; font-weight: 700; color: #333; margin-bottom: 20px; }
+    .end-stats { font-size: 18px; color: #666; margin-bottom: 24px; line-height: 1.8; }
+    .end-stats strong { color: #4a90d9; }
+    .copy-btn { background: #28a745; margin-right: 12px; }
+    .copy-btn:hover { background: #218838; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="title">📝 第24轮英语单词复习</div>
+      <div class="progress" id="progress">1/48</div>
+    </div>
+    <div id="quiz"></div>
+    <div id="result" class="hidden"></div>
+    <div id="end" class="end-screen hidden"></div>
+  </div>
+<script>
+const vocabData = [{"word": "literacy", "meaning": "n. 识字；文化修养", "pos": "n.", "sentence": "Improving literacy rates is essential for economic development in developing countries.", "sentenceCn": "提高识字率对发展中国家的经济发展至关重要。", "record_id": "recvgailgNuaXn"}, {"word": "notary", "meaning": "n. 公证人", "pos": "n.", "sentence": "A notary public is authorized to witness and certify legal documents.", "sentenceCn": "公证人被授权见证和认证法律文件。", "record_id": "recvgaiyhaccfC"}, {"word": "offend", "meaning": "v. 冒犯；违反", "pos": "v.", "sentence": "His insensitive comments offended many people at the meeting.", "sentenceCn": "他不敏感的言论冒犯了会议上的许多人。", "record_id": "recvgaiDGiVSSE"}, {"word": "ointment", "meaning": "n. 软膏", "pos": "n.", "sentence": "The doctor prescribed a special ointment to treat the skin infection.", "sentenceCn": "医生开了一种特殊的药膏来治疗皮肤感染。", "record_id": "recvgaiDGiL9OJ"}, {"word": "ominous", "meaning": "adj. 不祥的", "pos": "adj.", "sentence": "The dark clouds and strong winds were ominous signs of an approaching storm.", "sentenceCn": "乌云和狂风是暴风雨即将来临的不祥之兆。", "record_id": "recvgaiDGiXXqa"}, {"word": "omission", "meaning": "n. 遗漏；忽略", "pos": "n.", "sentence": "The omission of key evidence weakened the prosecution's case significantly.", "sentenceCn": "遗漏关键证据严重削弱了控方的案件。", "record_id": "recvgaiDGibE3B"}, {"word": "onerous", "meaning": "adj. 繁重的；艰巨的", "pos": "adj.", "sentence": "The onerous task of organizing the conference fell on her shoulders.", "sentenceCn": "组织会议这项繁重的任务落在了她的肩上。", "record_id": "recvgaiDGivBGJ"}, {"word": "onlooker", "meaning": "n. 旁观者", "pos": "n.", "sentence": "Onlookers gathered at the scene of the accident to see what had happened.", "sentenceCn": "旁观者聚集在事故现场查看发生了什么。", "record_id": "recvgaiDGiivkY"}, {"word": "opaque", "meaning": "adj. 不透明的；晦涩的", "pos": "adj.", "sentence": "The opaque glass provided privacy while still allowing light to pass through.", "sentenceCn": "不透明玻璃提供了隐私，同时仍然允许光线通过。", "record_id": "recvgaiDGiMNCt"}, {"word": "limelight", "meaning": "n. 聚光灯；公众瞩目的中心", "pos": "n.", "sentence": "After years of hard work, she finally stepped into the limelight with her breakthrough performance.", "sentenceCn": "经过多年的努力，她终于凭借突破性表演进入聚光灯下。", "record_id": "recvgailgNe8kS"}, {"word": "lineage", "meaning": "n. 血统；世系", "pos": "n.", "sentence": "The royal family traces its lineage back several centuries to the founding of the dynasty.", "sentenceCn": "王室将其血统追溯到几个世纪前王朝的建立。", "record_id": "recvgailgNRUHh"}, {"word": "mastery", "meaning": "n. 掌握；精通", "pos": "n.", "sentence": "Achieving mastery in any field requires dedication, practice, and patience.", "sentenceCn": "在任何领域达到精通都需要奉献、练习和耐心。", "record_id": "recvgairTm4trP"}, {"word": "materialism", "meaning": "n. 唯物主义；享乐主义", "pos": "n.", "sentence": "Some critics argue that modern society is too focused on materialism and consumerism.", "sentenceCn": "一些批评者认为现代社会过于注重物质主义和消费主义。", "record_id": "recvgairTmoLoe"}, {"word": "meager", "meaning": "adj. 贫乏的；瘦的", "pos": "adj.", "sentence": "The family survived on a meager income, barely covering their basic needs.", "sentenceCn": "这个家庭靠微薄的收入维持生计，勉强支付基本需求。", "record_id": "recvgairTmpiNL"}, {"word": "measurable", "meaning": "adj. 可测量的；显著的", "pos": "adj.", "sentence": "The project has made measurable progress toward its goals over the past year.", "sentenceCn": "该项目在过去一年中朝着其目标取得了可衡量的进展。", "record_id": "recvgairTmyRkg"}, {"word": "medieval", "meaning": "adj. 中世纪的", "pos": "adj.", "sentence": "The medieval castle attracts thousands of tourists every year with its rich history.", "sentenceCn": "这座中世纪城堡以其丰富的历史每年吸引成千上万的游客。", "record_id": "recvgairTmITKq"}, {"word": "mediocre", "meaning": "adj. 平庸的", "pos": "adj.", "sentence": "The restaurant received mediocre reviews, with critics noting inconsistent food quality.", "sentenceCn": "这家餐厅收到了平庸的评价，评论家指出食物质量不稳定。", "record_id": "recvgairTmiMU4"}, {"word": "menace", "meaning": "v./n. 威胁", "pos": "v./n.", "sentence": "Pollution continues to be a menace to marine life and ecosystems worldwide.", "sentenceCn": "污染继续威胁着全世界的海洋生物和生态系统。", "record_id": "recvgairTmIeQc"}, {"word": "merciful", "meaning": "adj. 仁慈的", "pos": "adj.", "sentence": "The judge was merciful and granted the defendant a reduced sentence.", "sentenceCn": "法官仁慈，给予被告减轻判决。", "record_id": "recvgairTmXBzi"}, {"word": "merit", "meaning": "n./v. 优点；功劳", "pos": "n./v.", "sentence": "The proposal has considerable merit and deserves serious consideration.", "sentenceCn": "该提议具有相当大的优点，值得认真考虑。", "record_id": "recvgairTmbO1Y"}, {"word": "metaphor", "meaning": "n. 暗喻", "pos": "n.", "sentence": "The poet used a beautiful metaphor to describe the passage of time.", "sentenceCn": "诗人用了一个美丽的隐喻来描述时间的流逝。", "record_id": "recvgairTm2jXA"}, {"word": "meticulous", "meaning": "adj. 细心的；极注意细节的", "pos": "adj.", "sentence": "The scientist was meticulous in recording every detail of the experiment.", "sentenceCn": "科学家一丝不苟地记录实验的每一个细节。", "record_id": "recvgairTmW2Mk"}, {"word": "metropolis", "meaning": "n. 大都市", "pos": "n.", "sentence": "New York City is a bustling metropolis that never sleeps, attracting millions of visitors annually.", "sentenceCn": "纽约是一个从不睡眠的繁华大都市，每年吸引数百万游客。", "record_id": "recvgairTmcC7K"}, {"word": "migrate", "meaning": "v. 迁移；移居", "pos": "v.", "sentence": "Many birds migrate south during winter to escape the cold weather and find food.", "sentenceCn": "许多鸟类在冬季迁徙南方以躲避寒冷天气并寻找食物。", "record_id": "recvgairTmROZ3"}, {"word": "millennium", "meaning": "n. 一千年", "pos": "n.", "sentence": "The new millennium brought significant technological advancements and cultural changes.", "sentenceCn": "新千年带来了重大的技术进步和文化变革。", "record_id": "recvgairTmCUT7"}, {"word": "misery", "meaning": "n. 苦难", "pos": "n.", "sentence": "The war brought misery to millions of people, destroying homes and lives.", "sentenceCn": "战争给数百万人带来了痛苦，摧毁了家园和生命。", "record_id": "recvgairTmYxhn"}, {"word": "missionary", "meaning": "n. 传教士", "pos": "n.", "sentence": "The missionary traveled to remote areas to spread religious teachings.", "sentenceCn": "传教士前往偏远地区传播宗教教义。", "record_id": "recvgairTmWXS3"}, {"word": "mobilize", "meaning": "v. 动员", "pos": "v.", "sentence": "The government worked to mobilize resources for disaster relief efforts.", "sentenceCn": "政府努力调动资源进行灾害救援工作。", "record_id": "recvgairTmEQBh"}, {"word": "modest", "meaning": "adj. 谦虚的；适度的", "pos": "adj.", "sentence": "Despite his wealth, he lived a modest lifestyle and donated generously to charity.", "sentenceCn": "尽管富有，他过着朴素的生活方式，并慷慨地向慈善机构捐款。", "record_id": "recvgairTmXS9U"}, {"word": "modesty", "meaning": "n. 谦虚", "pos": "n.", "sentence": "Modesty is considered a virtue in many cultures around the world.", "sentenceCn": "在世界许多文化中，谦逊被视为一种美德。", "record_id": "recvgairTma358"}, {"word": "momentary", "meaning": "adj. 瞬间的", "pos": "adj.", "sentence": "The momentary distraction caused him to lose his train of thought.", "sentenceCn": "瞬间的分心使他失去了思路。", "record_id": "recvgairTmtjL1"}, {"word": "morale", "meaning": "n. 士气", "pos": "n.", "sentence": "High morale among employees is essential for maintaining productivity in the workplace.", "sentenceCn": "员工高昂的士气对于维持工作场所的生产力至关重要。", "record_id": "recvgairTmSdf0"}, {"word": "mortal", "meaning": "adj./n. 致命的；凡人", "pos": "adj./n.", "sentence": "All human beings are mortal and must eventually face death.", "sentenceCn": "所有人类都是凡人，最终都必须面对死亡。", "record_id": "recvgairTmWLSh"}, {"word": "motif", "meaning": "n. 主题；动机", "pos": "n.", "sentence": "The recurring motif in the novel symbolizes the protagonist's inner struggle.", "sentenceCn": "小说中反复出现的主题象征着主人公的内心挣扎。", "record_id": "recvgairTmovF2"}, {"word": "mourn", "meaning": "v. 哀悼", "pos": "v.", "sentence": "The community gathered to mourn the loss of their beloved leader.", "sentenceCn": "社区聚集在一起悼念他们敬爱的领导人。", "record_id": "recvgairTmiZJM"}, {"word": "myriad", "meaning": "adj. 无数的", "pos": "adj.", "sentence": "There are myriad reasons why people choose to immigrate to other countries.", "sentenceCn": "人们选择移民到其他国家有无数原因。", "record_id": "recvgairTmi4r8"}, {"word": "nasty", "meaning": "adj. 令人厌恶的；下流的", "pos": "adj.", "sentence": "The nasty weather conditions made driving extremely dangerous.", "sentenceCn": "恶劣的天气条件使驾驶变得极其危险。", "record_id": "recvgaiyha3pnA"}, {"word": "transient", "meaning": "adj. 短暂的；转瞬即逝的", "pos": "adj.", "sentence": "The transient nature of fashion trends makes them difficult to predict.", "sentenceCn": "时尚潮流的短暂性使它们难以预测。", "record_id": "recvgajkBDBfXn"}, {"word": "treacherous", "meaning": "adj. 背叛的；危险的", "pos": "adj.", "sentence": "The mountain path was treacherous and required careful navigation.", "sentenceCn": "山路危险,需要小心导航。", "record_id": "recvgajkBD3aXE"}, {"word": "turbulent", "meaning": "adj. 动荡的；狂暴的", "pos": "adj.", "sentence": "The turbulent period in the country's history saw many political changes.", "sentenceCn": "该国历史上的动荡时期见证了许多政治变革。", "record_id": "recvgajkBDB5PS"}, {"word": "unanimous", "meaning": "adj. 全体一致的", "pos": "adj.", "sentence": "The committee reached a unanimous decision after hours of discussion.", "sentenceCn": "经过数小时的讨论,委员会达成了一致决定。", "record_id": "recvgajtLJ5pfX"}, {"word": "underestimate", "meaning": "v. 低估", "pos": "v.", "sentence": "It would be a mistake to underestimate the difficulty of this task.", "sentenceCn": "低估这项任务的难度将是一个错误。", "record_id": "recvgajtLJ3Qyy"}, {"word": "undermine", "meaning": "v. 暗中破坏；逐渐削弱", "pos": "v.", "sentence": "Constant criticism can undermine a child's self-confidence.", "sentenceCn": "不断的批评会逐渐削弱孩子的自信心。", "record_id": "recvgajtLJpk8x"}, {"word": "urge", "meaning": "v. 催促；强烈要求", "pos": "v.", "sentence": "The doctor urged the patient to quit smoking for better health.", "sentenceCn": "医生强烈要求病人戒烟以改善健康。", "record_id": "recvgajtLJVeoT"}, {"word": "utensil", "meaning": "n. 器皿；用具", "pos": "n.", "sentence": "Kitchen utensils should be cleaned thoroughly after each use.", "sentenceCn": "厨房用具应在每次使用后彻底清洗。", "record_id": "recvgajtLJnqSi"}, {"word": "utilize", "meaning": "v. 利用", "pos": "v.", "sentence": "The company utilizes advanced technology to improve production efficiency.", "sentenceCn": "该公司利用先进技术提高生产效率。", "record_id": "recvgajtLJvbGg"}, {"word": "vacant", "meaning": "a. 空着的；茫然的", "pos": "a.", "sentence": "The vacant house had been empty for years before being renovated.", "sentenceCn": "这座空着的房子在翻新之前已经空置多年了。", "record_id": "recvgajuJnpWb2"}, {"word": "velocity", "meaning": "n. 速度", "pos": "n.", "sentence": "The velocity of the wind increased as the storm approached.", "sentenceCn": "随着暴风雨的临近,风速增加了。", "record_id": "recvgajxygt3b4"}];
+let currentIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let results = {};
+let startTime = new Date();
+
+function speakWord(word) {
+  try {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-US";
+    utterance.rate = 0.8;
+    utterance.onerror = () => {};
+    window.speechSynthesis.speak(utterance);
+  } catch(e) {}
+}
+
+function getActualWord(item) {
+  return item.actualWord || item.word;
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function generateOptions(item) {
+  const correct = { word: item.word, meaning: item.meaning };
+  const others = vocabData.filter(w => w.word !== item.word).map(w => ({ word: w.word, meaning: w.meaning }));
+  const shuffled = shuffle(others).slice(0, 3);
+  const options = [correct, ...shuffled].map((o, i) => ({ ...o, letter: String.fromCharCode(65 + i) }));
+  return shuffle(options);
+}
+
+function renderQuestion() {
+  const item = vocabData[currentIndex];
+  const actualWord = getActualWord(item);
+  const sentence = item.sentence;
+  const regex = new RegExp(actualWord.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  let displaySentence = sentence.replace(regex, "<span class=\"blank\">_______</span>");
+  if (displaySentence === sentence) {
+    const regex2 = new RegExp(actualWord, "gi");
+    displaySentence = sentence.replace(regex2, "<span class=\"blank\">_______</span>");
+  }
+  
+  document.getElementById("quiz").innerHTML = `
+    <div class="question-box">
+      <div class="sentence">${displaySentence}</div>
+    </div>
+    <div class="options" id="options"></div>
+  `;
+  document.getElementById("progress").textContent = `${currentIndex + 1}/${vocabData.length}`;
+  
+  const options = generateOptions(item);
+  window.currentOptions = options;
+  const correctIndex = options.findIndex(o => o.word === item.word);
+  window.correctIndex = correctIndex;
+  
+  const optionsHtml = options.map((o, i) => 
+    `<div class="option" onclick="selectOption(${i})">${o.word}</div>`
+  ).join("");
+  document.getElementById("options").innerHTML = optionsHtml;
+  
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("end").classList.add("hidden");
+  
+  speakWord(actualWord);
+}
+
+function selectOption(index) {
+  const item = vocabData[currentIndex];
+  const options = window.currentOptions;
+  const correctIndex = window.correctIndex;
+  const isCorrect = index === correctIndex;
+  
+  if (isCorrect) correctCount++; else wrongCount++;
+  results[item.word] = isCorrect;
+  
+  options.forEach((o, i) => {
+    const el = document.querySelectorAll(".option")[i];
+    el.classList.add("disabled");
+    if (i === correctIndex) el.classList.add("correct");
+    else if (i === index && !isCorrect) el.classList.add("wrong");
+  });
+  
+  speakWord(item.word);
+  showResult(item, options, isCorrect);
+}
+
+function showResult(item, options, isCorrect) {
+  const actualWord = getActualWord(item);
+  const resultEl = document.getElementById("result");
+  
+  resultEl.classList.remove("hidden");
+  resultEl.innerHTML = `
+    <div class="result-icon">${isCorrect ? "✅" : "❌"}</div>
+    <div class="result-word">${item.word} ${item.meaning}</div>
+    <div class="result-sentence">${item.sentence.replace(new RegExp(actualWord.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "<span class=\"highlight\">" + actualWord + "</span>")}</div>
+    <div class="result-cn">${item.sentenceCn || ""}</div>
+    <div class="options-review">
+      <div style="margin-bottom:8px;color:#666;font-size:14px">选项解析：</div>
+      ${options.map(o => `<div class="option-review ${o.word === item.word ? "correct" : ""}"><span class="check">${o.word === item.word ? "✓" : ""}</span>${o.word} - ${o.meaning}</div>`).join("")}
+    </div>
+    <button class="btn" onclick="nextQuestion()">下一题</button>
+  `;
+  
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+}
+
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex >= vocabData.length) {
+    showEnd();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showEnd() {
+  const endTime = new Date();
+  const duration = Math.round((endTime - startTime) / 1000 / 60);
+  const resultCode = `24|${correctCount}|${wrongCount}|${startTime.toISOString()}|${endTime.toISOString()}|${Object.entries(results).map(([w, c]) => w + ":" + c).join(",")}`;
+  
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("result").classList.add("hidden");
+  document.getElementById("end").classList.remove("hidden");
+  document.getElementById("end").innerHTML = `
+    <div class="end-title">🎉 测试完成！</div>
+    <div class="end-stats">
+      <div>正确: <strong>${correctCount}</strong> 题</div>
+      <div>错误: <strong>${wrongCount}</strong> 题</div>
+      <div>正确率: <strong>${Math.round(correctCount / vocabData.length * 100)}%</strong></div>
+    </div>
+    <div style="margin-top:20px">
+      <button class="btn copy-btn" onclick="copyCode()">复制结果码</button>
+      <button class="btn" onclick="location.reload()">重新测试</button>
+    </div>
+    <textarea id="codeBox" style="margin-top:20px;width:100%;height:60px;display:none">${resultCode}</textarea>
+  `;
+}
+
+function copyCode() {
+  const code = document.getElementById("codeBox").value;
+  navigator.clipboard.writeText(code).then(() => alert("结果码已复制！"));
+}
+
+renderQuestion();
+</script>
+</body>
+</html>
