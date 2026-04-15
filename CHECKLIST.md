@@ -8,7 +8,19 @@
 
 ### 1. 查阅最近教训
 
-生成前，必须查阅 LEARNINGS.md 最近3条教训。
+生成前，必须查阅 `memory/learnings/LRN-*.md` 最新教训。
+
+### 2. 推送前检查 .agent 目录
+
+**⚠️ 必须检查**：`.agent` 目录可能已被 Git 追踪，导致 GitHub Actions Pages 部署失败。
+
+```bash
+# 检查
+git ls-files | grep agent
+
+# 如果被追踪，删除后再推送
+git rm -r --cached .agent
+```
 
 ### 2. 已知问题清单
 

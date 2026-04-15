@@ -1,24 +1,5 @@
 const vocabData = [
   {
-    word: "literacy",
-    meaning: "识字；文化修养",
-    sentence: "Improving literacy rates is essential for economic development in developing countries.",
-    sentenceCn: "提高识字率对发展中国家的经济发展至关重要。"
-  },
-  {
-    word: "notary",
-    meaning: "公证人",
-    sentence: "A notary public is authorized to witness and certify legal documents.",
-    sentenceCn: "公证人被授权见证和认证法律文件。"
-  },
-  {
-    word: "offend",
-    actualWord: "offended",
-    meaning: "冒犯；违反",
-    sentence: "His insensitive comments offended many people at the meeting.",
-    sentenceCn: "他不敏感的言论冒犯了会议上的许多人。"
-  },
-  {
     word: "ointment",
     meaning: "软膏",
     sentence: "The doctor prescribed a special ointment to treat the skin infection.",
@@ -31,131 +12,10 @@ const vocabData = [
     sentenceCn: "乌云和狂风是暴风雨即将来临的不祥之兆。"
   },
   {
-    word: "omission",
-    meaning: "遗漏；忽略",
-    sentence: "The omission of key evidence weakened the prosecution's case significantly.",
-    sentenceCn: "遗漏关键证据严重削弱了控方的案件。"
-  },
-  {
-    word: "onerous",
-    meaning: "繁重的；艰巨的",
-    sentence: "The onerous task of organizing the conference fell on her shoulders.",
-    sentenceCn: "组织会议这项繁重的任务落在了她的肩上。"
-  },
-  {
-    word: "onlooker",
-    actualWord: "Onlookers",
-    meaning: "旁观者",
-    sentence: "Onlookers gathered at the scene of the accident to see what had happened.",
-    sentenceCn: "旁观者聚集在事故现场查看发生了什么。"
-  },
-  {
-    word: "opaque",
-    meaning: "不透明的；晦涩的",
-    sentence: "The opaque glass provided privacy while still allowing light to pass through.",
-    sentenceCn: "不透明玻璃提供了隐私，同时仍然允许光线通过。"
-  },
-  {
-    word: "limelight",
-    meaning: "聚光灯；公众瞩目的中心",
-    sentence: "After years of hard work, she finally stepped into the limelight with her breakthrough performance.",
-    sentenceCn: "经过多年的努力，她终于凭借突破性表演进入聚光灯下。"
-  },
-  {
-    word: "lineage",
-    meaning: "血统；世系",
-    sentence: "The royal family traces its lineage back several centuries to the founding of the dynasty.",
-    sentenceCn: "王室将其血统追溯到几个世纪前王朝的建立。"
-  },
-  {
-    word: "mastery",
-    meaning: "掌握；精通",
-    sentence: "Achieving mastery in any field requires dedication, practice, and patience.",
-    sentenceCn: "在任何领域达到精通都需要奉献、练习和耐心。"
-  },
-  {
-    word: "materialism",
-    meaning: "唯物主义；享乐主义",
-    sentence: "Some critics argue that modern society is too focused on materialism and consumerism.",
-    sentenceCn: "一些批评者认为现代社会过于注重物质主义和消费主义。"
-  },
-  {
-    word: "meager",
-    meaning: "贫乏的；瘦的",
-    sentence: "The family survived on a meager income, barely covering their basic needs.",
-    sentenceCn: "这个家庭靠微薄的收入维持生计，勉强支付基本需求。"
-  },
-  {
     word: "measurable",
     meaning: "可测量的；显著的",
     sentence: "The project has made measurable progress toward its goals over the past year.",
     sentenceCn: "该项目在过去一年中朝着其目标取得了可衡量的进展。"
-  },
-  {
-    word: "medieval",
-    meaning: "中世纪的",
-    sentence: "The medieval castle attracts thousands of tourists every year with its rich history.",
-    sentenceCn: "这座中世纪城堡以其丰富的历史每年吸引成千上万的游客。"
-  },
-  {
-    word: "mediocre",
-    meaning: "平庸的",
-    sentence: "The restaurant received mediocre reviews, with critics noting inconsistent food quality.",
-    sentenceCn: "这家餐厅收到了平庸的评价，评论家指出食物质量不稳定。"
-  },
-  {
-    word: "menace",
-    meaning: "威胁",
-    sentence: "Pollution continues to be a menace to marine life and ecosystems worldwide.",
-    sentenceCn: "污染继续威胁着全世界的海洋生物和生态系统。"
-  },
-  {
-    word: "merciful",
-    meaning: "仁慈的",
-    sentence: "The judge was merciful and granted the defendant a reduced sentence.",
-    sentenceCn: "法官仁慈，给予被告减轻判决。"
-  },
-  {
-    word: "merit",
-    meaning: "优点；功劳",
-    sentence: "The proposal has considerable merit and deserves serious consideration.",
-    sentenceCn: "该提议具有相当大的优点，值得认真考虑。"
-  },
-  {
-    word: "metaphor",
-    meaning: "暗喻",
-    sentence: "The poet used a beautiful metaphor to describe the passage of time.",
-    sentenceCn: "诗人用了一个美丽的隐喻来描述时间的流逝。"
-  },
-  {
-    word: "meticulous",
-    meaning: "细心的；极注意细节的",
-    sentence: "The scientist was meticulous in recording every detail of the experiment.",
-    sentenceCn: "科学家一丝不苟地记录实验的每一个细节。"
-  },
-  {
-    word: "metropolis",
-    meaning: "大都市",
-    sentence: "New York City is a bustling metropolis that never sleeps, attracting millions of visitors annually.",
-    sentenceCn: "纽约是一个从不睡眠的繁华大都市，每年吸引数百万游客。"
-  },
-  {
-    word: "migrate",
-    meaning: "迁移；移居",
-    sentence: "Many birds migrate south during winter to escape the cold weather and find food.",
-    sentenceCn: "许多鸟类在冬季迁徙南方以躲避寒冷天气并寻找食物。"
-  },
-  {
-    word: "millennium",
-    meaning: "一千年",
-    sentence: "The new millennium brought significant technological advancements and cultural changes.",
-    sentenceCn: "新千年带来了重大的技术进步和文化变革。"
-  },
-  {
-    word: "misery",
-    meaning: "苦难",
-    sentence: "The war brought misery to millions of people, destroying homes and lives.",
-    sentenceCn: "战争给数百万人带来了痛苦，摧毁了家园和生命。"
   },
   {
     word: "missionary",
@@ -164,144 +24,279 @@ const vocabData = [
     sentenceCn: "传教士前往偏远地区传播宗教教义。"
   },
   {
-    word: "mobilize",
-    meaning: "动员",
-    sentence: "The government worked to mobilize resources for disaster relief efforts.",
-    sentenceCn: "政府努力调动资源进行灾害救援工作。"
-  },
-  {
-    word: "modest",
-    meaning: "谦虚的；适度的",
-    sentence: "Despite his wealth, he lived a modest lifestyle and donated generously to charity.",
-    sentenceCn: "尽管富有，他过着朴素的生活方式，并慷慨地向慈善机构捐款。"
-  },
-  {
-    word: "modesty",
-    meaning: "谦虚",
-    sentence: "Modesty is considered a virtue in many cultures around the world.",
-    sentenceCn: "在世界许多文化中，谦逊被视为一种美德。"
-  },
-  {
-    word: "momentary",
-    meaning: "瞬间的",
-    sentence: "The momentary distraction caused him to lose his train of thought.",
-    sentenceCn: "瞬间的分心使他失去了思路。"
-  },
-  {
     word: "morale",
     meaning: "士气",
     sentence: "High morale among employees is essential for maintaining productivity in the workplace.",
     sentenceCn: "员工高昂的士气对于维持工作场所的生产力至关重要。"
   },
   {
-    word: "mortal",
-    meaning: "致命的；凡人",
-    sentence: "All human beings are mortal and must eventually face death.",
-    sentenceCn: "所有人类都是凡人，最终都必须面对死亡。"
+    word: "wavering",
+    meaning: "犹豫不决的；动摇的",
+    sentence: "His wavering commitment to the project concerned his teammates.",
+    sentenceCn: "他对项目犹豫不决的承诺让队友们担心。"
   },
   {
-    word: "motif",
-    meaning: "主题；动机",
-    sentence: "The recurring motif in the novel symbolizes the protagonist's inner struggle.",
-    sentenceCn: "小说中反复出现的主题象征着主人公的内心挣扎。"
+    word: "weary",
+    meaning: "疲倦的；厌烦的",
+    sentence: "The long journey made the travelers weary and in need of rest.",
+    sentenceCn: "漫长的旅程使旅行者们疲倦，需要休息。"
   },
   {
-    word: "mourn",
-    meaning: "哀悼",
-    sentence: "The community gathered to mourn the loss of their beloved leader.",
-    sentenceCn: "社区聚集在一起悼念他们敬爱的领导人。"
+    word: "welfare",
+    meaning: "福利",
+    sentence: "The government introduced new welfare programs to support low-income families.",
+    sentenceCn: "政府推出了新的福利计划以支持低收入家庭。"
   },
   {
-    word: "myriad",
-    meaning: "无数的",
-    sentence: "There are myriad reasons why people choose to immigrate to other countries.",
-    sentenceCn: "人们选择移民到其他国家有无数原因。"
+    word: "withstand",
+    meaning: "经受；抵挡",
+    sentence: "The ancient walls were built to withstand attacks from invaders.",
+    sentenceCn: "古老的墙壁是为了抵挡入侵者的攻击而建造的。"
   },
   {
-    word: "nasty",
-    meaning: "令人厌恶的；下流的",
-    sentence: "The nasty weather conditions made driving extremely dangerous.",
-    sentenceCn: "恶劣的天气条件使驾驶变得极其危险。"
+    word: "wreck",
+    meaning: "失事车/船；破坏",
+    sentence: "The storm wrecked several boats in the harbor.",
+    sentenceCn: "暴风雨在港口造成几艘船只失事。"
   },
   {
-    word: "transient",
-    meaning: "短暂的；转瞬即逝的",
-    sentence: "The transient nature of fashion trends makes them difficult to predict.",
-    sentenceCn: "时尚潮流的短暂性使它们难以预测。"
+    word: "wretched",
+    meaning: "极可怜的；卑鄙的",
+    sentence: "The wretched living conditions in the slums demand immediate attention.",
+    sentenceCn: "贫民窟中极其可怜的生活条件需要立即关注。"
   },
   {
-    word: "treacherous",
-    meaning: "背叛的；危险的",
-    sentence: "The mountain path was treacherous and required careful navigation.",
-    sentenceCn: "山路危险,需要小心导航。"
+    word: "yearn",
+    meaning: "渴望",
+    sentence: "She yearned for the peaceful days of her childhood in the countryside.",
+    sentenceCn: "她渴望在乡下的童年那平静的日子。"
   },
   {
-    word: "turbulent",
-    meaning: "动荡的；狂暴的",
-    sentence: "The turbulent period in the country's history saw many political changes.",
-    sentenceCn: "该国历史上的动荡时期见证了许多政治变革。"
+    word: "yield",
+    meaning: "产生；产量",
+    sentence: "The investment yielded high returns for the shareholders.",
+    sentenceCn: "这项投资为股东产生了高额回报。"
   },
   {
-    word: "unanimous",
-    meaning: "全体一致的",
-    sentence: "The committee reached a unanimous decision after hours of discussion.",
-    sentenceCn: "经过数小时的讨论,委员会达成了一致决定。"
+    word: "Yield to",
+    meaning: "向……屈服",
+    sentence: "The government refused to yield to the protesters' demands for immediate reform.",
+    sentenceCn: "政府拒绝向抗议者立即改革的要求屈服。"
   },
   {
-    word: "underestimate",
-    meaning: "低估",
-    sentence: "It would be a mistake to underestimate the difficulty of this task.",
-    sentenceCn: "低估这项任务的难度将是一个错误。"
+    word: "predicament",
+    meaning: "困境",
+    sentence: "She found herself in a difficult predicament with no easy way out.",
+    sentenceCn: "她发现自己处于一个没有轻松出路的困境中。"
   },
   {
-    word: "undermine",
-    meaning: "暗中破坏；逐渐削弱",
-    sentence: "Constant criticism can undermine a child's self-confidence.",
-    sentenceCn: "不断的批评会逐渐削弱孩子的自信心。"
+    word: "preeminent",
+    meaning: "卓越的；杰出的",
+    sentence: "The professor is a preeminent scholar in the field of environmental science.",
+    sentenceCn: "这位教授是环境科学领域的杰出学者。"
   },
   {
-    word: "urge",
-    actualWord: "urged",
-    meaning: "催促；强烈要求",
-    sentence: "The doctor urged the patient to quit smoking for better health.",
-    sentenceCn: "医生强烈要求病人戒烟以改善健康。"
+    word: "preliminary",
+    meaning: "初步的",
+    sentence: "The preliminary results of the study show promising findings.",
+    sentenceCn: "研究的初步结果显示了有希望的发现。"
   },
   {
-    word: "utensil",
-    actualWord: "utensils",
-    meaning: "器皿；用具",
-    sentence: "Kitchen utensils should be cleaned thoroughly after each use.",
-    sentenceCn: "厨房用具应在每次使用后彻底清洗。"
+    word: "preposterous",
+    meaning: "荒谬的",
+    sentence: "The idea that the earth is flat is completely preposterous.",
+    sentenceCn: "地球是平的想法是完全荒谬的。"
   },
   {
-    word: "utilize",
-    actualWord: "utilizes",
-    meaning: "利用",
-    sentence: "The company utilizes advanced technology to improve production efficiency.",
-    sentenceCn: "该公司利用先进技术提高生产效率。"
+    word: "presidency",
+    meaning: "总统任期",
+    sentence: "During his presidency, the country experienced significant economic growth.",
+    sentenceCn: "在他担任总统期间，该国经历了显著的经济增长。"
   },
   {
-    word: "vacant",
-    meaning: "空着的；茫然的",
-    sentence: "The vacant house had been empty for years before being renovated.",
-    sentenceCn: "这座空着的房子在翻新之前已经空置多年了。"
+    word: "presumption",
+    meaning: "假定；放肆",
+    sentence: "There is a presumption of innocence until proven guilty in a court of law.",
+    sentenceCn: "在法庭证明有罪之前，存在无罪推定。"
   },
   {
-    word: "velocity",
-    meaning: "速度",
-    sentence: "The velocity of the wind increased as the storm approached.",
-    sentenceCn: "随着暴风雨的临近,风速增加了。"
+    word: "pretentious",
+    meaning: "自命不凡的",
+    sentence: "His pretentious behavior annoyed his colleagues at the office.",
+    sentenceCn: "他自命不凡的行为惹恼了办公室的同事。"
   },
   {
-    word: "verify",
-    meaning: "核实；证明",
-    sentence: "Scientists need to verify the results of the experiment before publishing.",
-    sentenceCn: "科学家需要在发表前核实实验结果。"
+    word: "pretext",
+    meaning: "借口",
+    sentence: "He used the meeting as a pretext to avoid attending the party.",
+    sentenceCn: "他以开会为借口避免参加聚会。"
   },
   {
-    word: "waive",
-    meaning: "放弃；豁免",
-    sentence: "The bank decided to waive the late payment fee as a courtesy.",
-    sentenceCn: "银行决定作为一项礼遇豁免逾期付款费。"
+    word: "primate",
+    meaning: "灵长类",
+    sentence: "Humans and other primates share many genetic similarities.",
+    sentenceCn: "人类和其他灵长类动物有许多基因相似之处。"
+  },
+  {
+    word: "princely",
+    meaning: "豪华的",
+    sentence: "The company made a princely donation to the new hospital.",
+    sentenceCn: "这家公司向新医院捐赠了一笔巨款。"
+  },
+  {
+    word: "proactive",
+    meaning: "积极主动的；先发制人的",
+    sentence: "The proactive approach to environmental protection helps prevent problems before they occur.",
+    sentenceCn: "积极主动的环保方法有助于在问题发生前加以预防。"
+  },
+  {
+    word: "probation",
+    meaning: "缓刑；见习期",
+    sentence: "The new employee is still on probation and needs to prove his worth to the company.",
+    sentenceCn: "新员工仍在试用期，需要向公司证明自己的价值。"
+  },
+  {
+    word: "problematic",
+    meaning: "成问题的；存疑的",
+    sentence: "The implementation of the new policy has proven to be problematic.",
+    sentenceCn: "新政策的实施被证明是有问题的。"
+  },
+  {
+    word: "process",
+    meaning: "过程；处理",
+    sentence: "The process of learning a new language requires patience and persistence.",
+    sentenceCn: "学习一门新语言的过程需要耐心和毅力。"
+  },
+  {
+    word: "procession",
+    meaning: "队伍",
+    sentence: "The wedding procession moved slowly through the streets of the old town.",
+    sentenceCn: "婚礼队伍缓慢地穿过老城的街道。"
+  },
+  {
+    word: "procrastinate",
+    meaning: "拖延",
+    sentence: "People who procrastinate often miss important deadlines and opportunities.",
+    sentenceCn: "拖延的人经常错过重要的截止日期和机会。"
+  },
+  {
+    word: "profane",
+    meaning: "世俗的；亵渎的",
+    sentence: "The profane language used in the film led to its being banned in several countries.",
+    sentenceCn: "影片中使用的亵渎语言导致其在多个国家被禁止。"
+  },
+  {
+    word: "proficiency",
+    meaning: "熟练",
+    sentence: "Language proficiency is essential for success in international business.",
+    sentenceCn: "语言熟练程度对于国际商务的成功至关重要。"
+  },
+  {
+    word: "profuse",
+    meaning: "丰富的",
+    sentence: "The garden was filled with profuse blooms of colorful flowers.",
+    sentenceCn: "花园里开满了丰富的五颜六色的花朵。"
+  },
+  {
+    word: "prognosis",
+    meaning: "预测；预后",
+    sentence: "The doctor's prognosis for the patient's recovery was very positive.",
+    sentenceCn: "医生对病人康复的预后非常积极。"
+  },
+  {
+    word: "progressive",
+    meaning: "进步的",
+    sentence: "The progressive education system emphasizes critical thinking over memorization.",
+    sentenceCn: "进步的教育系统强调批判性思维而非死记硬背。"
+  },
+  {
+    word: "prohibitive",
+    meaning: "禁止性的；昂贵的",
+    sentence: "The prohibitive cost of housing in the city forces many people to live in suburbs.",
+    sentenceCn: "城市中住房的昂贵价格迫使许多人住在郊区。"
+  },
+  {
+    word: "proliferate",
+    meaning: "激增；繁殖",
+    sentence: "Social media has proliferated rapidly over the past decade, transforming communication.",
+    sentenceCn: "社交媒体在过去十年中迅速激增，改变了沟通方式。"
+  },
+  {
+    word: "prolific",
+    meaning: "多产的",
+    sentence: "The prolific author has written more than fifty books in her career.",
+    sentenceCn: "这位多产的作家在她的事业中已经写了五十多本书。"
+  },
+  {
+    word: "prologue",
+    meaning: "序言",
+    sentence: "The prologue provides essential background information for understanding the novel.",
+    sentenceCn: "序言为理解小说提供了重要的背景信息。"
+  },
+  {
+    word: "promising",
+    meaning: "有前途的",
+    sentence: "The young musician shows promising talent that could lead to a successful career.",
+    sentenceCn: "这位年轻的音乐家展现了有前途的才能，这可能会带来成功的事业。"
+  },
+  {
+    word: "promote",
+    meaning: "提升；促进；促销",
+    sentence: "Regular exercise can promote better physical and mental health.",
+    sentenceCn: "经常锻炼可以促进更好的身心健康。"
+  },
+  {
+    word: "promotion",
+    meaning: "提升；促销",
+    sentence: "Her promotion to manager was a result of her hard work and dedication.",
+    sentenceCn: "她晋升为经理是她辛勤工作和奉献的结果。"
+  },
+  {
+    word: "prone",
+    meaning: "易于……的；俯卧的",
+    sentence: "Elderly people are more prone to falls and fractures than younger adults.",
+    sentenceCn: "老年人比年轻人更容易摔倒和骨折。"
+  },
+  {
+    word: "pronounced",
+    meaning: "显著的",
+    sentence: "There has been a pronounced improvement in the company's financial performance.",
+    sentenceCn: "公司的财务表现有了显著的改善。"
+  },
+  {
+    word: "propellant",
+    meaning: "推进剂",
+    sentence: "The rocket uses a solid propellant to generate the necessary thrust.",
+    sentenceCn: "火箭使用固体推进剂产生必要的推力。"
+  },
+  {
+    word: "propensity",
+    meaning: "倾向",
+    sentence: "Children have a natural propensity for learning languages quickly.",
+    sentenceCn: "孩子们天生有快速学习语言的倾向。"
+  },
+  {
+    word: "property",
+    meaning: "财产；属性",
+    sentence: "Intellectual property rights protect the creations of inventors and artists.",
+    sentenceCn: "知识产权保护发明家和艺术家的创作。"
+  },
+  {
+    word: "prophecy",
+    meaning: "预言",
+    sentence: "The prophecy predicted that a great leader would arise to save the nation.",
+    sentenceCn: "预言预言一位伟大的领袖将出现来拯救国家。"
+  },
+  {
+    word: "prophesy",
+    meaning: "预言",
+    sentence: "The ancient oracle was believed to prophesy the future with great accuracy.",
+    sentenceCn: "古代的神谕被认为能够非常准确地预言未来。"
+  },
+  {
+    word: "prophetic",
+    meaning: "预言的",
+    sentence: "His prophetic warnings about climate change have proven to be accurate.",
+    sentenceCn: "他关于气候变化的预言性警告已被证明是准确的。"
   }
 ];
