@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>心理学复习 - 挖空测验</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; min-height: 100vh; padding: 20px; }
+        .container { max-width: 700px; margin: 0 auto; }
+        
+        .progress-bar { background: #e0e0e0; border-radius: 10px; height: 8px; margin-bottom: 20px; }
+        .progress-fill { background: #4CAF50; height: 100%; border-radius: 10px; transition: width 0.3s; }
+        
+        .progress-text { text-align: center; color: #666; margin-bottom: 15px; font-size: 14px; }
+        
+        .question-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+        .question-type { display: inline-block; background: #e3f2fd; color: #1976D2; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; }
+        .question-title { font-size: 20px; font-weight: 600; color: #333; margin-bottom: 20px; line-height: 1.5; }
+        
+        .sentence-box { background: #fafafa; border: 2px solid #e0e0e0; border-radius: 12px; padding: 20px; font-size: 18px; line-height: 2; text-align: center; }
+        .blank { display: inline-block; background: #4CAF50; color: white; padding: 2px 16px; border-radius: 4px; min-width: 80px; margin: 0 4px; font-weight: 500; }
+        
+        .answer-section { margin-top: 20px; }
+        .answer-input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical; min-height: 100px; }
+        .answer-input:focus { outline: none; border-color: #4CAF50; }
+        
+        .submit-btn { width: 100%; padding: 14px; background: #4CAF50; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 15px; }
+        .submit-btn:hover { background: #43a047; }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+        
+        /* Result Page */
+        .result-card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+        .result-header { text-align: center; margin-bottom: 20px; }
+        .result-icon { font-size: 48px; margin-bottom: 10px; }
+        .result-title { font-size: 24px; font-weight: 600; color: #333; }
+        
+        .result-detail { background: #fafafa; border-radius: 12px; padding: 20px; margin-bottom: 15px; }
+        .result-question { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 10px; }
+        .result-blank-answer { font-size: 16px; line-height: 1.8; }
+        .result-correct { color: #4CAF50; font-weight: 600; }
+        .result-wrong { color: #f44336; font-weight: 600; }
+        
+        .status-selector { display: flex; gap: 10px; margin-top: 15px; }
+        .status-btn { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 10px; font-size: 14px; cursor: pointer; background: white; transition: all 0.2s; }
+        .status-btn:hover { border-color: #4CAF50; }
+        .status-btn.correct { border-color: #4CAF50; background: #e8f5e9; color: #4CAF50; }
+        .status-btn.partial { border-color: #FF9800; background: #fff3e0; color: #FF9800; }
+        .status-btn.wrong { border-color: #f44336; background: #ffebee; color: #f44336; }
+        .status-btn.selected { transform: scale(1.02); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        
+        .next-btn { width: 100%; padding: 14px; background: #2196F3; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 15px; }
+        .next-btn:hover { background: #1976D2; }
+        
+        /* Final Result */
+        .final-result { text-align: center; }
+        .final-stats { display: flex; justify-content: center; gap: 30px; margin: 20px 0; }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 32px; font-weight: 700; }
+        .stat-label { font-size: 14px; color: #666; }
+        .correct-stat .stat-num { color: #4CAF50; }
+        .partial-stat .stat-num { color: #FF9800; }
+        .wrong-stat .stat-num { color: #f44336; }
+        
+        .result-code { background: #f5f5f5; padding: 15px 20px; border-radius: 8px; font-family: monospace; font-size: 14px; word-break: break-all; margin: 15px 0; text-align: left; }
+        .copy-btn { background: #666; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+        .copy-btn:hover { background: #444; }
+        
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Progress -->
+        <div class="progress-text">第 <span id="currentNum">1</span> / <span id="totalNum">20</span> 题</div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 5%"></div></div>
+        
+        <!-- Question Page -->
+        <div id="questionPage" class="question-card">
+            <span class="question-type" id="questionType">名词解释</span>
+            <div class="question-title" id="questionTitle">内容效度</div>
+            <div class="sentence-box" id="sentenceBox"></div>
+            <div class="answer-section">
+                <textarea class="answer-input" id="answerInput" placeholder="请在此输入你的答案..."></textarea>
+                <button class="submit-btn" id="submitBtn" onclick="showResult()">提交答案</button>
+            </div>
+        </div>
+        
+        <!-- Result Page -->
+        <div id="resultPage" class="result-card hidden">
+            <div class="result-header">
+                <div class="result-icon" id="resultIcon">✅</div>
+                <div class="result-title" id="resultTitle">正确!</div>
+            </div>
+            <div class="result-detail">
+                <div class="result-question" id="resultQuestion"></div>
+                <div class="result-blank-answer" id="resultAnswer"></div>
+            </div>
+            <div id="userAnswerSection" class="result-detail hidden">
+                <div style="font-size: 14px; color: #666; margin-bottom: 8px;">你的答案：</div>
+                <div id="userAnswerText" style="font-size: 15px; line-height: 1.6;"></div>
+            </div>
+            <div style="font-size: 14px; color: #666; margin-bottom: 8px; margin-top: 15px;">请选择本題狀態：</div>
+            <div class="status-selector">
+                <button class="status-btn correct" onclick="selectStatus('correct', this)">✅ 正确</button>
+                <button class="status-btn partial" onclick="selectStatus('partial', this)">⚠️ 部分正确</button>
+                <button class="status-btn wrong" onclick="selectStatus('wrong', this)">❌ 错误</button>
+            </div>
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">下一题</button>
+        </div>
+        
+        <!-- Final Result Page -->
+        <div id="finalPage" class="result-card hidden">
+            <div class="final-result">
+                <div class="result-icon">🎉</div>
+                <div class="result-title">测验完成！</div>
+                <div class="final-stats">
+                    <div class="stat-item correct-stat">
+                        <div class="stat-num" id="correctCount">0</div>
+                        <div class="stat-label">正确</div>
+                    </div>
+                    <div class="stat-item partial-stat">
+                        <div class="stat-num" id="partialCount">0</div>
+                        <div class="stat-label">部分正确</div>
+                    </div>
+                    <div class="stat-item wrong-stat">
+                        <div class="stat-num" id="wrongCount">0</div>
+                        <div class="stat-label">错误</div>
+                    </div>
+                </div>
+                <div style="font-size: 14px; color: #666; margin-bottom: 10px;">结果码（复制发送给助手）：</div>
+                <div class="result-code" id="resultCode"></div>
+                <button class="copy-btn" onclick="copyCode()">复制结果码</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+  {
+    "id": "recvgnwx7RzXn4",
+    "title": "内容效度",
+    "type": "名词解释",
+    "answer": "测验题目对有关内容或行为范围取样的适当性。"
+  },
+  {
+    "id": "recvgnvBtCuK2j",
+    "title": "标准分数",
+    "type": "名词解释",
+    "answer": "将原始分数与平均数的距离以标准差为单位表示出来的量表。因为它的基本单位是标准差，所以叫标准分数。"
+  },
+  {
+    "id": "recvgnvBtCHIAG",
+    "title": "旁观者效应",
+    "type": "名词解释",
+    "answer": "其他旁观者的存在，降低了个人提供帮助或实施干预的可能性，通常涉及责任分散。"
+  },
+  {
+    "id": "recvgnvBtC2hrF",
+    "title": "β错误",
+    "type": "名词解释",
+    "answer": "II型错误，指虚无假设为假时，接收虚无假设所犯的错误。"
+  },
+  {
+    "id": "recvgnwx7RaznF",
+    "title": "发展心理学中遗传与环境的关系",
+    "type": "简答题",
+    "answer": "a. 基本观点：遗传是生理前提，提供发展的可能性；环境和教育将可能性转化为现实性，并决定发展方向。b. 维果斯基理论：强调教学应走在发展前面，通过最近发展区引导智力发展，并设定学习最佳期限。c. 朱智贤观点：主张系统研究，认为内因（新需要与旧水平的矛盾）是动力，教育应领会并促进发展，提出既高于原有水平又可达到的要求。"
+  },
+  {
+    "id": "recvgnwx7RhkM2",
+    "title": "长时记忆",
+    "type": "名词解释",
+    "answer": "信息经过充分和一定深度的加工后，在头脑中长时间存储的记忆。容量无限，以语义编码为主。"
+  },
+  {
+    "id": "recvgnwYVsWboH",
+    "title": "完全随机区组设计的类别",
+    "type": "简答题",
+    "answer": "单因素完全区组设计（一个自变量），多因素完全区组设计（两个或以上自变量）。"
+  },
+  {
+    "id": "recvgnwYVs1i9l",
+    "title": "注意的分类",
+    "type": "简答题",
+    "answer": "分为不随意注意（无目的、无意志努力）、随意注意（有目的、需意志努力）和随意后注意（有目的、无需意志努力）。"
+  },
+  {
+    "id": "recvgnwYVsgwqX",
+    "title": "皮亚杰儿童认知发展理论",
+    "type": "论述题",
+    "answer": "核心是儿童智力的发展是通过动作所获得的对客体的适应而实现的。适应的本质是主体取得自身与环境之间的平衡，途径包括同化（外部信息纳入自己现有的智力结构）和顺应（调整自己的智力结构，以使其与外部信息相适应）。"
+  },
+  {
+    "id": "recvfJzqKkZzcu",
+    "title": "先行组织者",
+    "type": "名词解释",
+    "answer": "奥苏贝尔提出，先于学习任务呈现的一种引导性材料，其包摄性较广、概括水平较高，用学习者能理解的语言和方式来表达，以便给学习者在学习新知识时提供一个较好的固定点，将它与原有知识结构联系起来。"
+  },
+  {
+    "id": "recvfJyZNVrTKV",
+    "title": "内隐记忆与外显记忆的区别",
+    "type": "简答题",
+    "answer": "外显记忆是需要意识参与、有目的提取的记忆；内隐记忆是无需意识参与、过去的经验对当前任务自动产生的促进作用。（1）加工深度因素的影响不同--不影响内隐，明显影响外显；（2）保持时间不同--内隐保持时间较长；（3）记忆负荷量的变化产生的影响不同--不影响内隐，明显影响外显；（4）呈现方式的影响不同--通道改变严重影响内隐，不影响外显；（5）干扰因素的影响不同--影响外显，较少影响内隐。"
+  },
+  {
+    "id": "recvgnxJ9qhCfO",
+    "title": "语言理解的水平",
+    "type": "简答题",
+    "answer": "第一级水平：理解词的意义；以正确地理解词的意义为基础。第二级水平：理解短语和句子；需要借助句法和语义的知识，需要有语境的帮助。第三级水平：了解语言使用者的动机与意图，包括他们用语言所传达的情感和态度，以及某些弦外之音、言外之意等。"
+  },
+  {
+    "id": "recvgnypn9WkC1",
+    "title": "测验说明书中需要说明的内容",
+    "type": "简答题",
+    "answer": "测验目的和功用；理论背景及选题依据；实施方法、时限及注意事项；标准答案和评分方法；常模资料；信效度资料。"
+  },
+  {
+    "id": "recvgnxJ9qYJuc",
+    "title": "点估计应满足的条件",
+    "type": "简答题",
+    "answer": "无偏性：所有可能的统计量与参数真值的偏差的平均值为零。一致性：当样本容量无限增大时，估计值会越来越接近它所估计的总体参数。有效性：若存在一个无偏估计量的方差是最小的，就是说它的取值是比较稳定的，则这一估计值是有效的。充分性：用作估计值的统计量能够反映样本全部数据所反映的总体的信息。"
+  },
+  {
+    "id": "recvgnxJ9q08yY",
+    "title": "婴儿动作发展的规律",
+    "type": "简答题",
+    "answer": "从整体到分化（从全身笼统到局部精准）、从上部到下部（抬头→坐→爬→走）、从大肌肉到小肌肉（躯体动作到精细抓握）的规律。格赛尔通过双生子爬梯实验提出的成熟势力说，强调了机体成熟在其中的决定性作用。"
+  },
+  {
+    "id": "recvgnypn9zGZp",
+    "title": "儿童攻击行为的成因或本质",
+    "type": "论述题",
+    "answer": "本能论：弗洛伊德和洛伦茨（习性学）认为，侵犯是与生俱来的宣泄。挫折-侵犯理论：多拉德提出，伯克维茨修正，挫折引发愤怒（侵犯的情绪准备状态），环境中的侵犯线索（武器效应）诱发行为。社会学习理论：班杜拉等提出，通过观察和模仿榜样（如父母或媒体）及其后果而习得。"
+  },
+  {
+    "id": "recvgnxJ9qyXo3",
+    "title": "心理学研究方法数量化趋势的表现",
+    "type": "简答题",
+    "answer": "越来越多地采用多元分析方法；计算机软件成为主要工具；在定性领域采用"元分析"；模糊数学的应用日益广泛。"
+  },
+  {
+    "id": "recvgnxJ9qmKqM",
+    "title": "注意的双加工理论",
+    "type": "简答题",
+    "answer": "1977年由谢夫林等人提出，认为人类信息加工分为两类：自动化加工（不受认知资源限制，无需注意，由刺激引发且速度快，自动进行）和意识控制加工（受认知资源限制，需要注意，随环境变化不断调整，经充分练习后，有可能转化成自动化加工）。"
+  },
+  {
+    "id": "recvgny0FQBIED",
+    "title": "品德",
+    "type": "名词解释",
+    "answer": "道德品质的简称，是个体根据一定的道德行为规范行动时所表现出来的稳固的特征或倾向。"
+  },
+  {
+    "id": "recvgny0FQHxui",
+    "title": "人际关系",
+    "type": "名词解释",
+    "answer": "人与人之间通过动态的相互作用形成起来的情感联系。是人们通过直接交往产生的情感积淀，是人与人之间相对稳定的情感纽带。"
+  }
+];
+
+        let currentIndex = 0;
+        let results = [];
+        let currentStatus = null;
+        let startTime = new Date();
+
+        // 创建挖空
+        function createBlanks(text, numBlanks) {
+            // 提取关键术语
+            const keyTerms = [];
+            
+            // 按中英文标点和分号、逗号分割
+            const parts = text.split(/(?<=[，。；；、：:；;,])(?=[^，，])/);
+            
+            // 过滤出适合挖空的短语（长度>=2且不包含空）
+            for (let p of parts) {
+                p = p.trim();
+                if (p.length >= 2 && !keyTerms.includes(p)) {
+                    keyTerms.push(p);
+                }
+            }
+            
+            // 如果分割出来的关键术语不够，随机从长句子里提取
+            if (keyTerms.length < numBlanks) {
+                const longMatches = text.match(/[^，。；；、：:；;,]{4,10}/g) || [];
+                for (let m of longMatches) {
+                    if (!keyTerms.includes(m) && keyTerms.length < numBlanks * 2) {
+                        keyTerms.push(m);
+                    }
+                }
+            }
+            
+            // 随机选择numBlanks个作为答案
+            const shuffled = keyTerms.sort(() => Math.random() - 0.5);
+            const blanks = shuffled.slice(0, Math.min(numBlanks, shuffled.length));
+            
+            // 创建挖空句子
+            let sentence = text;
+            const blankMap = {};
+            blanks.forEach((b, i) => {
+                const placeholder = `__BLANK${i}__`;
+                blankMap[placeholder] = b;
+                sentence = sentence.replace(b, placeholder);
+            });
+            
+            // 替换占位符为HTML
+            sentence = sentence.replace(/__BLANK(\d)__/g, '<span class="blank">_______</span>');
+            
+            return { sentence, blanks, blankMap };
+        }
+
+        function loadQuestion() {
+            const item = quizData[currentIndex];
+            document.getElementById('currentNum').textContent = currentIndex + 1;
+            document.getElementById('progressFill').style.width = ((currentIndex + 1) / quizData.length * 100) + '%';
+            document.getElementById('questionType').textContent = item.type;
+            document.getElementById('questionTitle').textContent = item.title;
+            
+            // 根据答案长度决定挖空数量
+            let numBlanks = 2;
+            if (item.answer.length > 100) numBlanks = 3;
+            if (item.answer.length > 200) numBlanks = 4;
+            
+            const { sentence } = createBlanks(item.answer, numBlanks);
+            document.getElementById('sentenceBox').innerHTML = sentence;
+            document.getElementById('answerInput').value = '';
+            
+            // Reset status
+            currentStatus = null;
+            document.querySelectorAll('.status-btn').forEach(b => b.classList.remove('selected'));
+            
+            // Show question page
+            document.getElementById('questionPage').classList.remove('hidden');
+            document.getElementById('resultPage').classList.add('hidden');
+            document.getElementById('finalPage').classList.add('hidden');
+        }
+
+        function showResult() {
+            const userAnswer = document.getElementById('answerInput').value.trim();
+            const item = quizData[currentIndex];
+            
+            // Store result with pending status
+            results.push({
+                id: item.id,
+                title: item.title,
+                answer: item.answer,
+                userAnswer: userAnswer
+            });
+            
+            // Show result page
+            document.getElementById('questionPage').classList.add('hidden');
+            document.getElementById('resultPage').classList.remove('hidden');
+            document.getElementById('userAnswerSection').classList.remove('hidden');
+            document.getElementById('userAnswerText').textContent = userAnswer || '(未填写)';
+            
+            // Show answer comparison with blanks highlighted
+            const { sentence: answerSentence, blanks } = createBlanks(item.answer, blanks ? blanks.length : 2);
+            const answerHtml = blanks.map((b, i) => `<span class="result-correct">${b}</span>`).join('；');
+            document.getElementById('resultAnswer').innerHTML = answerHtml;
+            
+            // Update next button text
+            document.getElementById('nextBtn').textContent = 
+                currentIndex < quizData.length - 1 ? '下一题' : '查看结果';
+        }
+
+        function selectStatus(status, btn) {
+            currentStatus = status;
+            document.querySelectorAll('.status-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function nextQuestion() {
+            if (!currentStatus) {
+                alert('请先选择本题状态（正确/部分正确/错误）');
+                return;
+            }
+            
+            // Update the last result with status
+            results[results.length - 1].status = currentStatus;
+            
+            currentIndex++;
+            if (currentIndex >= quizData.length) {
+                showFinalResult();
+            } else {
+                loadQuestion();
+            }
+        }
+
+        function showFinalResult() {
+            document.getElementById('questionPage').classList.add('hidden');
+            document.getElementById('resultPage').classList.add('hidden');
+            document.getElementById('finalPage').classList.remove('hidden');
+            
+            let correctCount = 0, partialCount = 0, wrongCount = 0;
+            results.forEach(r => {
+                if (r.status === 'correct') correctCount++;
+                else if (r.status === 'partial') partialCount++;
+                else wrongCount++;
+            });
+            
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('partialCount').textContent = partialCount;
+            document.getElementById('wrongCount').textContent = wrongCount;
+            
+            // Generate result code
+            const endTime = new Date();
+            const startStr = formatTime(startTime);
+            const endStr = formatTime(endTime);
+            
+            let code = `第33轮|${correctCount}|${partialCount}|${wrongCount}|${startStr}|${endStr}|`;
+            results.forEach(r => {
+                code += `${r.title}:${r.status},`;
+            });
+            
+            document.getElementById('resultCode').textContent = code;
+        }
+
+        function formatTime(d) {
+            return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+        }
+
+        function copyCode() {
+            const code = document.getElementById('resultCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('已复制！');
+            });
+        }
+
+        // Initialize
+        loadQuestion();
+    </script>
+</body>
+</html>
