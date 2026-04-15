@@ -13,6 +13,7 @@ const vocabData = [
   },
   {
     word: "offend",
+    actualWord: "offended",
     meaning: "冒犯；违反",
     sentence: "His insensitive comments offended many people at the meeting.",
     sentenceCn: "他不敏感的言论冒犯了会议上的许多人。"
@@ -43,6 +44,7 @@ const vocabData = [
   },
   {
     word: "onlooker",
+    actualWord: "Onlookers",
     meaning: "旁观者",
     sentence: "Onlookers gathered at the scene of the accident to see what had happened.",
     sentenceCn: "旁观者聚集在事故现场查看发生了什么。"
@@ -259,18 +261,21 @@ const vocabData = [
   },
   {
     word: "urge",
+    actualWord: "urged",
     meaning: "催促；强烈要求",
     sentence: "The doctor urged the patient to quit smoking for better health.",
     sentenceCn: "医生强烈要求病人戒烟以改善健康。"
   },
   {
     word: "utensil",
+    actualWord: "utensils",
     meaning: "器皿；用具",
     sentence: "Kitchen utensils should be cleaned thoroughly after each use.",
     sentenceCn: "厨房用具应在每次使用后彻底清洗。"
   },
   {
     word: "utilize",
+    actualWord: "utilizes",
     meaning: "利用",
     sentence: "The company utilizes advanced technology to improve production efficiency.",
     sentenceCn: "该公司利用先进技术提高生产效率。"
