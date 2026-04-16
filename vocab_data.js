@@ -1,303 +1,52 @@
 const vocabData = [
-  {
-    word: "prototype",
-    meaning: "原型",
-    sentence: "The prototype of the new electric car was unveiled at the auto show.",
-    sentenceCn: "新电动汽车的原型车在车展上亮相。"
-  },
-  {
-    word: "protract",
-    actualWord: "protracted",
-    meaning: "延长",
-    sentence: "The negotiations were protracted for months without reaching an agreement.",
-    sentenceCn: "谈判被拖延了好几个月而没有达成协议。"
-  },
-  {
-    word: "protrude",
-    meaning: "突出",
-    sentence: "The broken bone began to protrude through the skin after the accident.",
-    sentenceCn: "事故发生后，断裂的骨头开始从皮肤中突出。"
-  },
-  {
-    word: "provocation",
-    meaning: "挑衅",
-    sentence: "The country's military response was seen as a provocation by its neighbors.",
-    sentenceCn: "该国的军事回应被其邻国视为挑衅。"
-  },
-  {
-    word: "prudential",
-    meaning: "谨慎的",
-    sentence: "Prudential management of finances is essential for long-term stability.",
-    sentenceCn: "审慎的财务管理对于长期稳定至关重要。"
-  },
-  {
-    word: "punctuation",
-    meaning: "标点符号",
-    sentence: "Proper punctuation is crucial for clear written communication.",
-    sentenceCn: "正确的标点符号对于清晰的书面交流至关重要。"
-  },
-  {
-    word: "purification",
-    meaning: "净化",
-    sentence: "The water purification system removes harmful bacteria and chemicals.",
-    sentenceCn: "水净化系统去除有害细菌和化学物质。"
-  },
-  {
-    word: "quarrel",
-    meaning: "争吵；不和",
-    sentence: "The two friends had a quarrel over a minor misunderstanding.",
-    sentenceCn: "两个朋友因一个小误会而争吵。"
-  },
-  {
-    word: "quiver",
-    meaning: "颤抖；震动",
-    sentence: "The leaves quivered in the gentle breeze of the autumn wind.",
-    sentenceCn: "树叶在秋风的微风中颤抖。"
-  },
-  {
-    word: "reciprocal",
-    meaning: "互惠的；倒数的",
-    sentence: "International trade should be based on reciprocal agreements between countries.",
-    sentenceCn: "国际贸易应基于国家之间的互惠协议。"
-  },
-  {
-    word: "secular",
-    meaning: "世俗的",
-    sentence: "The secular state ensures freedom of religion for all citizens.",
-    sentenceCn: "世俗国家确保所有公民的宗教自由。"
-  },
-  {
-    word: "shun",
-    meaning: "避开；避免",
-    sentence: "Health-conscious people shun processed foods high in sugar and fat.",
-    sentenceCn: "注重健康的人避免食用高糖和高脂肪的加工食品。"
-  },
-  {
-    word: "sinister",
-    meaning: "凶兆的；邪恶的",
-    sentence: "The sinister plot was discovered before it could be carried out.",
-    sentenceCn: "邪恶的阴谋在实施之前就被发现了。"
-  },
-  {
-    word: "slaughter",
-    meaning: "屠宰；屠杀",
-    sentence: "The war resulted in the slaughter of thousands of innocent civilians.",
-    sentenceCn: "战争导致了数以千计无辜平民的屠杀。"
-  },
-  {
-    word: "slender",
-    meaning: "苗条的；微薄的",
-    sentence: "She maintained a slender figure through regular exercise and healthy eating.",
-    sentenceCn: "她通过经常锻炼和健康饮食保持了苗条的身材。"
-  },
-  {
-    word: "slum",
-    meaning: "贫民窟",
-    sentence: "The government launched programs to improve living conditions in urban slums.",
-    sentenceCn: "政府推出了改善城市贫民窟生活条件的计划。"
-  },
-  {
-    word: "smuggle",
-    meaning: "走私",
-    sentence: "The criminals attempted to smuggle illegal goods across the border.",
-    sentenceCn: "罪犯试图将非法物品走私过境。"
-  },
-  {
-    word: "sober",
-    meaning: "清醒的；严肃的",
-    sentence: "The sober analysis revealed serious flaws in the proposed plan.",
-    sentenceCn: "严肃的分析揭示了提议计划中的严重缺陷。"
-  },
-  {
-    word: "solemn",
-    meaning: "庄严的；严肃的",
-    sentence: "The judge delivered a solemn verdict in the high-profile case.",
-    sentenceCn: "法官在这个备受关注的案件中作出了庄严的判决。"
-  },
-  {
-    word: "solicit",
-    meaning: "请求；恳求",
-    sentence: "The organization solicits donations from the public to fund its programs.",
-    sentenceCn: "该组织向公众募集捐款以资助其项目。"
-  },
-  {
-    word: "spacious",
-    meaning: "宽敞的",
-    sentence: "The new house features a spacious living room with large windows.",
-    sentenceCn: "新房子有一个宽敞的客厅,配有大窗户。"
-  },
-  {
-    word: "stale",
-    meaning: "陈腐的；不新鲜的",
-    sentence: "The bread became stale after being left out for several days.",
-    sentenceCn: "面包在放了好几天后变得不新鲜了。"
-  },
-  {
-    word: "sterile",
-    meaning: "不育的；无菌的",
-    sentence: "The laboratory maintained a sterile environment for the experiments.",
-    sentenceCn: "实验室为实验保持了无菌环境。"
-  },
-  {
-    word: "stipulate",
-    meaning: "规定；约定",
-    sentence: "The contract stipulates that the work must be completed within six months.",
-    sentenceCn: "合同规定工作必须在六个月内完成。"
-  },
-  {
-    word: "subpoena",
-    meaning: "传票；传唤",
-    sentence: "The court issued a subpoena requiring the witness to testify.",
-    sentenceCn: "法院发出了传票,要求证人作证。"
-  },
-  {
-    word: "succinct",
-    meaning: "简洁的",
-    sentence: "The professor provided a succinct summary of the complex theory.",
-    sentenceCn: "教授对复杂理论提供了简洁的总结。"
-  },
-  {
-    word: "succumb",
-    meaning: "屈服；死于",
-    sentence: "The patient succumbed to the illness after a long battle.",
-    sentenceCn: "病人在长期抗争后屈服于疾病。"
-  },
-  {
-    word: "synthetic",
-    meaning: "合成的；人造的",
-    sentence: "Many modern products are made from synthetic materials.",
-    sentenceCn: "许多现代产品是由合成材料制成的。"
-  },
-  {
-    word: "tedious",
-    meaning: "乏味的；单调的",
-    sentence: "The tedious task of sorting through thousands of documents took weeks.",
-    sentenceCn: "整理数千份文件的乏味工作花了几周时间。"
-  },
-  {
-    word: "temperament",
-    meaning: "气质；性格",
-    sentence: "Her artistic temperament made her sensitive to criticism.",
-    sentenceCn: "她的艺术气质使她对批评很敏感。"
-  },
-  {
-    word: "tenure",
-    meaning: "任期；终身职位",
-    sentence: "The professor was granted tenure after years of excellent teaching and research.",
-    sentenceCn: "经过多年的优秀教学和研究,这位教授获得了终身职位。"
-  },
-  {
-    word: "terminology",
-    meaning: "术语",
-    sentence: "Medical terminology can be difficult for patients to understand.",
-    sentenceCn: "医学术语可能让患者难以理解。"
-  },
-  {
-    word: "testify",
-    meaning: "作证；表明",
-    sentence: "Several witnesses testified about what they saw on the night of the crime.",
-    sentenceCn: "几名证人就他们在犯罪当晚看到的情况作了证。"
-  },
-  {
-    word: "threshold",
-    meaning: "门槛；开端",
-    sentence: "Crossing the threshold into adulthood brings new responsibilities.",
-    sentenceCn: "跨入成年门槛带来了新的责任。"
-  },
-  {
-    word: "thrift",
-    meaning: "节俭",
-    sentence: "Thrift is considered a virtue in many cultures around the world.",
-    sentenceCn: "节俭在世界许多文化中被视为一种美德。"
-  },
-  {
-    word: "toll",
-    meaning: "通行费；伤亡人数",
-    sentence: "The toll of the accident included several injured passengers.",
-    sentenceCn: "事故的伤亡人数包括几名受伤的乘客。"
-  },
-  {
-    word: "optical",
-    meaning: "光学的；视觉的",
-    sentence: "The optical illusion made the stationary object appear to be moving.",
-    sentenceCn: "视觉错觉使静止的物体看起来在移动。"
-  },
-  {
-    word: "opulence",
-    meaning: "富裕；丰富",
-    sentence: "The palace was a symbol of opulence and royal power.",
-    sentenceCn: "这座宫殿是富裕和王权的象征。"
-  },
-  {
-    word: "ordeal",
-    meaning: "严峻考验",
-    sentence: "Surviving the ordeal required immense courage and determination.",
-    sentenceCn: "度过这场磨难需要巨大的勇气和决心。"
-  },
-  {
-    word: "ornamental",
-    meaning: "装饰性的",
-    sentence: "The garden features both functional and ornamental plants.",
-    sentenceCn: "花园里有功能性植物和观赏性植物。"
-  },
-  {
-    word: "oscillation",
-    meaning: "振荡；波动",
-    sentence: "The oscillation of the pendulum demonstrates the principles of harmonic motion.",
-    sentenceCn: "摆的振荡演示了简谐运动的原理。"
-  },
-  {
-    word: "osmosis",
-    meaning: "渗透",
-    sentence: "Osmosis is a natural process by which water moves through cell membranes.",
-    sentenceCn: "渗透是水通过细胞膜移动的自然过程。"
-  },
-  {
-    word: "oust",
-    meaning: "驱逐；罢免",
-    sentence: "The board voted to oust the CEO due to poor performance and ethical concerns.",
-    sentenceCn: "董事会投票罢免了CEO，原因是他表现不佳和存在道德问题。"
-  },
-  {
-    word: "outbreak",
-    meaning: "战争、病爆发",
-    sentence: "The outbreak of the disease prompted immediate public health measures.",
-    sentenceCn: "疾病的爆发引发了立即的公共卫生措施。"
-  },
-  {
-    word: "outcry",
-    meaning: "大声疾呼",
-    sentence: "The new tax policy sparked a public outcry from citizens across the country.",
-    sentenceCn: "新税收政策引发了全国公民的强烈抗议。"
-  },
-  {
-    word: "outfit",
-    meaning: "全套装备",
-    sentence: "The team purchased new outfits for the upcoming competition.",
-    sentenceCn: "团队为即将到来的比赛购买了新装备。"
-  },
-  {
-    word: "outlaw",
-    meaning: "歹徒；宣布非法",
-    sentence: "The new legislation outlaws discrimination in the workplace based on gender or age.",
-    sentenceCn: "新立法宣布基于性别或年龄的职场歧视为非法。"
-  },
-  {
-    word: "outlying",
-    meaning: "偏远的",
-    sentence: "The outlying villages were the last to receive electricity and running water.",
-    sentenceCn: "偏远的村庄是最后通电和自来水的。"
-  },
-  {
-    word: "outnumber",
-    meaning: "在数量上超过",
-    sentence: "In many urban areas, cars outnumber people, leading to severe traffic congestion.",
-    sentenceCn: "在许多城市地区，汽车数量超过人口数量，导致严重的交通拥堵。"
-  },
-  {
-    word: "outrage",
-    meaning: "义愤；激怒",
-    sentence: "The government's decision to cut education funding sparked public outrage across the country.",
-    sentenceCn: "政府削减教育经费的决定在全国范围内引发了公众愤怒。"
-  }
+  {"word": "notary", "meaning": "公证人", "pos": "n.", "sentence": "A notary public is authorized to witness and certify legal documents. 公证人被授权见证和认证法律文件。", "sentenceCn": "公证人被授权见证和认证法律文件。"},
+  {"word": "offend", "meaning": "冒犯；违反", "pos": "v.", "sentence": "His insensitive comments offended many people at the meeting. 他不敏感的言论冒犯了会议上的许多人。", "sentenceCn": "他不敏感的言论冒犯了会议上的许多人。"},
+  {"word": "ointment", "meaning": "软膏", "pos": "n.", "sentence": "The doctor prescribed a special ointment to treat the skin infection. 医生开了一种特殊的药膏来治疗皮肤感染。", "sentenceCn": "医生开了一种特殊的药膏来治疗皮肤感染。"},
+  {"word": "ominous", "meaning": "不祥的", "pos": "adj.", "sentence": "The dark clouds and strong winds were ominous signs of an approaching storm. 乌云和狂风是暴风雨即将来临的不祥之兆。", "sentenceCn": "乌云和狂风是暴风雨即将来临的不祥之兆。"},
+  {"word": "omission", "meaning": "遗漏；忽略", "pos": "n.", "sentence": "The omission of key evidence weakened the prosecution's case significantly. 遗漏关键证据严重削弱了控方的案件。", "sentenceCn": "遗漏关键证据严重削弱了控方的案件。"},
+  {"word": "onerous", "meaning": "繁重的；艰巨的", "pos": "adj.", "sentence": "The onerous task of organizing the conference fell on her shoulders. 组织会议这项繁重的任务落在了她的肩上。", "sentenceCn": "组织会议这项繁重的任务落在了她的肩上。"},
+  {"word": "onlooker", "meaning": "旁观者", "pos": "n.", "sentence": "Onlookers gathered at the scene of the accident to see what had happened. 旁观者聚集在事故现场查看发生了什么。", "sentenceCn": "旁观者聚集在事故现场查看发生了什么。"},
+  {"word": "opaque", "meaning": "不透明的；晦涩的", "pos": "adj.", "sentence": "The opaque glass provided privacy while still allowing light to pass through. 不透明玻璃提供了隐私，同时仍然允许光线通过。", "sentenceCn": "不透明玻璃提供了隐私，同时仍然允许光线通过。"},
+  {"word": "measurable", "meaning": "可测量的；显著的", "pos": "adj.", "sentence": "The project has made measurable progress toward its goals over the past year. 该项目在过去一年中朝着其目标取得了可衡量的进展。", "sentenceCn": "该项目在过去一年中朝着其目标取得了可衡量的进展。"},
+  {"word": "mediocre", "meaning": "平庸的", "pos": "adj.", "sentence": "The restaurant received mediocre reviews, with critics noting inconsistent food quality. 这家餐厅收到了平庸的评价，评论家指出食物质量不稳定。", "sentenceCn": "这家餐厅收到了平庸的评价，评论家指出食物质量不稳定。"},
+  {"word": "menace", "meaning": "威胁", "pos": "v./n.", "sentence": "Pollution continues to be a menace to marine life and ecosystems worldwide. 污染继续威胁着全世界的海洋生物和生态系统。", "sentenceCn": "污染继续威胁着全世界的海洋生物和生态系统。"},
+  {"word": "merciful", "meaning": "仁慈的", "pos": "adj.", "sentence": "The judge was merciful and granted the defendant a reduced sentence. 法官仁慈，给予被告减轻判决。", "sentenceCn": "法官仁慈，给予被告减轻判决。"},
+  {"word": "metaphor", "meaning": "暗喻", "pos": "n.", "sentence": "The poet used a beautiful metaphor to describe the passage of time. 诗人用了一个美丽的隐喻来描述时间的流逝。", "sentenceCn": "诗人用了一个美丽的隐喻来描述时间的流逝。"},
+  {"word": "metropolis", "meaning": "大都市", "pos": "n.", "sentence": "New York City is a bustling metropolis that never sleeps, attracting millions of visitors annually. 纽约是一个从不睡眠的繁华大都市，每年吸引数百万游客。", "sentenceCn": "纽约是一个从不睡眠的繁华大都市，每年吸引数百万游客。"},
+  {"word": "misery", "meaning": "苦难", "pos": "n.", "sentence": "The war brought misery to millions of people, destroying homes and lives. 战争给数百万人带来了痛苦，摧毁了家园和生命。", "sentenceCn": "战争给数百万人带来了痛苦，摧毁了家园和生命。"},
+  {"word": "missionary", "meaning": "传教士", "pos": "n.", "sentence": "The missionary traveled to remote areas to spread religious teachings. 传教士前往偏远地区传播宗教教义。", "sentenceCn": "传教士前往偏远地区传播宗教教义。"},
+  {"word": "modest", "meaning": "谦虚的；适度的", "pos": "adj.", "sentence": "Despite his wealth, he lived a modest lifestyle and donated generously to charity. 尽管富有，他过着朴素的生活方式，并慷慨地向慈善机构捐款。", "sentenceCn": "尽管富有，他过着朴素的生活方式，并慷慨地向慈善机构捐款。"},
+  {"word": "morale", "meaning": "士气", "pos": "n.", "sentence": "High morale among employees is essential for maintaining productivity in the workplace. 员工高昂的士气对于维持工作场所的生产力至关重要。", "sentenceCn": "员工高昂的士气对于维持工作场所的生产力至关重要。"},
+  {"word": "mortal", "meaning": "致命的；凡人", "pos": "adj./n.", "sentence": "All human beings are mortal and must eventually face death. 所有人类都是凡人，最终都必须面对死亡。", "sentenceCn": "所有人类都是凡人，最终都必须面对死亡。"},
+  {"word": "nasty", "meaning": "令人厌恶的；下流的", "pos": "adj.", "sentence": "The nasty weather conditions made driving extremely dangerous. 恶劣的天气条件使驾驶变得极其危险。", "sentenceCn": "恶劣的天气条件使驾驶变得极其危险。"},
+  {"word": "treacherous", "meaning": "背叛的；危险的", "pos": "adj.", "sentence": "The mountain path was treacherous and required careful navigation. 山路危险,需要小心导航。", "sentenceCn": "山路危险,需要小心导航。"},
+  {"word": "turbulent", "meaning": "动荡的；狂暴的", "pos": "adj.", "sentence": "The turbulent period in the country's history saw many political changes. 该国历史上的动荡时期见证了许多政治变革。", "sentenceCn": "该国历史上的动荡时期见证了许多政治变革。"},
+  {"word": "unanimous", "meaning": "全体一致的", "pos": "adj.", "sentence": "The committee reached a unanimous decision after hours of discussion. 经过数小时的讨论,委员会达成了一致决定。", "sentenceCn": "经过数小时的讨论,委员会达成了一致决定。"},
+  {"word": "urge", "meaning": "催促；强烈要求", "pos": "v.", "sentence": "The doctor urged the patient to quit smoking for better health. 医生强烈要求病人戒烟以改善健康。", "sentenceCn": "医生强烈要求病人戒烟以改善健康。"},
+  {"word": "utensil", "meaning": "器皿；用具", "pos": "n.", "sentence": "Kitchen utensils should be cleaned thoroughly after each use. 厨房用具应在每次使用后彻底清洗。", "sentenceCn": "厨房用具应在每次使用后彻底清洗。"},
+  {"word": "utilize", "meaning": "利用", "pos": "v.", "sentence": "The company utilizes advanced technology to improve production efficiency. 该公司利用先进技术提高生产效率。", "sentenceCn": "该公司利用先进技术提高生产效率。"},
+  {"word": "vacant", "meaning": "空着的；茫然的", "pos": "a.", "sentence": "The vacant house had been empty for years before being renovated. 这座空着的房子在翻新之前已经空置多年了。", "sentenceCn": "这座空着的房子在翻新之前已经空置多年了。"},
+  {"word": "velocity", "meaning": "速度", "pos": "n.", "sentence": "The velocity of the wind increased as the storm approached. 随着暴风雨的临近,风速增加了。", "sentenceCn": "随着暴风雨的临近,风速增加了。"},
+  {"word": "waive", "meaning": "放弃；豁免", "pos": "v.", "sentence": "The bank decided to waive the late payment fee as a courtesy. 银行决定作为一项礼遇豁免逾期付款费。", "sentenceCn": "银行决定作为一项礼遇豁免逾期付款费。"},
+  {"word": "wavering", "meaning": "犹豫不决的；动摇的", "pos": "adj.", "sentence": "His wavering commitment to the project concerned his teammates. 他对项目犹豫不决的承诺让队友们担心。", "sentenceCn": "他对项目犹豫不决的承诺让队友们担心。"},
+  {"word": "weary", "meaning": "疲倦的；厌烦的", "pos": "adj.", "sentence": "The long journey made the travelers weary and in need of rest. 漫长的旅程使旅行者们疲倦,需要休息。", "sentenceCn": "漫长的旅程使旅行者们疲倦,需要休息。"},
+  {"word": "welfare", "meaning": "福利", "pos": "n.", "sentence": "The government introduced new welfare programs to support low-income families. 政府推出了新的福利计划以支持低收入家庭。", "sentenceCn": "政府推出了新的福利计划以支持低收入家庭。"},
+  {"word": "withstand", "meaning": "经受；抵挡", "pos": "v.", "sentence": "The ancient walls were built to withstand attacks from invaders. 古老的墙壁是为了抵挡入侵者的攻击而建造的。", "sentenceCn": "古老的墙壁是为了抵挡入侵者的攻击而建造的。"},
+  {"word": "wreck", "meaning": "失事车/船；破坏", "pos": "n./v.", "sentence": "The storm wrecked several boats in the harbor. 暴风雨在港口造成几艘船只失事。", "sentenceCn": "暴风雨在港口造成几艘船只失事。", "actualWord": "wrecked"},
+  {"word": "wretched", "meaning": "极可怜的；卑鄙的", "pos": "adj.", "sentence": "The wretched living conditions in the slums demand immediate attention. 贫民窟中极其可怜的生活条件需要立即关注。", "sentenceCn": "贫民窟中极其可怜的生活条件需要立即关注。"},
+  {"word": "yearn", "meaning": "渴望", "pos": "v.", "sentence": "She yearned for the peaceful days of her childhood in the countryside. 她渴望在乡下的童年那平静的日子。", "sentenceCn": "她渴望在乡下的童年那平静的日子。"},
+  {"word": "yield", "meaning": "产生；产量", "pos": "v./n.", "sentence": "The investment yielded high returns for the shareholders. 这项投资为股东产生了高额回报。", "sentenceCn": "这项投资为股东产生了高额回报。"},
+  {"word": "Yield to", "meaning": "向……屈服", "pos": "phr.", "sentence": "The government refused to yield to the protesters' demands for immediate reform. 政府拒绝向抗议者立即改革的要求屈服。", "sentenceCn": "政府拒绝向抗议者立即改革的要求屈服。"},
+  {"word": "predicament", "meaning": "困境", "pos": "n.", "sentence": "She found herself in a difficult predicament with no easy way out. 她发现自己处于一个没有轻松出路的困境中。", "sentenceCn": "她发现自己处于一个没有轻松出路的困境中。"},
+  {"word": "preeminent", "meaning": "卓越的；杰出的", "pos": "adj.", "sentence": "The professor is a preeminent scholar in the field of environmental science. 这位教授是环境科学领域的杰出学者。", "sentenceCn": "这位教授是环境科学领域的杰出学者。"},
+  {"word": "preliminary", "meaning": "初步的", "pos": "a.", "sentence": "The preliminary results of the study show promising findings. 研究的初步结果显示了有希望的发现。", "sentenceCn": "研究的初步结果显示了有希望的发现。"},
+  {"word": "preposterous", "meaning": "荒谬的", "pos": "adj.", "sentence": "The idea that the earth is flat is completely preposterous. 地球是平的想法是完全荒谬的。", "sentenceCn": "地球是平的想法是完全荒谬的。"},
+  {"word": "presidency", "meaning": "总统任期", "pos": "n.", "sentence": "During his presidency, the country experienced significant economic growth. 在他担任总统期间，该国经历了显著的经济增长。", "sentenceCn": "在他担任总统期间，该国经历了显著的经济增长。"},
+  {"word": "presumption", "meaning": "假定；放肆", "pos": "n.", "sentence": "There is a presumption of innocence until proven guilty in a court of law. 在法庭证明有罪之前，存在无罪推定。", "sentenceCn": "在法庭证明有罪之前，存在无罪推定。"},
+  {"word": "pretentious", "meaning": "自命不凡的", "pos": "adj.", "sentence": "His pretentious behavior annoyed his colleagues at the office. 他自命不凡的行为惹恼了办公室的同事。", "sentenceCn": "他自命不凡的行为惹恼了办公室的同事。"},
+  {"word": "pretext", "meaning": "借口", "pos": "n.", "sentence": "He used the meeting as a pretext to avoid attending the party. 他以开会为借口避免参加聚会。", "sentenceCn": "他以开会为借口避免参加聚会。"},
+  {"word": "primate", "meaning": "灵长类", "pos": "n.", "sentence": "Humans and other primates share many genetic similarities. 人类和其他灵长类动物有许多基因相似之处。", "sentenceCn": "人类和其他灵长类动物有许多基因相似之处。"},
+  {"word": "princely", "meaning": "豪华的", "pos": "adj.", "sentence": "The company made a princely donation to the new hospital. 这家公司向新医院捐赠了一笔巨款。", "sentenceCn": "这家公司向新医院捐赠了一笔巨款。"},
+  {"word": "proactive", "meaning": "积极主动的；先发制人的", "pos": "adj.", "sentence": "The proactive approach to environmental protection helps prevent problems before they occur. 积极主动的环保方法有助于在问题发生前加以预防。", "sentenceCn": "积极主动的环保方法有助于在问题发生前加以预防。"},
+  {"word": "probation", "meaning": "缓刑；见习期", "pos": "n.", "sentence": "The new employee is still on probation and needs to prove his worth to the company. 新员工仍在试用期，需要向公司证明自己的价值。", "sentenceCn": "新员工仍在试用期，需要向公司证明自己的价值。"}
 ];
