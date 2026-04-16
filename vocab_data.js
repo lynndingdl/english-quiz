@@ -55,6 +55,7 @@ const vocabData = [
   },
   {
     word: "wreck",
+    actualWord: "wrecked",
     meaning: "失事车/船；破坏",
     sentence: "The storm wrecked several boats in the harbor.",
     sentenceCn: "暴风雨在港口造成几艘船只失事。"
@@ -78,7 +79,7 @@ const vocabData = [
     sentenceCn: "这项投资为股东产生了高额回报。"
   },
   {
-    word: "Yield to",
+    word: "yield to",
     meaning: "向……屈服",
     sentence: "The government refused to yield to the protesters' demands for immediate reform.",
     sentenceCn: "政府拒绝向抗议者立即改革的要求屈服。"
